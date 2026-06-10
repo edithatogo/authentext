@@ -3,9 +3,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const__dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, '..');
-const GITHUB_API = 'https://api.github.com';
+const GITHUB_API = '<https://api.github.com>';
 
 function getGitHubHeaders() {
   return {
@@ -317,7 +317,7 @@ ${formatDecisionItems(upstreamDecisions)}
 1. ${localBacklogAction}
 2. Convert the automated Adopt / Reject / Defer suggestions above into explicit maintainer decisions on the active conductor track.
 3. Keep the repo skill-focused: validate adapter sync and distribution first, not npm publishing.
-4. Keep experimental subsystems outside the maintained skill surface; the citation manager now lives under \`experiments/citation_ref_manager/\`.
+4. Keep experimental subsystems outside the maintained skill surface; citation and reference management lives in the separate sourceright project.
 `;
 
   const decisionsBody = `# Self-Improvement Decision Log
@@ -387,7 +387,7 @@ ${formatCandidateLinks(upstream.name, upstream.pull_requests.raw.slice(0, 8))}
 - Maintainers should edit the decision text only when making an explicit final call, rather than rewriting the whole file from scratch.
 - Suggested decisions are not final approvals. They are triage inputs for the track.
 
-## Decision Rubric
+## Maintainer Decision Rubric
 
 - Evidence quality: prefer changes grounded in reproducible examples or clear user pain, not vibes.
 - Pattern overlap: avoid adding new rules that duplicate existing Humanizer patterns without meaningfully improving coverage.

@@ -2,23 +2,25 @@
 
 ## Status
 
-Accepted on 2026-03-14.
+Superseded on 2026-06-10 by sourceright extraction (track `modernization_20260610`).
 
 ## Decision
 
-The citation reference manager is no longer treated as part of the maintained Humanizer skill surface. It now lives under `experiments/citation_ref_manager/`.
+Citation and reference management no longer lives in this repository. The former experimental tree (`experiments/citation_ref_manager/`), the `humanizer-cite` MCP tool, the `scripts/research/citation-normalize.js` helper, and the `src/references.json` / `src/research_references.md` bibliography files have been removed.
+
+**Permanent home:** the standalone **sourceright** project for citation normalization, reference verification, and bibliography maintenance.
+
+## What stays in Humanizer
+
+Humanizer-next remains a writing-skill repository. Academic **content patterns** that detect fake or malformed AI citations (for example patterns A9/A10 in the academic module) are part of the humanizer skill contract and are **not** citation-manager tooling.
 
 ## Rationale
 
-- Humanizer-next is a skill-source repository whose supported output is the Humanizer writing skill and its synced adapters.
-- The citation manager does not feed the generated skill artifacts, adapter bundles, or install matrix.
-- Keeping the subsystem under `src/` implied that it was part of the canonical source tree for the supported skill, which was misleading.
-- Moving it to `experiments/` preserves the work, keeps it available for future extraction, and narrows the quality and maintenance contract of the repository.
+- The maintained surface is `SKILL.md`, `SKILL_PROFESSIONAL.md`, and the `src/` fragments that compile them.
+- Citation-manager code did not feed the compiled skill outputs and duplicated work now owned by sourceright.
+- Removing it narrows the repo contract and avoids implying that Humanizer installs or maintains a reference database.
 
-## Consequences
+## History
 
-- Maintainer workflow, sync checks, and adapter validation remain focused on the supported skill content under `src/`.
-- Experimental citation-manager work can continue in-tree without defining the public scope of the repo.
-- If the citation manager becomes strategic, the next step should be either:
-  - extract it into a dedicated repository or skill, or
-  - formally productize it and promote only the supported portions back into `src/`.
+- **2026-03-14:** Citation manager moved from `src/` to `experiments/citation_ref_manager/` (see prior version of this document).
+- **2026-06-10:** Full extraction to sourceright; all citation-manager paths deleted from humanizer-next.

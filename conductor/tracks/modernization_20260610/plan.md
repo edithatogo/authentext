@@ -21,9 +21,9 @@ Workflow: each task gets its own commit; the task line gets the 7-char SHA appen
 - [x] Task: Delete `skills/humanizer-cite/` (package.json, lib, tests) [7b67289]
 - [x] Task: Delete `experiments/citation_ref_manager/` (entire tree) [8eb16f4]
 - [x] Task: Delete `scripts/research/citation-normalize.js` and remove its listing from `conductor/tracks.md` key deliverables [d37627d]
-- [~] Task: Remove `src/references.json` and `src/research_references.md` (content lives in sourceright); fix any compile/validate references to them
-- [ ] Task: Rewrite `docs/citation-manager-boundary.md` to record sourceright as the permanent home; sweep remaining mentions in `.github/copilot-instructions.md`, `conductor/product.md`, `conductor/product-guidelines.md`
-- [ ] Task: Conductor - Phase Verification and Review of Phase 2
+- [x] Task: Remove `src/references.json` and `src/research_references.md` (content lives in sourceright); fix any compile/validate references to them [32f55e8]
+- [x] Task: Rewrite `docs/citation-manager-boundary.md` to record sourceright as the permanent home; sweep remaining mentions in `.github/copilot-instructions.md`, `conductor/product.md`, `conductor/product-guidelines.md`
+- [x] Task: Conductor - Phase Verification and Review of Phase 2
 
 ## Phase 3: Agent Skills Standard Migration
 
