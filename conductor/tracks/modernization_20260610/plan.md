@@ -17,7 +17,7 @@ Workflow: each task gets its own commit; the task line gets the 7-char SHA appen
 
 ## Phase 2: Sourceright Extraction
 
-- [x] Task: Remove `humanizer-cite` registration from `skills/humanizer-orchestrate/lib/mcp-server.js` and update orchestrate tests (8 tools to 7)
+- [x] Task: Remove `humanizer-cite` registration from `skills/humanizer-orchestrate/lib/mcp-server.js` and update orchestrate tests (8 tools to 7) [2bfd5aa]
 - [~] Task: Delete `skills/humanizer-cite/` (package.json, lib, tests)
 - [ ] Task: Delete `experiments/citation_ref_manager/` (entire tree)
 - [ ] Task: Delete `scripts/research/citation-normalize.js` and remove its listing from `conductor/tracks.md` key deliverables
