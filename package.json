@@ -3,6 +3,12 @@
   "version": "2.3.0",
   "description": "Remove signs of AI-generated writing from text.",
   "private": true,
+  "workspaces": [
+    "skills/humanizer-next",
+    "skills/humanizer-logic",
+    "skills/humanizer-read",
+    "skills/humanizer-orchestrate"
+  ],
   "type": "module",
   "scripts": {
     "sync": "node scripts/compile-skill.js",
@@ -22,7 +28,7 @@
     "install:mcp-server": "node scripts/install-mcp-server.js",
     "prepare": "node -e \"if (!process.env.CI) require('child_process').execSync('npx husky install', { stdio: 'inherit' })\"",
     "release": "echo 'No npm release: humanizer-next ships agent skill artifacts, not a publishable library'",
-    "version": "npm run sync && git add SKILL.md SKILL_PROFESSIONAL.md AGENTS.md README.md"
+    "version": "npm run sync && git add SKILL.md SKILL_PROFESSIONAL.md references AGENTS.md README.md"
   },
   "lint-staged": {
     "**/*.{js,mjs,ts}": "eslint --fix",

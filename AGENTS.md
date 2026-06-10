@@ -16,6 +16,7 @@ This repository is the source for the Humanizer skill. Treat it as skill-mainten
 
 - `SKILL.md`
 - `SKILL_PROFESSIONAL.md`
+- `references/`
 - `src/`
 - `scripts/`
 - `docs/`

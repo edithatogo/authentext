@@ -1,26 +1,15 @@
 #!/usr/bin/env node
 
 /**
- * Skill Compiler for Modular Architecture (ADR-001)
- *
- * Assembles SKILL.md and SKILL_PROFESSIONAL.md from modular source files.
- *
- * Usage: node scripts/compile-skill.js
- *
- * Phase Status:
- * - [x] Phase 1: Compile script structure
- * - [x] Phase 2: Extract SKILL_CORE_PATTERNS.md
- * - [x] Phase 3: Create specialized modules
- * - [x] Phase 4: Implement module assembly
- * - [x] Phase 5: Test compiled output
- * - [ ] Phase 6: Upstream PR adoption
- *
- * Module Structure:
- * - src/modules/SKILL_CORE_PATTERNS.md (required)
- * - src/modules/SKILL_TECHNICAL.md (optional)
- * - src/modules/SKILL_ACADEMIC.md (optional)
- * - src/modules/SKILL_GOVERNANCE.md (optional)
- * - src/modules/SKILL_REASONING.md (optional, already exists)
+
+* Skill Compiler for Modular Architecture (ADR-001)
+*
+* Assembles Agent Skills spec-compliant outputs:
+* * SKILL.md (body under 500 lines; workflow + routing in root, detail in references/)
+* * SKILL_PROFESSIONAL.md (pro variant with module routing)
+* * references/*.md (full module content for progressive disclosure)
+*
+* Usage: node scripts/compile-skill.js
  */
 
 import fs from 'fs';
@@ -31,9 +20,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.join(__dirname, '..');
 
-/**
- * Module configuration
- */
 const MODULES = {
   core: 'src/modules/SKILL_CORE_PATTERNS.md',
   technical: 'src/modules/SKILL_TECHNICAL.md',
@@ -42,16 +28,33 @@ const MODULES = {
   reasoning: 'src/modules/SKILL_REASONING.md',
 };
 
-/**
- * Output files
- */
 const OUTPUT = {
   skill: 'SKILL.md',
   skillPro: 'SKILL_PROFESSIONAL.md',
+  referencesDir: 'references',
 };
 
+const REFERENCE_FILES = {
+  core: 'core-patterns.md',
+  technical: 'technical.md',
+  academic: 'academic.md',
+  governance: 'governance.md',
+  reasoning: 'reasoning-failures.md',
+};
+
+const STANDARD_DESCRIPTION = `Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance.`;
+
+const PRO_DESCRIPTION = `Remove signs of AI-generated writing for professional, technical, academic, and policy prose. Use when editing client-facing or formal text that must stay precise and restrained. Routes across core, technical, academic, and governance pattern modules plus reasoning-failure detection. Based on Wikipedia's "Signs of AI writing" guide with severity classification and literal preservation rules.`;
+
+const COMPATIBILITY =
+  'Requires an agent host that supports the Agent Skills format and Read, Write, Edit, Grep, and Glob tools (Claude Code, Cursor, Codex CLI, Gemini CLI, GitHub Copilot, and compatible hosts).';
+
 /**
- * Read module file with error handling
+
+* Read module file with error handling
+* @param {string} modulePath
+* @param {boolean} [required]
+* @returns {string|null}
  */
 function readModule(modulePath, required = false) {
   const fullPath = path.join(ROOT_DIR, modulePath);
@@ -69,16 +72,17 @@ function readModule(modulePath, required = false) {
 }
 
 /**
- * Extract frontmatter from module
+
+* Extract frontmatter key/value pairs from module YAML
+* @param {string} content
+* @returns {Record<string, string>|null}
  */
 function extractFrontmatter(content) {
   const match = content.match(/^---\n([\s\S]*?)\n---/);
   if (!match) return null;
 
   const frontmatter = {};
-  const lines = match[1].split('\n');
-
-  for (const line of lines) {
+  for (const line of match[1].split('\n')) {
     const [key, ...valueParts] = line.split(':');
     if (key && valueParts.length > 0) {
       frontmatter[key.trim()] = valueParts.join(':').trim();
@@ -89,136 +93,184 @@ function extractFrontmatter(content) {
 }
 
 /**
- * Compile Standard SKILL.md from modules
- *
- * Assembles SKILL.md from:
- * - Core patterns module (required)
- * - Reasoning module (if available)
+
+* @param {string} content
+* @returns {string}
  */
-function compileStandardSkill() {
-  console.log('\n=== Compiling Standard Humanizer ===');
+function stripFrontmatter(content) {
+  return content.replace(/^---\s*[\s\S]*?^---\s*/m, '');
+}
 
-  // Read required core module
-  const coreModule = readModule(MODULES.core, true); // required = true
+/**
 
-  // Read optional reasoning module
-  const reasoningModule = readModule(MODULES.reasoning);
+* @param {string} content
+* @param {string} startHeading
+* @param {string|null} [endMarker]
+* @returns {string}
+ */
+function extractSection(content, startHeading, endMarker = null) {
+  const startToken = `\n## ${startHeading}\n`;
+  const start = content.indexOf(startToken);
+  if (start === -1) {
+    return '';
+  }
 
-  // Extract version from core module
-  const coreFrontmatter = extractFrontmatter(coreModule);
-  const version = coreFrontmatter?.version || '3.0.0';
+  const sliceStart = start + 1;
+  if (!endMarker) {
+    return content.slice(sliceStart).trim();
+  }
 
-  // Build standard skill frontmatter
-  const frontmatter = `---
-name: humanizer
+  const end = content.indexOf(endMarker, sliceStart);
+  if (end === -1) {
+    return content.slice(sliceStart).trim();
+  }
+
+  return content.slice(sliceStart, end).trim();
+}
+
+/**
+
+* @param {string} strippedCore
+* @returns {string}
+ */
+function buildStandardIntro(strippedCore) {
+  const contentPatternsIdx = strippedCore.indexOf('\n## CONTENT PATTERNS\n');
+  if (contentPatternsIdx === -1) {
+    throw new Error('Core module is missing ## CONTENT PATTERNS section');
+  }
+
+  const intro = strippedCore.slice(0, contentPatternsIdx).trim();
+  return intro.replace('# Module: Core Patterns', '# Humanizer: Remove AI Writing Patterns');
+}
+
+/**
+
+* @param {{ name: string, version: string, description: string }} options
+* @returns {string}
+ */
+function buildAgentSkillsFrontmatter({ name, version, description }) {
+  return `---
+name: ${name}
 version: ${version}
-description: |
-  Remove signs of AI-generated writing from text. Use when editing or reviewing
-  text to make it sound more natural and human-written. Based on Wikipedia's
-  comprehensive "Signs of AI writing" guide. Detects and fixes patterns including:
-  inflated symbolism, promotional language, superficial -ing analyses, vague
-  attributions, em dash overuse, rule of three, AI vocabulary words, negative
-  parallelisms, and excessive conjunctive phrases. Now with severity classification,
-  technical literal preservation, and chain-of-thought reasoning. Includes reasoning
-  failure detection and remediation.
+description: ${description}
+license: MIT
+compatibility: ${COMPATIBILITY}
 allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Grep
-  - Glob
-  - AskUserQuestion
+
+* Read
+* Write
+* Edit
+* Grep
+* Glob
+* AskUserQuestion
 
 ---
 
 `;
+}
 
-  // Extract content without frontmatter from core module
-  const coreContent = coreModule.replace(/^---\s*[\s\S]*?^---\s*/m, '');
+/**
 
-  // Start with frontmatter + core content
-  let content = frontmatter + coreContent;
+* @param {Record<string, string|null>} modules
+ */
+function writeReferenceTree(modules) {
+  const referencesDir = path.join(ROOT_DIR, OUTPUT.referencesDir);
+  fs.mkdirSync(referencesDir, { recursive: true });
 
-  // Append reasoning module if available
-  if (reasoningModule) {
-    console.log('✓ Appending reasoning module');
-    // Remove reasoning module frontmatter and append
-    const reasoningContent = reasoningModule.replace(/^---\s*[\s\S]*?^---\s*/m, '');
-    content += '\n\n---\n\n' + reasoningContent;
+  for (const [key, filename] of Object.entries(REFERENCE_FILES)) {
+    const moduleContent = modules[key];
+    if (!moduleContent) {
+      continue;
+    }
+
+    const body = stripFrontmatter(moduleContent).trim();
+    const targetPath = path.join(referencesDir, filename);
+    fs.writeFileSync(targetPath, `${body}\n`, 'utf-8');
+    console.log(`✓ Written: ${OUTPUT.referencesDir}/${filename}`);
+  }
+}
+
+/**
+
+* @param {string} coreModule
+* @param {boolean} hasReasoning
+* @returns {string}
+ */
+function compileStandardSkill(coreModule, hasReasoning) {
+  console.log('\n=== Compiling Standard Humanizer ===');
+
+  const coreFrontmatter = extractFrontmatter(coreModule);
+  const version = coreFrontmatter?.version || '3.0.0';
+  const strippedCore = stripFrontmatter(coreModule);
+
+  const intro = buildStandardIntro(strippedCore);
+  const severity = extractSection(
+    strippedCore,
+    'SEVERITY CLASSIFICATION',
+    '\n---\n\n_Module Version'
+  );
+  const detection = extractSection(strippedCore, 'DETECTION GUIDANCE');
+
+  const referenceLinks = [
+    '- [Core patterns (39 patterns, before/after examples)](references/core-patterns.md)',
+  ];
+  if (hasReasoning) {
+    referenceLinks.push(
+      '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)'
+    );
   }
 
-  console.log('✓ Standard SKILL.md compiled from modules');
-  return content;
+  const body = `${intro}
+
+## Reference material
+
+Read these files for the full pattern catalog, examples, and remediation guidance:
+
+${referenceLinks.join('\n')}
+
+Apply every pattern in the reference files when humanizing text. This root skill keeps workflow, severity tiers, and detection guardrails; the references hold the exhaustive pattern definitions.
+
+${severity}
+
+${detection}
+`;
+
+  return (
+    buildAgentSkillsFrontmatter({
+      name: 'humanizer',
+      version,
+      description: STANDARD_DESCRIPTION,
+    }) + body
+  );
 }
 
 /**
- * Compile Professional SKILL_PROFESSIONAL.md from modules
- *
- * Assembles from:
- * - Frontmatter (version, description, allowed-tools)
- * - Introduction & routing logic
- * - Core patterns module (always included)
- * - Specialized modules (technical, academic, governance, reasoning)
+
+* @param {Record<string, string|null>} modules
+* @returns {string}
  */
-function compileProfessionalSkill() {
+function compileProfessionalSkill(modules) {
   console.log('\n=== Compiling Humanizer Pro ===');
 
-  // Read all modules (core is required, others optional)
-  const modules = {
-    core: readModule(MODULES.core, true),
-    technical: readModule(MODULES.technical),
-    academic: readModule(MODULES.academic),
-    governance: readModule(MODULES.governance),
-    reasoning: readModule(MODULES.reasoning),
-  };
-
-  // Check which modules are available
-  const availableModules = Object.entries(modules)
-    .filter(([_, content]) => content !== null)
-    .map(([key, _]) => key);
-
-  console.log(`✓ Available modules: ${availableModules.join(', ')}`);
-
-  // Build professional skill from template
-  const content = buildProfessionalTemplate(modules);
-
-  return content;
-}
-
-/**
- * Build SKILL_PROFESSIONAL.md from modules
- */
-function buildProfessionalTemplate(modules) {
-  // Extract version from core module
   const coreFrontmatter = extractFrontmatter(modules.core);
   const version = coreFrontmatter?.version || '3.0.0';
 
-  // Build frontmatter
-  const frontmatter = `---
-name: humanizer-pro
-version: ${version}
-description: |
-  Remove signs of AI-generated writing from text. Use when editing or reviewing
-  text to make it sound more natural, human-written, and professional. Based on Wikipedia's
-  comprehensive "Signs of AI writing" guide. Detects and fixes patterns including:
-  inflated symbolism, promotional language, superficial -ing analyses, vague
-  attributions, em dash overuse, rule of three, AI vocabulary words, negative
-  parallelisms, and excessive conjunctive phrases. Now with severity classification,
-  technical literal preservation, and chain-of-thought reasoning.
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Grep
-  - Glob
-  - AskUserQuestion
+  const availableReferences = Object.entries(REFERENCE_FILES)
+    .filter(([key]) => modules[key])
+    .map(([, filename]) => filename);
 
----
-`;
+  const moduleLinks = [
+    '- [Core patterns](references/core-patterns.md) — always apply',
+    modules.technical && '- [Technical module](references/technical.md) — code and technical docs',
+    modules.academic && '- [Academic module](references/academic.md) — papers and formal research',
+    modules.governance && '- [Governance module](references/governance.md) — policy and compliance',
+    modules.reasoning &&
+      '- [Reasoning module](references/reasoning-failures.md) — reasoning failures and contradictions',
+  ]
+    .filter(Boolean)
+    .join('\n');
 
-  // Build introduction
-  const introduction = `
-# Humanizer: Remove AI Writing Patterns
+  const introduction = `# Humanizer: Remove AI Writing Patterns
 
 You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup.
 
@@ -226,41 +278,33 @@ You are a writing editor that identifies and removes signs of AI-generated text 
 
 Use this variant for technical, policy, academic, and client-facing prose. Keep the text precise, restrained, and readable.
 
-## Modules
+## Reference modules
 
-- [Core Patterns](modules/SKILL_CORE_PATTERNS.md) - Always apply these patterns.
-- [Technical Module](modules/SKILL_TECHNICAL.md) - Use for code and technical documentation.
-- [Academic Module](modules/SKILL_ACADEMIC.md) - Use for papers, essays, and formal research prose.
-- [Governance Module](modules/SKILL_GOVERNANCE.md) - Use for policy, risk, and compliance writing.
-- [Reasoning Module](modules/SKILL_REASONING.md) - Use for reasoning failures and self-contradictions.
+${moduleLinks}
 
 ## ROUTING LOGIC
 
 1. Analyze input context:
-   - Code or technical docs -> Core + Technical
-   - Papers, essays, or formal research -> Core + Academic
-   - Policy, risk, or compliance writing -> Core + Governance
-   - Otherwise -> Core only
+   * Code or technical docs -> Core + Technical
+   * Papers, essays, or formal research -> Core + Academic
+   * Policy, risk, or compliance writing -> Core + Governance
+   * Reasoning failures or self-contradictions -> Core + Reasoning
+   * Otherwise -> Core only
 
-2. Apply module combinations:
-   - General writing: Core Patterns
-   - Code and technical docs: Core + Technical
-   - Academic writing: Core + Academic
-   - Governance/compliance docs: Core + Governance
-   - Reasoning failures and self-contradictions: Core + Reasoning
+2. Open the linked reference files for the selected modules and apply their patterns.
 
 ## Professional Tone
 
-- Prefer direct, precise phrasing.
-- Keep technical terms when they are accurate.
-- Avoid decorative language, stock transitions, and inflated claims.
-- Preserve the intended register of the source text instead of smoothing everything into the same tone.
+* Prefer direct, precise phrasing.
+* Keep technical terms when they are accurate.
+* Avoid decorative language, stock transitions, and inflated claims.
+* Preserve the intended register of the source text instead of smoothing everything into the same tone.
 
 ## Your Task
 
 When given text to humanize:
 
-1. **Identify AI patterns** - Scan for the patterns listed below
+1. **Identify AI patterns** - Scan the reference modules for the patterns that apply
 2. **Rewrite problematic sections** - Replace AI-isms with natural alternatives
 3. **Preserve meaning** - Keep the core message intact
 4. **Maintain voice** - Match the intended tone (formal, casual, technical, etc.)
@@ -276,10 +320,10 @@ The goal isn't to flatten everything into a generic professional register. Keep 
 
 ### Signs the writing is still flat
 
-- Every sentence lands the same way—same length, same structure, same rhythm
-- Nothing is concrete; everything is "significant" or "notable" without saying why
-- No perspective, just information arranged in order
-- Reads like it could be about anything, with no sign the writer knows the subject
+* Every sentence lands the same way—same length, same structure, same rhythm
+* Nothing is concrete; everything is "significant" or "notable" without saying why
+* No perspective, just information arranged in order
+* Reads like it could be about anything, with no sign the writer knows the subject
 
 ### What to aim for
 
@@ -295,51 +339,25 @@ Vary sentence rhythm with short and long lines. Use specific details instead of 
 
 ---
 
+## Severity and detection guardrails
+
+For severity tiers and false-positive guidance, read [Core patterns](references/core-patterns.md) (sections **SEVERITY CLASSIFICATION** and **DETECTION GUIDANCE**).
+
+Available reference files: ${availableReferences.join(', ')}.
 `;
 
-  // Build module sections
-  let moduleSections = '';
-
-  // Core patterns (always included)
-  if (modules.core) {
-    moduleSections += '\n## CORE PATTERNS MODULE\n\n';
-    moduleSections += modules.core;
-    moduleSections += '\n\n---\n';
-  }
-
-  // Technical module
-  if (modules.technical) {
-    moduleSections += '\n## TECHNICAL MODULE\n\n';
-    moduleSections += modules.technical;
-    moduleSections += '\n\n---\n';
-  }
-
-  // Academic module
-  if (modules.academic) {
-    moduleSections += '\n## ACADEMIC MODULE\n\n';
-    moduleSections += modules.academic;
-    moduleSections += '\n\n---\n';
-  }
-
-  // Governance module
-  if (modules.governance) {
-    moduleSections += '\n## GOVERNANCE MODULE\n\n';
-    moduleSections += modules.governance;
-    moduleSections += '\n\n---\n';
-  }
-
-  // Reasoning module
-  if (modules.reasoning) {
-    moduleSections += '\n## REASONING MODULE\n\n';
-    moduleSections += modules.reasoning;
-  }
-
-  // Assemble final content
-  return frontmatter + introduction + moduleSections;
+  return (
+    buildAgentSkillsFrontmatter({
+      name: 'humanizer-pro',
+      version,
+      description: PRO_DESCRIPTION,
+    }) + introduction
+  );
 }
 
 /**
- * Main compilation process
+
+* Main compilation process
  */
 function compile() {
   console.log('╔════════════════════════════════════════╗');
@@ -347,29 +365,31 @@ function compile() {
   console.log('╚════════════════════════════════════════╝');
 
   try {
-    // Compile Standard SKILL.md
-    console.log('\n=== Phase 4: Assembling from Modules ===');
-    const skillContent = compileStandardSkill();
+    const modules = {
+      core: readModule(MODULES.core, true),
+      technical: readModule(MODULES.technical),
+      academic: readModule(MODULES.academic),
+      governance: readModule(MODULES.governance),
+      reasoning: readModule(MODULES.reasoning),
+    };
 
-    // Write SKILL.md
+    writeReferenceTree(modules);
+
+    const skillContent = compileStandardSkill(modules.core, Boolean(modules.reasoning));
     const skillPath = path.join(ROOT_DIR, OUTPUT.skill);
     fs.writeFileSync(skillPath, skillContent, 'utf-8');
-    console.log(`✓ Written: ${OUTPUT.skill}`);
+    console.log(`✓ Written: ${OUTPUT.skill} (${skillContent.split('\n').length} lines)`);
 
-    // Compile Professional SKILL_PROFESSIONAL.md
-    const proContent = compileProfessionalSkill();
-
-    // Write SKILL_PROFESSIONAL.md
+    const proContent = compileProfessionalSkill(modules);
     const proPath = path.join(ROOT_DIR, OUTPUT.skillPro);
     fs.writeFileSync(proPath, proContent, 'utf-8');
-    console.log(`✓ Written: ${OUTPUT.skillPro}`);
+    console.log(`✓ Written: ${OUTPUT.skillPro} (${proContent.split('\n').length} lines)`);
 
     console.log('\n╔════════════════════════════════════════╗');
     console.log('║  ✓ Compilation Complete              ║');
     console.log('╚════════════════════════════════════════╝');
-    console.log(`\nVersion: ${proContent.match(/version: ([\d.]+)/)?.[1] ?? '3.0.0'}`);
-    console.log('Status: Phase 4 - Assembled from Modules');
-    console.log('Next: Test compiled output and run validation');
+    console.log(`\nVersion: ${extractFrontmatter(modules.core)?.version ?? '3.0.0'}`);
+    console.log('Output: Agent Skills package (SKILL.md + references/)');
   } catch (error) {
     console.error('\n❌ Compilation failed:');
     console.error(error.message);
@@ -377,5 +397,4 @@ function compile() {
   }
 }
 
-// Run compilation
 compile();

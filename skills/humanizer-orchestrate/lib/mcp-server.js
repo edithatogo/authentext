@@ -13,7 +13,7 @@ class HumanizerMCPServer {
     }
 
     _initializeTools() {
-        // Registering the 7 independent skills (humanizer-cite moved to sourceright)
+        // Registering tool-backed skill packages (instruction-only stubs removed)
         const skills = [
             {
                 name: 'humanizer-next',
@@ -26,18 +26,6 @@ class HumanizerMCPServer {
             {
                 name: 'humanizer-read',
                 description: 'Readability: Statistical prose analysis'
-            },
-            {
-                name: 'humanizer-structure',
-                description: 'Structural integrity: Fix fragmented headers and flows'
-            },
-            {
-                name: 'humanizer-factcheck',
-                description: 'Fact verification: Grounding claims'
-            },
-            {
-                name: 'humanizer-inclusive',
-                description: 'Inclusive language: Remove biased patterns'
             },
             {
                 name: 'humanizer-orchestrate',

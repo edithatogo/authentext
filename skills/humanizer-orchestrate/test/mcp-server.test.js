@@ -18,15 +18,12 @@ try {
     console.log("- Testing server initialization");
     assert.strictEqual(server.name, "humanizer-server", "Server should have the correct name");
     
-    console.log("- Testing tool registration (should have 7 tools)");
+    console.log("- Testing tool registration (should have 4 tools)");
     const tools = server.getRegisteredTools();
     const expectedTools = [
         'humanizer-next',
         'humanizer-logic',
         'humanizer-read',
-        'humanizer-structure',
-        'humanizer-factcheck',
-        'humanizer-inclusive',
         'humanizer-orchestrate'
     ];
     

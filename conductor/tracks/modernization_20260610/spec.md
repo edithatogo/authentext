@@ -25,10 +25,10 @@ A rename away from "humanizer" is **deferred** to a follow-on track; vetted low-
 
 - [x] Pattern catalog reflects upstream v2.8.0 (33 upstream patterns mapped into the local module structure) with adopt/defer decisions recorded for upstream issues #137, #130, #93.
 - [x] `LICENSE` exists at repo root.
-- [x] No citation-manager code remains: `skills/humanizer-cite/`, `experiments/citation_ref_manager/`, `scripts/research/citation-normalize.js` deleted; MCP server registers 7 tools.
-- [ ] Canonical `SKILL.md` conforms to the Agent Skills spec (frontmatter name/description/license, body under 500 lines, long material in `references/`).
-- [ ] `.agent/` adapter bundles removed; distribution documented for skills.sh-style installers.
-- [ ] Root `package.json` declares npm workspaces over the surviving code packages only.
+- [x] No citation-manager code remains: `skills/humanizer-cite/`, `experiments/citation_ref_manager/`, `scripts/research/citation-normalize.js` deleted; MCP server registers 4 tool-backed skills.
+- [x] Canonical `SKILL.md` conforms to the Agent Skills spec (frontmatter name/description/license, body under 500 lines, long material in `references/`).
+- [x] `.agent/` adapter bundles removed; distribution documented for skills.sh-style installers.
+- [x] Root `package.json` declares npm workspaces over the surviving code packages only.
 - [ ] `scripts/check-upstream.js` and `scripts/gather-repo-data.js` take repo identifiers from shared config; no references to `conductor/tracks/repo-self-improvement_20260303` outside the archive.
 - [ ] `npm run sync`, `npm run validate`, `npm test`, and `npm run lint:all` pass.
 - [ ] `conductor/tracks.md` totals match on-disk archives; `citation_ref_20260216` marked superseded by sourceright.

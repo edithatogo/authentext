@@ -4,6 +4,7 @@
     "config:base",
     "group:monorepos"
   ],
+  "additionalBranchPrefix": "deps-",
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
@@ -13,7 +14,8 @@
     {
       "matchPaths": ["skills/**/package.json"],
       "groupName": "humanizer-skills-dependencies",
-      "commitMessagePrefix": "chore(deps-skills):"
+      "commitMessagePrefix": "chore(deps-skills):",
+      "additionalBranchPrefix": "deps-skills-"
     }
   ]
 }

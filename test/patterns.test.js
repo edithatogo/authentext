@@ -1,19 +1,31 @@
 import test from 'node:test';
-import assert from 'node:assert';
+import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const SKILL_CORE_PATH = '.agent/skills/humanizer/modules/SKILL_CORE.md';
-const SKILL_PRO_PATH = '.agent/skills/humanizer/SKILL_PROFESSIONAL.md';
+const CORE_REFERENCE_PATH = 'references/core-patterns.md';
+const SKILL_PRO_PATH = 'SKILL_PROFESSIONAL.md';
 
-test('SKILL_CORE.md integrity', async (t) => {
-  assert.ok(fs.existsSync(SKILL_CORE_PATH), 'SKILL_CORE.md should exist');
-  const content = fs.readFileSync(SKILL_CORE_PATH, 'utf8');
+test('references/core-patterns.md integrity', async (t) => {
+  assert.ok(fs.existsSync(CORE_REFERENCE_PATH), 'references/core-patterns.md should exist');
+  const content = fs.readFileSync(CORE_REFERENCE_PATH, 'utf8');
 
-  await t.test('contains all 24 patterns', () => {
-    // Check for the presence of headings for patterns 1 through 24 (General Patterns)
+  await t.test('contains general patterns 1 through 24', () => {
     for (let i = 1; i <= 24; i++) {
-      const patternHeading = new RegExp(`### ${i}\\. `, 'm');
-      assert.ok(patternHeading.test(content), `Pattern #${i} heading missing in SKILL_CORE.md`);
+      const patternHeading = new RegExp(`### Pattern ${i}:`, 'm');
+      assert.ok(
+        patternHeading.test(content),
+        `Pattern #${i} heading missing in core-patterns reference`
+      );
+    }
+  });
+
+  await t.test('contains upstream style patterns 35 through 39', () => {
+    for (let i = 35; i <= 39; i++) {
+      const patternHeading = new RegExp(`### Pattern ${i}:`, 'm');
+      assert.ok(
+        patternHeading.test(content),
+        `Pattern #${i} heading missing in core-patterns reference`
+      );
     }
   });
 
@@ -31,10 +43,14 @@ test('Professional SKILL_PROFESSIONAL.md integrity', async (t) => {
     assert.ok(content.includes('ROUTING LOGIC'), 'Routing logic missing');
   });
 
-  await t.test('includes module links', () => {
-    assert.ok(content.includes('SKILL_CORE.md'), 'Link to Core missing');
-    assert.ok(content.includes('SKILL_TECHNICAL.md'), 'Link to Technical missing');
-    assert.ok(content.includes('SKILL_ACADEMIC.md'), 'Link to Academic missing');
-    assert.ok(content.includes('SKILL_GOVERNANCE.md'), 'Link to Governance missing');
+  await t.test('includes reference module links', () => {
+    assert.ok(content.includes('references/core-patterns.md'), 'Link to core reference missing');
+    assert.ok(content.includes('references/technical.md'), 'Link to technical reference missing');
+    assert.ok(content.includes('references/academic.md'), 'Link to academic reference missing');
+    assert.ok(content.includes('references/governance.md'), 'Link to governance reference missing');
+    assert.ok(
+      content.includes('references/reasoning-failures.md'),
+      'Link to reasoning reference missing'
+    );
   });
 });

@@ -1,5 +1,6 @@
-# Generated concat files have intentional duplicate section headings (one set per module).
-# The project `npm run lint` deliberately targets only src/ + AGENTS.md (see scripts/lint-markdown.js).
-# Pre-commit lint-staged uses raw markdownlint which would otherwise fail on MD024/MD025 for the maintained outputs.
 SKILL.md
 SKILL_PROFESSIONAL.md
+references/
+**/*.js
+.markdownlintignore
+.prettierignore
