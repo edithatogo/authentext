@@ -1,5 +1,5 @@
 ---
-name: humanizer
+name: authentext
 version: 3.2.0
 description: Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance.
 license: MIT
@@ -15,7 +15,7 @@ allowed-tools:
 
 ---
 
-# Humanizer: Remove AI Writing Patterns
+# Authentext: Remove AI Writing Patterns
 
 ## Description
 

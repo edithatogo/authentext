@@ -1,4 +1,4 @@
-# Contributing to Humanizer
+# Contributing to Authentext
 
 Thanks for contributing! Please run local validation before opening a PR to reduce CI noise.
 

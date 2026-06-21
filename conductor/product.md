@@ -1,8 +1,8 @@
-# Product Guide: Humanizer (Agent-Agnostic Skill/Workflow Pack)
+# Product Guide: Authentext (Agent-Agnostic Skill/Workflow Pack)
 
 ## Summary
 
-Humanizer is a set of writing-editing instructions that removes common “AI voice” patterns from text while preserving meaning and tone. Today it is packaged as a Claude Code skill (`SKILL.md`). The next step is to expand it into a multi-agent deliverable that can be used consistently across popular coding agents, while keeping `SKILL.md` as the canonical source of truth.
+Authentext is a set of writing-editing instructions that removes common “AI voice” patterns from text while preserving meaning and tone. Today it is packaged as a Claude Code skill (`SKILL.md`). The next step is to expand it into a multi-agent deliverable that can be used consistently across popular coding agents, while keeping `SKILL.md` as the canonical source of truth.
 
 ## Primary Users
 
@@ -24,7 +24,7 @@ Humanizer is a set of writing-editing instructions that removes common “AI voi
 
 ## Non-Goals (for initial rollout)
 
-- Rewriting the underlying Humanizer guidance into a fundamentally different editorial philosophy.
+- Rewriting the underlying Authentext guidance into a fundamentally different editorial philosophy.
 - Building a full standalone rewriting app; focus remains on agent-facing skills/workflows.
 
 ## Key Product Decisions
@@ -37,7 +37,7 @@ Humanizer is a set of writing-editing instructions that removes common “AI voi
 - **Canonical Skillset**:
   - `SKILL.md` / `SKILL_PROFESSIONAL.md`
 - **MCP Infrastructure**:
-  - Humanizer MCP Server exposing specialized humanizer tools.
+  - Authentext MCP Server exposing specialized authentext tools.
   - Orchestrator for parallel execution swarms.
 - **Standardized Adapters**:
   - Support for Antigravity, VS Code, Claude, Gemini, and other SOTA agent environments.

@@ -24,20 +24,20 @@ const REPO_ROOT = path.resolve(__dirname, '..');
 const MCP_SERVER_PATH = path.join(
   REPO_ROOT,
   'skills',
-  'humanizer-orchestrate',
+  'authentext-orchestrate',
   'lib',
   'mcp-server.js'
 );
 
 const MCP_ENTRY = {
-  humanizer: {
+  authentext: {
     command: 'node',
     args: [MCP_SERVER_PATH],
-    description: 'Humanizer V4 - 8-skill modular humanization suite',
+    description: 'Authentext V4 - 8-skill modular humanization suite',
   },
 };
 
-console.log('=== Humanizer MCP Server Installer ===\n');
+console.log('=== Authentext MCP Server Installer ===\n');
 console.log('MCP Server path:', MCP_SERVER_PATH);
 
 // --- Claude Desktop ---

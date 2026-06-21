@@ -1,6 +1,6 @@
-# Humanizer-next
+# Authentext-next
 
-Humanizer-next is the source repository for the Humanizer skill. It builds Agent Skills spec-compliant outputs:
+Authentext-next is the source repository for the Authentext skill. It builds Agent Skills spec-compliant outputs:
 
 - `SKILL.md`
 - `SKILL_PROFESSIONAL.md`

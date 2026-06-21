@@ -1,9 +1,9 @@
 /**
- * Humanizer Swarmer
- * Orchestrates parallel execution of humanizer skills.
- */
+ * Authentext Swarmer
+ * Orchestrates parallel execution of authentext skills.
+  */
 
-class HumanizerSwarmer {
+class AuthentextSwarmer {
     constructor(server) {
         this.server = server;
     }
@@ -47,5 +47,5 @@ class HumanizerSwarmer {
 }
 
 module.exports = {
-    HumanizerSwarmer
+    AuthentextSwarmer
 };

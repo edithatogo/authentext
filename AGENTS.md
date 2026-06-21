@@ -1,6 +1,6 @@
 ---
 adapter_metadata:
-  skill_name: humanizer
+  skill_name: authentext
   skill_version: 3.2.0
   last_synced: 2026-06-21
   source_path: SKILL.md
@@ -8,9 +8,9 @@ adapter_metadata:
   adapter_format: AGENTS.md
 ---
 
-# Humanizer
+# Authentext
 
-This repository is the source for the Humanizer skill. Treat it as skill-maintenance tooling, not as a runtime app or a compatibility bundle.
+This repository is the source for the Authentext skill. Treat it as skill-maintenance tooling, not as a runtime app or a compatibility bundle.
 
 ## Maintained surface
 

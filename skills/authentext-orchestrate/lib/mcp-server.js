@@ -1,12 +1,12 @@
 /**
 
-* Humanizer MCP Server
-* Exposes specialized humanizer skills as MCP tools.
+* Authentext MCP Server
+* Exposes specialized authentext skills as MCP tools.
  */
 
-class HumanizerMCPServer {
+class AuthentextMCPServer {
     constructor(options = {}) {
-        this.name = options.name || "humanizer-server";
+        this.name = options.name || "authentext-server";
         this.version = options.version || "1.0.0";
         this.tools = [];
         this._initializeTools();
@@ -16,19 +16,19 @@ class HumanizerMCPServer {
         // Registering tool-backed skill packages (instruction-only stubs removed)
         const skills = [
             {
-                name: 'humanizer-next',
+                name: 'authentext-next',
                 description: 'Core humanization: Personality and Soul'
             },
             {
-                name: 'humanizer-logic',
+                name: 'authentext-logic',
                 description: 'Logic and reasoning: Identify and fix reasoning failures'
             },
             {
-                name: 'humanizer-read',
+                name: 'authentext-read',
                 description: 'Readability: Statistical prose analysis'
             },
             {
-                name: 'humanizer-orchestrate',
+                name: 'authentext-orchestrate',
                 description: 'Orchestrator: Parallel swarming across all skills'
             }
         ];
@@ -56,5 +56,5 @@ class HumanizerMCPServer {
 }
 
 module.exports = {
-    HumanizerMCPServer
+    AuthentextMCPServer
 };

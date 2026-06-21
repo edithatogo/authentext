@@ -1,13 +1,13 @@
 {
-  "name": "humanizer-next",
+  "name": "authentext-next",
   "version": "3.2.0",
   "description": "Remove signs of AI-generated writing from text.",
   "private": true,
   "workspaces": [
-    "skills/humanizer-next",
-    "skills/humanizer-logic",
-    "skills/humanizer-read",
-    "skills/humanizer-orchestrate"
+    "skills/authentext-next",
+    "skills/authentext-logic",
+    "skills/authentext-read",
+    "skills/authentext-orchestrate"
   ],
   "type": "module",
   "scripts": {

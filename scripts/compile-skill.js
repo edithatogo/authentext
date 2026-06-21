@@ -204,7 +204,7 @@ function buildStandardIntro(strippedCore) {
   }
 
   const intro = strippedCore.slice(0, contentPatternsIdx).trim();
-  return intro.replace('# Module: Core Patterns', '# Humanizer: Remove AI Writing Patterns');
+  return intro.replace('# Module: Core Patterns', '# Authentext: Remove AI Writing Patterns');
 }
 
 /**
@@ -261,7 +261,7 @@ function writeReferenceTree(modules) {
 * @returns {string}
  */
 function compileStandardSkill(coreModule, hasReasoning) {
-  console.log('\n=== Compiling Standard Humanizer ===');
+  console.log('\n=== Compiling Standard Authentext ===');
 
   const coreFrontmatter = extractFrontmatter(coreModule);
   const version = coreFrontmatter?.version || '3.0.0';
@@ -301,7 +301,7 @@ ${detection}
 
   return (
     buildAgentSkillsFrontmatter({
-      name: 'humanizer',
+      name: 'authentext',
       version,
       description: STANDARD_DESCRIPTION,
     }) + body
@@ -314,7 +314,7 @@ ${detection}
 * @returns {string}
  */
 function compileProfessionalSkill(modules) {
-  console.log('\n=== Compiling Humanizer Pro ===');
+  console.log('\n=== Compiling Authentext Pro ===');
 
   const coreFrontmatter = extractFrontmatter(modules.core);
   const version = coreFrontmatter?.version || '3.0.0';
@@ -334,11 +334,11 @@ function compileProfessionalSkill(modules) {
     .filter(Boolean)
     .join('\n');
 
-  const introduction = `# Humanizer: Remove AI Writing Patterns
+  const introduction = `# Authentext: Remove AI Writing Patterns
 
 You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup.
 
-## Humanizer Pro: Professional Editing
+## Authentext Pro: Professional Editing
 
 Use this variant for technical, policy, academic, and client-facing prose. Keep the text precise, restrained, and readable.
 
@@ -412,7 +412,7 @@ Available reference files: ${availableReferences.join(', ')}.
 
   return (
     buildAgentSkillsFrontmatter({
-      name: 'humanizer-pro',
+      name: 'authentext-pro',
       version,
       description: PRO_DESCRIPTION,
     }) + introduction
@@ -425,7 +425,7 @@ Available reference files: ${availableReferences.join(', ')}.
  */
 function compile() {
   console.log('╔════════════════════════════════════════╗');
-  console.log('║  Humanizer Skill Compiler (ADR-001)   ║');
+  console.log('║  Authentext Skill Compiler (ADR-001)   ║');
   console.log('╚════════════════════════════════════════╝');
 
   try {

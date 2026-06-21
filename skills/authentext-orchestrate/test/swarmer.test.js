@@ -1,6 +1,6 @@
 const assert = require('assert');
-const { HumanizerMCPServer } = require('../lib/mcp-server');
-const { HumanizerSwarmer } = require('../lib/swarmer');
+const { AuthentextMCPServer } = require('../lib/mcp-server');
+const { AuthentextSwarmer } = require('../lib/swarmer');
 
 /**
 
@@ -10,10 +10,10 @@ const { HumanizerSwarmer } = require('../lib/swarmer');
 console.log("Running Swarmer tests...");
 
 async function testSwarm() {
-    const server = new HumanizerMCPServer();
-    const swarmer = new HumanizerSwarmer(server);
+    const server = new AuthentextMCPServer();
+    const swarmer = new AuthentextSwarmer(server);
 
-    const toolsToCall = ['humanizer-next', 'humanizer-logic'];
+    const toolsToCall = ['authentext-next', 'authentext-logic'];
     const results = await swarmer.swarm({
         tools: toolsToCall,
         args: { text: "Some input text" }

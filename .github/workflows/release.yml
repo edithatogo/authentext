@@ -45,34 +45,34 @@ jobs:
           cp docs/install-matrix.md release-artifacts/
           cp docs/skill-distribution.md release-artifacts/
           cp -R adapters release-artifacts/adapters
-          tar -czf humanizer-next-skill-artifacts.tar.gz -C release-artifacts .
-          (cd release-artifacts && zip -r ../humanizer-next-skill-artifacts.zip .)
+          tar -czf authentext-next-skill-artifacts.tar.gz -C release-artifacts .
+          (cd release-artifacts && zip -r ../authentext-next-skill-artifacts.zip .)
 
       - name: Verify packaged artifact surface
-        run: |
-          test -f humanizer-next-skill-artifacts.tar.gz
-          test -f humanizer-next-skill-artifacts.zip
-          tar -tzf humanizer-next-skill-artifacts.tar.gz | grep -E '^SKILL\.md$'
-          tar -tzf humanizer-next-skill-artifacts.tar.gz | grep -E '^SKILL_PROFESSIONAL\.md$'
-          tar -tzf humanizer-next-skill-artifacts.tar.gz | grep -E '^README\.md$'
-          tar -tzf humanizer-next-skill-artifacts.tar.gz | grep -E '^AGENTS\.md$'
-          tar -tzf humanizer-next-skill-artifacts.tar.gz | grep -E '^docs/install-matrix\.md$'
-          tar -tzf humanizer-next-skill-artifacts.tar.gz | grep -E '^docs/skill-distribution\.md$'
-          tar -tzf humanizer-next-skill-artifacts.tar.gz | grep -E '^adapters/'
+         run: |
+          test -f authentext-next-skill-artifacts.tar.gz
+          test -f authentext-next-skill-artifacts.zip
+          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^SKILL\.md$'
+          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^SKILL_PROFESSIONAL\.md$'
+          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^README\.md$'
+          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^AGENTS\.md$'
+          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^docs/install-matrix\.md$'
+          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^docs/skill-distribution\.md$'
+          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^adapters/'
 
       - name: Upload release artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: humanizer-next-skill-artifacts
+          name: authentext-next-skill-artifacts
           path: |
             release-artifacts
-            humanizer-next-skill-artifacts.tar.gz
-            humanizer-next-skill-artifacts.zip
+            authentext-next-skill-artifacts.tar.gz
+            authentext-next-skill-artifacts.zip
 
       - name: Publish GitHub release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            humanizer-next-skill-artifacts.tar.gz
-            humanizer-next-skill-artifacts.zip
+            authentext-next-skill-artifacts.tar.gz
+            authentext-next-skill-artifacts.zip
