@@ -2,7 +2,7 @@
 
 **Location:** `conductor/self-improvement/`
 
-**Generated:** 2026-06-21T14:19:30.635Z
+**Generated:** 2026-06-21T14:47:31.697Z
 
 **Local Repository:** edithatogo/humanizer-next
 
@@ -45,11 +45,11 @@
   Decision: DEFER
   Why: No automation rule matched. Review manually against the modernization track rubric.
 - upstream #151: Add Spanish pattern catalog with automatic language detection (v2.9.0)
-  Decision: DEFER
-  Why: Review against the evidence rubric: overlap with the local catalog, false-positive risk, and maintainer burden.
+  Decision: REJECT
+  Why: Non-English language versions and translations are out of scope for this core English Agent Skills package.
 - upstream #147: Extend §13 to cover subjectless fragments from humanizing overcorrection
   Decision: DEFER
-  Why: No automation rule matched. Review manually against the modernization track rubric.
+  Why: Review grammar refinement pattern against the core pattern definitions for potential overcorrection or false-positive risks.
 - upstream #145: Revise README for Humanizer installation instructions
   Decision: DEFER
-  Why: No automation rule matched. Review manually against the modernization track rubric.
+  Why: Compare with our custom Agent Skills installation guidelines (docs/skill-distribution.md) before adopting.
