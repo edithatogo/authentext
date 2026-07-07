@@ -36,5 +36,6 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
-        with:
+      - name: Fail on blocking code-scanning alerts
+        uses: edithatogo/.github/.github/actions/code-scanning-gate@main        with:
           category: '/language:${{ matrix.language }}'
