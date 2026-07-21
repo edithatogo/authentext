@@ -68,7 +68,9 @@ function readModule(modulePath, required = false) {
   }
 
   console.log(`✓ Reading module: ${modulePath}`);
-  return fs.readFileSync(fullPath, 'utf-8');
+  // Normalize transport line endings before section parsing so Windows
+  // checkouts and Unix CI produce identical compiled skill artifacts.
+  return fs.readFileSync(fullPath, 'utf-8').replace(/\r\n?/g, '\n');
 }
 
 /**
