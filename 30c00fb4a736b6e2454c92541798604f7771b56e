@@ -1,0 +1,1 @@
+Hosted CI repair: Vale release archives now extract under RUNNER_TEMP on Linux and macOS, preventing README.md and other checkout files from being overwritten. Regression test added. Verified with targeted workflow test, npm run lint:all, and npm test (71 aggregate tests plus isolated and integration runs).
