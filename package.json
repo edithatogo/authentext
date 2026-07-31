@@ -11,6 +11,7 @@
     "check:upstream": "node scripts/check-upstream.js",
     "validate": "node scripts/validate-docs.js",
     "validate:hosts": "node scripts/validate-host-overlays.js",
+    "validate:conductor": "node scripts/validate-conductor.js",
     "validate:docs": "node scripts/validate-docs.js",
     "vale": "vale --minAlertLevel=error docs/skill-distribution.md",
     "lint": "node scripts/lint-markdown.js",

@@ -128,6 +128,9 @@ jobs:
       - name: Validate optional host overlays separately
         run: npm run validate:hosts
 
+      - name: Validate Conductor handshake and mappings
+        run: npm run validate:conductor
+
       - name: Run tests
         run: npm test
 
