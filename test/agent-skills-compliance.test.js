@@ -2,32 +2,42 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { load as parseWithJsYaml } from 'js-yaml';
+import { parse as parseWithYaml } from 'yaml';
 
 const ROOT = process.cwd();
 const SKILL_PATH = path.join(ROOT, 'SKILL.md');
 const PRO_PATH = path.join(ROOT, 'SKILL_PROFESSIONAL.md');
 const REFERENCES_DIR = path.join(ROOT, 'references');
+const PACKAGE = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
+const PORTABLE_FIELDS = ['description', 'license', 'metadata', 'name'];
 
 /**
-
-* @param {string} filePath
-* @returns {Record<string, string>}
+ * @param {string} filePath
+ * @returns {string}
  */
-function parseFrontmatter(filePath) {
-  const content = fs.readFileSync(filePath, 'utf8');
+function readFrontmatter(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8').replace(/\r\n?/g, '\n');
   const match = content.match(/^---\n([\s\S]*?)\n---/);
   assert.ok(match, `${filePath} should have YAML frontmatter`);
+  return match[1];
+}
 
-  const frontmatter = {};
-  for (const line of match[1].split('\n')) {
-    const colonIdx = line.indexOf(':');
-    if (colonIdx === -1) continue;
-    const key = line.slice(0, colonIdx).trim();
-    const value = line.slice(colonIdx + 1).trim();
-    frontmatter[key] = value;
-  }
+/**
+ * Parse the same frontmatter with independent YAML implementations so syntax
+ * accepted accidentally by one parser cannot enter generated output.
+ *
+ * @param {string} filePath
+ * @returns {Record<string, unknown>}
+ */
+function parseFrontmatter(filePath) {
+  const source = readFrontmatter(filePath);
+  const yamlResult = parseWithYaml(source);
+  const jsYamlResult = parseWithJsYaml(source);
 
-  return frontmatter;
+  assert.deepEqual(yamlResult, jsYamlResult, 'YAML parsers should agree on frontmatter');
+  assert.ok(yamlResult && typeof yamlResult === 'object' && !Array.isArray(yamlResult));
+  return yamlResult;
 }
 
 test('Agent Skills package layout', async (t) => {
@@ -43,11 +53,14 @@ test('Agent Skills package layout', async (t) => {
 
   await t.test('SKILL.md frontmatter is spec-compliant', () => {
     const fm = parseFrontmatter(SKILL_PATH);
-    assert.equal(fm.name, 'humanizer');
+    assert.equal(fm.name, 'authentext');
     assert.ok(fm.description, 'description is required');
     assert.ok(fm.description.length <= 1024, 'description must be <= 1024 chars');
     assert.equal(fm.license, 'MIT');
-    assert.ok(fm.compatibility, 'compatibility is required');
+    assert.deepEqual(Object.keys(fm).sort(), PORTABLE_FIELDS);
+    assert.deepEqual(fm.metadata, { version: PACKAGE.version });
+    assert.equal(fm.compatibility, undefined);
+    assert.equal(fm['allowed-tools'], undefined);
   });
 
   await t.test('references tree exists with core patterns', () => {
