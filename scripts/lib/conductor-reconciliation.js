@@ -1,7 +1,7 @@
 /**
  * Compare a Conductor mapping registry with bounded GitHub snapshots.
  * @param {object} mapping
- * @param {{issues: object[], projectItems: object[]}} snapshots
+ * @param {{issues: object[], projectItems: object[], subissues?: Record<string, number[]>}} snapshots
  */
 export function reconcileMapping(mapping, snapshots) {
   const issues = new Map(snapshots.issues.map((issue) => [issue.number, issue]));
@@ -11,6 +11,7 @@ export function reconcileMapping(mapping, snapshots) {
   const missingIssues = [];
   const missingProjectItems = [];
   const stateUpdates = [];
+  const missingSubissueRelationships = [];
   let mappedNodes = 0;
 
   for (const track of mapping.tracks ?? []) {
@@ -28,6 +29,17 @@ export function reconcileMapping(mapping, snapshots) {
         stateUpdates.push({ number: node.number, from: node.state, to: hostedState });
       }
     }
+    if (snapshots.subissues) {
+      const hostedChildren = new Set(snapshots.subissues[track.parent_issue.number] ?? []);
+      for (const phase of track.phases ?? []) {
+        if (!hostedChildren.has(phase.issue.number)) {
+          missingSubissueRelationships.push({
+            parent: track.parent_issue.number,
+            child: phase.issue.number,
+          });
+        }
+      }
+    }
   }
 
   return {
@@ -35,7 +47,11 @@ export function reconcileMapping(mapping, snapshots) {
     missingIssues,
     missingProjectItems,
     stateUpdates,
-    clean: missingIssues.length === 0 && missingProjectItems.length === 0,
+    missingSubissueRelationships,
+    clean:
+      missingIssues.length === 0 &&
+      missingProjectItems.length === 0 &&
+      missingSubissueRelationships.length === 0,
   };
 }
 

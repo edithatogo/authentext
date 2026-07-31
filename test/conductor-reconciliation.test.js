@@ -21,6 +21,7 @@ const snapshots = {
     { content: { url: 'https://example.test/1' } },
     { content: { url: 'https://example.test/2' } },
   ],
+  subissues: { 1: [2] },
 };
 
 test('reconciliation is deterministic and reports hosted state drift', () => {
@@ -30,6 +31,7 @@ test('reconciliation is deterministic and reports hosted state drift', () => {
     missingIssues: [],
     missingProjectItems: [],
     stateUpdates: [{ number: 2, from: 'open', to: 'closed' }],
+    missingSubissueRelationships: [],
     clean: true,
   });
 });

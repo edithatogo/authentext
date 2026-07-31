@@ -52,9 +52,33 @@ const projectSnapshot = ghJson([
   '--format',
   'json',
 ]);
+const [owner, repository] = mapping.repository.split('/');
+const aliases = mapping.tracks
+  .map(
+    (track, index) =>
+      `t${index}: issue(number: ${track.parent_issue.number}) { subIssues(first: 100) { nodes { number } } }`
+  )
+  .join('\n');
+const relationshipSnapshot = ghJson([
+  'api',
+  'graphql',
+  '-f',
+  `query=query($owner:String!,$repository:String!){repository(owner:$owner,name:$repository){${aliases}}}`,
+  '-F',
+  `owner=${owner}`,
+  '-F',
+  `repository=${repository}`,
+]);
+const subissues = Object.fromEntries(
+  mapping.tracks.map((track, index) => [
+    track.parent_issue.number,
+    relationshipSnapshot.data.repository[`t${index}`].subIssues.nodes.map((node) => node.number),
+  ])
+);
 const report = reconcileMapping(mapping, {
   issues: issueSnapshot,
   projectItems: projectSnapshot.items,
+  subissues,
 });
 
 console.log(JSON.stringify(report, null, 2));
