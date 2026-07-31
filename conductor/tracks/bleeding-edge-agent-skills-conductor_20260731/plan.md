@@ -16,9 +16,10 @@ GitHub subissue:
 - [x] Add failing tests for YAML parsing, standard fields, `metadata.version`,
       omitted compatibility, and portable tool permissions. (M-001–M-004)
       [commit: 05c1c7e]
-- [~] Repair the compiler and generated frontmatter. (M-001–M-004)
-- [ ] Define one authoritative runtime skill and professional routing model.
-      (M-005)
+- [x] Repair the compiler and generated frontmatter. (M-001–M-004)
+      [commit: 81d6b3e]
+- [~] Define one authoritative runtime skill and professional routing model.
+  (M-005)
 - [ ] Add literal-preservation property and fixture tests. (M-006)
 - [ ] Verify the official Agent Skills validator on the generated package.
       (M-001–M-006)
