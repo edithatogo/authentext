@@ -36,9 +36,10 @@ GitHub subissue:
       (M-008, S-002) [commit: f15cf89]
 - [x] Repair and validate release/CI YAML and maintained-path references.
       (M-009) [commit: 58ba580]
-- [~] Run every Node test in isolation and in aggregate. (M-007)
-- [ ] Add portable validation and `gh skill publish --dry-run` CI jobs.
-      (M-014, S-005)
+- [x] Run every Node test in isolation and in aggregate. (M-007)
+      [commit: 751651f]
+- [~] Add portable validation and `gh skill publish --dry-run` CI jobs.
+  (M-014, S-005)
 
 ## Phase 3: Progressive disclosure and behavioral evaluation
 
