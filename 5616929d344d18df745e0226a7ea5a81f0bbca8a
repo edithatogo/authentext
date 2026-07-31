@@ -1,0 +1,1 @@
+Task: Verify the official Agent Skills validator (M-001-M-006). agentskills 0.1.1 validates the absolute Authentext skill directory and read-properties returns the expected name, description, MIT license, and metadata.version. The verification artifact also records parser, runtime-identity, sync, and literal-preservation evidence.
