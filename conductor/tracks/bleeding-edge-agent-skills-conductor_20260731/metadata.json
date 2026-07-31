@@ -7,7 +7,7 @@
   "status": "in_progress",
   "created_at": "2026-07-31",
   "updated_at": "2026-07-31",
-  "current_phase": "Phase 3: Progressive disclosure and behavioral evaluation",
+  "current_phase": "Phase 4: Identity, metadata, and host layers",
   "depends_on": [],
   "parallel_safe": false,
   "moscow": {

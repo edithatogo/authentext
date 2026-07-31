@@ -41,7 +41,7 @@ GitHub subissue:
 - [x] Add portable validation and `gh skill publish --dry-run` CI jobs.
       (M-014, S-005) [commit: 218f541]
 
-## Phase 3: Progressive disclosure and behavioral evaluation
+## Phase 3: Progressive disclosure and behavioral evaluation [checkpoint: e76d39b]
 
 GitHub subissue:
 [#69](https://github.com/edithatogo/authentext/issues/69).
@@ -52,17 +52,18 @@ GitHub subissue:
       [commit: 8f1da6e]
 - [x] Build positive, paraphrased, near-miss, and negative trigger evaluations.
       (M-010) [commit: ca490d9]
-- [~] Build actual rewrite, restraint, voice, stance, and invariant evaluations.
-  (M-011)
-- [ ] Publish machine-readable evaluation summaries as CI artifacts. (S-008)
+- [x] Build actual rewrite, restraint, voice, stance, and invariant evaluations.
+      (M-011) [commit: 4d075bc]
+- [x] Publish machine-readable evaluation summaries as CI artifacts. (S-008)
+      [commit: e76d39b]
 
 ## Phase 4: Identity, metadata, and host layers
 
 GitHub subissue:
 [#70](https://github.com/edithatogo/authentext/issues/70).
 
-- [ ] Reconcile Authentext names, versions, MIT license, npm metadata, Python
-      metadata, docs, and release text. (M-013, S-006)
+- [~] Reconcile Authentext names, versions, MIT license, npm metadata, Python
+  metadata, docs, and release text. (M-013, S-006)
 - [ ] Generate and validate optional `agents/openai.yaml`. (S-001)
 - [ ] Define separate validation for any generated host overlays. (S-005,
       C-001, C-003)
