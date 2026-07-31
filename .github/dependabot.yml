@@ -1,12 +1,14 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
+    cooldown:
+      default-days: 5
     groups:
       dev-dependencies:
         patterns:
-          - "*"
+          - '*'
     commit-message:
-      prefix: "chore(deps)"
+      prefix: 'chore(deps)'
