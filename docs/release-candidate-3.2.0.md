@@ -24,7 +24,7 @@ evaluation receipts, and an optional governed OpenAI host overlay.
 
 - Sync, repository docs, host overlays, and Conductor validation: passed.
 - Lint, Vale, ESLint, TypeScript, and Prettier: passed.
-- Node tests: 70 aggregate tests passed; every file also passed in isolation;
+- Node tests: 72 aggregate tests passed; every file also passed in isolation;
   integration checks passed.
 - Official `skills-ref==0.1.1` validation: passed.
 - `gh skill publish --dry-run`: passed, with a tag-protection advisory.
@@ -33,8 +33,9 @@ evaluation receipts, and an optional governed OpenAI host overlay.
 
 ## Explicit gates
 
-- The candidate branch has not been pushed, so hosted CI has not verified the
-  exact candidate revision.
+- Draft PR #218 verified implementation commit `8f6e799` across CI, CodeQL,
+  workflow lint, portable validation, publish preview, behavioral evaluations,
+  and Linux/macOS/Windows validation.
 - No tag, release, npm publication, skill publication, or merge has occurred.
 - Public release actions require separate explicit approval.
 - GitHub recommends an active tag-protection ruleset before immutable releases.
