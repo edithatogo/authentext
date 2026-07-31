@@ -11,6 +11,7 @@
   ],
   "type": "module",
   "scripts": {
+    "evaluate": "node scripts/run-evaluations.js",
     "sync": "node scripts/compile-skill.js",
     "check:sync": "node scripts/check-sync-clean.js",
     "check:upstream": "node scripts/check-upstream.js",

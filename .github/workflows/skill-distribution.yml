@@ -9,6 +9,30 @@ permissions:
   contents: read
 
 jobs:
+  behavioral-evaluations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: ./.github/actions/setup-maintainer-env
+        with:
+          node-version: '20'
+          install-vale: 'false'
+          npm-ci: 'true'
+
+      - name: Run behavioral evaluations
+        run: npm run evaluate -- --output-dir "${RUNNER_TEMP}/authentext-evaluations"
+
+      - name: Upload machine-readable evaluation receipts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: authentext-evaluation-results
+          path: ${{ runner.temp }}/authentext-evaluations/*.json
+
   portable-spec:
     runs-on: ubuntu-latest
     steps:
