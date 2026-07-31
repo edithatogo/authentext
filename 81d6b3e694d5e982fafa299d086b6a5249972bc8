@@ -1,0 +1,1 @@
+Task: Repair compiler and generated frontmatter (M-001-M-004). The compiler now emits parseable YAML with name, quoted description, MIT license, and metadata.version only; compatibility and experimental allowed-tools are omitted. Verification: node --test test/agent-skills-compliance.test.js passed; npm run check:sync passed; npm test returned success.
