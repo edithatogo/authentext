@@ -4,10 +4,10 @@
   "description": "Make Authentext a portable, standards-compliant, evidence-tested Agent Skill while aligning Conductor with current upstream Agent Skills protocols, native GitHub subissues, and governed experimental channels.",
   "type": "modernization",
   "priority": "P0",
-  "status": "new",
+  "status": "in_progress",
   "created_at": "2026-07-31",
   "updated_at": "2026-07-31",
-  "current_phase": "Phase 1: Portable contract and generated frontmatter",
+  "current_phase": "Phase 2: Deterministic validation, tests, and CI",
   "depends_on": [],
   "parallel_safe": false,
   "moscow": {

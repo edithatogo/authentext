@@ -8,7 +8,7 @@
 Tasks move from `[ ]` to `[~]` to `[x]` only with real evidence. Each phase is
 mirrored by a native GitHub subissue.
 
-## Phase 1: Portable contract and generated frontmatter
+## Phase 1: Portable contract and generated frontmatter [checkpoint: 5616929]
 
 GitHub subissue:
 [#67](https://github.com/edithatogo/authentext/issues/67).
@@ -22,8 +22,8 @@ GitHub subissue:
       (M-005) [commit: c8e887c]
 - [x] Add literal-preservation property and fixture tests. (M-006)
       [commit: cd1d7b0]
-- [~] Verify the official Agent Skills validator on the generated package.
-  (M-001–M-006)
+- [x] Verify the official Agent Skills validator on the generated package.
+      (M-001–M-006) [commit: 5616929]
 
 ## Phase 2: Deterministic validation, tests, and CI
 
