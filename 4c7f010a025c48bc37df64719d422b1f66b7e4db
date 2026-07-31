@@ -1,0 +1,1 @@
+Phase 4 OpenAI host overlay. Generated agents/openai.yaml from the compiler using the current official OpenAI skill metadata schema. Verified with targeted compliance tests, npm run validate, npm test (65 aggregate tests), and integration checks.
