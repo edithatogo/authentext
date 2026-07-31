@@ -25,7 +25,7 @@ GitHub subissue:
 - [x] Verify the official Agent Skills validator on the generated package.
       (M-001–M-006) [commit: 5616929]
 
-## Phase 2: Deterministic validation, tests, and CI
+## Phase 2: Deterministic validation, tests, and CI [checkpoint: b16b6a0]
 
 GitHub subissue:
 [#68](https://github.com/edithatogo/authentext/issues/68).
@@ -38,16 +38,16 @@ GitHub subissue:
       (M-009) [commit: 58ba580]
 - [x] Run every Node test in isolation and in aggregate. (M-007)
       [commit: 751651f]
-- [~] Add portable validation and `gh skill publish --dry-run` CI jobs.
-  (M-014, S-005)
+- [x] Add portable validation and `gh skill publish --dry-run` CI jobs.
+      (M-014, S-005) [commit: 218f541]
 
 ## Phase 3: Progressive disclosure and behavioral evaluation
 
 GitHub subissue:
 [#69](https://github.com/edithatogo/authentext/issues/69).
 
-- [ ] Route by rewrite/review mode and content type before loading references.
-      (M-012)
+- [~] Route by rewrite/review mode and content type before loading references.
+  (M-012)
 - [ ] Add navigation to long reference files. (M-012, S-004)
 - [ ] Build positive, paraphrased, near-miss, and negative trigger evaluations.
       (M-010)
