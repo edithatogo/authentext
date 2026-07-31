@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-31T22:34:25.810Z",
+  "generated_at": "2026-07-31T22:41:40.905Z",
   "repository": "edithatogo/authentext",
   "project": {
     "number": 36,
@@ -99,7 +99,7 @@
             "number": 71,
             "node_id": "I_kwDORAMgA88AAAABK6xuxg",
             "url": "https://github.com/edithatogo/authentext/issues/71",
-            "state": "open"
+            "state": "closed"
           }
         },
         {

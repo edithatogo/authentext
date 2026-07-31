@@ -94,13 +94,13 @@ GitHub subissue:
 GitHub subissue:
 [#72](https://github.com/edithatogo/authentext/issues/72).
 
-- [ ] Run `npm run sync`, `npm run validate`, `npm run lint:all`, and
+- [x] Run `npm run sync`, `npm run validate`, `npm run lint:all`, and
       `npm test`.
-- [ ] Run official Agent Skills validation and
+- [x] Run official Agent Skills validation and
       `gh skill publish --dry-run`. (M-014)
 - [ ] Verify hosted CI on the exact candidate revision.
-- [ ] Record remaining external, experimental, and human gates.
-- [ ] Prepare release notes without tagging, releasing, or publishing.
+- [x] Record remaining external, experimental, and human gates.
+- [x] Prepare release notes without tagging, releasing, or publishing.
       (M-017, W-006)
 - [ ] Obtain separate explicit approval before any public release action.
       (M-017)
