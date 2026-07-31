@@ -50,10 +50,10 @@ GitHub subissue:
       (M-012) [commit: 6ddf938]
 - [x] Add navigation to long reference files. (M-012, S-004)
       [commit: 8f1da6e]
-- [~] Build positive, paraphrased, near-miss, and negative trigger evaluations.
-  (M-010)
-- [ ] Build actual rewrite, restraint, voice, stance, and invariant evaluations.
-      (M-011)
+- [x] Build positive, paraphrased, near-miss, and negative trigger evaluations.
+      (M-010) [commit: ca490d9]
+- [~] Build actual rewrite, restraint, voice, stance, and invariant evaluations.
+  (M-011)
 - [ ] Publish machine-readable evaluation summaries as CI artifacts. (S-008)
 
 ## Phase 4: Identity, metadata, and host layers
