@@ -1,12 +1,12 @@
 /**
 
-* Regression tests for Humanizer reasoning and source coverage
+* Regression tests for Authentext reasoning and source coverage
  */
 
 import fs from 'fs';
 
-// Test 1: Verify that core humanizer patterns still work as expected
-console.log('Test 1: Verifying core humanizer patterns still work');
+// Test 1: Verify that core Authentext patterns still work as expected
+console.log('Test 1: Verifying core Authentext patterns still work');
 
 // Sample of classic AI patterns that should still be detected and fixed
 const testInputs = [
@@ -37,7 +37,7 @@ const testInputs = [
   },
 ];
 
-// For each test input, we would normally run the humanizer function
+// For each test input, we would normally run the Authentext rewrite function
 // Since we don't have the actual function here, we'll just verify the inputs exist
 let corePatternTestsPassed = 0;
 for (const test of testInputs) {

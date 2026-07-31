@@ -34,12 +34,15 @@ test('references/core-patterns.md integrity', async (t) => {
   });
 });
 
-test('Professional SKILL_PROFESSIONAL.md integrity', async (t) => {
+test('Professional routing reference integrity', async (t) => {
   assert.ok(fs.existsSync(SKILL_PRO_PATH), 'SKILL_PROFESSIONAL.md should exist');
   const content = fs.readFileSync(SKILL_PRO_PATH, 'utf8');
 
   await t.test('contains Router Logic', () => {
-    assert.ok(content.includes('Humanizer Pro'), 'Pro header identity missing');
+    assert.ok(
+      content.includes('Authentext Professional Routing Reference'),
+      'Professional reference identity missing'
+    );
     assert.ok(content.includes('ROUTING LOGIC'), 'Routing logic missing');
   });
 
