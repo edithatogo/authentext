@@ -1,0 +1,1 @@
+Phase 6 hosted verification receipt: PR #218 verified implementation commit 8f6e799 across CI, CodeQL, workflow lint, behavioral evaluations, publish preview, portable spec, and Linux/macOS/Windows validation. Documentation-only receipt commit validated locally with the full pre-commit suite.
