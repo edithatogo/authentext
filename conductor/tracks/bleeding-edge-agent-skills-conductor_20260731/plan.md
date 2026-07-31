@@ -57,20 +57,21 @@ GitHub subissue:
 - [x] Publish machine-readable evaluation summaries as CI artifacts. (S-008)
       [commit: e76d39b]
 
-## Phase 4: Identity, metadata, and host layers
+## Phase 4: Identity, metadata, and host layers [checkpoint: 0d96b09]
 
 GitHub subissue:
 [#70](https://github.com/edithatogo/authentext/issues/70).
 
-- [~] Reconcile Authentext names, versions, MIT license, npm metadata, Python
-  metadata, docs, and release text. (M-013, S-006)
-- [ ] Generate and validate optional `agents/openai.yaml`. (S-001)
-- [ ] Define separate validation for any generated host overlays. (S-005,
-      C-001, C-003)
-- [ ] Keep host-only and experimental fields out of portable frontmatter.
-      (M-003, W-002, W-003, W-005)
-- [ ] Decide whether unused legacy manifests/workspaces are removed or given an
-      explicit non-canonical role. (M-013)
+- [x] Reconcile Authentext names, versions, MIT license, npm metadata, Python
+      metadata, docs, and release text. (M-013, S-006) [commit: 04201c4]
+- [x] Generate and validate optional `agents/openai.yaml`. (S-001)
+      [commit: 4c7f010]
+- [x] Define separate validation for any generated host overlays. (S-005,
+      C-001, C-003) [commit: 339d7c5]
+- [x] Keep host-only and experimental fields out of portable frontmatter.
+      (M-003, W-002, W-003, W-005) [commit: 339d7c5]
+- [x] Decide whether unused legacy manifests/workspaces are removed or given an
+      explicit non-canonical role. (M-013) [commit: 0d96b09]
 
 ## Phase 5: Conductor, GitHub, and experimental operations
 
