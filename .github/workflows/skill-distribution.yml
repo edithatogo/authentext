@@ -9,6 +9,52 @@ permissions:
   contents: read
 
 jobs:
+  portable-spec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+
+      - name: Install the reference Agent Skills validator
+        run: python -m pip install skills-ref==0.1.1
+
+      - name: Validate the portable skill package
+        run: agentskills validate "$GITHUB_WORKSPACE"
+
+  github-publish-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Stage the maintained skill surface
+        env:
+          PREVIEW_ROOT: ${{ runner.temp }}/authentext-skill-preview
+        run: |
+          mkdir -p "${PREVIEW_ROOT}/skills/authentext/references"
+          cp SKILL.md SKILL_PROFESSIONAL.md README.md LICENSE \
+            "${PREVIEW_ROOT}/skills/authentext/"
+          cp -R references/. "${PREVIEW_ROOT}/skills/authentext/references/"
+
+      - name: Run the experimental GitHub skill publishing preview
+        env:
+          PREVIEW_ROOT: ${{ runner.temp }}/authentext-skill-preview
+        run: |
+          git -C "${PREVIEW_ROOT}" init --quiet
+          git -C "${PREVIEW_ROOT}" remote add origin \
+            "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+          cd "${PREVIEW_ROOT}"
+          gh skill publish --dry-run
+
   validate-skill:
     strategy:
       fail-fast: false
