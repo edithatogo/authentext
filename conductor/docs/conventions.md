@@ -4,12 +4,14 @@ This document defines conventions for Conductor track management in this reposit
 
 ## Track Directory Structure
 
-```
+```text
 conductor/
 ├── tracks.md                    # Master track registry
 ├── tracks/                      # Individual track folders
 │   └── <track-id>/
 │       ├── spec.md              # Requirements and acceptance criteria
+│       ├── requirements.md      # Stable MoSCoW requirements when needed
+│       ├── design.md            # Architecture and Mermaid diagrams when needed
 │       ├── plan.md              # Implementation phases and tasks
 │       ├── index.md             # Context summary (status, dependencies, outputs)
 │       └── metadata.json        # Machine-readable metadata
@@ -60,7 +62,7 @@ In `index.md`:
 
 Tracks produce artifacts that unblock downstream tracks:
 
-```
+```text
 Track A → produces artifact X → consumed by Track B
 ```
 
@@ -80,11 +82,37 @@ Document in:
 
 Each phase ends with:
 
-```
+```text
 - [ ] Task: Conductor - Automated Verification 'Phase X: <Name>' (Protocol in workflow.md)
 ```
 
 This triggers the verification protocol in `conductor/workflow.md`.
+
+Do not create empty checkpoint commits. Use the last real functional commit for
+the phase, attach verification evidence to it, and record that SHA.
+
+## GitHub Mirror
+
+- A track is one GitHub issue with marker
+  `authentext-conductor-track-id: <track_id>`.
+- A phase is one native GitHub subissue with marker
+  `authentext-conductor-phase-id: <track_id>.phase<N>`.
+- Search markers before creating or updating issues.
+- Every repository issue and subissue belongs to the Authentext Conductor
+  Roadmap Project.
+- `conductor/github-mapping.json` records the reconciled node and URL mapping.
+- Local Conductor artifacts remain authoritative for scope and evidence.
+- Archived track and phase issues are closed history; stale archived metadata
+  is disclosed, not silently rewritten.
+
+## Requirements and Design
+
+- Use MoSCoW with stable requirement IDs when scope spans multiple phases or
+  validation layers.
+- Link tasks to requirement IDs.
+- Use Mermaid only when a diagram makes architecture, state, or dependency
+  relationships easier to verify.
+- Track indexes must link every artifact that exists.
 
 ## Risk Documentation
 

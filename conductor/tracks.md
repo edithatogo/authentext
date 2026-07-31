@@ -8,7 +8,20 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [x] **rename_deferred** (P1) - Repository/skill rename to Authentext. See [`tracks/rename_deferred/`](./tracks/rename_deferred/spec.md).
+- [ ] **bleeding-edge-agent-skills-conductor_20260731** (P0) -
+      Standards-compliant portable skill, behavioral evaluation, current
+      Conductor protocol, native GitHub phase hierarchy, and governed
+      experimental channels. See
+      [`tracks/bleeding-edge-agent-skills-conductor_20260731/`](./tracks/bleeding-edge-agent-skills-conductor_20260731/index.md)
+      and [GitHub #66](https://github.com/edithatogo/authentext/issues/66).
+
+---
+
+## Completed Track Retained at Legacy Path
+
+- [x] **rename_deferred** (P1) - Repository/skill rename to Authentext. The
+      completed record remains at its historical path:
+      [`tracks/rename_deferred/`](./tracks/rename_deferred/spec.md).
 
 ---
 
@@ -178,5 +191,6 @@ Live self-improvement outputs (not a track): `conductor/self-improvement/`
 
 ---
 
-_Last updated: 2026-06-10_
-_Modernization track complete — Agent Skills package is the maintained distribution surface_
+Last updated: 2026-07-31.
+
+Active P0 track: standards-compliant Agent Skills and Conductor alignment.

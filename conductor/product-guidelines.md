@@ -1,8 +1,10 @@
-# Product Guidelines: Humanizer (Multi-Agent Adapters)
+# Product Guidelines: Authentext
 
 ## Purpose
 
-These guidelines define how Humanizer should behave when packaged as workflows/skills for multiple agent environments, while keeping `SKILL.md` unchanged as the canonical source of truth.
+These guidelines define how Authentext should behave as a portable Agent Skill.
+`src/` is canonical; compiled skill files must be regenerated rather than
+maintained as independent copies.
 
 ## Default Editing Stance: Voice-Matching
 
@@ -45,7 +47,7 @@ Unless required for clarity, keep structure intact:
 
 Prefer localized rewrites over restructuring.
 
-## What Humanizer Should Change
+## What Authentext Should Change
 
 - Remove or rewrite patterns called out in `SKILL.md` (e.g., significance inflation, promotional phrasing, vague attributions, superficial -ing clauses, forced rule-of-three rhythm, etc.).
 - Prefer simpler constructions when they sound natural _for the existing voice_.
@@ -72,9 +74,10 @@ If you can’t rewrite without risking technical correctness, factual invention,
 
 ## Drift Control (keep adapters in sync)
 
-- Adapters must reference the `SKILL.md` `version:` they were derived from.
-- Adapters must include a simple “last synced” marker (date) so drift is visible.
-- If instructions conflict between an adapter and `SKILL.md`, `SKILL.md` wins.
+- Generated artifacts and host layers must reference `metadata.version`.
+- Generated host layers must include source revision and last-synced evidence.
+- If a host layer conflicts with the portable runtime skill, the portable
+  contract wins.
 
 ## Voice-Matching Example (same meaning, different voices)
 
@@ -102,4 +105,8 @@ Output:
 
 ## Consistency Across Environments
 
-- The same input should yield materially similar rewrites across Codex CLI, Gemini CLI, VS Code, and other supported tools, modulo each tool’s formatting constraints.
+- The same input should yield materially similar rewrites across Codex, Gemini
+  CLI, VS Code, and other supported tools, subject to model variance and host
+  formatting constraints.
+- Evaluate this as bounded behavioral similarity, not mathematical proof of
+  meaning preservation or human authorship.

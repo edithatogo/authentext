@@ -1,19 +1,41 @@
-# Tech Stack: Humanizer (Multi-Agent Adapters)
+# Tech Stack: Authentext
 
-## Current State (Brownfield)
+## Repository profile
 
-- **Primary artifact:** Markdown (`SKILL.md`) containing the canonical Humanizer instructions.
-- **Repository type:** Documentation-first with a lightweight automation toolchain (Node.js scripts, Python helpers, pre-commit, CI).
-- **Consumption model:** Agent tools read prompt/instruction files (e.g., skills/workflow instructions).
+- **Type:** Brownfield, documentation-first Agent Skill maintenance library.
+- **Canonical source:** Markdown fragments under `src/`.
+- **Generated artifacts:** `SKILL.md`, `SKILL_PROFESSIONAL.md`, and
+  `references/`.
+- **Automation:** Node.js ES modules and npm scripts.
+- **Manifests and configuration:** JSON, YAML, TOML, Markdown, and GitHub
+  Actions.
+- **Python:** maintenance metadata only; no active Python runtime is required by
+  the skill.
 
-## Target Integrations (Planned)
+## Toolchain
 
-- OpenAI Codex CLI
+- Node.js and npm
+- ESLint, TypeScript checking, Prettier, markdownlint, and Vale
+- Node's built-in test runner and repository validation scripts
+- Official Agent Skills validators and GitHub skill publication preview
+- GitHub Actions, GitHub Issues native subissues, and GitHub Projects v2
+- Conductor specification, requirements, design, plan, metadata, and registry
+  artifacts
+
+## Target hosts
+
+- Standards-compliant Agent Skills consumers
+- OpenAI Codex
 - Gemini CLI
-- Google Antigravity
-- VS Code
+- GitHub Copilot and VS Code
+- Claude Code and Cursor through separately validated host layers
 
 ## Constraints
 
-- `SKILL.md` remains the canonical source of truth and should not be modified as part of adapter work.
-- Adapters should be lightweight wrappers that reference/derive from the canonical rules.
+- Host-specific fields and experimental options must not enter portable
+  frontmatter.
+- Generated files must be reproducible on Windows and Linux.
+- Adapter bundles, install shims, and legacy consumer paths are outside the
+  maintained distribution.
+- Tags, releases, and registry publication require explicit approval after
+  hosted verification.
