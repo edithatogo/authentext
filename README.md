@@ -30,6 +30,10 @@ npm test
 
 The core pattern catalog in `src/modules/SKILL_CORE_PATTERNS.md` currently defines **39 patterns** (30 general core + 4 local LLM-variant patterns + 3 upstream v2.8.0 style-cadence patterns + 2 upstream v2.8.0 refinements).
 
+Historical workspace and MCP-era files are retained with an explicit
+[non-canonical role](docs/legacy-surfaces.md); they are not installed, built,
+validated, or released as part of the Authentext skill.
+
 ## Scope
 
 This repository does not maintain adapter bundles or consumer-specific

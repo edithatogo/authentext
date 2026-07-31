@@ -3,12 +3,6 @@
   "version": "3.2.0",
   "description": "Remove signs of AI-generated writing from text.",
   "private": true,
-  "workspaces": [
-    "skills/authentext-next",
-    "skills/authentext-logic",
-    "skills/authentext-read",
-    "skills/authentext-orchestrate"
-  ],
   "type": "module",
   "scripts": {
     "evaluate": "node scripts/run-evaluations.js",
@@ -27,7 +21,6 @@
     "lint:all": "npm run lint && npm run vale && npm run lint:js && npm run typecheck && npm run format:check",
     "test": "node scripts/run-node-tests.js && node scripts/run-tests.js",
     "build": "node scripts/compile-skill.js",
-    "install:mcp-server": "node scripts/install-mcp-server.js",
     "prepare": "node -e \"if (!process.env.CI) require('child_process').execSync('npx husky install', { stdio: 'inherit' })\"",
     "release": "echo 'No npm release: Authentext ships Agent Skill artifacts, not a publishable npm library'",
     "version": "npm run sync && git add SKILL.md SKILL_PROFESSIONAL.md references AGENTS.md README.md"

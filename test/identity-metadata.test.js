@@ -11,6 +11,12 @@ test('canonical manifests share Authentext identity, version, and MIT license', 
   assert.equal(pkg.name, 'authentext');
   assert.equal(pkg.version, '3.2.0');
   assert.equal(pkg.license, 'MIT');
+  assert.equal(pkg.workspaces, undefined, 'legacy packages must not be active npm workspaces');
+  assert.equal(
+    pkg.scripts['install:mcp-server'],
+    undefined,
+    'legacy MCP installation must not be an active maintenance command'
+  );
   assert.match(pkg.scripts.release, /Authentext ships Agent Skill artifacts/);
   assert.doesNotMatch(pkg.scripts.release, /humanizer/i);
 
