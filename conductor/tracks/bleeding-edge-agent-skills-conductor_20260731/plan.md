@@ -13,9 +13,10 @@ mirrored by a native GitHub subissue.
 GitHub subissue:
 [#67](https://github.com/edithatogo/authentext/issues/67).
 
-- [~] Add failing tests for YAML parsing, standard fields, `metadata.version`,
-  omitted compatibility, and portable tool permissions. (M-001–M-004)
-- [ ] Repair the compiler and generated frontmatter. (M-001–M-004)
+- [x] Add failing tests for YAML parsing, standard fields, `metadata.version`,
+      omitted compatibility, and portable tool permissions. (M-001–M-004)
+      [commit: 05c1c7e]
+- [~] Repair the compiler and generated frontmatter. (M-001–M-004)
 - [ ] Define one authoritative runtime skill and professional routing model.
       (M-005)
 - [ ] Add literal-preservation property and fixture tests. (M-006)
