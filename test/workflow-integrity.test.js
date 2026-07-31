@@ -96,6 +96,16 @@ test('Vale archives are extracted outside the checked-out repository', () => {
   assert.doesNotMatch(source, /^\s*sudo mv vale \/usr\/local\/bin\/vale\s*$/m);
 });
 
+test('CodeQL excludes only frozen legacy and experimental trees', () => {
+  const workflow = fs.readFileSync(path.join(WORKFLOW_DIR, 'codeql.yml'), 'utf8');
+  const configPath = path.join(ROOT, '.github', 'codeql', 'codeql-config.yml');
+  assert.ok(fs.existsSync(configPath), 'CodeQL scope configuration should exist');
+  assert.match(workflow, /config-file:\s*\.\/\.github\/codeql\/codeql-config\.yml/);
+
+  const config = parseYaml(fs.readFileSync(configPath, 'utf8'));
+  assert.deepEqual(config['paths-ignore'], ['skills/**', 'experiments/**']);
+});
+
 test('release workflow packages only maintained, existing paths', () => {
   const source = fs.readFileSync(path.join(WORKFLOW_DIR, 'release.yml'), 'utf8');
 
