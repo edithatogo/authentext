@@ -20,9 +20,10 @@ GitHub subissue:
       [commit: 81d6b3e]
 - [x] Define one authoritative runtime skill and professional routing model.
       (M-005) [commit: c8e887c]
-- [~] Add literal-preservation property and fixture tests. (M-006)
-- [ ] Verify the official Agent Skills validator on the generated package.
-      (M-001–M-006)
+- [x] Add literal-preservation property and fixture tests. (M-006)
+      [commit: cd1d7b0]
+- [~] Verify the official Agent Skills validator on the generated package.
+  (M-001–M-006)
 
 ## Phase 2: Deterministic validation, tests, and CI
 
