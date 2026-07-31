@@ -1,0 +1,1 @@
+Task: Define one authoritative runtime skill and professional routing model (M-005). SKILL.md now owns rewrite/review and content routing; SKILL_PROFESSIONAL.md is a generated non-discoverable reference without skill frontmatter. Verification: compliance test 7/7 passed, sync check passed, npm test returned success.
