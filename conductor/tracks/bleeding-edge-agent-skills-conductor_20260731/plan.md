@@ -73,20 +73,20 @@ GitHub subissue:
 - [x] Decide whether unused legacy manifests/workspaces are removed or given an
       explicit non-canonical role. (M-013) [commit: 0d96b09]
 
-## Phase 5: Conductor, GitHub, and experimental operations
+## Phase 5: Conductor, GitHub, and experimental operations [checkpoint: 53a6808]
 
 GitHub subissue:
 [#71](https://github.com/edithatogo/authentext/issues/71).
 
-- [ ] Validate the repaired Conductor handshake and all new track artifacts.
-      (M-015)
-- [ ] Add an idempotent dry-run-first Conductor/GitHub reconciliation command.
-      (M-016, S-003)
-- [ ] Verify all historical track issues, phase subissues, Project 36 items,
-      fields, and mapping receipts. (M-016)
-- [ ] Verify pinned Conductor main/release channels and experimental workspace
+- [x] Validate the repaired Conductor handshake and all new track artifacts.
+      (M-015) [commit: e6bb7ea]
+- [x] Add an idempotent dry-run-first Conductor/GitHub reconciliation command.
+      (M-016, S-003) [commit: 9d9b5db]
+- [x] Verify all historical track issues, phase subissues, Project 36 items,
+      fields, and mapping receipts. (M-016) [commit: 53a6808]
+- [x] Verify pinned Conductor main/release channels and experimental workspace
       settings with rollback documentation. (S-007)
-- [ ] Add current/history/Must/experimental Project views if supported.
+- [x] Add current/history/Must/experimental Project views if supported.
       (C-005)
 
 ## Phase 6: Release-candidate verification and governed handoff

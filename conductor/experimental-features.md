@@ -1,6 +1,6 @@
 # Conductor and Experimental Feature Profile
 
-Checked: 2026-07-31
+Checked: 2026-08-01
 
 ## Installed channels
 
@@ -47,3 +47,16 @@ known integration ambiguity tracked in upstream issues
 - Do not let experimental task state close Conductor phases or GitHub issues
   without repository evidence.
 - Trusting a workspace and authorizing tools remain user security decisions.
+
+## Rollback
+
+Experimental workspace options are independently reversible. Set an option to
+`false` or remove it from `.gemini/settings.json`, then restart the Gemini CLI
+session. Keep Plan Mode enabled if only a single experimental option is being
+rolled back. Before changing the Conductor channel, restore the recorded main
+commit or reinstall the `conductor-v0.4.1` extension release; do not treat one
+channel as a drop-in replacement for the other.
+
+Rollback does not change `SKILL.md`, Conductor track evidence, or GitHub issue
+state. Re-run `npm run validate:conductor` and `npm run conductor:reconcile --
+--live` after any channel or workspace-setting change.
