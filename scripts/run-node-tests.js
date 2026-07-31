@@ -32,11 +32,20 @@ if (nodeSupportsTestIsolationNone()) {
   nodeArgs.push('--test-isolation=none');
 }
 
-const result = spawnSync(process.execPath, [...nodeArgs, ...testFiles], {
-  cwd: REPO_ROOT,
-  stdio: 'inherit',
-});
+function runTests(label, files) {
+  console.log(`\n--- ${label} ---`);
+  const result = spawnSync(process.execPath, [...nodeArgs, ...files], {
+    cwd: REPO_ROOT,
+    stdio: 'inherit',
+  });
 
-if (result.status !== 0) {
-  process.exit(result.status ?? 1);
+  if (result.status !== 0) {
+    process.exit(result.status ?? 1);
+  }
 }
+
+for (const testFile of testFiles) {
+  runTests(`Isolated: ${path.relative(REPO_ROOT, testFile)}`, [testFile]);
+}
+
+runTests(`Aggregate: ${testFiles.length} Node test files`, testFiles);
