@@ -1,0 +1,45 @@
+[
+  {
+    "name": "code and URL",
+    "input": "Replace synergy in prose, but keep `client-facing-mode` and https://example.com/data-driven?q=1 unchanged.\n```js\nconst clientFacing = 'data-driven';\n```",
+    "literals": [
+      "`client-facing-mode`",
+      "https://example.com/data-driven?q=1",
+      "```js\nconst clientFacing = 'data-driven';\n```"
+    ]
+  },
+  {
+    "name": "paths and identifiers",
+    "input": "The client-facing guide references C:\\client-facing\\authentext.json, /srv/data-driven/config.yaml, parseFrontmatter(), and AUTHENTEXT_VERSION.",
+    "literals": [
+      "C:\\client-facing\\authentext.json",
+      "/srv/data-driven/config.yaml",
+      "parseFrontmatter()",
+      "AUTHENTEXT_VERSION"
+    ]
+  },
+  {
+    "name": "citations and hashes",
+    "input": "The data-driven claim is documented in [@smith2024, pp. 7-9], [42], and (Smith & Lee, 2024), revision 99ba10e1a11130fc159f681b7ba8803489239cbf.",
+    "literals": [
+      "[@smith2024, pp. 7-9]",
+      "[42]",
+      "(Smith & Lee, 2024)",
+      "99ba10e1a11130fc159f681b7ba8803489239cbf"
+    ]
+  },
+  {
+    "name": "commands flags and quoted errors",
+    "input": "Run npm run validate -- --strict, then authentext --dry-run -v. Preserve 'FatalUntrustedWorkspaceError: client-facing workspace denied'.",
+    "literals": [
+      "npm run validate -- --strict",
+      "authentext --dry-run -v",
+      "'FatalUntrustedWorkspaceError: client-facing workspace denied'"
+    ]
+  },
+  {
+    "name": "structured data",
+    "input": "Keep {\"mode\":\"client-facing\",\"enabled\":true} while replacing synergy in the surrounding prose.",
+    "literals": ["{\"mode\":\"client-facing\",\"enabled\":true}"]
+  }
+]
