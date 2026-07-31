@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "evaluate": "node scripts/run-evaluations.js",
+    "conductor:reconcile": "node scripts/reconcile-conductor-github.js",
     "sync": "node scripts/compile-skill.js",
     "check:sync": "node scripts/check-sync-clean.js",
     "check:upstream": "node scripts/check-upstream.js",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-31T00:00:00+10:00",
+  "generated_at": "2026-07-31T22:34:25.810Z",
   "repository": "edithatogo/authentext",
   "project": {
     "number": 36,
@@ -20,7 +20,7 @@
     "duplicate_phase_markers": 0,
     "native_parent_child_relationships": "verified",
     "issue_states": "verified",
-    "project_membership": "162/162"
+    "project_membership": "153/153"
   },
   "tracks": [
     {
@@ -47,7 +47,7 @@
             "number": 67,
             "node_id": "I_kwDORAMgA88AAAABK6xpnw",
             "url": "https://github.com/edithatogo/authentext/issues/67",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -60,7 +60,7 @@
             "number": 68,
             "node_id": "I_kwDORAMgA88AAAABK6xrdg",
             "url": "https://github.com/edithatogo/authentext/issues/68",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -73,7 +73,7 @@
             "number": 69,
             "node_id": "I_kwDORAMgA88AAAABK6xsjA",
             "url": "https://github.com/edithatogo/authentext/issues/69",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -86,7 +86,7 @@
             "number": 70,
             "node_id": "I_kwDORAMgA88AAAABK6xtjA",
             "url": "https://github.com/edithatogo/authentext/issues/70",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
