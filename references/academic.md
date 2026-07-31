@@ -270,6 +270,6 @@ This module applies to academic writing: research papers, essays, dissertations,
 
 ---
 
-_Module Version: 3.0.0_
+_Module Version: 3.2.0_
 _Last Updated: 2026-03-03_
 _Applies to: Research papers, essays, dissertations, grant proposals, literature reviews_

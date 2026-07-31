@@ -1,6 +1,6 @@
 ---
 module_id: technical
-version: 3.0.0
+version: 3.2.0
 description: Technical module for code and engineering documentation
 applies_to: code, technical docs, API docs, READMEs
 severity_levels:
@@ -454,6 +454,6 @@ def calculate_total(items):
 
 ---
 
-_Module Version: 3.0.0_
+_Module Version: 3.2.0_
 _Last Updated: 2026-03-03_
 _Applies to: Code, technical docs, API docs, READMEs, commit messages, code reviews_

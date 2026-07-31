@@ -1,9 +1,9 @@
 # Skill distribution
 
-This document covers how to install and verify the maintained Humanizer Agent Skills package. The repo builds a spec-compliant skill tree from `src/modules/`:
+This document covers how to install and verify the maintained Authentext Agent Skill package. The repo builds a spec-compliant skill tree from `src/modules/`:
 
 - `SKILL.md`: standard variant (workflow and detection guardrails; under 500 lines)
-- `SKILL_PROFESSIONAL.md`: pro variant with module routing
+- `SKILL_PROFESSIONAL.md`: generated, non-discoverable routing reference
 - `references/`: full pattern catalogs and specialized modules (progressive disclosure)
 
 ## Source of truth
@@ -18,30 +18,22 @@ npm test
 
 ## skills.sh-style installation
 
-Humanizer ships as a single Agent Skills package at the repository root. Install it into a host that supports the [Agent Skills](https://agentskills.io) layout:
+Authentext ships as a single Agent Skill package at the repository root. Install it into a host that supports the [Agent Skills](https://agentskills.io) layout:
 
 1. Clone or copy this repository (or download a release tarball).
 2. Point your agent at the repo root, or copy these paths into your skills directory:
    - `SKILL.md`
    - `SKILL_PROFESSIONAL.md`
    - `references/` (entire directory)
-3. For the professional variant, select `SKILL_PROFESSIONAL.md` instead of `SKILL.md`.
+3. Keep `SKILL_PROFESSIONAL.md` as reference material; `SKILL.md` remains the only discoverable runtime skill.
 
 Example with the skills CLI (when available in your environment):
 
 ```bash
-npx skills add <owner>/humanizer-next --skill humanizer
+npx skills add edithatogo/authentext --skill authentext
 ```
 
-If your host expects a dedicated folder per skill, create `humanizer/` and place `SKILL.md` plus `references/` inside it. Keep relative links intact (`references/core-patterns.md`).
-
-## MCP server (optional)
-
-Tool-backed sub-skills (`humanizer-next`, `humanizer-logic`, `humanizer-read`, `humanizer-orchestrate`) are exposed through the MCP server for hosts that support MCP:
-
-```bash
-npm run install:mcp-server
-```
+If your host expects a dedicated folder per skill, create `authentext/` and place `SKILL.md` plus `references/` inside it. Keep relative links intact (`references/core-patterns.md`).
 
 Citation tooling lives in the separate **sourceright** project; it's not part of this package.
 

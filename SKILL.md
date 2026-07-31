@@ -210,4 +210,4 @@ When you see these, lean toward leaving the prose alone — they are evidence of
 
 When the input is low-density (roughly 0–2 obvious Tier-1 tells per 100 words), treat it as human-first writing. Apply only the strongest, least-ambiguous rules; leave voice, fragments, first-person texture, and ordinary human roughness alone.
 
-This is the most common way "humanizer made my writing worse" on journals, meeting notes, and personal drafts. Measure before you rewrite. High-density AI-first text can tolerate full passes; low-density text should see a very light touch.
+This is the most common way an Authentext pass can make writing worse on journals, meeting notes, and personal drafts. Measure before you rewrite. High-density AI-first text can tolerate full passes; low-density text should see a very light touch.

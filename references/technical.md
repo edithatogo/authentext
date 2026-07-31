@@ -456,6 +456,6 @@ def calculate_total(items):
 
 ---
 
-_Module Version: 3.0.0_
+_Module Version: 3.2.0_
 _Last Updated: 2026-03-03_
 _Applies to: Code, technical docs, API docs, READMEs, commit messages, code reviews_

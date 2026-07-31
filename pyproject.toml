@@ -1,7 +1,8 @@
 [project]
-name = "humanizer-next"
-version = "2.3.0"
-description = "Maintenance tooling for the humanizer-next agent skill repository."
+name = "authentext"
+version = "3.2.0"
+description = "Maintenance tooling for the Authentext Agent Skill repository."
+license = { text = "MIT" }
 requires-python = ">=3.10"
 dependencies = []
 

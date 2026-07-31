@@ -1,5 +1,5 @@
 {
-  "name": "authentext-next",
+  "name": "authentext",
   "version": "3.2.0",
   "description": "Remove signs of AI-generated writing from text.",
   "private": true,
@@ -28,7 +28,7 @@
     "build": "node scripts/compile-skill.js",
     "install:mcp-server": "node scripts/install-mcp-server.js",
     "prepare": "node -e \"if (!process.env.CI) require('child_process').execSync('npx husky install', { stdio: 'inherit' })\"",
-    "release": "echo 'No npm release: humanizer-next ships agent skill artifacts, not a publishable library'",
+    "release": "echo 'No npm release: Authentext ships Agent Skill artifacts, not a publishable npm library'",
     "version": "npm run sync && git add SKILL.md SKILL_PROFESSIONAL.md references AGENTS.md README.md"
   },
   "lint-staged": {
@@ -46,12 +46,12 @@
   "keywords": [
     "agent-skill",
     "writing",
-    "humanizer",
+    "authentext",
     "prompt-engineering",
     "ai-writing"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^25.6.0",
     "eslint": "^10.2.1",
