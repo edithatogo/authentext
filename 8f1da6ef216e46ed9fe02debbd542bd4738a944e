@@ -1,0 +1,1 @@
+Task: Add navigation to long reference files. Added compiler-generated deterministic H2 navigation for references of 200 lines or more, with regression coverage across core, technical, academic, and governance references. This preserves generated-source ownership while improving progressive disclosure.
