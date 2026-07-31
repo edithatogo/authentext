@@ -32,10 +32,10 @@ GitHub subissue:
 
 - [x] Replace stale Humanizer assertions and remove process-wide early exits
       from test files. (M-007) [commit: 6d33fb8]
-- [~] Make generated sync deterministic across LF and CRLF environments.
-  (M-008, S-002)
-- [ ] Repair and validate release/CI YAML and maintained-path references.
-      (M-009)
+- [x] Make generated sync deterministic across LF and CRLF environments.
+      (M-008, S-002) [commit: f15cf89]
+- [~] Repair and validate release/CI YAML and maintained-path references.
+  (M-009)
 - [ ] Run every Node test in isolation and in aggregate. (M-007)
 - [ ] Add portable validation and `gh skill publish --dry-run` CI jobs.
       (M-014, S-005)
