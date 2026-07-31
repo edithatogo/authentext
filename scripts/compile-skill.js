@@ -32,6 +32,7 @@ const OUTPUT = {
   skill: 'SKILL.md',
   skillPro: 'SKILL_PROFESSIONAL.md',
   referencesDir: 'references',
+  openaiMetadata: 'agents/openai.yaml',
 };
 
 const REFERENCE_FILES = {
@@ -245,6 +246,26 @@ metadata:
   version: ${JSON.stringify(version)}
 ---
 
+`;
+}
+
+/**
+ * Build the optional OpenAI host overlay. The portable Agent Skills contract
+ * remains in SKILL.md; this generated file only supplies host presentation and
+ * invocation policy.
+ * @returns {string}
+ */
+function buildOpenAiMetadata() {
+  return `interface:
+  display_name: "Authentext"
+  short_description: "Rewrite prose naturally while preserving meaning and literals"
+  default_prompt: "Use $authentext to rewrite this text naturally while preserving its meaning and technical literals."
+
+policy:
+  products:
+    - "CHAT"
+    - "CODEX"
+  allow_implicit_invocation: true
 `;
 }
 
@@ -500,11 +521,18 @@ function compile() {
     fs.writeFileSync(proPath, proContent, 'utf-8');
     console.log(`✓ Written: ${OUTPUT.skillPro} (${proContent.split('\n').length} lines)`);
 
+    const openaiMetadataPath = path.join(ROOT_DIR, OUTPUT.openaiMetadata);
+    fs.mkdirSync(path.dirname(openaiMetadataPath), { recursive: true });
+    fs.writeFileSync(openaiMetadataPath, buildOpenAiMetadata(), 'utf-8');
+    console.log(`✓ Written: ${OUTPUT.openaiMetadata}`);
+
     console.log('\n╔════════════════════════════════════════╗');
     console.log('║  ✓ Compilation Complete              ║');
     console.log('╚════════════════════════════════════════╝');
     console.log(`\nVersion: ${skillVersion}`);
-    console.log('Output: Agent Skills package (SKILL.md + references/)');
+    console.log(
+      'Output: Agent Skills package (SKILL.md + references/) with optional host metadata'
+    );
   } catch (error) {
     console.error('\n❌ Compilation failed:');
     console.error(error.message);

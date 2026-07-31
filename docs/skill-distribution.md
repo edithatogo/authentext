@@ -5,6 +5,7 @@ This document covers how to install and verify the maintained Authentext Agent S
 - `SKILL.md`: standard variant (workflow and detection guardrails; under 500 lines)
 - `SKILL_PROFESSIONAL.md`: generated, non-discoverable routing reference
 - `references/`: full pattern catalogs and specialized modules (progressive disclosure)
+- `agents/openai.yaml`: generated optional OpenAI presentation and invocation metadata
 
 ## Source of truth
 
@@ -34,6 +35,11 @@ npx skills add edithatogo/authentext --skill authentext
 ```
 
 If your host expects a dedicated folder per skill, create `authentext/` and place `SKILL.md` plus `references/` inside it. Keep relative links intact (`references/core-patterns.md`).
+
+The `agents/openai.yaml` file is a governed host overlay rather than part of the
+portable core. It enables implicit invocation in Chat and Codex, contains no
+tool dependency, and can be omitted by hosts that implement only the portable
+Agent Skills contract.
 
 Citation tooling lives in the separate **sourceright** project; it's not part of this package.
 

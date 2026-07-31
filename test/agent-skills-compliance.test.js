@@ -9,6 +9,7 @@ const ROOT = process.cwd();
 const SKILL_PATH = path.join(ROOT, 'SKILL.md');
 const PRO_PATH = path.join(ROOT, 'SKILL_PROFESSIONAL.md');
 const REFERENCES_DIR = path.join(ROOT, 'references');
+const OPENAI_METADATA_PATH = path.join(ROOT, 'agents', 'openai.yaml');
 const PACKAGE = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const PORTABLE_FIELDS = ['description', 'license', 'metadata', 'name'];
 
@@ -118,5 +119,24 @@ test('Agent Skills package layout', async (t) => {
     assert.doesNotMatch(professional, /^---\r?\n/);
     assert.match(professional, /^# Authentext Professional Routing Reference$/m);
     assert.match(professional, /not a separately discoverable Agent Skill/i);
+  });
+
+  await t.test('optional OpenAI metadata is generated and scoped to the skill', () => {
+    assert.ok(fs.existsSync(OPENAI_METADATA_PATH), 'agents/openai.yaml should exist');
+
+    const metadata = parseWithYaml(fs.readFileSync(OPENAI_METADATA_PATH, 'utf8'));
+    assert.deepEqual(metadata, {
+      interface: {
+        display_name: 'Authentext',
+        short_description: 'Rewrite prose naturally while preserving meaning and literals',
+        default_prompt:
+          'Use $authentext to rewrite this text naturally while preserving its meaning and technical literals.',
+      },
+      policy: {
+        products: ['CHAT', 'CODEX'],
+        allow_implicit_invocation: true,
+      },
+    });
+    assert.equal(metadata.dependencies, undefined);
   });
 });
