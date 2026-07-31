@@ -1,0 +1,1 @@
+Task: Replace stale Humanizer assertions and remove process-wide early exits (M-007). Replaced the obsolete dist router test with canonical Authentext routing tests, updated professional identity assertions, and removed process.exit(0). Aggregate node harness now reaches all files and passes 35 tests with no skipped router exit.
