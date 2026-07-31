@@ -1,0 +1,1 @@
+Task: Build trigger evaluations. Added an eight-case positive, paraphrased, near-miss, and negative corpus plus a deterministic discovery/routing oracle and machine-readable result schema. The oracle evaluates the documented contract and does not claim host-model behavior.
