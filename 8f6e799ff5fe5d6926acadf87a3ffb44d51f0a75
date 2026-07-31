@@ -1,0 +1,1 @@
+CodeQL scope repair: added checked-in configuration excluding only frozen skills/** and experiments/** trees, retaining analysis of maintained Authentext surfaces. Regression test verifies workflow linkage and exact exclusions. Verified with workflow tests, npm run lint:all, and npm test (72 aggregate tests plus isolated and integration runs).
