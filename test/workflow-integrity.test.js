@@ -87,6 +87,15 @@ test('composite action dependencies are commit-pinned', () => {
   });
 });
 
+test('Vale archives are extracted outside the checked-out repository', () => {
+  const actionPath = path.join(ROOT, '.github', 'actions', 'setup-maintainer-env', 'action.yml');
+  const source = fs.readFileSync(actionPath, 'utf8');
+
+  assert.match(source, /RUNNER_TEMP/);
+  assert.doesNotMatch(source, /^\s*tar -xzf vale\.tar\.gz\s*$/m);
+  assert.doesNotMatch(source, /^\s*sudo mv vale \/usr\/local\/bin\/vale\s*$/m);
+});
+
 test('release workflow packages only maintained, existing paths', () => {
   const source = fs.readFileSync(path.join(WORKFLOW_DIR, 'release.yml'), 'utf8');
 
