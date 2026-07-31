@@ -2,7 +2,7 @@
 
 - **Track ID:** `bleeding-edge-agent-skills-conductor_20260731`
 - **Priority:** P0
-- **Status:** New
+- **Status:** Active
 - **GitHub Project:** [Authentext Conductor Roadmap](https://github.com/users/edithatogo/projects/36)
 - **Parent issue:** [#66](https://github.com/edithatogo/authentext/issues/66)
 
@@ -14,6 +14,7 @@
 - [Implementation Plan](./plan.md)
 - [Metadata](./metadata.json)
 - [Phase 1 Verification](./phase1-verification.md)
+- [Phase 2 Verification](./phase2-verification.md)
 - [Repository Roadmap](../../roadmap.md)
 
 ## Outcome
