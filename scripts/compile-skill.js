@@ -46,9 +46,6 @@ const STANDARD_DESCRIPTION = `Remove signs of AI-generated writing from text. Us
 
 const PRO_DESCRIPTION = `Remove signs of AI-generated writing for professional, technical, academic, and policy prose. Use when editing client-facing or formal text that must stay precise and restrained. Routes across core, technical, academic, and governance pattern modules plus reasoning-failure detection. Based on Wikipedia's "Signs of AI writing" guide with severity classification and literal preservation rules.`;
 
-const COMPATIBILITY =
-  'Requires an agent host that supports the Agent Skills format and Read, Write, Edit, Grep, and Glob tools (Claude Code, Cursor, Codex CLI, Gemini CLI, GitHub Copilot, and compatible hosts).';
-
 /**
 
 * Read module file with error handling
@@ -217,19 +214,10 @@ function buildStandardIntro(strippedCore) {
 function buildAgentSkillsFrontmatter({ name, version, description }) {
   return `---
 name: ${name}
-version: ${version}
-description: ${description}
+description: ${JSON.stringify(description)}
 license: MIT
-compatibility: ${COMPATIBILITY}
-allowed-tools:
-
-* Read
-* Write
-* Edit
-* Grep
-* Glob
-* AskUserQuestion
-
+metadata:
+  version: ${JSON.stringify(version)}
 ---
 
 `;

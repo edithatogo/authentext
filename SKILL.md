@@ -1,18 +1,9 @@
 ---
 name: authentext
-version: 3.2.0
-description: Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance.
+description: "Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's \"Signs of AI writing\" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance."
 license: MIT
-compatibility: Requires an agent host that supports the Agent Skills format and Read, Write, Edit, Grep, and Glob tools (Claude Code, Cursor, Codex CLI, Gemini CLI, GitHub Copilot, and compatible hosts).
-allowed-tools:
-
-* Read
-* Write
-* Edit
-* Grep
-* Glob
-* AskUserQuestion
-
+metadata:
+  version: "3.2.0"
 ---
 
 # Authentext: Remove AI Writing Patterns

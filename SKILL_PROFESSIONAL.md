@@ -1,18 +1,9 @@
 ---
 name: authentext-pro
-version: 3.2.0
-description: Remove signs of AI-generated writing for professional, technical, academic, and policy prose. Use when editing client-facing or formal text that must stay precise and restrained. Routes across core, technical, academic, and governance pattern modules plus reasoning-failure detection. Based on Wikipedia's "Signs of AI writing" guide with severity classification and literal preservation rules.
+description: "Remove signs of AI-generated writing for professional, technical, academic, and policy prose. Use when editing client-facing or formal text that must stay precise and restrained. Routes across core, technical, academic, and governance pattern modules plus reasoning-failure detection. Based on Wikipedia's \"Signs of AI writing\" guide with severity classification and literal preservation rules."
 license: MIT
-compatibility: Requires an agent host that supports the Agent Skills format and Read, Write, Edit, Grep, and Glob tools (Claude Code, Cursor, Codex CLI, Gemini CLI, GitHub Copilot, and compatible hosts).
-allowed-tools:
-
-* Read
-* Write
-* Edit
-* Grep
-* Glob
-* AskUserQuestion
-
+metadata:
+  version: "3.2.0"
 ---
 
 # Authentext: Remove AI Writing Patterns
