@@ -30,10 +30,10 @@ GitHub subissue:
 GitHub subissue:
 [#68](https://github.com/edithatogo/authentext/issues/68).
 
-- [~] Replace stale Humanizer assertions and remove process-wide early exits
-  from test files. (M-007)
-- [ ] Make generated sync deterministic across LF and CRLF environments.
-      (M-008, S-002)
+- [x] Replace stale Humanizer assertions and remove process-wide early exits
+      from test files. (M-007) [commit: 6d33fb8]
+- [~] Make generated sync deterministic across LF and CRLF environments.
+  (M-008, S-002)
 - [ ] Repair and validate release/CI YAML and maintained-path references.
       (M-009)
 - [ ] Run every Node test in isolation and in aggregate. (M-007)
