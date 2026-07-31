@@ -15,6 +15,7 @@
 - [Metadata](./metadata.json)
 - [Phase 1 Verification](./phase1-verification.md)
 - [Phase 2 Verification](./phase2-verification.md)
+- [Phase 3 Verification](./phase3-verification.md)
 - [Repository Roadmap](../../roadmap.md)
 
 ## Outcome
