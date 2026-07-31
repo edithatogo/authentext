@@ -14,7 +14,7 @@ const mappingPath = path.join(root, 'conductor', 'github-mapping.json');
 const mapping = JSON.parse(fs.readFileSync(mappingPath, 'utf8'));
 
 function ghJson(commandArgs) {
-  const executable = process.platform === 'win32' ? 'gh.cmd' : 'gh';
+  const executable = process.platform === 'win32' ? 'gh.exe' : 'gh';
   const result = spawnSync(executable, commandArgs, { cwd: root, encoding: 'utf8' });
   if (result.status !== 0) throw new Error(result.stderr || `gh ${commandArgs.join(' ')} failed`);
   return JSON.parse(result.stdout);
