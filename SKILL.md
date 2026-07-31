@@ -53,14 +53,37 @@ Have opinions and react to facts. Vary sentence rhythm with short and long lines
 
 ---
 
+## Routing by task and content type
+
+1. Determine whether the user wants a rewrite, a review with findings, or both.
+2. Apply the core patterns for every task.
+3. Load only the references that match the material:
+   - Technical documentation or code-adjacent prose: read
+     [technical.md](references/technical.md).
+   - Papers, manuscripts, citations, or research prose: read
+     [academic.md](references/academic.md).
+   - Policy, governance, legal, risk, or compliance prose: read
+     [governance.md](references/governance.md).
+   - Claims with contradictions or reasoning failures: read
+     [reasoning-failures.md](references/reasoning-failures.md).
+4. For review-only requests, report specific passages and proposed changes
+   without silently rewriting the source.
+5. For low-density or clearly human-authored prose, make only the smallest
+   defensible edits.
+
 ## Reference material
 
 Read these files for the full pattern catalog, examples, and remediation guidance:
 
 - [Core patterns (39 patterns, before/after examples)](references/core-patterns.md)
+- [Technical writing and literal preservation](references/technical.md)
+- [Academic and research prose](references/academic.md)
+- [Policy, governance, and compliance prose](references/governance.md)
 - [Reasoning failures and self-contradictions](references/reasoning-failures.md)
 
-Apply every pattern in the reference files when humanizing text. This root skill keeps workflow, severity tiers, and detection guardrails; the references hold the exhaustive pattern definitions.
+Apply the relevant patterns from the selected reference files. This root skill
+keeps workflow, severity tiers, and detection guardrails; the references hold
+the detailed pattern definitions.
 
 ## SEVERITY CLASSIFICATION
 

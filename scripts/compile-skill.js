@@ -44,8 +44,6 @@ const REFERENCE_FILES = {
 
 const STANDARD_DESCRIPTION = `Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance.`;
 
-const PRO_DESCRIPTION = `Remove signs of AI-generated writing for professional, technical, academic, and policy prose. Use when editing client-facing or formal text that must stay precise and restrained. Routes across core, technical, academic, and governance pattern modules plus reasoning-failure detection. Based on Wikipedia's "Signs of AI writing" guide with severity classification and literal preservation rules.`;
-
 /**
 
 * Read module file with error handling
@@ -246,16 +244,15 @@ function writeReferenceTree(modules) {
 
 /**
 
-* @param {string} coreModule
-* @param {boolean} hasReasoning
-* @returns {string}
+ * @param {Record<string, string|null>} modules
+ * @returns {string}
  */
-function compileStandardSkill(coreModule, hasReasoning) {
+function compileStandardSkill(modules) {
   console.log('\n=== Compiling Standard Authentext ===');
 
-  const coreFrontmatter = extractFrontmatter(coreModule);
+  const coreFrontmatter = extractFrontmatter(modules.core);
   const version = coreFrontmatter?.version || '3.0.0';
-  const strippedCore = stripFrontmatter(coreModule);
+  const strippedCore = stripFrontmatter(modules.core);
 
   const intro = buildStandardIntro(strippedCore);
   const severity = extractSection(
@@ -267,14 +264,32 @@ function compileStandardSkill(coreModule, hasReasoning) {
 
   const referenceLinks = [
     '- [Core patterns (39 patterns, before/after examples)](references/core-patterns.md)',
-  ];
-  if (hasReasoning) {
-    referenceLinks.push(
-      '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)'
-    );
-  }
+    modules.technical && '- [Technical writing and literal preservation](references/technical.md)',
+    modules.academic && '- [Academic and research prose](references/academic.md)',
+    modules.governance && '- [Policy, governance, and compliance prose](references/governance.md)',
+    modules.reasoning &&
+      '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)',
+  ].filter(Boolean);
 
   const body = `${intro}
+
+## Routing by task and content type
+
+1. Determine whether the user wants a rewrite, a review with findings, or both.
+2. Apply the core patterns for every task.
+3. Load only the references that match the material:
+   - Technical documentation or code-adjacent prose: read
+     [technical.md](references/technical.md).
+   - Papers, manuscripts, citations, or research prose: read
+     [academic.md](references/academic.md).
+   - Policy, governance, legal, risk, or compliance prose: read
+     [governance.md](references/governance.md).
+   - Claims with contradictions or reasoning failures: read
+     [reasoning-failures.md](references/reasoning-failures.md).
+4. For review-only requests, report specific passages and proposed changes
+   without silently rewriting the source.
+5. For low-density or clearly human-authored prose, make only the smallest
+   defensible edits.
 
 ## Reference material
 
@@ -282,7 +297,9 @@ Read these files for the full pattern catalog, examples, and remediation guidanc
 
 ${referenceLinks.join('\n')}
 
-Apply every pattern in the reference files when humanizing text. This root skill keeps workflow, severity tiers, and detection guardrails; the references hold the exhaustive pattern definitions.
+Apply the relevant patterns from the selected reference files. This root skill
+keeps workflow, severity tiers, and detection guardrails; the references hold
+the detailed pattern definitions.
 
 ${severity}
 
@@ -304,10 +321,7 @@ ${detection}
 * @returns {string}
  */
 function compileProfessionalSkill(modules) {
-  console.log('\n=== Compiling Authentext Pro ===');
-
-  const coreFrontmatter = extractFrontmatter(modules.core);
-  const version = coreFrontmatter?.version || '3.0.0';
+  console.log('\n=== Compiling Authentext Professional Reference ===');
 
   const availableReferences = Object.entries(REFERENCE_FILES)
     .filter(([key]) => modules[key])
@@ -324,11 +338,15 @@ function compileProfessionalSkill(modules) {
     .filter(Boolean)
     .join('\n');
 
-  const introduction = `# Authentext: Remove AI Writing Patterns
+  const introduction = `# Authentext Professional Routing Reference
 
-You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup.
+This generated reference is not a separately discoverable Agent Skill.
+The authoritative runtime entry point is [SKILL.md](SKILL.md), which owns
+activation and routing. Use this file as supplementary professional-editing
+guidance when the main skill selects a technical, academic, governance, or
+client-facing route.
 
-## Authentext Pro: Professional Editing
+## Professional editing profile
 
 Use this variant for technical, policy, academic, and client-facing prose. Keep the text precise, restrained, and readable.
 
@@ -400,13 +418,7 @@ For severity tiers and false-positive guidance, read [Core patterns](references/
 Available reference files: ${availableReferences.join(', ')}.
 `;
 
-  return (
-    buildAgentSkillsFrontmatter({
-      name: 'authentext-pro',
-      version,
-      description: PRO_DESCRIPTION,
-    }) + introduction
-  );
+  return introduction;
 }
 
 /**
@@ -432,7 +444,7 @@ function compile() {
 
     writeReferenceTree(modules);
 
-    const skillContent = compileStandardSkill(modules.core, Boolean(modules.reasoning));
+    const skillContent = compileStandardSkill(modules);
     const skillPath = path.join(ROOT_DIR, OUTPUT.skill);
     fs.writeFileSync(skillPath, skillContent, 'utf-8');
     console.log(`✓ Written: ${OUTPUT.skill} (${skillContent.split('\n').length} lines)`);

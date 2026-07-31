@@ -40,6 +40,30 @@ function parseFrontmatter(filePath) {
   return yamlResult;
 }
 
+/**
+ * @param {string} directory
+ * @returns {string[]}
+ */
+function findSkillFiles(directory) {
+  const ignoredDirectories = new Set(['.git', 'node_modules']);
+  const matches = [];
+
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    if (entry.isDirectory() && ignoredDirectories.has(entry.name)) {
+      continue;
+    }
+
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      matches.push(...findSkillFiles(entryPath));
+    } else if (entry.name === 'SKILL.md') {
+      matches.push(path.relative(ROOT, entryPath).replaceAll(path.sep, '/'));
+    }
+  }
+
+  return matches;
+}
+
 test('Agent Skills package layout', async (t) => {
   await t.test('SKILL.md body stays under 500 lines', () => {
     const lines = fs.readFileSync(SKILL_PATH, 'utf8').split('\n').length;
@@ -78,5 +102,21 @@ test('Agent Skills package layout', async (t) => {
   await t.test('SKILL.md links to references', () => {
     const content = fs.readFileSync(SKILL_PATH, 'utf8');
     assert.match(content, /references\/core-patterns\.md/);
+  });
+
+  await t.test('one runtime skill owns professional routing', () => {
+    assert.deepEqual(findSkillFiles(ROOT), ['SKILL.md']);
+
+    const skill = fs.readFileSync(SKILL_PATH, 'utf8');
+    assert.match(skill, /^## Routing by task and content type$/m);
+    assert.match(skill, /references\/technical\.md/);
+    assert.match(skill, /references\/academic\.md/);
+    assert.match(skill, /references\/governance\.md/);
+    assert.match(skill, /references\/reasoning-failures\.md/);
+
+    const professional = fs.readFileSync(PRO_PATH, 'utf8');
+    assert.doesNotMatch(professional, /^---\r?\n/);
+    assert.match(professional, /^# Authentext Professional Routing Reference$/m);
+    assert.match(professional, /not a separately discoverable Agent Skill/i);
   });
 });
