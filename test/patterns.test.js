@@ -57,3 +57,30 @@ test('Professional routing reference integrity', async (t) => {
     );
   });
 });
+
+test('long generated references provide deterministic navigation', () => {
+  for (const filename of ['core-patterns.md', 'technical.md', 'academic.md', 'governance.md']) {
+    const content = fs.readFileSync(`references/${filename}`, 'utf8');
+    const navigation = content.match(/## Navigation\n\n([\s\S]*?)\n\n## /);
+
+    assert.ok(navigation, `${filename} should include navigation before its first section`);
+    const sectionHeadings = [...content.matchAll(/^## (?!Navigation$)(.+)$/gm)].map(
+      ([, heading]) => heading
+    );
+    for (const heading of sectionHeadings) {
+      const anchor = heading
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-');
+      assert.match(
+        navigation[1],
+        new RegExp(
+          `^- \\[${heading.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}\\]\\(#${anchor}\\)$`,
+          'm'
+        ),
+        `${filename} should link section ${heading}`
+      );
+    }
+  }
+});

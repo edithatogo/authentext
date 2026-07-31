@@ -1,5 +1,14 @@
 # Module: Academic
 
+## Navigation
+
+- [Description](#description)
+- [ACADEMIC VOICE](#academic-voice)
+- [ACADEMIC PATTERNS](#academic-patterns)
+- [CITATION AND REFERENCING](#citation-and-referencing)
+- [SEVERITY CLASSIFICATION](#severity-classification)
+- [ACADEMIC WRITING BEST PRACTICES](#academic-writing-best-practices)
+
 ## Description
 
 This module applies to academic writing: research papers, essays, dissertations, grant proposals, and formal research prose. It maintains scholarly rigor while removing AI voice patterns.

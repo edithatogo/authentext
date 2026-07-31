@@ -163,6 +163,33 @@ function stripFrontmatter(content) {
 }
 
 /**
+ * Add a compact table of contents to long generated references.
+ * @param {string} content
+ * @returns {string}
+ */
+function addReferenceNavigation(content) {
+  if (content.split('\n').length < 200) {
+    return content;
+  }
+
+  const headings = [...content.matchAll(/^## (.+)$/gm)].map(([, heading]) => heading);
+  if (headings.length < 2) {
+    return content;
+  }
+
+  const links = headings.map((heading) => {
+    const anchor = heading
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim()
+      .replace(/\s+/g, '-');
+    return `- [${heading}](#${anchor})`;
+  });
+  const firstSection = content.search(/^## /m);
+  return `${content.slice(0, firstSection).trimEnd()}\n\n## Navigation\n\n${links.join('\n')}\n\n${content.slice(firstSection)}`;
+}
+
+/**
 
 * @param {string} content
 * @param {string} startHeading
@@ -235,7 +262,7 @@ function writeReferenceTree(modules) {
       continue;
     }
 
-    const body = stripFrontmatter(moduleContent).trim();
+    const body = addReferenceNavigation(stripFrontmatter(moduleContent).trim());
     const targetPath = path.join(referencesDir, filename);
     fs.writeFileSync(targetPath, `${body}\n`, 'utf-8');
     console.log(`✓ Written: ${OUTPUT.referencesDir}/${filename}`);

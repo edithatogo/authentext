@@ -1,5 +1,19 @@
 # Module: Technical
 
+## Navigation
+
+- [Description](#description)
+- [TECHNICAL NUANCE](#technical-nuance)
+- [TECHNICAL LITERAL PRESERVATION](#technical-literal-preservation)
+- [CODE COMMENT PATTERNS](#code-comment-patterns)
+- [API DOCUMENTATION PATTERNS](#api-documentation-patterns)
+- [README PATTERNS](#readme-patterns)
+- [COMMIT MESSAGE PATTERNS](#commit-message-patterns)
+- [CODE REVIEW PATTERNS](#code-review-patterns)
+- [ERROR HANDLING PATTERNS](#error-handling-patterns)
+- [SEVERITY CLASSIFICATION](#severity-classification)
+- [TECHNICAL WRITING BEST PRACTICES](#technical-writing-best-practices)
+
 ## Description
 
 This module applies to code, technical documentation, API documentation, READMEs, and engineering writing. It preserves technical precision while removing AI voice patterns.

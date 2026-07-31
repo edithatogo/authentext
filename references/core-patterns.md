@@ -1,5 +1,19 @@
 # Module: Core Patterns
 
+## Navigation
+
+- [Description](#description)
+- [Your Task](#your-task)
+- [PERSONALITY AND SOUL](#personality-and-soul)
+- [CONTENT PATTERNS](#content-patterns)
+- [STYLE PATTERNS](#style-patterns)
+- [COMMUNICATION PATTERNS](#communication-patterns)
+- [FILLER AND HEDGING](#filler-and-hedging)
+- [Performance](#performance)
+- [Performance](#performance)
+- [SEVERITY CLASSIFICATION](#severity-classification)
+- [DETECTION GUIDANCE](#detection-guidance)
+
 ## Description
 
 Always-applied patterns for general writing. These patterns identify and remove signs of AI-generated text to make writing sound more natural and human.

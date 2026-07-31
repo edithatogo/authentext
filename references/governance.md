@@ -1,5 +1,14 @@
 # Module: Governance
 
+## Navigation
+
+- [Description](#description)
+- [GOVERNANCE VOICE](#governance-voice)
+- [GOVERNANCE PATTERNS](#governance-patterns)
+- [COMPLIANCE AND REGULATORY](#compliance-and-regulatory)
+- [SEVERITY CLASSIFICATION](#severity-classification)
+- [GOVERNANCE WRITING BEST PRACTICES](#governance-writing-best-practices)
+
 ## Description
 
 This module applies to governance writing: policies, risk assessments, compliance documentation, legal writing, and regulatory submissions. It maintains precision and formality while removing AI voice patterns.
