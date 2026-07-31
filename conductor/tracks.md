@@ -8,7 +8,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [ ] **bleeding-edge-agent-skills-conductor_20260731** (P0) -
+- [~] **bleeding-edge-agent-skills-conductor_20260731** (P0) -
       Standards-compliant portable skill, behavioral evaluation, current
       Conductor protocol, native GitHub phase hierarchy, and governed
       experimental channels. See
