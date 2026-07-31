@@ -275,21 +275,40 @@ function compileStandardSkill(modules) {
 
 ## Routing by task and content type
 
-1. Determine whether the user wants a rewrite, a review with findings, or both.
-2. Apply the core patterns for every task.
-3. Load only the references that match the material:
-   - Technical documentation or code-adjacent prose: read
-     [technical.md](references/technical.md).
-   - Papers, manuscripts, citations, or research prose: read
-     [academic.md](references/academic.md).
-   - Policy, governance, legal, risk, or compliance prose: read
-     [governance.md](references/governance.md).
-   - Claims with contradictions or reasoning failures: read
-     [reasoning-failures.md](references/reasoning-failures.md).
-4. For review-only requests, report specific passages and proposed changes
-   without silently rewriting the source.
-5. For low-density or clearly human-authored prose, make only the smallest
-   defensible edits.
+Route in two stages. Do not load a content reference until both stages are
+classified.
+
+### Stage 1: Operation
+
+- **Rewrite:** Return revised prose. Preserve meaning, coverage, voice,
+  technical literals, citations, and epistemic qualifiers.
+- **Review:** Return findings tied to specific passages with proposed changes.
+  Do not silently rewrite the source.
+- **Both:** Return the review first, then a clearly separated revision.
+
+If the request does not make the operation clear, infer it from the requested
+output. Ask only when review versus rewrite would materially change the result.
+
+### Stage 2: Material
+
+Apply the root workflow for every task, then load only the references matching
+the material:
+
+- Technical documentation or code-adjacent prose: read
+  [technical.md](references/technical.md).
+- Papers, manuscripts, citations, or research prose: read
+  [academic.md](references/academic.md).
+- Policy, governance, legal, risk, or compliance prose: read
+  [governance.md](references/governance.md).
+- Claims with contradictions or reasoning failures: read
+  [reasoning-failures.md](references/reasoning-failures.md).
+
+Load more than one content reference only when the material genuinely crosses
+domains. Reasoning guidance supplements a content reference; it does not replace
+technical, academic, or governance rules.
+
+For low-density or clearly human-authored prose, make only the smallest
+defensible edits.
 
 ## Reference material
 
