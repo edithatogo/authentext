@@ -13,6 +13,7 @@
 - [Design](./design.md)
 - [Implementation Plan](./plan.md)
 - [Metadata](./metadata.json)
+- [Phase 1 Verification](./phase1-verification.md)
 - [Repository Roadmap](../../roadmap.md)
 
 ## Outcome
