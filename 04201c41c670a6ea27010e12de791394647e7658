@@ -1,0 +1,1 @@
+Phase 4 identity reconciliation. Verified with npm run sync, node --test test/identity-metadata.test.js, npm run validate, and npm test (64 aggregate tests plus integration checks).
