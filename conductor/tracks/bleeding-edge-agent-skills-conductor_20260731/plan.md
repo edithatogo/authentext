@@ -46,9 +46,9 @@ GitHub subissue:
 GitHub subissue:
 [#69](https://github.com/edithatogo/authentext/issues/69).
 
-- [~] Route by rewrite/review mode and content type before loading references.
-  (M-012)
-- [ ] Add navigation to long reference files. (M-012, S-004)
+- [x] Route by rewrite/review mode and content type before loading references.
+      (M-012) [commit: 6ddf938]
+- [~] Add navigation to long reference files. (M-012, S-004)
 - [ ] Build positive, paraphrased, near-miss, and negative trigger evaluations.
       (M-010)
 - [ ] Build actual rewrite, restraint, voice, stance, and invariant evaluations.
