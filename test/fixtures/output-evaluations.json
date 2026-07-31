@@ -1,0 +1,47 @@
+[
+  {
+    "id": "rewrite-inflation",
+    "category": "rewrite",
+    "input": "The launch represents a pivotal moment that underscores our unwavering commitment to excellence.",
+    "output": "The launch starts the service described in the implementation plan.",
+    "constraints": {
+      "forbid": ["pivotal", "underscores", "unwavering", "excellence"],
+      "require": ["launch", "service", "implementation plan"]
+    }
+  },
+  {
+    "id": "restraint-low-density",
+    "category": "restraint",
+    "input": "I tested it twice. The second run failed after 14 seconds.",
+    "output": "I tested it twice. The second run failed after 14 seconds.",
+    "constraints": { "unchanged": true }
+  },
+  {
+    "id": "voice-first-person",
+    "category": "voice",
+    "input": "I still think the proposal is useful, though I am uneasy about the deadline.",
+    "output": "I think the proposal is useful, but I am uneasy about the deadline.",
+    "constraints": { "require": ["I think", "I am uneasy"] }
+  },
+  {
+    "id": "stance-opposition",
+    "category": "stance",
+    "input": "I oppose mandatory publication because it could expose confidential evidence.",
+    "output": "I oppose mandatory publication because it could expose confidential evidence.",
+    "constraints": { "require": ["I oppose", "confidential evidence"] }
+  },
+  {
+    "id": "technical-invariants",
+    "category": "invariant",
+    "input": "Run `npm test` in C:\\repos\\authentext and inspect https://example.test/runs/42 (Smith, 2024).",
+    "output": "Run `npm test` in C:\\repos\\authentext, then inspect https://example.test/runs/42 (Smith, 2024).",
+    "constraints": {
+      "exact_literals": [
+        "`npm test`",
+        "C:\\repos\\authentext",
+        "https://example.test/runs/42",
+        "(Smith, 2024)"
+      ]
+    }
+  }
+]

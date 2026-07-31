@@ -55,3 +55,47 @@ export function evaluateTriggerCases(cases) {
     results,
   };
 }
+
+/**
+ * Check concrete editorial outputs against explicit, auditable constraints.
+ * @param {Array<{id: string, category: string, input: string, output: string, constraints: object}>} cases
+ */
+export function evaluateOutputCases(cases) {
+  const results = cases.map((evaluation) => {
+    const failures = [];
+    const { constraints = {}, input, output } = evaluation;
+
+    if (constraints.unchanged && output !== input) {
+      failures.push('output changed despite unchanged constraint');
+    }
+    for (const phrase of constraints.require ?? []) {
+      if (!output.includes(phrase)) failures.push(`missing required phrase: ${phrase}`);
+    }
+    for (const phrase of constraints.forbid ?? []) {
+      if (output.toLowerCase().includes(phrase.toLowerCase())) {
+        failures.push(`retained forbidden phrase: ${phrase}`);
+      }
+    }
+    for (const literal of constraints.exact_literals ?? []) {
+      if (!input.includes(literal) || !output.includes(literal)) {
+        failures.push(`literal not preserved byte-for-byte: ${literal}`);
+      }
+    }
+
+    return {
+      id: evaluation.id,
+      category: evaluation.category,
+      passed: failures.length === 0,
+      failures,
+    };
+  });
+
+  return {
+    schema_version: 1,
+    suite: 'authentext-output-evaluations',
+    total: results.length,
+    passed: results.filter(({ passed }) => passed).length,
+    failed: results.filter(({ passed }) => !passed).length,
+    results,
+  };
+}
