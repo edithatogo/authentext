@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-01T04:47:10.102Z",
+  "generated_at": "2026-08-01T05:38:31.622Z",
   "repository": "edithatogo/authentext",
   "project": {
     "number": 36,
@@ -8,10 +8,10 @@
     "url": "https://github.com/users/edithatogo/projects/36"
   },
   "counts": {
-    "tracks": 30,
-    "phases": 123,
-    "repository_issues": 162,
-    "open_tracks": 0,
+    "tracks": 31,
+    "phases": 128,
+    "repository_issues": 168,
+    "open_tracks": 1,
     "historical_tracks": 30
   },
   "verification": {
@@ -20,9 +20,90 @@
     "duplicate_phase_markers": 0,
     "native_parent_child_relationships": "verified",
     "issue_states": "verified",
-    "project_membership": "153/153"
+    "project_membership": "159/159"
   },
   "tracks": [
+    {
+      "track_id": "post-release-security-quality-frontier_20260801",
+      "title": "Post-Release Security and Quality Frontier",
+      "path": "conductor/tracks/post-release-security-quality-frontier_20260801",
+      "priority": "P0",
+      "historical": false,
+      "metadata_status": "in_progress",
+      "parent_issue": {
+        "number": 224,
+        "node_id": "I_kwDORAMgA88AAAABLCLcjQ",
+        "url": "https://github.com/edithatogo/authentext/issues/224",
+        "state": "open"
+      },
+      "phases": [
+        {
+          "phase_id": "post-release-security-quality-frontier_20260801.phase1",
+          "number": 1,
+          "title": "Dependency and runtime consolidation",
+          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 225,
+            "node_id": "I_kwDORAMgA88AAAABLCLc0w",
+            "url": "https://github.com/edithatogo/authentext/issues/225",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "post-release-security-quality-frontier_20260801.phase2",
+          "number": 2,
+          "title": "Measured quality frontier",
+          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 226,
+            "node_id": "I_kwDORAMgA88AAAABLCLdJg",
+            "url": "https://github.com/edithatogo/authentext/issues/226",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "post-release-security-quality-frontier_20260801.phase3",
+          "number": 3,
+          "title": "Solo-maintainer security controls",
+          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 227,
+            "node_id": "I_kwDORAMgA88AAAABLCLdeQ",
+            "url": "https://github.com/edithatogo/authentext/issues/227",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "post-release-security-quality-frontier_20260801.phase4",
+          "number": 4,
+          "title": "Backlog, roadmap, and GitHub reconciliation",
+          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 228,
+            "node_id": "I_kwDORAMgA88AAAABLCLdug",
+            "url": "https://github.com/edithatogo/authentext/issues/228",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "post-release-security-quality-frontier_20260801.phase5",
+          "number": 5,
+          "title": "Final verification and governed handoff",
+          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 229,
+            "node_id": "I_kwDORAMgA88AAAABLCLd_A",
+            "url": "https://github.com/edithatogo/authentext/issues/229",
+            "state": "open"
+          }
+        }
+      ]
+    },
     {
       "track_id": "bleeding-edge-agent-skills-conductor_20260731",
       "title": "Bleeding-Edge Agent Skills and Conductor Alignment",

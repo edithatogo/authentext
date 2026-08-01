@@ -87,6 +87,20 @@ test('composite action dependencies are commit-pinned', () => {
   });
 });
 
+test('maintained automation and tooling require Node.js 24 or newer', () => {
+  const packageJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
+  assert.equal(packageJson.engines?.node, '>=24', 'package engines should declare Node.js 24');
+
+  const actionPath = path.join(ROOT, '.github', 'actions', 'setup-maintainer-env', 'action.yml');
+  const action = parseYaml(fs.readFileSync(actionPath, 'utf8'));
+  assert.equal(action.inputs?.['node-version']?.default, '24');
+
+  for (const file of WORKFLOW_FILES) {
+    const source = fs.readFileSync(path.join(WORKFLOW_DIR, file), 'utf8');
+    assert.doesNotMatch(source, /node-version:\s*['"]?20['"]?/, `${file} must not select Node 20`);
+  }
+});
+
 test('Vale archives are extracted outside the checked-out repository', () => {
   const actionPath = path.join(ROOT, '.github', 'actions', 'setup-maintainer-env', 'action.yml');
   const source = fs.readFileSync(actionPath, 'utf8');
@@ -136,4 +150,21 @@ test('release workflow packages only maintained, existing paths', () => {
   assert.doesNotMatch(source, /\badapters\//);
   assert.doesNotMatch(source, /docs\/install-matrix\.md/);
   assert.doesNotMatch(source, /humanizer-next/);
+});
+
+test('solo-maintainer contribution context is current and reviewer-neutral', () => {
+  for (const file of [
+    'CONTRIBUTING.md',
+    'SECURITY.md',
+    '.github/PULL_REQUEST_TEMPLATE.md',
+    '.github/ISSUE_TEMPLATE/bug_report.yml',
+    '.github/ISSUE_TEMPLATE/feature_request.yml',
+    '.github/ISSUE_TEMPLATE/config.yml',
+  ]) {
+    assert.ok(fs.existsSync(path.join(ROOT, file)), `missing repository context: ${file}`);
+  }
+  assert.equal(fs.existsSync(path.join(ROOT, '.github', 'CODEOWNERS')), false);
+  const security = fs.readFileSync(path.join(ROOT, 'SECURITY.md'), 'utf8');
+  assert.match(security, /edithatogo\/authentext\/security\/advisories\/new/);
+  assert.doesNotMatch(security, /authentext-next/);
 });

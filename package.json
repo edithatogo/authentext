@@ -4,6 +4,9 @@
   "description": "Remove signs of AI-generated writing from text.",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "evaluate": "node scripts/run-evaluations.js",
     "conductor:reconcile": "node scripts/reconcile-conductor-github.js",
@@ -22,6 +25,7 @@
     "typecheck": "tsc --noEmit",
     "lint:all": "npm run lint && npm run vale && npm run lint:js && npm run typecheck && npm run format:check",
     "test": "node scripts/run-node-tests.js && node scripts/run-tests.js",
+    "test:coverage": "node scripts/run-coverage.js",
     "build": "node scripts/compile-skill.js",
     "prepare": "node -e \"if (!process.env.CI) require('child_process').execSync('npx husky install', { stdio: 'inherit' })\"",
     "release": "echo 'No npm release: Authentext ships Agent Skill artifacts, not a publishable npm library'",
@@ -49,17 +53,17 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^25.6.0",
-    "eslint": "^10.2.1",
+    "@types/node": "^26.1.2",
+    "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-node": "^11.1.0",
     "husky": "^9.1.7",
-    "js-yaml": "^4.3.0",
-    "lint-staged": "^16.4.0",
-    "markdownlint-cli": "^0.48.0",
-    "prettier": "^3.8.3",
-    "typescript": "^6.0.3",
+    "js-yaml": "^5.2.2",
+    "lint-staged": "^17.3.0",
+    "markdownlint-cli": "^0.49.1",
+    "prettier": "^3.9.6",
+    "typescript": "^7.0.2",
     "yaml": "^2.9.0"
   }
 }

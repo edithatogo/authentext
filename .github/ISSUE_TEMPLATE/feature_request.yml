@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose an evidence-based improvement to the maintained skill contract.
+title: '[Feature] '
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: User need
+      description: What concrete task or failure mode should this address?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Proposed outcome
+      description: Describe observable behavior, not only an implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and compatibility
+      description: Link examples or standards and note portable versus host-specific impact.

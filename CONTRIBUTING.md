@@ -1,21 +1,36 @@
 # Contributing to Authentext
 
-Thanks for contributing! Please run local validation before opening a PR to reduce CI noise.
+Authentext is an Agent Skills source repository. Changes should stay within the
+maintained surface described in `AGENTS.md`; `experiments/` and archived
+Conductor tracks are not supported runtime targets.
 
-Recommended steps:
+## Development baseline
+
+Use Node.js 24 or newer, then install the locked dependencies:
 
 ```bash
-# Ensure build outputs are up to date
-npm install
-npm run sync
-
-# Run skill validation (Skillshare dry-run + optional AIX validation)
-./scripts/validate-skill.sh
+npm ci
 ```
 
-If CI fails on the skill distribution job, inspect the job logs and run the same commands locally. The job may fail due to:
+Before opening a pull request, run:
 
-- A new `SKILL.md` formatting issue
-- Tooling changes in Skillshare/AIX
+```bash
+npm run sync
+npm run validate
+npm run validate:hosts
+npm run lint:all
+npm test
+npm run test:coverage
+npm audit --audit-level=moderate
+```
 
-If you need help, open an issue referencing the failing workflow and include the workflow logs.
+Generated `SKILL.md`, `SKILL_PROFESSIONAL.md`, references, and root manifests
+must be produced with `npm run sync`, not edited independently of their canonical
+`src/` fragments.
+
+## Pull requests
+
+Keep changes focused, explain the user-facing or maintenance outcome, and attach
+the commands or hosted runs that support the claim. Automated checks and
+self-review are the merge gates for this solo-maintainer repository; no second
+reviewer, team assignment, or CODEOWNERS approval is required.
