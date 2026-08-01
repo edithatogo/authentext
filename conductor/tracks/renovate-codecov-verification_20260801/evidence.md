@@ -26,6 +26,11 @@ Verified on 2026-08-01 against `edithatogo/authentext`.
 - `renovate.json` inherits the public
   [`github>edithatogo/renovate-config`](https://github.com/edithatogo/renovate-config)
   preset and enables the Dependency Dashboard.
+- On 2026-08-01 the repository owner reported that the Renovate GitHub App had
+  been installed. The repository API now reaches the GitHub-App installation
+  boundary, but a normal repository token cannot enumerate the installation or
+  prove bot execution; GitHub returns the expected JWT-authentication error for
+  that endpoint.
 - A paginated search of all repository issues and pull requests found no item
   authored by `renovate[bot]` or another Renovate bot identity.
 - The authenticated GitHub CLI token can administer the repository but cannot
@@ -41,9 +46,7 @@ Verified on 2026-08-01 against `edithatogo/authentext`.
 
 ## Remaining gate
 
-The repository owner must install or grant the Renovate GitHub App access to
-`edithatogo/authentext` at
-<https://github.com/apps/renovate/installations/new>. After installation,
-trigger Renovate if offered and verify a Renovate-authored Dependency Dashboard
-or pull request. Until that evidence exists, `.github/dependabot.yml` remains
-the fail-closed update path and this track remains in progress.
+The remaining hosted gate is first-run proof: wait for or trigger Renovate's
+onboarding and verify a Renovate-authored Dependency Dashboard or pull request.
+Until that evidence exists, `.github/dependabot.yml` remains the fail-closed
+update path and this track remains in progress.
