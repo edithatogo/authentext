@@ -95,6 +95,17 @@ export function triageUpstreamItem(item, kind) {
 }
 
 /**
+ * Escape untrusted text for a single Markdown table cell.
+ * Backslashes must be escaped before pipes so existing escape sequences cannot
+ * neutralize the separator escape.
+ * @param {string} value
+ * @returns {string}
+ */
+function escapeMarkdownTableCell(value) {
+  return value.replaceAll('\\', '\\\\').replaceAll('|', '\\|').replace(/\r?\n/g, ' ');
+}
+
+/**
  * @param {Array<{ kind: string, number: number, title: string, decision: string, reason: string }>} rows
  * @returns {string}
  */
@@ -108,8 +119,8 @@ export function formatTriageTable(rows) {
   const body = rows
     .map((row) => {
       const label = row.kind === 'pr' ? `PR #${row.number}` : `Issue #${row.number}`;
-      const safeTitle = row.title.replace(/\|/g, '\\|');
-      const safeReason = row.reason.replace(/\|/g, '\\|');
+      const safeTitle = escapeMarkdownTableCell(row.title);
+      const safeReason = escapeMarkdownTableCell(row.reason);
       return `| ${label} | ${safeTitle} | ${row.decision.toUpperCase()} | ${safeReason} |`;
     })
     .join('\n');

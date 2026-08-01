@@ -42,5 +42,3 @@ jobs:
 
       - name: Fail on blocking code-scanning alerts
         uses: edithatogo/.github/.github/actions/code-scanning-gate@90b399a731a17b792352d0c049834a22dbd32523
-        with:
-          category: '/language:${{ matrix.language }}'

@@ -101,6 +101,11 @@ test('CodeQL excludes only frozen legacy and experimental trees', () => {
   const configPath = path.join(ROOT, '.github', 'codeql', 'codeql-config.yml');
   assert.ok(fs.existsSync(configPath), 'CodeQL scope configuration should exist');
   assert.match(workflow, /config-file:\s*\.\/\.github\/codeql\/codeql-config\.yml/);
+  assert.doesNotMatch(
+    workflow,
+    /^\s+category:/m,
+    'shared CodeQL gate must receive only supported inputs'
+  );
 
   const config = parseYaml(fs.readFileSync(configPath, 'utf8'));
   assert.deepEqual(config['paths-ignore'], ['skills/**', 'experiments/**']);
