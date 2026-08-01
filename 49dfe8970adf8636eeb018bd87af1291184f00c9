@@ -1,0 +1,1 @@
+Formal review privacy fix: protected-material differences now record only type, counts, and SHA-256 hashes; regression assertions prevent manuscript fragments from entering receipts. Focused tests, ESLint, full 79-test suite, sync, and documentation validation passed.
