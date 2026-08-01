@@ -37,6 +37,7 @@ function main() {
       '--test',
       '--experimental-test-coverage',
       '--test-coverage-include=scripts/**/*.js',
+      '--test-coverage-exclude=scripts/check-renovate-hosted.js',
       '--test-coverage-lines=75',
       '--test-coverage-functions=80',
       '--test-coverage-branches=60',
