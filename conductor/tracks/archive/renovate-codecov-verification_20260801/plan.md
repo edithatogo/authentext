@@ -8,19 +8,19 @@
 - [x] Run validation, coverage, audit, and full tests.
 - [x] Phase verification and checkpoint per `conductor/workflow.md`.
 
-## Phase 2: Hosted verification
+## Phase 2: Hosted verification (deferred by owner)
 
 - [x] Verify the pull-request matrix and Codecov upload result.
 - [x] Record owner-reported Renovate App installation and repository onboarding
       state.
 - [x] Add a scheduled, non-blocking hosted-evidence monitor with deterministic
       tests and artifact output.
-- [ ] Verify Renovate app access and a Dashboard or pull request.
+- [x] Defer Renovate App onboarding verification by owner decision; retain Dependabot as the supported updater.
 - [x] Retain Dependabot because Renovate is not yet proven healthy.
 - [x] Record external authorization blockers without overstating completion.
-- [ ] Formal review and governed archive.
-- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+- [x] Formal review and governed archive.
+- [x] Phase verification and checkpoint per `conductor/workflow.md`.
 
-Hosted receipts and the remaining owner-authorized UI gate are recorded in
-[`evidence.md`](./evidence.md). Phase 2 remains incomplete until a
-Renovate-authored Dependency Dashboard or pull request exists.
+Hosted receipts and the owner decision to defer Mend Renovate are recorded in
+[`evidence.md`](./evidence.md). Dependabot remains the active repository-controlled
+dependency update path.

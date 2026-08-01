@@ -8,9 +8,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [~] **renovate-codecov-verification_20260801** (P1) - Verify shared Renovate
-  onboarding and Codecov OIDC without removing repository-controlled
-  fallbacks. See
+- [x] **renovate-codecov-verification_20260801** (P1) - Verify shared Renovate
+    onboarding and Codecov OIDC without removing repository-controlled
+    fallbacks; Renovate onboarding deferred by owner, Dependabot retained. See
   [`tracks/renovate-codecov-verification_20260801/`](./tracks/renovate-codecov-verification_20260801/index.md).
 
 ---
