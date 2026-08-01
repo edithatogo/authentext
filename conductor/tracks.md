@@ -8,11 +8,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [~] **post-release-security-quality-frontier_20260801** (P0) - Consolidate
-  dependencies and Node 24, add measured quality evidence, strengthen
-  solo-maintainer controls, and reconcile the post-3.2.0 backlog. See
-  [`tracks/post-release-security-quality-frontier_20260801/`](./tracks/post-release-security-quality-frontier_20260801/index.md)
-  and portfolio [GitHub #65](https://github.com/edithatogo/authentext/issues/65).
+No active tracks.
 
 ---
 
@@ -26,9 +22,15 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Archived Tracks
 
-**Total archived track directories:** 26
+**Total archived track directories:** 27
 
 **Latest archives:**
+
+- [x] **post-release-security-quality-frontier_20260801** - Node 24 and audited
+      dependencies, native coverage evidence, solo-maintainer safeguards, and
+      reconciled hosted/backlog state. See
+      [`tracks/archive/post-release-security-quality-frontier_20260801/`](./tracks/archive/post-release-security-quality-frontier_20260801/index.md)
+      and GitHub [#224](https://github.com/edithatogo/authentext/issues/224).
 
 - [x] **bleeding-edge-agent-skills-conductor_20260731** - Portable Agent Skills
       conformance, behavioral evaluation, current Conductor/GitHub control plane,

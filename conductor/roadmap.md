@@ -7,7 +7,7 @@ Local Conductor files define scope and evidence. GitHub issues, subissues, and
 Project fields mirror that state; they do not establish implementation,
 publication, or release.
 
-## Now: post-release security and quality frontier
+## Completed: post-release security and quality frontier
 
 - Move maintained automation from EOL Node 20 to Node 24 LTS.
 - Consolidate PR #219 with overlapping dependency and audit work.
@@ -17,7 +17,7 @@ publication, or release.
 - Reconcile stale issues and hosted Project state.
 
 Primary track:
-[`post-release-security-quality-frontier_20260801`](./tracks/post-release-security-quality-frontier_20260801/index.md),
+[`post-release-security-quality-frontier_20260801`](./tracks/archive/post-release-security-quality-frontier_20260801/index.md),
 coordinated under [GitHub issue #65](https://github.com/edithatogo/authentext/issues/65).
 
 ## Completed: standards-compliant portable core

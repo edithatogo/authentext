@@ -11,8 +11,8 @@
     "tracks": 31,
     "phases": 128,
     "repository_issues": 168,
-    "open_tracks": 1,
-    "historical_tracks": 30
+    "open_tracks": 0,
+    "historical_tracks": 31
   },
   "verification": {
     "verified_at": "2026-08-01",
@@ -26,10 +26,10 @@
     {
       "track_id": "post-release-security-quality-frontier_20260801",
       "title": "Post-Release Security and Quality Frontier",
-      "path": "conductor/tracks/post-release-security-quality-frontier_20260801",
+      "path": "conductor/tracks/archive/post-release-security-quality-frontier_20260801",
       "priority": "P0",
-      "historical": false,
-      "metadata_status": "in_progress",
+      "historical": true,
+      "metadata_status": "archived",
       "parent_issue": {
         "number": 224,
         "node_id": "I_kwDORAMgA88AAAABLCLcjQ",
@@ -41,59 +41,59 @@
           "phase_id": "post-release-security-quality-frontier_20260801.phase1",
           "number": 1,
           "title": "Dependency and runtime consolidation",
-          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "source": "conductor/tracks/archive/post-release-security-quality-frontier_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 225,
             "node_id": "I_kwDORAMgA88AAAABLCLc0w",
             "url": "https://github.com/edithatogo/authentext/issues/225",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
           "phase_id": "post-release-security-quality-frontier_20260801.phase2",
           "number": 2,
           "title": "Measured quality frontier",
-          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "source": "conductor/tracks/archive/post-release-security-quality-frontier_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 226,
             "node_id": "I_kwDORAMgA88AAAABLCLdJg",
             "url": "https://github.com/edithatogo/authentext/issues/226",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
           "phase_id": "post-release-security-quality-frontier_20260801.phase3",
           "number": 3,
           "title": "Solo-maintainer security controls",
-          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "source": "conductor/tracks/archive/post-release-security-quality-frontier_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 227,
             "node_id": "I_kwDORAMgA88AAAABLCLdeQ",
             "url": "https://github.com/edithatogo/authentext/issues/227",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
           "phase_id": "post-release-security-quality-frontier_20260801.phase4",
           "number": 4,
           "title": "Backlog, roadmap, and GitHub reconciliation",
-          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "source": "conductor/tracks/archive/post-release-security-quality-frontier_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 228,
             "node_id": "I_kwDORAMgA88AAAABLCLdug",
             "url": "https://github.com/edithatogo/authentext/issues/228",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
           "phase_id": "post-release-security-quality-frontier_20260801.phase5",
           "number": 5,
           "title": "Final verification and governed handoff",
-          "source": "conductor/tracks/post-release-security-quality-frontier_20260801/plan.md",
+          "source": "conductor/tracks/archive/post-release-security-quality-frontier_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 229,

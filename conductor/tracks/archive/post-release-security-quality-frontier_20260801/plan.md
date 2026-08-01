@@ -8,7 +8,7 @@
 Tasks move from `[ ]` to `[~]` to `[x]` only with repository and hosted
 evidence. Each phase is mirrored by a native GitHub subissue.
 
-## Phase 1: Dependency and runtime consolidation
+## Phase 1: Dependency and runtime consolidation [checkpoint: 4417398]
 
 - [x] Add failing guardrails for Node 24 and dependency-engine compatibility.
       (M-001, M-008)
@@ -18,12 +18,12 @@ evidence. Each phase is mirrored by a native GitHub subissue.
       (M-002, M-003)
 - [x] Run audit, sync, validation, lint, type, tests, and host/portable checks.
       (M-003–M-006, S-001)
-- [~] Verify the exact revision on Linux, macOS, Windows, and CodeQL.
-- [ ] Close or supersede overlapping PRs #50, #53, and #62 with evidence.
+- [x] Verify the exact revision on Linux, macOS, Windows, and CodeQL.
+- [x] Close or supersede overlapping PRs #50, #53, and #62 with evidence.
       (M-002)
-- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+- [x] Phase verification and checkpoint per `conductor/workflow.md`.
 
-## Phase 2: Measured quality frontier
+## Phase 2: Measured quality frontier [checkpoint: 4417398]
 
 - [x] Inventory existing property, contract, behavioral, and integration tests.
       (M-007, S-002, S-003, C-003)
@@ -35,9 +35,9 @@ evidence. Each phase is mirrored by a native GitHub subissue.
       bounded adopt/exclude decision. (S-002, C-004)
 - [x] Upload a quality summary artifact; add Codecov OIDC only if hosted setup
       is verified. (S-005, C-002)
-- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+- [x] Phase verification and checkpoint per `conductor/workflow.md`.
 
-## Phase 3: Solo-maintainer security controls
+## Phase 3: Solo-maintainer security controls [checkpoint: 4417398]
 
 - [x] Inventory current rulesets, automation actors, templates, and security
       context. (M-009, S-004)
@@ -49,26 +49,26 @@ evidence. Each phase is mirrored by a native GitHub subissue.
 - [x] Verify hosted ruleset behavior and owner recovery.
 - [x] Verify Renovate access before any Dependabot removal; otherwise retain
       Dependabot and record the external gate. (M-011, S-006)
-- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+- [x] Phase verification and checkpoint per `conductor/workflow.md`.
 
-## Phase 4: Backlog, roadmap, and GitHub reconciliation
+## Phase 4: Backlog, roadmap, and GitHub reconciliation [checkpoint: 4417398]
 
-- [~] Reconcile issue #54 against the final audit and install-surface contract.
+- [x] Reconcile issue #54 against the final audit and install-surface contract.
 - [x] Reconcile issues #57–#59 against merged files, tests, and hosted runs.
       (M-012)
 - [x] Keep or route issue #61 based on its product-scope evidence.
 - [x] Rewrite `conductor/roadmap.md` for the post-3.2.0 frontier. (S-007)
 - [x] Verify native issue/subissue hierarchy and Project 36 fields. (M-013)
 - [x] Refresh the deterministic GitHub mapping receipt.
-- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+- [x] Phase verification and checkpoint per `conductor/workflow.md`.
 
-## Phase 5: Final verification and governed handoff
+## Phase 5: Final verification and governed handoff [checkpoint: 4417398]
 
-- [ ] Run full local, official Agent Skills, audit, coverage, and Conductor
+- [x] Run full local, official Agent Skills, audit, coverage, and Conductor
       gates.
-- [ ] Run formal Conductor review and resolve findings.
-- [ ] Verify hosted CI on the exact final revision.
-- [ ] Record external gates for Renovate, Codecov, publication, or credentials.
+- [x] Run formal Conductor review and resolve findings.
+- [x] Verify hosted CI on the exact final revision.
+- [x] Record external gates for Renovate, Codecov, publication, or credentials.
       (M-014)
-- [ ] Archive the track only after repository and hosted evidence agree.
-- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+- [x] Archive the track only after repository and hosted evidence agree.
+- [x] Phase verification and checkpoint per `conductor/workflow.md`.
