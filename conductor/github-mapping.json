@@ -11,8 +11,8 @@
     "tracks": 33,
     "phases": 132,
     "repository_issues": 174,
-    "open_tracks": 2,
-    "historical_tracks": 31
+    "open_tracks": 1,
+    "historical_tracks": 32
   },
   "verification": {
     "verified_at": "2026-08-01",
@@ -68,41 +68,41 @@
     {
       "track_id": "foio-editorial-workflow_20260801",
       "title": "FOI-O Editorial Workflow",
-      "path": "conductor/tracks/foio-editorial-workflow_20260801",
+      "path": "conductor/tracks/archive/foio-editorial-workflow_20260801",
       "priority": "P1",
-      "historical": false,
-      "metadata_status": "in_progress",
+      "historical": true,
+      "metadata_status": "archived",
       "parent_issue": {
         "number": 237,
         "node_id": "I_kwDORAMgA88AAAABLChMvg",
         "url": "https://github.com/edithatogo/authentext/issues/237",
-        "state": "open"
+        "state": "closed"
       },
       "phases": [
         {
           "phase_id": "foio-editorial-workflow_20260801.phase1",
           "number": 1,
           "title": "Portable workflow contract",
-          "source": "conductor/tracks/foio-editorial-workflow_20260801/plan.md",
+          "source": "conductor/tracks/archive/foio-editorial-workflow_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 238,
             "node_id": "I_kwDORAMgA88AAAABLChNqA",
             "url": "https://github.com/edithatogo/authentext/issues/238",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
           "phase_id": "foio-editorial-workflow_20260801.phase2",
           "number": 2,
           "title": "Hosted reconciliation and closeout",
-          "source": "conductor/tracks/foio-editorial-workflow_20260801/plan.md",
+          "source": "conductor/tracks/archive/foio-editorial-workflow_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 239,
             "node_id": "I_kwDORAMgA88AAAABLChOpw",
             "url": "https://github.com/edithatogo/authentext/issues/239",
-            "state": "open"
+            "state": "closed"
           }
         }
       ]

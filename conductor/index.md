@@ -20,7 +20,7 @@ than guessing paths.
 - [Roadmap](./roadmap.md)
 - [Tracks Registry](./tracks.md)
 - [Active Renovate and Codecov Track](./tracks/renovate-codecov-verification_20260801/index.md)
-- [Active FOI-O Editorial Workflow Track](./tracks/foio-editorial-workflow_20260801/index.md)
+- [Archived FOI-O Editorial Workflow Track](./tracks/archive/foio-editorial-workflow_20260801/index.md)
 - [Archived Security and Quality Track](./tracks/archive/post-release-security-quality-frontier_20260801/index.md)
 - [Released Bleeding-Edge Track](./tracks/archive/bleeding-edge-agent-skills-conductor_20260731/index.md)
 - [GitHub Issue Mapping](./github-mapping.json)

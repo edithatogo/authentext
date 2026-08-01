@@ -13,11 +13,6 @@ This file tracks all major tracks for the project. Each track has its own detail
   fallbacks. See
   [`tracks/renovate-codecov-verification_20260801/`](./tracks/renovate-codecov-verification_20260801/index.md).
 
-- [~] **foio-editorial-workflow_20260801** (P1) - Implement a portable,
-  fail-closed final editorial workflow and evidence receipt for FOI-O while
-  preserving human acceptance and publication gates. See
-  [`tracks/foio-editorial-workflow_20260801/`](./tracks/foio-editorial-workflow_20260801/index.md).
-
 ---
 
 ## Completed Track Retained at Legacy Path
@@ -33,6 +28,12 @@ This file tracks all major tracks for the project. Each track has its own detail
 **Total archived track directories:** 27
 
 **Latest archives:**
+
+- [x] **foio-editorial-workflow_20260801** - Portable, fail-closed FOI-O final
+      editorial workflow with privacy-conscious evidence receipts and retained
+      human acceptance/publication gates. See
+      [`tracks/archive/foio-editorial-workflow_20260801/`](./tracks/archive/foio-editorial-workflow_20260801/index.md)
+      and GitHub [#237](https://github.com/edithatogo/authentext/issues/237).
 
 - [x] **post-release-security-quality-frontier_20260801** - Node 24 and audited
       dependencies, native coverage evidence, solo-maintainer safeguards, and
