@@ -20,7 +20,10 @@ warranted permissions.
 
 Active ruleset `20171596` (`Authentext main safeguards`) targets the default
 branch and blocks branch deletion and non-fast-forward pushes. It requires
-up-to-date `test`, `actionlint`, and `portable-spec` checks. Repository
+up-to-date `test` and `portable-spec` checks, which run on every pull request.
+`actionlint` remains enforced by its path-filtered workflow when workflow files
+change, but is not a global required context because it does not run on
+Conductor-only changes. Repository
 administrators retain an explicit recovery bypass; no review count, team,
 CODEOWNERS, or human approval is required.
 

@@ -27,4 +27,8 @@ style finding.
 
 ## Findings
 
-No actionable findings.
+The archival PR demonstrated that the initially required `actionlint` context is
+path-filtered and absent for Conductor-only changes. Ruleset `20171596` was
+corrected to require only the universal `test` and `portable-spec` contexts;
+`actionlint` remains enforced whenever workflow paths change. No finding remains
+open.
