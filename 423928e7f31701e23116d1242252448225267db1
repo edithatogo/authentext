@@ -1,0 +1,1 @@
+Formal review fix and archive-path transition. Generalized Conductor artifact validation to use the authoritative track path from github-mapping.json. The existing handshake test failed after the archive move and passed after the fix. Commit also records the mechanical track and release-note moves; semantic archive state is finalized in 7ba1e54.
