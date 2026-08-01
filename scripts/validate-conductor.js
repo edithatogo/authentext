@@ -47,13 +47,16 @@ for (const track of tracks) {
   }
 }
 
-const active = tracks.find(
+const bleedingEdgeTrack = tracks.find(
   (track) => track.track_id === 'bleeding-edge-agent-skills-conductor_20260731'
 );
-if (!active) errors.push('active bleeding-edge track is absent from github mapping');
-for (const artifact of ['requirements.md', 'design.md', 'plan.md', 'spec.md']) {
-  const relative = `conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/${artifact}`;
-  if (!fs.existsSync(path.join(root, relative))) errors.push(`missing ${relative}`);
+if (!bleedingEdgeTrack) {
+  errors.push('bleeding-edge track is absent from github mapping');
+} else {
+  for (const artifact of ['requirements.md', 'design.md', 'plan.md', 'spec.md']) {
+    const relative = path.posix.join(bleedingEdgeTrack.path, artifact);
+    if (!fs.existsSync(path.join(root, relative))) errors.push(`missing ${relative}`);
+  }
 }
 
 if (errors.length) {
