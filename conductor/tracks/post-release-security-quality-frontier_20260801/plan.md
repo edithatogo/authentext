@@ -1,0 +1,74 @@
+# Implementation Plan: Post-Release Security and Quality Frontier
+
+- Track: `post-release-security-quality-frontier_20260801`
+- Requirements: [`requirements.md`](./requirements.md)
+- Design: [`design.md`](./design.md)
+- Portfolio issue: [#65](https://github.com/edithatogo/authentext/issues/65)
+
+Tasks move from `[ ]` to `[~]` to `[x]` only with repository and hosted
+evidence. Each phase is mirrored by a native GitHub subissue.
+
+## Phase 1: Dependency and runtime consolidation
+
+- [ ] Add failing guardrails for Node 24 and dependency-engine compatibility.
+      (M-001, M-008)
+- [ ] Update maintained workflows and declared tooling baseline to Node 24.
+      (M-001, M-004)
+- [ ] Reproduce and review PR #219's dependency set on current `main`.
+      (M-002, M-003)
+- [ ] Run audit, sync, validation, lint, type, tests, and host/portable checks.
+      (M-003–M-006, S-001)
+- [ ] Verify the exact revision on Linux, macOS, Windows, and CodeQL.
+- [ ] Close or supersede overlapping PRs #50, #53, and #62 with evidence.
+      (M-002)
+- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+
+## Phase 2: Measured quality frontier
+
+- [ ] Inventory existing property, contract, behavioral, and integration tests.
+      (M-007, S-002, S-003, C-003)
+- [ ] Add a failing test for deterministic machine-readable coverage output.
+- [ ] Implement Node-native coverage across the real aggregate test corpus.
+      (M-007)
+- [ ] Extend property tests where current invariant coverage is weak. (S-003)
+- [ ] Evaluate mutation tooling against maintained JavaScript and record a
+      bounded adopt/exclude decision. (S-002, C-004)
+- [ ] Upload a quality summary artifact; add Codecov OIDC only if hosted setup
+      is verified. (S-005, C-002)
+- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+
+## Phase 3: Solo-maintainer security controls
+
+- [ ] Inventory current rulesets, automation actors, templates, and security
+      context. (M-009, S-004)
+- [ ] Add failing validation for warranted repository-owned context files.
+- [ ] Add missing contribution/issue/PR context without legacy installer claims.
+      (S-004)
+- [ ] Implement the least restrictive ruleset that blocks destructive pushes
+      and requires stable automated checks without human approvals. (M-010)
+- [ ] Verify hosted ruleset behavior and owner recovery.
+- [ ] Verify Renovate access before any Dependabot removal; otherwise retain
+      Dependabot and record the external gate. (M-011, S-006)
+- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+
+## Phase 4: Backlog, roadmap, and GitHub reconciliation
+
+- [ ] Reconcile issue #54 against the final audit and install-surface contract.
+- [ ] Reconcile issues #57–#59 against merged files, tests, and hosted runs.
+      (M-012)
+- [ ] Keep or route issue #61 based on its product-scope evidence.
+- [ ] Rewrite `conductor/roadmap.md` for the post-3.2.0 frontier. (S-007)
+- [ ] Verify native issue/subissue hierarchy and Project 36 fields. (M-013)
+- [ ] Refresh the deterministic GitHub mapping receipt.
+- [ ] Phase verification and checkpoint per `conductor/workflow.md`.
+
+## Phase 5: Final verification and governed handoff
+
+- [ ] Run full local, official Agent Skills, audit, coverage, and Conductor
+      gates.
+- [ ] Run formal Conductor review and resolve findings.
+- [ ] Verify hosted CI on the exact final revision.
+- [ ] Record external gates for Renovate, Codecov, publication, or credentials.
+      (M-014)
+- [ ] Archive the track only after repository and hosted evidence agree.
+- [ ] Phase verification and checkpoint per `conductor/workflow.md`.

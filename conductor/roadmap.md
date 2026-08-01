@@ -7,16 +7,20 @@ Local Conductor files define scope and evidence. GitHub issues, subissues, and
 Project fields mirror that state; they do not establish implementation,
 publication, or release.
 
-## Now: restore a trustworthy control plane
+## Now: post-release security and quality frontier
 
-- Restore the Conductor handshake and current setup assets.
-- Mirror all 29 historical track records and their phases as closed GitHub
-  issues and native subissues.
-- Add every repository issue/subissue to Project 36.
-- Preserve archive content as history and record stale metadata rather than
-  rewriting it.
+- Move maintained automation from EOL Node 20 to Node 24 LTS.
+- Consolidate PR #219 with overlapping dependency and audit work.
+- Resolve supported npm audit findings without forced upgrades.
+- Add measured coverage and evaluate bounded property/mutation improvements.
+- Strengthen solo-maintainer controls without reviewer or CODEOWNERS gates.
+- Reconcile stale issues and hosted Project state.
 
-## Next: standards-compliant portable core
+Primary track:
+[`post-release-security-quality-frontier_20260801`](./tracks/post-release-security-quality-frontier_20260801/index.md),
+coordinated under [GitHub issue #65](https://github.com/edithatogo/authentext/issues/65).
+
+## Completed: standards-compliant portable core
 
 Primary track:
 [`bleeding-edge-agent-skills-conductor_20260731`](./tracks/archive/bleeding-edge-agent-skills-conductor_20260731/index.md),
