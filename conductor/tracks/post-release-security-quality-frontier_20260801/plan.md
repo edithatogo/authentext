@@ -39,15 +39,15 @@ evidence. Each phase is mirrored by a native GitHub subissue.
 
 ## Phase 3: Solo-maintainer security controls
 
-- [ ] Inventory current rulesets, automation actors, templates, and security
+- [x] Inventory current rulesets, automation actors, templates, and security
       context. (M-009, S-004)
-- [ ] Add failing validation for warranted repository-owned context files.
-- [ ] Add missing contribution/issue/PR context without legacy installer claims.
+- [x] Add failing validation for warranted repository-owned context files.
+- [x] Add missing contribution/issue/PR context without legacy installer claims.
       (S-004)
-- [ ] Implement the least restrictive ruleset that blocks destructive pushes
+- [x] Implement the least restrictive ruleset that blocks destructive pushes
       and requires stable automated checks without human approvals. (M-010)
-- [ ] Verify hosted ruleset behavior and owner recovery.
-- [ ] Verify Renovate access before any Dependabot removal; otherwise retain
+- [x] Verify hosted ruleset behavior and owner recovery.
+- [x] Verify Renovate access before any Dependabot removal; otherwise retain
       Dependabot and record the external gate. (M-011, S-006)
 - [ ] Phase verification and checkpoint per `conductor/workflow.md`.
 

@@ -151,3 +151,20 @@ test('release workflow packages only maintained, existing paths', () => {
   assert.doesNotMatch(source, /docs\/install-matrix\.md/);
   assert.doesNotMatch(source, /humanizer-next/);
 });
+
+test('solo-maintainer contribution context is current and reviewer-neutral', () => {
+  for (const file of [
+    'CONTRIBUTING.md',
+    'SECURITY.md',
+    '.github/PULL_REQUEST_TEMPLATE.md',
+    '.github/ISSUE_TEMPLATE/bug_report.yml',
+    '.github/ISSUE_TEMPLATE/feature_request.yml',
+    '.github/ISSUE_TEMPLATE/config.yml',
+  ]) {
+    assert.ok(fs.existsSync(path.join(ROOT, file)), `missing repository context: ${file}`);
+  }
+  assert.equal(fs.existsSync(path.join(ROOT, '.github', 'CODEOWNERS')), false);
+  const security = fs.readFileSync(path.join(ROOT, 'SECURITY.md'), 'utf8');
+  assert.match(security, /edithatogo\/authentext\/security\/advisories\/new/);
+  assert.doesNotMatch(security, /authentext-next/);
+});

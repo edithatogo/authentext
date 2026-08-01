@@ -1,78 +1,25 @@
 # Security Policy
 
-## Reporting a Vulnerability
+## Supported versions
 
-We take the security of Authentext seriously. If you believe you've found a security vulnerability, please follow these guidelines:
+Security fixes target the latest tagged release and the current `main` branch.
+Older releases are not maintained unless a notice says otherwise.
 
-### How to Report
+## Reporting a vulnerability
 
-**Preferred Method:** Use GitHub's private vulnerability reporting feature:
+Do not disclose a suspected vulnerability in a public issue. Use GitHub's
+[private vulnerability report](https://github.com/edithatogo/authentext/security/advisories/new)
+with reproduction steps, affected versions or revisions, likely impact, and any
+suggested mitigation.
 
-1. Go to the [Security tab](https://github.com/edithatogo/authentext-next/security)
-2. Click "Report a vulnerability"
-3. Provide details about the vulnerability
+Reports are acknowledged as maintainer availability permits. Response and
+resolution times depend on validated severity and are not guaranteed service
+levels. Coordinated disclosure and responsible research are welcome; do not
+access other people's data, degrade services, or test outside systems you own or
+are authorized to assess.
 
-**Alternative Method:** If you cannot use GitHub's feature, you may create an issue with the `[security]` label prefix, but note that this will be publicly visible.
+## Scope
 
-### What to Include
-
-Please provide as much information as possible:
-
-- Description of the vulnerability
-- Steps to reproduce
-- Affected versions
-- Potential impact
-- Any suggested fixes (optional)
-
-### Response Timeline
-
-- **Initial Response:** Within 48 hours
-- **Status Update:** Within 5 business days
-- **Resolution Target:** Depends on severity (see below)
-
-### Severity Levels
-
-| Severity | Response Time | Resolution Target |
-| :--- | :--- | :--- |
-| Critical | 24 hours | 7 days |
-| High | 48 hours | 14 days |
-| Medium | 5 days | 30 days |
-| Low | 10 days | Next release |
-
-### What to Expect
-
-1. **Acknowledgment:** We'll confirm receipt of your report within 48 hours
-2. **Assessment:** Our team will evaluate the vulnerability and determine severity
-3. **Communication:** We'll keep you informed of our progress
-4. **Resolution:** Once fixed, we'll notify you and optionally credit you (with your permission)
-
-### Supported Versions
-
-| Version | Supported |
-|---------|-----------|
-| 2.3.x   | ✅ Yes    |
-| 2.2.x   | ✅ Yes    |
-| < 2.2   | ❌ No     |
-
-### Security Best Practices for Users
-
-While we work to keep Authentext secure, please also follow these best practices:
-
-1. **Keep Updated:** Always use the latest version
-2. **Review Permissions:** Only grant necessary tool access
-3. **Validate Input:** Be cautious with untrusted text input
-4. **Report Issues:** Don't hesitate to report potential vulnerabilities
-
-### Security Research
-
-We welcome responsible security research. If you're conducting security research on Authentext:
-
-- Please coordinate with us first
-- Avoid testing on production systems
-- Respect user privacy and data
-
----
-
-**Last Updated:** 2026-03-03
-
-**Contact:** For security questions, please use the vulnerability reporting system above.
+The supported contract is the maintained repository surface described in
+`AGENTS.md`. Archived Conductor history, `experiments/`, third-party clients, and
+downstream copies are outside the supported security boundary.

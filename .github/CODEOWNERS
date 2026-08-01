@@ -1,7 +1,0 @@
-# Default maintainer ownership for a single-maintainer skill-source repo.
-* @edithatogo
-
-# Workflow and automation changes should stay visible to the maintainer.
-.github/ @edithatogo
-scripts/ @edithatogo
-conductor/ @edithatogo
