@@ -8,12 +8,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [~] **bleeding-edge-agent-skills-conductor_20260731** (P0) -
-      Standards-compliant portable skill, behavioral evaluation, current
-      Conductor protocol, native GitHub phase hierarchy, and governed
-      experimental channels. See
-      [`tracks/bleeding-edge-agent-skills-conductor_20260731/`](./tracks/bleeding-edge-agent-skills-conductor_20260731/index.md)
-      and [GitHub #66](https://github.com/edithatogo/authentext/issues/66).
+No active tracks.
 
 ---
 
@@ -27,10 +22,15 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Archived Tracks
 
-**Total archived track directories:** 25 (24 legacy + `modernization_20260610`)
+**Total archived track directories:** 26
 
 **Latest archives:**
 
+- [x] **bleeding-edge-agent-skills-conductor_20260731** - Portable Agent Skills
+      conformance, behavioral evaluation, current Conductor/GitHub control plane,
+      governed experimental layers, and release `v3.2.0`. See
+      [`tracks/archive/bleeding-edge-agent-skills-conductor_20260731/`](./tracks/archive/bleeding-edge-agent-skills-conductor_20260731/index.md)
+      and [GitHub #66](https://github.com/edithatogo/authentext/issues/66).
 - modernization_20260610 (Bleeding-edge modernization: upstream v2.8.0, sourceright extraction, Agent Skills migration)
 - v4-architecture_20260415 (Modular V4 Architecture & Ecosystem Overhaul)
 - upstream-pr-adoption_20260304 (Patterns 28-30 adopted)
@@ -193,4 +193,4 @@ Live self-improvement outputs (not a track): `conductor/self-improvement/`
 
 Last updated: 2026-07-31.
 
-Active P0 track: standards-compliant Agent Skills and Conductor alignment.
+No active track. Latest release: `v3.2.0`.

@@ -19,7 +19,7 @@ publication, or release.
 ## Next: standards-compliant portable core
 
 Primary track:
-[`bleeding-edge-agent-skills-conductor_20260731`](./tracks/bleeding-edge-agent-skills-conductor_20260731/index.md),
+[`bleeding-edge-agent-skills-conductor_20260731`](./tracks/archive/bleeding-edge-agent-skills-conductor_20260731/index.md),
 mirrored by [GitHub issue #66](https://github.com/edithatogo/authentext/issues/66).
 
 - Repair generated frontmatter and portable metadata.

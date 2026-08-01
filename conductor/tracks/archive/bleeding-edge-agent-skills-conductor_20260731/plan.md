@@ -89,7 +89,7 @@ GitHub subissue:
 - [x] Add current/history/Must/experimental Project views if supported.
       (C-005)
 
-## Phase 6: Release-candidate verification and governed handoff
+## Phase 6: Release-candidate verification and governed handoff [checkpoint: 423928e]
 
 GitHub subissue:
 [#72](https://github.com/edithatogo/authentext/issues/72).
@@ -103,8 +103,13 @@ GitHub subissue:
 - [x] Record remaining external, experimental, and human gates.
 - [x] Prepare release notes without tagging, releasing, or publishing.
       (M-017, W-006)
-- [ ] Obtain separate explicit approval before any public release action.
-      (M-017)
+- [x] Obtain separate explicit approval before any public release action and
+      publish the supported GitHub release. (M-017) [tag: v3.2.0; run:
+      30684012674]
+- [x] Apply formal-review fix for the deprecated release-action runtime.
+      [commit: 49ea366]
+- [x] Generalize Conductor validation across active and archived mapped paths.
+      [commit: 423928e]
 
 ## Handoff artifacts
 
@@ -112,4 +117,5 @@ GitHub subissue:
 - Trigger and output evaluation corpus plus machine-readable results.
 - Conductor/GitHub reconciliation command and mapping receipt.
 - Host-layer schemas and validation evidence.
-- Release-candidate verification receipt and explicit remaining gates.
+- Release verification receipt, published GitHub artifacts, and explicit
+  boundary excluding npm or skill-registry publication.

@@ -53,11 +53,22 @@ CodeQL alerts 13 and 14 report their most recent instances as `fixed`. Their
 top-level records remained open while GitHub processed the default-branch
 state transition.
 
-## Remaining gates
+## Published release
 
-- Public tag, release, and publication remain explicitly unapproved. Repository
-  integration is complete through merged PRs #218 and #220.
-- The publish preview reports no active tag-protection ruleset.
+- The user explicitly authorized the supported release scope in direct response
+  to the Phase 6 authorization question.
+- Annotated tag `v3.2.0` targets verified `main` commit `58d8ad1`.
+- Release run `30684012674` passed build, validation, packaging, artifact-surface
+  verification, artifact upload, and GitHub Release publication.
+- [Authentext 3.2.0](https://github.com/edithatogo/authentext/releases/tag/v3.2.0)
+  is public with ZIP and TAR.GZ assets and GitHub-recorded SHA-256 digests.
+- npm publication and separate skill-registry submission were not authorized
+  and did not occur; the npm package remains private.
 
-Release notes are prepared at `docs/release-candidate-3.2.0.md`. This receipt is
-not a release authorization.
+The successful release run warned that the pinned release action declared
+deprecated Node.js 20. Formal review upgraded it to upstream v3.0.2 at immutable
+commit `3d0d9888cb7fd7b750713d6e236d1fcb99157228`, which uses Node.js 24. The
+regression failed on the old pin and passed with the new pin; commit `49ea366`
+also passed the full 73-test and integration gate.
+
+Final release notes are recorded at `docs/release-3.2.0.md`.

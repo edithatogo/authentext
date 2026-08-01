@@ -19,7 +19,7 @@ than guessing paths.
 
 - [Roadmap](./roadmap.md)
 - [Tracks Registry](./tracks.md)
-- [Active Bleeding-Edge Track](./tracks/bleeding-edge-agent-skills-conductor_20260731/index.md)
+- [Released Bleeding-Edge Track](./tracks/archive/bleeding-edge-agent-skills-conductor_20260731/index.md)
 - [GitHub Issue Mapping](./github-mapping.json)
 
 ## Capability Contract

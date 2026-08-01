@@ -2,7 +2,7 @@
 
 - **Track ID:** `bleeding-edge-agent-skills-conductor_20260731`
 - **Priority:** P0
-- **Status:** Active
+- **Status:** Archived — completed and released as `v3.2.0` on 2026-08-01
 - **GitHub Project:** [Authentext Conductor Roadmap](https://github.com/users/edithatogo/projects/36)
 - **Parent issue:** [#66](https://github.com/edithatogo/authentext/issues/66)
 
@@ -16,7 +16,11 @@
 - [Phase 1 Verification](./phase1-verification.md)
 - [Phase 2 Verification](./phase2-verification.md)
 - [Phase 3 Verification](./phase3-verification.md)
-- [Repository Roadmap](../../roadmap.md)
+- [Phase 4 Verification](./phase4-verification.md)
+- [Phase 5 Verification](./phase5-verification.md)
+- [Phase 6 Verification](./phase6-verification.md)
+- [Formal Review](./review.md)
+- [Repository Roadmap](../../../roadmap.md)
 
 ## Outcome
 
@@ -28,9 +32,9 @@ coordination mirror.
 
 ## Evidence boundary
 
-Creating this track and its GitHub hierarchy does not establish implementation,
-passing CI, registry acceptance, publication, or release. Those states require
-the evidence and explicit gates in the plan.
+The repository implementation and GitHub Release are complete. npm publication
+and separate skill-registry submission were outside the authorized release
+scope and did not occur. See the Phase 6 receipt for exact hosted evidence.
 
 ## Native phase subissues
 

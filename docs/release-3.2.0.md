@@ -1,8 +1,8 @@
-# Authentext 3.2.0 release candidate
+# Authentext 3.2.0 release
 
 Prepared: 2026-08-01
 
-This candidate makes Authentext a single portable Agent Skill with generated
+This release makes Authentext a single portable Agent Skill with generated
 progressive-disclosure references, deterministic validation, behavioral
 evaluation receipts, and an optional governed OpenAI host overlay.
 
@@ -20,7 +20,7 @@ evaluation receipts, and an optional governed OpenAI host overlay.
 - Executable Conductor handshake and dry-run-first GitHub reconciliation for 30
   tracks, 123 phases, Project membership, native subissues, and state receipts.
 
-## Candidate verification
+## Verification
 
 - Sync, repository docs, host overlays, and Conductor validation: passed.
 - Lint, Vale, ESLint, TypeScript, and Prettier: passed.
@@ -31,7 +31,7 @@ evaluation receipts, and an optional governed OpenAI host overlay.
 - Live Conductor/GitHub reconciliation: clean for all 153 mapped nodes and 123
   native parent/phase relationships.
 
-## Explicit gates
+## Release evidence
 
 - PR #218 verified the candidate across CI, CodeQL, workflow lint, portable
   validation, publish preview, behavioral evaluations, and
@@ -41,6 +41,12 @@ evaluation receipts, and an optional governed OpenAI host overlay.
 - The exact final `main` revision passed CI (`30683241535`), skill distribution
   validation (`30683241550`), workflow lint (`30683241565`), and CodeQL with its
   blocking-alert gate (`30683241551`).
-- No tag, GitHub release, npm publication, or skill publication has occurred.
-- Public release actions require separate explicit approval.
-- GitHub recommends an active tag-protection ruleset before immutable releases.
+- Tag `v3.2.0` targets verified commit `58d8ad1`.
+- Release workflow run `30684012674` passed and published the ZIP and TAR.GZ
+  assets with GitHub-recorded SHA-256 digests.
+- [Authentext 3.2.0](https://github.com/edithatogo/authentext/releases/tag/v3.2.0)
+  was published on 2026-08-01.
+- npm publication and separate skill-registry submission did not occur; the npm
+  package remains private.
+- Formal review upgraded the release action to Node.js 24-based v3.0.2 for
+  future releases after the successful v3.2.0 run emitted a deprecation warning.

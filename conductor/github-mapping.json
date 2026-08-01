@@ -11,8 +11,8 @@
     "tracks": 30,
     "phases": 123,
     "repository_issues": 162,
-    "open_tracks": 1,
-    "historical_tracks": 29
+    "open_tracks": 0,
+    "historical_tracks": 30
   },
   "verification": {
     "verified_at": "2026-07-31",
@@ -26,22 +26,22 @@
     {
       "track_id": "bleeding-edge-agent-skills-conductor_20260731",
       "title": "Bleeding-Edge Agent Skills and Conductor Alignment",
-      "path": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731",
+      "path": "conductor/tracks/archive/bleeding-edge-agent-skills-conductor_20260731",
       "priority": "P0",
-      "historical": false,
-      "metadata_status": "new",
+      "historical": true,
+      "metadata_status": "archived",
       "parent_issue": {
         "number": 66,
         "node_id": "I_kwDORAMgA88AAAABK6xpRg",
         "url": "https://github.com/edithatogo/authentext/issues/66",
-        "state": "open"
+        "state": "closed"
       },
       "phases": [
         {
           "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase1",
           "number": 1,
           "title": "Portable contract and generated frontmatter",
-          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "source": "conductor/tracks/archive/bleeding-edge-agent-skills-conductor_20260731/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 67,
@@ -54,7 +54,7 @@
           "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase2",
           "number": 2,
           "title": "Deterministic validation, tests, and CI",
-          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "source": "conductor/tracks/archive/bleeding-edge-agent-skills-conductor_20260731/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 68,
@@ -67,7 +67,7 @@
           "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase3",
           "number": 3,
           "title": "Progressive disclosure and behavioral evaluation",
-          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "source": "conductor/tracks/archive/bleeding-edge-agent-skills-conductor_20260731/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 69,
@@ -80,7 +80,7 @@
           "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase4",
           "number": 4,
           "title": "Identity, metadata, and host layers",
-          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "source": "conductor/tracks/archive/bleeding-edge-agent-skills-conductor_20260731/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 70,
@@ -93,7 +93,7 @@
           "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase5",
           "number": 5,
           "title": "Conductor, GitHub, and experimental operations",
-          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "source": "conductor/tracks/archive/bleeding-edge-agent-skills-conductor_20260731/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 71,
@@ -106,13 +106,13 @@
           "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase6",
           "number": 6,
           "title": "Release-candidate verification and governed handoff",
-          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "source": "conductor/tracks/archive/bleeding-edge-agent-skills-conductor_20260731/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 72,
             "node_id": "I_kwDORAMgA88AAAABK6xv5g",
             "url": "https://github.com/edithatogo/authentext/issues/72",
-            "state": "open"
+            "state": "closed"
           }
         }
       ]
