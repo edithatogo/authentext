@@ -25,6 +25,7 @@
     "typecheck": "tsc --noEmit",
     "lint:all": "npm run lint && npm run vale && npm run lint:js && npm run typecheck && npm run format:check",
     "test": "node scripts/run-node-tests.js && node scripts/run-tests.js",
+    "test:coverage": "node scripts/run-coverage.js",
     "build": "node scripts/compile-skill.js",
     "prepare": "node -e \"if (!process.env.CI) require('child_process').execSync('npx husky install', { stdio: 'inherit' })\"",
     "release": "echo 'No npm release: Authentext ships Agent Skill artifacts, not a publishable npm library'",

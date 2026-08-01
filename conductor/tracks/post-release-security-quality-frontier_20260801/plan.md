@@ -25,15 +25,15 @@ evidence. Each phase is mirrored by a native GitHub subissue.
 
 ## Phase 2: Measured quality frontier
 
-- [ ] Inventory existing property, contract, behavioral, and integration tests.
+- [x] Inventory existing property, contract, behavioral, and integration tests.
       (M-007, S-002, S-003, C-003)
-- [ ] Add a failing test for deterministic machine-readable coverage output.
-- [ ] Implement Node-native coverage across the real aggregate test corpus.
+- [x] Add a failing test for deterministic machine-readable coverage output.
+- [x] Implement Node-native coverage across the real aggregate test corpus.
       (M-007)
-- [ ] Extend property tests where current invariant coverage is weak. (S-003)
-- [ ] Evaluate mutation tooling against maintained JavaScript and record a
+- [x] Extend property tests where current invariant coverage is weak. (S-003)
+- [x] Evaluate mutation tooling against maintained JavaScript and record a
       bounded adopt/exclude decision. (S-002, C-004)
-- [ ] Upload a quality summary artifact; add Codecov OIDC only if hosted setup
+- [x] Upload a quality summary artifact; add Codecov OIDC only if hosted setup
       is verified. (S-005, C-002)
 - [ ] Phase verification and checkpoint per `conductor/workflow.md`.
 
