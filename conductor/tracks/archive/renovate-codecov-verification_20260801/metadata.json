@@ -3,8 +3,8 @@
   "title": "Renovate and Codecov Verification",
   "type": "maintenance",
   "priority": "P1",
-  "status": "in_progress",
+  "status": "completed",
   "created_at": "2026-08-01",
   "updated_at": "2026-08-01",
-  "current_phase": "Phase 2: Hosted verification"
+  "current_phase": "Phase 2: Hosted verification (deferred by owner)"
 }

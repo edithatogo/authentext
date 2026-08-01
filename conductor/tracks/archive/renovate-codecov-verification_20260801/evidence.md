@@ -48,9 +48,10 @@ Verified on 2026-08-01 against `edithatogo/authentext`.
   browser-control bridge could not initialize in this session. No installation
   click or authorization is claimed.
 
-## Remaining gate
+## Owner decision and closeout
 
-The remaining hosted gate is first-run proof: wait for or trigger Renovate's
-onboarding and verify a Renovate-authored Dependency Dashboard or pull request.
-Until that evidence exists, `.github/dependabot.yml` remains the fail-closed
-update path and this track remains in progress.
+The owner elected not to pursue Mend Renovate onboarding. The absent
+Renovate-authored Dashboard/PR is therefore recorded as a deferred optional
+integration, not an unresolved repository defect. `.github/dependabot.yml`
+remains the fail-closed update path and this track is complete with the
+Renovate portion explicitly deferred.
