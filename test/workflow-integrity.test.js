@@ -168,3 +168,18 @@ test('solo-maintainer contribution context is current and reviewer-neutral', () 
   assert.match(security, /edithatogo\/authentext\/security\/advisories\/new/);
   assert.doesNotMatch(security, /authentext-next/);
 });
+
+test('external dependency and coverage integrations fail closed', () => {
+  const renovate = JSON.parse(fs.readFileSync(path.join(ROOT, 'renovate.json'), 'utf8'));
+  assert.ok(renovate.extends.includes('github>edithatogo/renovate-config'));
+  assert.ok(fs.existsSync(path.join(ROOT, '.github', 'dependabot.yml')));
+
+  const ci = parseYaml(fs.readFileSync(path.join(WORKFLOW_DIR, 'ci.yml'), 'utf8'));
+  assert.equal(ci.jobs.test.permissions?.['id-token'], 'write');
+  const upload = ci.jobs.test.steps.find(
+    (step) => typeof step.uses === 'string' && step.uses.startsWith('codecov/codecov-action@')
+  );
+  assert.equal(upload?.uses, 'codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac');
+  assert.equal(upload?.with?.use_oidc, true);
+  assert.equal(upload?.with?.files, './coverage/lcov.info');
+});

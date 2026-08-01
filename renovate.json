@@ -1,21 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    "group:monorepos"
-  ],
-  "additionalBranchPrefix": "deps-",
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
-    },
-    {
-      "matchPaths": ["skills/**/package.json"],
-      "groupName": "humanizer-skills-dependencies",
-      "commitMessagePrefix": "chore(deps-skills):",
-      "additionalBranchPrefix": "deps-skills-"
-    }
-  ]
+  "extends": ["github>edithatogo/renovate-config"],
+  "dependencyDashboard": true
 }
