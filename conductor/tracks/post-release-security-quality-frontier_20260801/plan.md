@@ -53,13 +53,13 @@ evidence. Each phase is mirrored by a native GitHub subissue.
 
 ## Phase 4: Backlog, roadmap, and GitHub reconciliation
 
-- [ ] Reconcile issue #54 against the final audit and install-surface contract.
-- [ ] Reconcile issues #57–#59 against merged files, tests, and hosted runs.
+- [~] Reconcile issue #54 against the final audit and install-surface contract.
+- [x] Reconcile issues #57–#59 against merged files, tests, and hosted runs.
       (M-012)
-- [ ] Keep or route issue #61 based on its product-scope evidence.
-- [ ] Rewrite `conductor/roadmap.md` for the post-3.2.0 frontier. (S-007)
-- [ ] Verify native issue/subissue hierarchy and Project 36 fields. (M-013)
-- [ ] Refresh the deterministic GitHub mapping receipt.
+- [x] Keep or route issue #61 based on its product-scope evidence.
+- [x] Rewrite `conductor/roadmap.md` for the post-3.2.0 frontier. (S-007)
+- [x] Verify native issue/subissue hierarchy and Project 36 fields. (M-013)
+- [x] Refresh the deterministic GitHub mapping receipt.
 - [ ] Phase verification and checkpoint per `conductor/workflow.md`.
 
 ## Phase 5: Final verification and governed handoff
