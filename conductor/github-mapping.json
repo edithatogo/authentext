@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-01T05:57:41.665Z",
+  "generated_at": "2026-08-01T08:00:00.000Z",
   "repository": "edithatogo/authentext",
   "project": {
     "number": 36,
@@ -8,10 +8,10 @@
     "url": "https://github.com/users/edithatogo/projects/36"
   },
   "counts": {
-    "tracks": 31,
-    "phases": 128,
-    "repository_issues": 168,
-    "open_tracks": 0,
+    "tracks": 33,
+    "phases": 132,
+    "repository_issues": 174,
+    "open_tracks": 2,
     "historical_tracks": 31
   },
   "verification": {
@@ -20,9 +20,93 @@
     "duplicate_phase_markers": 0,
     "native_parent_child_relationships": "verified",
     "issue_states": "verified",
-    "project_membership": "159/159"
+    "project_membership": "165/165"
   },
   "tracks": [
+    {
+      "track_id": "renovate-codecov-verification_20260801",
+      "title": "Renovate and Codecov Verification",
+      "path": "conductor/tracks/renovate-codecov-verification_20260801",
+      "priority": "P1",
+      "historical": false,
+      "metadata_status": "in_progress",
+      "parent_issue": {
+        "number": 234,
+        "node_id": "I_kwDORAMgA88AAAABLCgAGQ",
+        "url": "https://github.com/edithatogo/authentext/issues/234",
+        "state": "open"
+      },
+      "phases": [
+        {
+          "phase_id": "renovate-codecov-verification_20260801.phase1",
+          "number": 1,
+          "title": "Repository integration",
+          "source": "conductor/tracks/renovate-codecov-verification_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 235,
+            "node_id": "I_kwDORAMgA88AAAABLCgAqQ",
+            "url": "https://github.com/edithatogo/authentext/issues/235",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "renovate-codecov-verification_20260801.phase2",
+          "number": 2,
+          "title": "Hosted verification",
+          "source": "conductor/tracks/renovate-codecov-verification_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 236,
+            "node_id": "I_kwDORAMgA88AAAABLCgBLw",
+            "url": "https://github.com/edithatogo/authentext/issues/236",
+            "state": "open"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "foio-editorial-workflow_20260801",
+      "title": "FOI-O Editorial Workflow",
+      "path": "conductor/tracks/foio-editorial-workflow_20260801",
+      "priority": "P1",
+      "historical": false,
+      "metadata_status": "in_progress",
+      "parent_issue": {
+        "number": 237,
+        "node_id": "I_kwDORAMgA88AAAABLChMvg",
+        "url": "https://github.com/edithatogo/authentext/issues/237",
+        "state": "open"
+      },
+      "phases": [
+        {
+          "phase_id": "foio-editorial-workflow_20260801.phase1",
+          "number": 1,
+          "title": "Portable workflow contract",
+          "source": "conductor/tracks/foio-editorial-workflow_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 238,
+            "node_id": "I_kwDORAMgA88AAAABLChNqA",
+            "url": "https://github.com/edithatogo/authentext/issues/238",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "foio-editorial-workflow_20260801.phase2",
+          "number": 2,
+          "title": "Hosted reconciliation and closeout",
+          "source": "conductor/tracks/foio-editorial-workflow_20260801/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 239,
+            "node_id": "I_kwDORAMgA88AAAABLChOpw",
+            "url": "https://github.com/edithatogo/authentext/issues/239",
+            "state": "open"
+          }
+        }
+      ]
+    },
     {
       "track_id": "post-release-security-quality-frontier_20260801",
       "title": "Post-Release Security and Quality Frontier",
