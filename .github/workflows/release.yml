@@ -23,7 +23,7 @@ jobs:
       - name: Set up shared maintainer toolchain
         uses: ./.github/actions/setup-maintainer-env
         with:
-          node-version: '20'
+          node-version: '24'
           install-vale: 'true'
           npm-ci: 'true'
 

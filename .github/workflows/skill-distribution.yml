@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node
         uses: ./.github/actions/setup-maintainer-env
         with:
-          node-version: '20'
+          node-version: '24'
           install-vale: 'false'
           npm-ci: 'true'
 
@@ -102,7 +102,7 @@ jobs:
       - name: Setup Node
         uses: ./.github/actions/setup-maintainer-env
         with:
-          node-version: '20'
+          node-version: '24'
           install-vale: 'true'
           npm-ci: 'true'
 

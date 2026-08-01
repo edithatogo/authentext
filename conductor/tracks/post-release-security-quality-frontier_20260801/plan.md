@@ -10,15 +10,15 @@ evidence. Each phase is mirrored by a native GitHub subissue.
 
 ## Phase 1: Dependency and runtime consolidation
 
-- [~] Add failing guardrails for Node 24 and dependency-engine compatibility.
-  (M-001, M-008)
-- [ ] Update maintained workflows and declared tooling baseline to Node 24.
+- [x] Add failing guardrails for Node 24 and dependency-engine compatibility.
+      (M-001, M-008)
+- [x] Update maintained workflows and declared tooling baseline to Node 24.
       (M-001, M-004)
-- [ ] Reproduce and review PR #219's dependency set on current `main`.
+- [x] Reproduce and review PR #219's dependency set on current `main`.
       (M-002, M-003)
-- [ ] Run audit, sync, validation, lint, type, tests, and host/portable checks.
+- [x] Run audit, sync, validation, lint, type, tests, and host/portable checks.
       (M-003–M-006, S-001)
-- [ ] Verify the exact revision on Linux, macOS, Windows, and CodeQL.
+- [~] Verify the exact revision on Linux, macOS, Windows, and CodeQL.
 - [ ] Close or supersede overlapping PRs #50, #53, and #62 with evidence.
       (M-002)
 - [ ] Phase verification and checkpoint per `conductor/workflow.md`.
