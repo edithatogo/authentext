@@ -29,6 +29,12 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 **Latest archives:**
 
+- [x] **foio-editorial-workflow_20260801** - Portable, fail-closed FOI-O final
+      editorial workflow with privacy-conscious evidence receipts and retained
+      human acceptance/publication gates. See
+      [`tracks/archive/foio-editorial-workflow_20260801/`](./tracks/archive/foio-editorial-workflow_20260801/index.md)
+      and GitHub [#237](https://github.com/edithatogo/authentext/issues/237).
+
 - [x] **post-release-security-quality-frontier_20260801** - Node 24 and audited
       dependencies, native coverage evidence, solo-maintainer safeguards, and
       reconciled hosted/backlog state. See

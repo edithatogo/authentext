@@ -82,6 +82,9 @@ the material:
   [governance.md](references/governance.md).
 - Claims with contradictions or reasoning failures: read
   [reasoning-failures.md](references/reasoning-failures.md).
+- FOI-O final manuscript editing after semantic and citation review: read
+  [foio-editorial.md](references/foio-editorial.md), plus the academic and
+  governance references it requires.
 
 Load more than one content reference only when the material genuinely crosses
 domains. Reasoning guidance supplements a content reference; it does not replace
@@ -99,6 +102,7 @@ Read these files for the full pattern catalog, examples, and remediation guidanc
 - [Academic and research prose](references/academic.md)
 - [Policy, governance, and compliance prose](references/governance.md)
 - [Reasoning failures and self-contradictions](references/reasoning-failures.md)
+- [FOI-O final editorial workflow and evidence receipt](references/foio-editorial.md)
 
 Apply the relevant patterns from the selected reference files. This root skill
 keeps workflow, severity tiers, and detection guardrails; the references hold
