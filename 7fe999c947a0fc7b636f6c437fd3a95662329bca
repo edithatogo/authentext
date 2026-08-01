@@ -1,0 +1,1 @@
+Post-merge CodeQL remediation for alerts #13 and #14. Escapes existing backslashes before Markdown table separators, normalizes line breaks, removes unsupported category input from the shared code-scanning gate, and adds regression coverage. Verified with npm run lint:all and npm test (73 tests plus integration checks).
