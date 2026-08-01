@@ -4,13 +4,11 @@
   "description": "Consolidate dependency updates, retire the Node 20 maintenance baseline, strengthen evidence-based tests and solo-maintainer controls, and reconcile the post-3.2.0 backlog.",
   "type": "maintenance",
   "priority": "P0",
-  "status": "in_progress",
+  "status": "archived",
   "created_at": "2026-08-01",
   "updated_at": "2026-08-01",
-  "current_phase": "Phase 1: Dependency and runtime consolidation",
-  "depends_on": [
-    "bleeding-edge-agent-skills-conductor_20260731"
-  ],
+  "current_phase": "Complete",
+  "depends_on": ["bleeding-edge-agent-skills-conductor_20260731"],
   "parallel_safe": false,
   "portfolio_issue": 65,
   "github": {
