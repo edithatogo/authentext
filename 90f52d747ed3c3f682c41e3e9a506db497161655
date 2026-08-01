@@ -1,0 +1,1 @@
+Renovate and Codecov hosted verification evidence. Codecov OIDC proven on PR and main runs; Renovate configuration valid but no bot Dashboard or PR exists. GitHub App installation requires owner-account UI authorization and browser bridge initialization failed twice. Dependabot retained as fail-closed fallback. Full pre-commit suite passed.
