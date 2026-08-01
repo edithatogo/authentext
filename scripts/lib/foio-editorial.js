@@ -36,7 +36,13 @@ export function createFoioEditorialReceipt({
   const after = collectProtectedItems(output);
   const differences = Object.keys(before)
     .filter((type) => JSON.stringify(before[type]) !== JSON.stringify(after[type]))
-    .map((type) => ({ type, before: before[type], after: after[type] }));
+    .map((type) => ({
+      type,
+      before_count: before[type].length,
+      after_count: after[type].length,
+      before_sha256: hash(JSON.stringify(before[type])),
+      after_sha256: hash(JSON.stringify(after[type])),
+    }));
 
   return {
     schema_version: 1,

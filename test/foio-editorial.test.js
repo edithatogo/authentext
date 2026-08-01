@@ -35,4 +35,7 @@ test('FOI-O receipt blocks numerical, citation, qualifier, and legal-boundary dr
     receipt.protected_items.differences.map(({ type }) => type),
     ['citation', 'number', 'qualifier', 'legal_boundary']
   );
+  assert.equal(JSON.stringify(receipt).includes('Smith'), false);
+  assert.equal(JSON.stringify(receipt).includes('confidential'), false);
+  assert.match(receipt.protected_items.differences[0].before_sha256, /^[a-f0-9]{64}$/);
 });
