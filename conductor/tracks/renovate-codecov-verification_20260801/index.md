@@ -4,4 +4,5 @@
 - [MoSCoW requirements](./requirements.md)
 - [Design](./design.md)
 - [Plan](./plan.md)
+- [Hosted verification evidence](./evidence.md)
 - [Metadata](./metadata.json)
