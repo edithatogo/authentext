@@ -24,7 +24,7 @@ evaluation receipts, and an optional governed OpenAI host overlay.
 
 - Sync, repository docs, host overlays, and Conductor validation: passed.
 - Lint, Vale, ESLint, TypeScript, and Prettier: passed.
-- Node tests: 72 aggregate tests passed; every file also passed in isolation;
+- Node tests: 73 aggregate tests passed; every file also passed in isolation;
   integration checks passed.
 - Official `skills-ref==0.1.1` validation: passed.
 - `gh skill publish --dry-run`: passed, with a tag-protection advisory.
@@ -33,9 +33,14 @@ evaluation receipts, and an optional governed OpenAI host overlay.
 
 ## Explicit gates
 
-- Draft PR #218 verified implementation commit `8f6e799` across CI, CodeQL,
-  workflow lint, portable validation, publish preview, behavioral evaluations,
-  and Linux/macOS/Windows validation.
-- No tag, release, npm publication, skill publication, or merge has occurred.
+- PR #218 verified the candidate across CI, CodeQL, workflow lint, portable
+  validation, publish preview, behavioral evaluations, and
+  Linux/macOS/Windows validation, then merged as `eaef2c1`.
+- PR #220 fixed the two post-merge CodeQL sanitization alerts and obsolete gate
+  input, then merged as `4243d6d`.
+- The exact final `main` revision passed CI (`30683241535`), skill distribution
+  validation (`30683241550`), workflow lint (`30683241565`), and CodeQL with its
+  blocking-alert gate (`30683241551`).
+- No tag, GitHub release, npm publication, or skill publication has occurred.
 - Public release actions require separate explicit approval.
 - GitHub recommends an active tag-protection ruleset before immutable releases.
