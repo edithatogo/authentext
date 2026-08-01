@@ -33,6 +33,10 @@ Verified on 2026-08-01 against `edithatogo/authentext`.
   that endpoint.
 - A paginated search of all repository issues and pull requests found no item
   authored by `renovate[bot]` or another Renovate bot identity.
+- The merged `renovate-hosted-monitor.yml` workflow now checks daily and on
+  demand, publishes a JSON evidence artifact, and emits a warning without
+  blocking normal CI when the Dashboard/PR proof is absent. Its local unit
+  coverage is included in the repository's enforced thresholds.
 - The authenticated GitHub CLI token can administer the repository but cannot
   install or enumerate user-account GitHub App installations. GitHub returned
   `403` for the user-installations endpoint because it requires a GitHub-App
