@@ -13,6 +13,8 @@
 - [x] Verify the pull-request matrix and Codecov upload result.
 - [x] Record owner-reported Renovate App installation and repository onboarding
       state.
+- [x] Add a scheduled, non-blocking hosted-evidence monitor with deterministic
+      tests and artifact output.
 - [ ] Verify Renovate app access and a Dashboard or pull request.
 - [x] Retain Dependabot because Renovate is not yet proven healthy.
 - [x] Record external authorization blockers without overstating completion.
