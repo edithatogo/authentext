@@ -10,8 +10,8 @@ evidence. Each phase is mirrored by a native GitHub subissue.
 
 ## Phase 1: Dependency and runtime consolidation
 
-- [ ] Add failing guardrails for Node 24 and dependency-engine compatibility.
-      (M-001, M-008)
+- [~] Add failing guardrails for Node 24 and dependency-engine compatibility.
+  (M-001, M-008)
 - [ ] Update maintained workflows and declared tooling baseline to Node 24.
       (M-001, M-004)
 - [ ] Reproduce and review PR #219's dependency set on current `main`.

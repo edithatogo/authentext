@@ -4,7 +4,7 @@
   "description": "Consolidate dependency updates, retire the Node 20 maintenance baseline, strengthen evidence-based tests and solo-maintainer controls, and reconcile the post-3.2.0 backlog.",
   "type": "maintenance",
   "priority": "P0",
-  "status": "new",
+  "status": "in_progress",
   "created_at": "2026-08-01",
   "updated_at": "2026-08-01",
   "current_phase": "Phase 1: Dependency and runtime consolidation",
@@ -13,6 +13,11 @@
   ],
   "parallel_safe": false,
   "portfolio_issue": 65,
+  "github": {
+    "track_issue": 224,
+    "phase_issues": [225, 226, 227, 228, 229],
+    "project_number": 36
+  },
   "moscow": {
     "must": 14,
     "should": 7,

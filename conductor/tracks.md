@@ -8,11 +8,11 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [ ] **post-release-security-quality-frontier_20260801** (P0) - Consolidate
-      dependencies and Node 24, add measured quality evidence, strengthen
-      solo-maintainer controls, and reconcile the post-3.2.0 backlog. See
-      [`tracks/post-release-security-quality-frontier_20260801/`](./tracks/post-release-security-quality-frontier_20260801/index.md)
-      and portfolio [GitHub #65](https://github.com/edithatogo/authentext/issues/65).
+- [~] **post-release-security-quality-frontier_20260801** (P0) - Consolidate
+  dependencies and Node 24, add measured quality evidence, strengthen
+  solo-maintainer controls, and reconcile the post-3.2.0 backlog. See
+  [`tracks/post-release-security-quality-frontier_20260801/`](./tracks/post-release-security-quality-frontier_20260801/index.md)
+  and portfolio [GitHub #65](https://github.com/edithatogo/authentext/issues/65).
 
 ---
 
