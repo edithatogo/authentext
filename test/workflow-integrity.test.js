@@ -114,6 +114,12 @@ test('CodeQL excludes only frozen legacy and experimental trees', () => {
 test('release workflow packages only maintained, existing paths', () => {
   const source = fs.readFileSync(path.join(WORKFLOW_DIR, 'release.yml'), 'utf8');
 
+  assert.match(
+    source,
+    /softprops\/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228\s+# v3\.0\.2/,
+    'release publication must use the current Node.js 24 action release'
+  );
+
   for (const requiredPath of [
     'SKILL.md',
     'SKILL_PROFESSIONAL.md',
