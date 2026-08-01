@@ -98,7 +98,8 @@ GitHub subissue:
       `npm test`.
 - [x] Run official Agent Skills validation and
       `gh skill publish --dry-run`. (M-014)
-- [x] Verify hosted CI on the exact candidate revision. [commit: 8f6e799]
+- [x] Verify hosted CI on the exact candidate revision and final merged
+      default-branch revision. [candidate: 8fe16da; main: 4243d6d]
 - [x] Record remaining external, experimental, and human gates.
 - [x] Prepare release notes without tagging, releasing, or publishing.
       (M-017, W-006)
