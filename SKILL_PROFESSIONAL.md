@@ -17,6 +17,7 @@ Use this variant for technical, policy, academic, and client-facing prose. Keep 
 - [Academic module](references/academic.md) — papers and formal research
 - [Governance module](references/governance.md) — policy and compliance
 - [Reasoning module](references/reasoning-failures.md) — reasoning failures and contradictions
+- [FOI-O editorial workflow](references/foio-editorial.md) — final manuscript pass and receipt
 
 ## ROUTING LOGIC
 
@@ -24,7 +25,8 @@ Use this variant for technical, policy, academic, and client-facing prose. Keep 
    * Code or technical docs -> Core + Technical
    * Papers, essays, or formal research -> Core + Academic
    * Policy, risk, or compliance writing -> Core + Governance
-   * Reasoning failures or self-contradictions -> Core + Reasoning
+    * Reasoning failures or self-contradictions -> Core + Reasoning
+    * FOI-O final manuscript editing -> Core + Academic + Governance + FOI-O
    * Otherwise -> Core only
 
 2. Open the linked reference files for the selected modules and apply their patterns.
@@ -79,4 +81,4 @@ Vary sentence rhythm with short and long lines. Use specific details instead of 
 
 For severity tiers and false-positive guidance, read [Core patterns](references/core-patterns.md) (sections **SEVERITY CLASSIFICATION** and **DETECTION GUIDANCE**).
 
-Available reference files: core-patterns.md, technical.md, academic.md, governance.md, reasoning-failures.md.
+Available reference files: core-patterns.md, technical.md, academic.md, governance.md, reasoning-failures.md, foio-editorial.md.

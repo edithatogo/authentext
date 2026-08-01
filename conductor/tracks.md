@@ -13,6 +13,11 @@ This file tracks all major tracks for the project. Each track has its own detail
   fallbacks. See
   [`tracks/renovate-codecov-verification_20260801/`](./tracks/renovate-codecov-verification_20260801/index.md).
 
+- [~] **foio-editorial-workflow_20260801** (P1) - Implement a portable,
+  fail-closed final editorial workflow and evidence receipt for FOI-O while
+  preserving human acceptance and publication gates. See
+  [`tracks/foio-editorial-workflow_20260801/`](./tracks/foio-editorial-workflow_20260801/index.md).
+
 ---
 
 ## Completed Track Retained at Legacy Path

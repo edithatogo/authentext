@@ -7,6 +7,15 @@ Local Conductor files define scope and evidence. GitHub issues, subissues, and
 Project fields mirror that state; they do not establish implementation,
 publication, or release.
 
+## Active: hosted dependency and editorial closeout
+
+- Verify Renovate hosted access while retaining Dependabot until health is
+  evidenced; retain Codecov OIDC alongside repository-owned coverage gates.
+- Implement the FOI-O final editorial workflow with deterministic preservation
+  checks and evidence receipts.
+- Keep manuscript acceptance, submission, and publication as explicit human
+  gates outside repository completion.
+
 ## Completed: post-release security and quality frontier
 
 - Move maintained automation from EOL Node 20 to Node 24 LTS.

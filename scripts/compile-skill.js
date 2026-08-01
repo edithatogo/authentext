@@ -26,6 +26,7 @@ const MODULES = {
   academic: 'src/modules/SKILL_ACADEMIC.md',
   governance: 'src/modules/SKILL_GOVERNANCE.md',
   reasoning: 'src/modules/SKILL_REASONING.md',
+  foio: 'src/modules/SKILL_FOIO.md',
 };
 
 const OUTPUT = {
@@ -41,6 +42,7 @@ const REFERENCE_FILES = {
   academic: 'academic.md',
   governance: 'governance.md',
   reasoning: 'reasoning-failures.md',
+  foio: 'foio-editorial.md',
 };
 
 const STANDARD_DESCRIPTION = `Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance.`;
@@ -317,6 +319,8 @@ function compileStandardSkill(modules) {
     modules.governance && '- [Policy, governance, and compliance prose](references/governance.md)',
     modules.reasoning &&
       '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)',
+    modules.foio &&
+      '- [FOI-O final editorial workflow and evidence receipt](references/foio-editorial.md)',
   ].filter(Boolean);
 
   const body = `${intro}
@@ -350,6 +354,9 @@ the material:
   [governance.md](references/governance.md).
 - Claims with contradictions or reasoning failures: read
   [reasoning-failures.md](references/reasoning-failures.md).
+- FOI-O final manuscript editing after semantic and citation review: read
+  [foio-editorial.md](references/foio-editorial.md), plus the academic and
+  governance references it requires.
 
 Load more than one content reference only when the material genuinely crosses
 domains. Reasoning guidance supplements a content reference; it does not replace
@@ -401,6 +408,8 @@ function compileProfessionalSkill(modules) {
     modules.governance && '- [Governance module](references/governance.md) — policy and compliance',
     modules.reasoning &&
       '- [Reasoning module](references/reasoning-failures.md) — reasoning failures and contradictions',
+    modules.foio &&
+      '- [FOI-O editorial workflow](references/foio-editorial.md) — final manuscript pass and receipt',
   ]
     .filter(Boolean)
     .join('\n');
@@ -427,7 +436,8 @@ ${moduleLinks}
    * Code or technical docs -> Core + Technical
    * Papers, essays, or formal research -> Core + Academic
    * Policy, risk, or compliance writing -> Core + Governance
-   * Reasoning failures or self-contradictions -> Core + Reasoning
+    * Reasoning failures or self-contradictions -> Core + Reasoning
+    * FOI-O final manuscript editing -> Core + Academic + Governance + FOI-O
    * Otherwise -> Core only
 
 2. Open the linked reference files for the selected modules and apply their patterns.
@@ -504,6 +514,7 @@ function compile() {
       academic: readModule(MODULES.academic),
       governance: readModule(MODULES.governance),
       reasoning: readModule(MODULES.reasoning),
+      foio: readModule(MODULES.foio),
     };
 
     const skillVersion = extractFrontmatter(modules.core)?.version ?? '3.0.0';
