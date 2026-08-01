@@ -1,9 +1,10 @@
-# Authentext-next
+# Authentext
 
-Authentext-next is the source repository for the Authentext skill. It builds Agent Skills spec-compliant outputs:
+Authentext is the source repository for the Authentext Agent Skill. It builds
+the portable, specification-compliant skill surface:
 
 - `SKILL.md`
-- `SKILL_PROFESSIONAL.md`
+- `SKILL_PROFESSIONAL.md` (generated, non-discoverable routing reference)
 - `references/` (full pattern modules)
 
 The repo is organized around the source fragments in `src/`, the compiled root skill files, and the maintenance scripts that rebuild and validate them.
@@ -29,12 +30,12 @@ npm test
 
 The core pattern catalog in `src/modules/SKILL_CORE_PATTERNS.md` currently defines **39 patterns** (30 general core + 4 local LLM-variant patterns + 3 upstream v2.8.0 style-cadence patterns + 2 upstream v2.8.0 refinements).
 
-## MCP server
-
-```bash
-npm run install:mcp-server
-```
+Historical workspace and MCP-era files are retained with an explicit
+[non-canonical role](docs/legacy-surfaces.md); they are not installed, built,
+validated, or released as part of the Authentext skill.
 
 ## Scope
 
-This repository does not maintain adapter bundles or consumer-specific installation paths. The supported surface is the compiled skill pair plus the source fragments they are built from.
+This repository does not maintain adapter bundles or consumer-specific
+installation paths. The supported runtime surface is `SKILL.md` plus
+`references/`; the remaining maintained files build, test, and document it.

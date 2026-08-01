@@ -31,14 +31,14 @@ runs:
   using: composite
   steps:
     - name: Set up Node.js
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
       with:
         node-version: ${{ inputs.node-version }}
         cache: npm
 
     - name: Set up Python
       if: ${{ inputs.python-version != '' }}
-      uses: actions/setup-python@v6
+      uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
       with:
         python-version: ${{ inputs.python-version }}
 
@@ -64,21 +64,31 @@ runs:
     - name: Install Vale (Linux)
       if: ${{ inputs.install-vale == 'true' && runner.os == 'Linux' }}
       shell: bash
+      env:
+        VALE_VERSION: ${{ inputs.vale-version }}
       run: |
-        curl -sSL "https://github.com/errata-ai/vale/releases/download/v${{ inputs.vale-version }}/vale_${{ inputs.vale-version }}_Linux_64-bit.tar.gz" -o vale.tar.gz
-        tar -xzf vale.tar.gz
-        sudo mv vale /usr/local/bin/vale
+        vale_dir="${RUNNER_TEMP}/vale-${VALE_VERSION}-linux"
+        mkdir -p "${vale_dir}"
+        curl -sSL "https://github.com/errata-ai/vale/releases/download/v${VALE_VERSION}/vale_${VALE_VERSION}_Linux_64-bit.tar.gz" -o "${vale_dir}/vale.tar.gz"
+        tar -xzf "${vale_dir}/vale.tar.gz" -C "${vale_dir}"
+        sudo install -m 0755 "${vale_dir}/vale" /usr/local/bin/vale
 
     - name: Install Vale (macOS)
       if: ${{ inputs.install-vale == 'true' && runner.os == 'macOS' }}
       shell: bash
+      env:
+        VALE_VERSION: ${{ inputs.vale-version }}
       run: |
-        curl -sSL "https://github.com/errata-ai/vale/releases/download/v${{ inputs.vale-version }}/vale_${{ inputs.vale-version }}_macOS_64-bit.tar.gz" -o vale.tar.gz
-        tar -xzf vale.tar.gz
-        sudo mv vale /usr/local/bin/vale
+        vale_dir="${RUNNER_TEMP}/vale-${VALE_VERSION}-macos"
+        mkdir -p "${vale_dir}"
+        curl -sSL "https://github.com/errata-ai/vale/releases/download/v${VALE_VERSION}/vale_${VALE_VERSION}_macOS_64-bit.tar.gz" -o "${vale_dir}/vale.tar.gz"
+        tar -xzf "${vale_dir}/vale.tar.gz" -C "${vale_dir}"
+        sudo install -m 0755 "${vale_dir}/vale" /usr/local/bin/vale
 
     - name: Install Vale (Windows)
       if: ${{ inputs.install-vale == 'true' && runner.os == 'Windows' }}
       shell: powershell
+      env:
+        VALE_VERSION: ${{ inputs.vale-version }}
       run: |
-        choco install vale --version ${{ inputs.vale-version }} --no-progress -y
+        choco install vale --version $env:VALE_VERSION --no-progress -y

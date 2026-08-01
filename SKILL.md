@@ -1,18 +1,9 @@
 ---
 name: authentext
-version: 3.2.0
-description: Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance.
+description: "Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's \"Signs of AI writing\" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance."
 license: MIT
-compatibility: Requires an agent host that supports the Agent Skills format and Read, Write, Edit, Grep, and Glob tools (Claude Code, Cursor, Codex CLI, Gemini CLI, GitHub Copilot, and compatible hosts).
-allowed-tools:
-
-* Read
-* Write
-* Edit
-* Grep
-* Glob
-* AskUserQuestion
-
+metadata:
+  version: "3.2.0"
 ---
 
 # Authentext: Remove AI Writing Patterns
@@ -62,14 +53,56 @@ Have opinions and react to facts. Vary sentence rhythm with short and long lines
 
 ---
 
+## Routing by task and content type
+
+Route in two stages. Do not load a content reference until both stages are
+classified.
+
+### Stage 1: Operation
+
+- **Rewrite:** Return revised prose. Preserve meaning, coverage, voice,
+  technical literals, citations, and epistemic qualifiers.
+- **Review:** Return findings tied to specific passages with proposed changes.
+  Do not silently rewrite the source.
+- **Both:** Return the review first, then a clearly separated revision.
+
+If the request does not make the operation clear, infer it from the requested
+output. Ask only when review versus rewrite would materially change the result.
+
+### Stage 2: Material
+
+Apply the root workflow for every task, then load only the references matching
+the material:
+
+- Technical documentation or code-adjacent prose: read
+  [technical.md](references/technical.md).
+- Papers, manuscripts, citations, or research prose: read
+  [academic.md](references/academic.md).
+- Policy, governance, legal, risk, or compliance prose: read
+  [governance.md](references/governance.md).
+- Claims with contradictions or reasoning failures: read
+  [reasoning-failures.md](references/reasoning-failures.md).
+
+Load more than one content reference only when the material genuinely crosses
+domains. Reasoning guidance supplements a content reference; it does not replace
+technical, academic, or governance rules.
+
+For low-density or clearly human-authored prose, make only the smallest
+defensible edits.
+
 ## Reference material
 
 Read these files for the full pattern catalog, examples, and remediation guidance:
 
 - [Core patterns (39 patterns, before/after examples)](references/core-patterns.md)
+- [Technical writing and literal preservation](references/technical.md)
+- [Academic and research prose](references/academic.md)
+- [Policy, governance, and compliance prose](references/governance.md)
 - [Reasoning failures and self-contradictions](references/reasoning-failures.md)
 
-Apply every pattern in the reference files when humanizing text. This root skill keeps workflow, severity tiers, and detection guardrails; the references hold the exhaustive pattern definitions.
+Apply the relevant patterns from the selected reference files. This root skill
+keeps workflow, severity tiers, and detection guardrails; the references hold
+the detailed pattern definitions.
 
 ## SEVERITY CLASSIFICATION
 
@@ -177,4 +210,4 @@ When you see these, lean toward leaving the prose alone — they are evidence of
 
 When the input is low-density (roughly 0–2 obvious Tier-1 tells per 100 words), treat it as human-first writing. Apply only the strongest, least-ambiguous rules; leave voice, fragments, first-person texture, and ordinary human roughness alone.
 
-This is the most common way "humanizer made my writing worse" on journals, meeting notes, and personal drafts. Measure before you rewrite. High-density AI-first text can tolerate full passes; low-density text should see a very light touch.
+This is the most common way an Authentext pass can make writing worse on journals, meeting notes, and personal drafts. Measure before you rewrite. High-density AI-first text can tolerate full passes; low-density text should see a very light touch.

@@ -1,0 +1,64 @@
+{
+  "track_id": "bleeding-edge-agent-skills-conductor_20260731",
+  "title": "Bleeding-Edge Agent Skills and Conductor Alignment",
+  "description": "Make Authentext a portable, standards-compliant, evidence-tested Agent Skill while aligning Conductor with current upstream Agent Skills protocols, native GitHub subissues, and governed experimental channels.",
+  "type": "modernization",
+  "priority": "P0",
+  "status": "in_progress",
+  "created_at": "2026-07-31",
+  "updated_at": "2026-08-01",
+  "current_phase": "Phase 6: Release-candidate verification and governed handoff",
+  "depends_on": [],
+  "parallel_safe": false,
+  "moscow": {
+    "must": 17,
+    "should": 8,
+    "could": 7,
+    "wont_this_track": 6
+  },
+  "upstream": {
+    "agent_skills_spec": "https://agentskills.io/specification",
+    "conductor_repository": "https://github.com/gemini-cli-extensions/conductor",
+    "conductor_main_commit": "99ba10e1a11130fc159f681b7ba8803489239cbf",
+    "conductor_main_version_file": "0.3.0",
+    "conductor_latest_release": "conductor-v0.4.1"
+  },
+  "github": {
+    "project_number": 36,
+    "project_url": "https://github.com/users/edithatogo/projects/36",
+    "parent_issue": 66,
+    "parent_issue_url": "https://github.com/edithatogo/authentext/issues/66",
+    "phase_issues": [
+      {
+        "phase": 1,
+        "issue": 67,
+        "url": "https://github.com/edithatogo/authentext/issues/67"
+      },
+      {
+        "phase": 2,
+        "issue": 68,
+        "url": "https://github.com/edithatogo/authentext/issues/68"
+      },
+      {
+        "phase": 3,
+        "issue": 69,
+        "url": "https://github.com/edithatogo/authentext/issues/69"
+      },
+      {
+        "phase": 4,
+        "issue": 70,
+        "url": "https://github.com/edithatogo/authentext/issues/70"
+      },
+      {
+        "phase": 5,
+        "issue": 71,
+        "url": "https://github.com/edithatogo/authentext/issues/71"
+      },
+      {
+        "phase": 6,
+        "issue": 72,
+        "url": "https://github.com/edithatogo/authentext/issues/72"
+      }
+    ]
+  }
+}

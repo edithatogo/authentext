@@ -1,5 +1,19 @@
 # Module: Core Patterns
 
+## Navigation
+
+- [Description](#description)
+- [Your Task](#your-task)
+- [PERSONALITY AND SOUL](#personality-and-soul)
+- [CONTENT PATTERNS](#content-patterns)
+- [STYLE PATTERNS](#style-patterns)
+- [COMMUNICATION PATTERNS](#communication-patterns)
+- [FILLER AND HEDGING](#filler-and-hedging)
+- [Performance](#performance)
+- [Performance](#performance)
+- [SEVERITY CLASSIFICATION](#severity-classification)
+- [DETECTION GUIDANCE](#detection-guidance)
+
 ## Description
 
 Always-applied patterns for general writing. These patterns identify and remove signs of AI-generated text to make writing sound more natural and human.
@@ -683,10 +697,10 @@ The system processes requests in under 100ms.
 
 ---
 
-_Module Version: 3.1.0_
+_Module Version: 3.2.0_
 _Last Updated: 2026-04-04_
 _Patterns: 39 (30 core + 4 local LLM variants + 3 upstream style 35-37 + 2 upstream refinements 38-39)_
-_Source: Wikipedia "Signs of AI writing" + Humanizer community contributions + 2025-2026 LLM analysis_
+_Source: Wikipedia "Signs of AI writing" + Authentext community contributions + 2025-2026 LLM analysis_
 
 ---
 
@@ -906,4 +920,4 @@ When you see these, lean toward leaving the prose alone — they are evidence of
 
 When the input is low-density (roughly 0–2 obvious Tier-1 tells per 100 words), treat it as human-first writing. Apply only the strongest, least-ambiguous rules; leave voice, fragments, first-person texture, and ordinary human roughness alone.
 
-This is the most common way "humanizer made my writing worse" on journals, meeting notes, and personal drafts. Measure before you rewrite. High-density AI-first text can tolerate full passes; low-density text should see a very light touch.
+This is the most common way an Authentext pass can make writing worse on journals, meeting notes, and personal drafts. Measure before you rewrite. High-density AI-first text can tolerate full passes; low-density text should see a very light touch.

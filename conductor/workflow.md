@@ -5,9 +5,31 @@
 1. **The Plan is the Source of Truth:** All work must be tracked in `plan.md`
 2. **The Tech Stack is Deliberate:** Changes to the tech stack must be documented in `tech-stack.md` _before_ implementation
 3. **Test-Driven Development:** Write unit tests before implementing functionality
-4. **High Code Coverage:** Aim for 100% code coverage for all modules
+4. **Evidence-Based Coverage:** Use meaningful tests and repository-defined
+   thresholds; never claim coverage that the current harness does not measure
 5. **User Experience First:** Every decision should prioritize user experience
 6. **Non-Interactive & CI-Aware:** Prefer non-interactive commands. Use `CI=true` for watch-mode tools (tests, linters) to ensure single execution.
+
+## Repository-Specific Profile
+
+This section is normative for Authentext and takes precedence over generic
+examples later in this document.
+
+- Work only in the maintained surfaces listed in `AGENTS.md`.
+- Treat `src/` as canonical and root skill files as generated artifacts.
+- Every current track contains `spec.md`, `plan.md`, `metadata.json`, and
+  `index.md`; add stable-ID requirements and design artifacts when the work
+  needs them.
+- `conductor/index.md` is the project handshake and `conductor/tracks.md` is the
+  track registry.
+- Use checks appropriate to a documentation-first Node.js skill library.
+- Do not use empty checkpoint commits. Attach phase evidence to the last real
+  functional commit and record its SHA in the plan.
+- Do not mark work complete from checkboxes, Project fields, or experimental
+  task trackers alone. Verify repository files, tests, hosted runs, and any
+  external gate that the claim requires.
+- Tags, releases, registry submissions, and public publication require separate
+  explicit approval.
 
 ## Task Workflow
 
@@ -98,16 +120,21 @@ All tasks follow a strict lifecycle:
    - Design and run automated verification steps that cover the user-facing goals (e.g., CLI checks, scriptable smoke tests, snapshot validation).
    - If a verification step cannot be automated, the phase cannot be marked complete. Document the gap and stop for user guidance.
 
-6. **Create Checkpoint Commit:**
-   - Stage all changes. If no changes occurred in this step, proceed with an empty commit.
-   - Perform the commit with a clear and concise message (e.g., `conductor(checkpoint): Checkpoint end of Phase X`).
+6. **Identify the Phase Evidence Commit:**
+   - Do not create an empty checkpoint commit.
+   - Identify the final real functional commit for the phase.
+   - If verification produced a necessary repository change, commit that change
+     normally and use it as the evidence commit.
 
 7. **Attach Auditable Verification Report using Git Notes:**
    - **Step 7.1: Draft Note Content:** Create a detailed verification report including the automated test command(s), the automated verification steps executed, and their results.
-   - **Step 7.2: Attach Note:** Use the `git notes` command and the full commit hash from the previous step to attach the full report to the checkpoint commit.
+   - **Step 7.2: Attach Note:** Use the `git notes` command and the full commit
+     hash from the previous step to attach the full report to the evidence
+     commit.
 
 8. **Get and Record Phase Checkpoint SHA:**
-   - **Step 8.1: Get Commit Hash:** Obtain the hash of the _just-created checkpoint commit_ (`git log -1 --format="%H"`).
+   - **Step 8.1: Get Commit Hash:** Obtain the hash of the phase evidence
+     commit.
    - **Step 8.2: Update Plan:** Read `plan.md`, find the heading for the completed phase, and append the first 7 characters of the commit hash in the format `[checkpoint: <sha>]`.
    - **Step 8.3: Write Plan:** Write the updated content back to `plan.md`.
 
@@ -115,7 +142,8 @@ All tasks follow a strict lifecycle:
    - **Action:** Stage the modified `plan.md` file.
    - **Action:** Commit this change with a descriptive message following the format `conductor(plan): Mark phase '<PHASE NAME>' as complete`.
 
-10. **Announce Completion:** Inform the user that the phase is complete and the checkpoint has been created, with the detailed verification report attached as a git note.
+10. **Announce Completion:** Inform the user that the phase is complete and
+    identify the evidence commit and attached verification note.
 
 ### Track Completion, Archiving, and Sequencing Protocol
 
@@ -151,7 +179,7 @@ All tasks follow a strict lifecycle:
 Before marking any task complete, verify:
 
 - [ ] All tests pass
-- [ ] Code coverage meets requirements (100%)
+- [ ] Measured coverage meets the repository-defined threshold, when applicable
 - [ ] Code follows project's code style guidelines (as defined in `code_styleguides/`)
 - [ ] All public functions/methods are documented (e.g., docstrings, JSDoc, GoDoc)
 - [ ] Type safety is enforced (e.g., type hints, TypeScript types, Go types)
@@ -162,30 +190,29 @@ Before marking any task complete, verify:
 
 ## Development Commands
 
-**AI AGENT INSTRUCTION: This section should be adapted to the project's specific language, framework, and build tools.**
+These commands are the current repository contract.
 
 ### Setup
 
-```bash
-# Example: Commands to set up the development environment (e.g., install dependencies, configure database)
-# e.g., for a Node.js project: npm install
-# e.g., for a Go project: go mod tidy
+```powershell
+npm ci
 ```
 
 ### Daily Development
 
-```bash
-# Example: Commands for common daily tasks (e.g., start dev server, run tests, lint, format)
-# e.g., for a Node.js project: npm run dev, npm test, npm run lint
-# e.g., for a Go project: go run main.go, go test ./..., go fmt ./...
+```powershell
+npm run sync
+npm run validate
+npm test
 ```
 
 ### Before Committing
 
-```bash
-# Example: Commands to run all pre-commit checks (e.g., format, lint, type check, run tests)
-# e.g., for a Node.js project: npm run check
-# e.g., for a Go project: make check (if a Makefile exists)
+```powershell
+npm run sync
+npm run validate
+npm run lint:all
+npm test
 ```
 
 ### Conductor Automation Commands
@@ -212,18 +239,16 @@ node scripts/complete_workflow.js <track_id>
 
 ### Integration Testing
 
-- Test complete user flows
-- Verify database transactions
-- Test authentication and authorization
-- Check form submissions
+- Test skill compilation, discovery, routing, and generated-file integrity.
+- Test official Agent Skills validation and distribution preview.
+- Test positive, near-miss, negative, restraint, and literal-preservation cases.
+- Verify external services only in explicit, bounded integration lanes.
 
 ### Mobile Testing
 
-- Test on actual iPhone when possible
-- Use Safari developer tools
-- Test touch interactions
-- Verify responsive layouts
-- Check performance on 3G/4G
+Not applicable to the current skill-maintenance library. If a future track adds
+a user interface, that track must define its own device and accessibility
+requirements.
 
 ## Code Review Process
 
@@ -245,7 +270,7 @@ Before requesting review:
 3. **Testing**
    - Unit tests comprehensive
    - Integration tests pass
-   - Coverage adequate (100%)
+   - Measured coverage meets the configured threshold, when applicable
 
 4. **Security**
    - No hardcoded secrets
@@ -258,11 +283,10 @@ Before requesting review:
    - Images optimized
    - Caching implemented where needed
 
-6. **Mobile Experience**
-   - Touch targets adequate (44x44px)
-   - Text readable without zooming
-   - Performance acceptable on mobile
-   - Interactions feel native
+6. **Portability**
+   - Portable skill validates independently of host overlays
+   - Generated output is deterministic on supported platforms
+   - Technical literals and editorial constraints are preserved
 
 ## Commit Guidelines
 
@@ -304,7 +328,7 @@ A task is complete when:
 3. Code coverage meets project requirements
 4. Documentation complete (if applicable)
 5. Code passes all configured linting and static analysis checks
-6. Works beautifully on mobile (if applicable)
+6. Portable and cross-platform behavior is verified where applicable
 7. Implementation notes added to `plan.md`
 8. Changes committed with proper message
 9. Git note with task summary attached to the commit
@@ -388,3 +412,30 @@ The conductor workflow includes automation scripts to streamline the review, arc
 - Document lessons learned
 - Optimize for user happiness
 - Keep things simple and maintainable
+
+## GitHub Mirror Protocol
+
+GitHub is the hosted coordination mirror for Conductor.
+
+1. Use one issue per track and one native subissue per phase.
+2. Put stable hidden markers in issue bodies before creating relationships.
+3. Search markers before creating issues so synchronization is idempotent.
+4. Add all repository issues and native subissues to the dedicated Project.
+5. Record track ID, item type, MoSCoW, Conductor state, evidence state,
+   upstream channel, and sync date when applicable.
+6. Keep completed historical tracks and phases closed. Disclose stale archived
+   metadata rather than rewriting historical files.
+7. Keep implementation issues open until repository-owned acceptance is
+   evidenced; keep external gates explicit.
+8. Write the resulting URLs and node relationships to
+   `conductor/github-mapping.json`.
+
+## Experimental Feature Protocol
+
+- Experimental Gemini task tracking, worktrees, model steering, context
+  management, registry, and extension reloading are execution aids.
+- Durable task state remains in Conductor files and GitHub issue relationships.
+- Experimental settings must be reversible and must not become release
+  requirements without a reviewed track change.
+- Portable Authentext frontmatter must not depend on host-only experimental
+  fields.

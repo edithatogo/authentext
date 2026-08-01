@@ -1,0 +1,2106 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-31T22:41:40.905Z",
+  "repository": "edithatogo/authentext",
+  "project": {
+    "number": 36,
+    "node_id": "PVT_kwHOAOYc4M4Be-dE",
+    "url": "https://github.com/users/edithatogo/projects/36"
+  },
+  "counts": {
+    "tracks": 30,
+    "phases": 123,
+    "repository_issues": 162,
+    "open_tracks": 1,
+    "historical_tracks": 29
+  },
+  "verification": {
+    "verified_at": "2026-07-31",
+    "duplicate_track_markers": 0,
+    "duplicate_phase_markers": 0,
+    "native_parent_child_relationships": "verified",
+    "issue_states": "verified",
+    "project_membership": "153/153"
+  },
+  "tracks": [
+    {
+      "track_id": "bleeding-edge-agent-skills-conductor_20260731",
+      "title": "Bleeding-Edge Agent Skills and Conductor Alignment",
+      "path": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731",
+      "priority": "P0",
+      "historical": false,
+      "metadata_status": "new",
+      "parent_issue": {
+        "number": 66,
+        "node_id": "I_kwDORAMgA88AAAABK6xpRg",
+        "url": "https://github.com/edithatogo/authentext/issues/66",
+        "state": "open"
+      },
+      "phases": [
+        {
+          "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase1",
+          "number": 1,
+          "title": "Portable contract and generated frontmatter",
+          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 67,
+            "node_id": "I_kwDORAMgA88AAAABK6xpnw",
+            "url": "https://github.com/edithatogo/authentext/issues/67",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase2",
+          "number": 2,
+          "title": "Deterministic validation, tests, and CI",
+          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 68,
+            "node_id": "I_kwDORAMgA88AAAABK6xrdg",
+            "url": "https://github.com/edithatogo/authentext/issues/68",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase3",
+          "number": 3,
+          "title": "Progressive disclosure and behavioral evaluation",
+          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 69,
+            "node_id": "I_kwDORAMgA88AAAABK6xsjA",
+            "url": "https://github.com/edithatogo/authentext/issues/69",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase4",
+          "number": 4,
+          "title": "Identity, metadata, and host layers",
+          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 70,
+            "node_id": "I_kwDORAMgA88AAAABK6xtjA",
+            "url": "https://github.com/edithatogo/authentext/issues/70",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase5",
+          "number": 5,
+          "title": "Conductor, GitHub, and experimental operations",
+          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 71,
+            "node_id": "I_kwDORAMgA88AAAABK6xuxg",
+            "url": "https://github.com/edithatogo/authentext/issues/71",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "bleeding-edge-agent-skills-conductor_20260731.phase6",
+          "number": 6,
+          "title": "Release-candidate verification and governed handoff",
+          "source": "conductor/tracks/bleeding-edge-agent-skills-conductor_20260731/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 72,
+            "node_id": "I_kwDORAMgA88AAAABK6xv5g",
+            "url": "https://github.com/edithatogo/authentext/issues/72",
+            "state": "open"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "rename_deferred",
+      "title": "Deferred Rename (Follow-On)",
+      "path": "conductor/tracks/rename_deferred",
+      "priority": "P1",
+      "historical": true,
+      "metadata_status": null,
+      "parent_issue": {
+        "number": 56,
+        "node_id": "I_kwDORAMgA88AAAABHkNpIw",
+        "url": "https://github.com/edithatogo/authentext/issues/56",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "rename_deferred.phase1",
+          "number": 1,
+          "title": "Activation & Triage",
+          "source": "conductor/tracks/rename_deferred/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 73,
+            "node_id": "I_kwDORAMgA88AAAABK6xx4w",
+            "url": "https://github.com/edithatogo/authentext/issues/73",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "rename_deferred.phase2",
+          "number": 2,
+          "title": "Package & Skill Rebranding",
+          "source": "conductor/tracks/rename_deferred/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 74,
+            "node_id": "I_kwDORAMgA88AAAABK6xzQA",
+            "url": "https://github.com/edithatogo/authentext/issues/74",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "rename_deferred.phase3",
+          "number": 3,
+          "title": "Documentation & Verification",
+          "source": "conductor/tracks/rename_deferred/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 75,
+            "node_id": "I_kwDORAMgA88AAAABK6x0oQ",
+            "url": "https://github.com/edithatogo/authentext/issues/75",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "rename_deferred.phase4",
+          "number": 4,
+          "title": "Launch and remote rename",
+          "source": "conductor/tracks/rename_deferred/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 76,
+            "node_id": "I_kwDORAMgA88AAAABK6x16A",
+            "url": "https://github.com/edithatogo/authentext/issues/76",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "adapters-expansion_20260131",
+      "title": "Expand Humanizer adapters to Qwen CLI and Copilot",
+      "path": "conductor/tracks/archive/adapters-expansion_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "archived",
+      "parent_issue": {
+        "number": 77,
+        "node_id": "I_kwDORAMgA88AAAABK6x4Pg",
+        "url": "https://github.com/edithatogo/authentext/issues/77",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "adapters-expansion_20260131.phase1",
+          "number": 1,
+          "title": "Create Adapter Files",
+          "source": "conductor/tracks/archive/adapters-expansion_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 78,
+            "node_id": "I_kwDORAMgA88AAAABK6x4lw",
+            "url": "https://github.com/edithatogo/authentext/issues/78",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "adapters-expansion_20260131.phase2",
+          "number": 2,
+          "title": "Update Automation",
+          "source": "conductor/tracks/archive/adapters-expansion_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 79,
+            "node_id": "I_kwDORAMgA88AAAABK6x6fg",
+            "url": "https://github.com/edithatogo/authentext/issues/79",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "adapters-expansion_20260131.phase3",
+          "number": 3,
+          "title": "Documentation and Wrap-up",
+          "source": "conductor/tracks/archive/adapters-expansion_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 80,
+            "node_id": "I_kwDORAMgA88AAAABK6x73w",
+            "url": "https://github.com/edithatogo/authentext/issues/80",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "adopt-upstream-prs_20260131",
+      "title": "Adopt Upstream Pull Requests",
+      "path": "conductor/tracks/archive/adopt-upstream-prs_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "new",
+      "parent_issue": {
+        "number": 81,
+        "node_id": "I_kwDORAMgA88AAAABK6x91Q",
+        "url": "https://github.com/edithatogo/authentext/issues/81",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "adopt-upstream-prs_20260131.phase1",
+          "number": 1,
+          "title": "Adopt PR #3 (Fix YAML)",
+          "source": "conductor/tracks/archive/adopt-upstream-prs_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 82,
+            "node_id": "I_kwDORAMgA88AAAABK6x-Kw",
+            "url": "https://github.com/edithatogo/authentext/issues/82",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "adopt-upstream-prs_20260131.phase2",
+          "number": 2,
+          "title": "Adopt PR #4 (Fix Grammar)",
+          "source": "conductor/tracks/archive/adopt-upstream-prs_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 83,
+            "node_id": "I_kwDORAMgA88AAAABK6x_cQ",
+            "url": "https://github.com/edithatogo/authentext/issues/83",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "adopt-upstream-prs_20260131.phase3",
+          "number": 3,
+          "title": "Adopt PR #5 (Add \"Primary Single Quotes\" Pattern)",
+          "source": "conductor/tracks/archive/adopt-upstream-prs_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 84,
+            "node_id": "I_kwDORAMgA88AAAABK6yBIA",
+            "url": "https://github.com/edithatogo/authentext/issues/84",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "adopt-upstream-prs_20260131.phase4",
+          "number": 4,
+          "title": "Final Verification",
+          "source": "conductor/tracks/archive/adopt-upstream-prs_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 85,
+            "node_id": "I_kwDORAMgA88AAAABK6yCbQ",
+            "url": "https://github.com/edithatogo/authentext/issues/85",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "adr-implementation-upstream_20260303",
+      "title": "ADR-001 Implementation & Upstream Adoption",
+      "path": "conductor/archive/adr-implementation-upstream_20260303",
+      "priority": "P0",
+      "historical": true,
+      "metadata_status": null,
+      "parent_issue": {
+        "number": 86,
+        "node_id": "I_kwDORAMgA88AAAABK6yEaQ",
+        "url": "https://github.com/edithatogo/authentext/issues/86",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "adr-implementation-upstream_20260303.phase1",
+          "number": 1,
+          "title": "Modular source extraction",
+          "source": "conductor/archive/adr-implementation-upstream_20260303/spec.md",
+          "reconstructed": true,
+          "issue": {
+            "number": 87,
+            "node_id": "I_kwDORAMgA88AAAABK6yErg",
+            "url": "https://github.com/edithatogo/authentext/issues/87",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "adr-implementation-upstream_20260303.phase2",
+          "number": 2,
+          "title": "Compiler and adapter integration",
+          "source": "conductor/archive/adr-implementation-upstream_20260303/spec.md",
+          "reconstructed": true,
+          "issue": {
+            "number": 88,
+            "node_id": "I_kwDORAMgA88AAAABK6yGXA",
+            "url": "https://github.com/edithatogo/authentext/issues/88",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "adr-implementation-upstream_20260303.phase3",
+          "number": 3,
+          "title": "Upstream adoption",
+          "source": "conductor/archive/adr-implementation-upstream_20260303/spec.md",
+          "reconstructed": true,
+          "issue": {
+            "number": 89,
+            "node_id": "I_kwDORAMgA88AAAABK6yHkw",
+            "url": "https://github.com/edithatogo/authentext/issues/89",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "adr-implementation-upstream_20260303.phase4",
+          "number": 4,
+          "title": "Validation and closure",
+          "source": "conductor/archive/adr-implementation-upstream_20260303/spec.md",
+          "reconstructed": true,
+          "issue": {
+            "number": 90,
+            "node_id": "I_kwDORAMgA88AAAABK6yIxA",
+            "url": "https://github.com/edithatogo/authentext/issues/90",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "antigravity-rules-workflows_20260131",
+      "title": "Create Google Antigravity rules/workflows adapter guidance for Humanizer",
+      "path": "conductor/tracks/archive/antigravity-rules-workflows_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "archived",
+      "parent_issue": {
+        "number": 91,
+        "node_id": "I_kwDORAMgA88AAAABK6yKUA",
+        "url": "https://github.com/edithatogo/authentext/issues/91",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "antigravity-rules-workflows_20260131.phase1",
+          "number": 1,
+          "title": "Define rules/workflows guidance",
+          "source": "conductor/tracks/archive/antigravity-rules-workflows_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 92,
+            "node_id": "I_kwDORAMgA88AAAABK6yKpQ",
+            "url": "https://github.com/edithatogo/authentext/issues/92",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "antigravity-rules-workflows_20260131.phase2",
+          "number": 2,
+          "title": "Implement templates",
+          "source": "conductor/tracks/archive/antigravity-rules-workflows_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 93,
+            "node_id": "I_kwDORAMgA88AAAABK6yLxg",
+            "url": "https://github.com/edithatogo/authentext/issues/93",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "antigravity-rules-workflows_20260131.phase3",
+          "number": 3,
+          "title": "Validation and documentation",
+          "source": "conductor/tracks/archive/antigravity-rules-workflows_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 94,
+            "node_id": "I_kwDORAMgA88AAAABK6yNgg",
+            "url": "https://github.com/edithatogo/authentext/issues/94",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "antigravity-rules-workflows_20260131.phase4",
+          "number": 4,
+          "title": "Release readiness",
+          "source": "conductor/tracks/archive/antigravity-rules-workflows_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 95,
+            "node_id": "I_kwDORAMgA88AAAABK6yO3A",
+            "url": "https://github.com/edithatogo/authentext/issues/95",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "antigravity-skills_20260131",
+      "title": "Create a Google Antigravity skill adapter for Humanizer",
+      "path": "conductor/tracks/archive/antigravity-skills_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "archived",
+      "parent_issue": {
+        "number": 96,
+        "node_id": "I_kwDORAMgA88AAAABK6yQiQ",
+        "url": "https://github.com/edithatogo/authentext/issues/96",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "antigravity-skills_20260131.phase1",
+          "number": 1,
+          "title": "Define skill package",
+          "source": "conductor/tracks/archive/antigravity-skills_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 97,
+            "node_id": "I_kwDORAMgA88AAAABK6yQ3A",
+            "url": "https://github.com/edithatogo/authentext/issues/97",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "antigravity-skills_20260131.phase2",
+          "number": 2,
+          "title": "Implement skill package",
+          "source": "conductor/tracks/archive/antigravity-skills_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 98,
+            "node_id": "I_kwDORAMgA88AAAABK6ySjw",
+            "url": "https://github.com/edithatogo/authentext/issues/98",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "antigravity-skills_20260131.phase3",
+          "number": 3,
+          "title": "Validation and documentation",
+          "source": "conductor/tracks/archive/antigravity-skills_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 99,
+            "node_id": "I_kwDORAMgA88AAAABK6yUrg",
+            "url": "https://github.com/edithatogo/authentext/issues/99",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "antigravity-skills_20260131.phase4",
+          "number": 4,
+          "title": "Release readiness",
+          "source": "conductor/tracks/archive/antigravity-skills_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 100,
+            "node_id": "I_kwDORAMgA88AAAABK6yV9Q",
+            "url": "https://github.com/edithatogo/authentext/issues/100",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "citation_ref_20260216",
+      "title": "Specification for Citation/Reference Management System Skill Module",
+      "path": "conductor/tracks/archive/citation_ref_20260216",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 101,
+        "node_id": "I_kwDORAMgA88AAAABK6yYCw",
+        "url": "https://github.com/edithatogo/authentext/issues/101",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "citation_ref_20260216.phase1",
+          "number": 1,
+          "title": "Core Reference Management Setup",
+          "source": "conductor/tracks/archive/citation_ref_20260216/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 102,
+            "node_id": "I_kwDORAMgA88AAAABK6yYVg",
+            "url": "https://github.com/edithatogo/authentext/issues/102",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "citation_ref_20260216.phase2",
+          "number": 2,
+          "title": "Citation Verification and Validation",
+          "source": "conductor/tracks/archive/citation_ref_20260216/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 103,
+            "node_id": "I_kwDORAMgA88AAAABK6yZiA",
+            "url": "https://github.com/edithatogo/authentext/issues/103",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "citation_ref_20260216.phase3",
+          "number": 3,
+          "title": "Reference Enrichment and Confidence System",
+          "source": "conductor/tracks/archive/citation_ref_20260216/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 104,
+            "node_id": "I_kwDORAMgA88AAAABK6ybHQ",
+            "url": "https://github.com/edithatogo/authentext/issues/104",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "citation_ref_20260216.phase4",
+          "number": 4,
+          "title": "Format Conversion and Export",
+          "source": "conductor/tracks/archive/citation_ref_20260216/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 105,
+            "node_id": "I_kwDORAMgA88AAAABK6ycjg",
+            "url": "https://github.com/edithatogo/authentext/issues/105",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "citation_ref_20260216.phase5",
+          "number": 5,
+          "title": "Integration with Reference Managers and Humanizer Framework",
+          "source": "conductor/tracks/archive/citation_ref_20260216/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 106,
+            "node_id": "I_kwDORAMgA88AAAABK6yeiw",
+            "url": "https://github.com/edithatogo/authentext/issues/106",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "citation_ref_20260216.phase6",
+          "number": 6,
+          "title": "Subskill Development and API",
+          "source": "conductor/tracks/archive/citation_ref_20260216/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 107,
+            "node_id": "I_kwDORAMgA88AAAABK6ygBQ",
+            "url": "https://github.com/edithatogo/authentext/issues/107",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "citation_ref_20260216.phase7",
+          "number": 7,
+          "title": "Testing, Quality Assurance and Documentation",
+          "source": "conductor/tracks/archive/citation_ref_20260216/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 108,
+            "node_id": "I_kwDORAMgA88AAAABK6yhOw",
+            "url": "https://github.com/edithatogo/authentext/issues/108",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "conductor-humanizer-templates_20260215",
+      "title": "Conductor Humanizer Templates and Workflow Pack",
+      "path": "conductor/tracks/archive/conductor-humanizer-templates_20260215",
+      "priority": "P1",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 109,
+        "node_id": "I_kwDORAMgA88AAAABK6yjpg",
+        "url": "https://github.com/edithatogo/authentext/issues/109",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "conductor-humanizer-templates_20260215.phase1",
+          "number": 1,
+          "title": "Template Model and Option Matrix",
+          "source": "conductor/tracks/archive/conductor-humanizer-templates_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 110,
+            "node_id": "I_kwDORAMgA88AAAABK6yj-g",
+            "url": "https://github.com/edithatogo/authentext/issues/110",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "conductor-humanizer-templates_20260215.phase2",
+          "number": 2,
+          "title": "Template Artifact Implementation",
+          "source": "conductor/tracks/archive/conductor-humanizer-templates_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 111,
+            "node_id": "I_kwDORAMgA88AAAABK6ylHg",
+            "url": "https://github.com/edithatogo/authentext/issues/111",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "conductor-humanizer-templates_20260215.phase3",
+          "number": 3,
+          "title": "Example Integration and Handoff",
+          "source": "conductor/tracks/archive/conductor-humanizer-templates_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 112,
+            "node_id": "I_kwDORAMgA88AAAABK6ymPg",
+            "url": "https://github.com/edithatogo/authentext/issues/112",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "conductor-review-skill_20260215",
+      "title": "Humanizer Review Skill",
+      "path": "conductor/tracks/archive/conductor-review-skill_20260215",
+      "priority": "P1",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 113,
+        "node_id": "I_kwDORAMgA88AAAABK6ynuA",
+        "url": "https://github.com/edithatogo/authentext/issues/113",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "conductor-review-skill_20260215.phase1",
+          "number": 1,
+          "title": "Review Skill Design",
+          "source": "conductor/tracks/archive/conductor-review-skill_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 114,
+            "node_id": "I_kwDORAMgA88AAAABK6yoJw",
+            "url": "https://github.com/edithatogo/authentext/issues/114",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "conductor-review-skill_20260215.phase2",
+          "number": 2,
+          "title": "Implementation and Validation",
+          "source": "conductor/tracks/archive/conductor-review-skill_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 115,
+            "node_id": "I_kwDORAMgA88AAAABK6yp_w",
+            "url": "https://github.com/edithatogo/authentext/issues/115",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "conductor-review-skill_20260215.phase3",
+          "number": 3,
+          "title": "Documentation and Handoff",
+          "source": "conductor/tracks/archive/conductor-review-skill_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 116,
+            "node_id": "I_kwDORAMgA88AAAABK6yrJQ",
+            "url": "https://github.com/edithatogo/authentext/issues/116",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "devops-quality_20260131",
+      "title": "DevOps and Quality Engineering",
+      "path": "conductor/tracks/archive/devops-quality_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "archived",
+      "parent_issue": {
+        "number": 117,
+        "node_id": "I_kwDORAMgA88AAAABK6ysxg",
+        "url": "https://github.com/edithatogo/authentext/issues/117",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "devops-quality_20260131.phase1",
+          "number": 1,
+          "title": "Python Migration & Infrastructure",
+          "source": "conductor/tracks/archive/devops-quality_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 118,
+            "node_id": "I_kwDORAMgA88AAAABK6ytIQ",
+            "url": "https://github.com/edithatogo/authentext/issues/118",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "devops-quality_20260131.phase2",
+          "number": 2,
+          "title": "Testing & Coverage",
+          "source": "conductor/tracks/archive/devops-quality_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 119,
+            "node_id": "I_kwDORAMgA88AAAABK6yuZA",
+            "url": "https://github.com/edithatogo/authentext/issues/119",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "devops-quality_20260131.phase3",
+          "number": 3,
+          "title": "Pre-commit & Prose Linting",
+          "source": "conductor/tracks/archive/devops-quality_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 120,
+            "node_id": "I_kwDORAMgA88AAAABK6ywIg",
+            "url": "https://github.com/edithatogo/authentext/issues/120",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "devops-quality_20260131.phase4",
+          "number": 4,
+          "title": "CI/CD",
+          "source": "conductor/tracks/archive/devops-quality_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 121,
+            "node_id": "I_kwDORAMgA88AAAABK6yxoQ",
+            "url": "https://github.com/edithatogo/authentext/issues/121",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "downstream-skill-sync-automation_20260215",
+      "title": "Downstream Skill Sync Automation",
+      "path": "conductor/tracks/archive/downstream-skill-sync-automation_20260215",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 122,
+        "node_id": "I_kwDORAMgA88AAAABK6yzYQ",
+        "url": "https://github.com/edithatogo/authentext/issues/122",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "downstream-skill-sync-automation_20260215.phase1",
+          "number": 1,
+          "title": "Target Discovery and Trigger Design",
+          "source": "conductor/tracks/archive/downstream-skill-sync-automation_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 123,
+            "node_id": "I_kwDORAMgA88AAAABK6yz0w",
+            "url": "https://github.com/edithatogo/authentext/issues/123",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "downstream-skill-sync-automation_20260215.phase2",
+          "number": 2,
+          "title": "Automation Implementation",
+          "source": "conductor/tracks/archive/downstream-skill-sync-automation_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 124,
+            "node_id": "I_kwDORAMgA88AAAABK6y1Nw",
+            "url": "https://github.com/edithatogo/authentext/issues/124",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "downstream-skill-sync-automation_20260215.phase3",
+          "number": 3,
+          "title": "Operationalization",
+          "source": "conductor/tracks/archive/downstream-skill-sync-automation_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 125,
+            "node_id": "I_kwDORAMgA88AAAABK6y2ew",
+            "url": "https://github.com/edithatogo/authentext/issues/125",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "gemini-extension_20260131",
+      "title": "Create a Gemini CLI extension adapter for Humanizer",
+      "path": "conductor/tracks/archive/gemini-extension_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "archived",
+      "parent_issue": {
+        "number": 126,
+        "node_id": "I_kwDORAMgA88AAAABK6y4uA",
+        "url": "https://github.com/edithatogo/authentext/issues/126",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "gemini-extension_20260131.phase1",
+          "number": 1,
+          "title": "Define extension structure",
+          "source": "conductor/tracks/archive/gemini-extension_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 127,
+            "node_id": "I_kwDORAMgA88AAAABK6y5Gw",
+            "url": "https://github.com/edithatogo/authentext/issues/127",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "gemini-extension_20260131.phase2",
+          "number": 2,
+          "title": "Implement extension files",
+          "source": "conductor/tracks/archive/gemini-extension_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 128,
+            "node_id": "I_kwDORAMgA88AAAABK6y6hg",
+            "url": "https://github.com/edithatogo/authentext/issues/128",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "gemini-extension_20260131.phase3",
+          "number": 3,
+          "title": "Validation and documentation",
+          "source": "conductor/tracks/archive/gemini-extension_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 129,
+            "node_id": "I_kwDORAMgA88AAAABK6y7zA",
+            "url": "https://github.com/edithatogo/authentext/issues/129",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "gemini-extension_20260131.phase4",
+          "number": 4,
+          "title": "Release readiness",
+          "source": "conductor/tracks/archive/gemini-extension_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 130,
+            "node_id": "I_kwDORAMgA88AAAABK6y9Lw",
+            "url": "https://github.com/edithatogo/authentext/issues/130",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "humanizer-adapters_20260125",
+      "title": "Build multi-agent Humanizer adapters",
+      "path": "conductor/tracks/archive/humanizer-adapters_20260125",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "archived",
+      "parent_issue": {
+        "number": 131,
+        "node_id": "I_kwDORAMgA88AAAABK6y_bQ",
+        "url": "https://github.com/edithatogo/authentext/issues/131",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "humanizer-adapters_20260125.phase1",
+          "number": 1,
+          "title": "Define adapter architecture",
+          "source": "conductor/tracks/archive/humanizer-adapters_20260125/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 132,
+            "node_id": "I_kwDORAMgA88AAAABK6y_4A",
+            "url": "https://github.com/edithatogo/authentext/issues/132",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "humanizer-adapters_20260125.phase2",
+          "number": 2,
+          "title": "Implement adapters",
+          "source": "conductor/tracks/archive/humanizer-adapters_20260125/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 133,
+            "node_id": "I_kwDORAMgA88AAAABK6zBoQ",
+            "url": "https://github.com/edithatogo/authentext/issues/133",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "humanizer-adapters_20260125.phase3",
+          "number": 3,
+          "title": "Drift control and validation",
+          "source": "conductor/tracks/archive/humanizer-adapters_20260125/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 134,
+            "node_id": "I_kwDORAMgA88AAAABK6zDJg",
+            "url": "https://github.com/edithatogo/authentext/issues/134",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "humanizer-adapters_20260125.phase4",
+          "number": 4,
+          "title": "Release readiness",
+          "source": "conductor/tracks/archive/humanizer-adapters_20260125/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 135,
+            "node_id": "I_kwDORAMgA88AAAABK6zEjQ",
+            "url": "https://github.com/edithatogo/authentext/issues/135",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "migrate-warp-to-agentsmd_20260131",
+      "title": "Migrate WARP.md to Agents.md",
+      "path": "conductor/tracks/archive/migrate-warp-to-agentsmd_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "active",
+      "parent_issue": {
+        "number": 136,
+        "node_id": "I_kwDORAMgA88AAAABK6zGvQ",
+        "url": "https://github.com/edithatogo/authentext/issues/136",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "migrate-warp-to-agentsmd_20260131.phase1",
+          "number": 1,
+          "title": "Preparation",
+          "source": "conductor/tracks/archive/migrate-warp-to-agentsmd_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 137,
+            "node_id": "I_kwDORAMgA88AAAABK6zHDQ",
+            "url": "https://github.com/edithatogo/authentext/issues/137",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "migrate-warp-to-agentsmd_20260131.phase2",
+          "number": 2,
+          "title": "Migration",
+          "source": "conductor/tracks/archive/migrate-warp-to-agentsmd_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 138,
+            "node_id": "I_kwDORAMgA88AAAABK6zIRQ",
+            "url": "https://github.com/edithatogo/authentext/issues/138",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "migrate-warp-to-agentsmd_20260131.phase3",
+          "number": 3,
+          "title": "Verification",
+          "source": "conductor/tracks/archive/migrate-warp-to-agentsmd_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 139,
+            "node_id": "I_kwDORAMgA88AAAABK6zJsw",
+            "url": "https://github.com/edithatogo/authentext/issues/139",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "modernization_20260610",
+      "title": "Bleeding-Edge Modernization",
+      "path": "conductor/tracks/archive/modernization_20260610",
+      "priority": "P0",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 140,
+        "node_id": "I_kwDORAMgA88AAAABK6zMGw",
+        "url": "https://github.com/edithatogo/authentext/issues/140",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "modernization_20260610.phase1",
+          "number": 1,
+          "title": "Upstream Sync (blader/humanizer v2.8.0)",
+          "source": "conductor/tracks/archive/modernization_20260610/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 141,
+            "node_id": "I_kwDORAMgA88AAAABK6zNCQ",
+            "url": "https://github.com/edithatogo/authentext/issues/141",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "modernization_20260610.phase2",
+          "number": 2,
+          "title": "Sourceright Extraction",
+          "source": "conductor/tracks/archive/modernization_20260610/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 142,
+            "node_id": "I_kwDORAMgA88AAAABK6zOWg",
+            "url": "https://github.com/edithatogo/authentext/issues/142",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "modernization_20260610.phase3",
+          "number": 3,
+          "title": "Agent Skills Standard Migration",
+          "source": "conductor/tracks/archive/modernization_20260610/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 143,
+            "node_id": "I_kwDORAMgA88AAAABK6zPrA",
+            "url": "https://github.com/edithatogo/authentext/issues/143",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "modernization_20260610.phase4",
+          "number": 4,
+          "title": "Sync Machinery Modernization",
+          "source": "conductor/tracks/archive/modernization_20260610/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 144,
+            "node_id": "I_kwDORAMgA88AAAABK6zQ_w",
+            "url": "https://github.com/edithatogo/authentext/issues/144",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "modernization_20260610.phase5",
+          "number": 5,
+          "title": "Repo Health and Registry Reconciliation",
+          "source": "conductor/tracks/archive/modernization_20260610/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 145,
+            "node_id": "I_kwDORAMgA88AAAABK6zSPg",
+            "url": "https://github.com/edithatogo/authentext/issues/145",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "reasoning-failures-stream_20260215",
+      "title": "LLM Reasoning Failures Stream - Research, Integration, and Wikipedia Update Workflow",
+      "path": "conductor/tracks/archive/reasoning-failures-stream_20260215",
+      "priority": "P0",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 146,
+        "node_id": "I_kwDORAMgA88AAAABK6zT9g",
+        "url": "https://github.com/edithatogo/authentext/issues/146",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "reasoning-failures-stream_20260215.phase1",
+          "number": 1,
+          "title": "Source Acquisition and Provenance Baseline",
+          "source": "conductor/tracks/archive/reasoning-failures-stream_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 147,
+            "node_id": "I_kwDORAMgA88AAAABK6zUSg",
+            "url": "https://github.com/edithatogo/authentext/issues/147",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "reasoning-failures-stream_20260215.phase2",
+          "number": 2,
+          "title": "Evidence Expansion, Quality, and Taxonomy",
+          "source": "conductor/tracks/archive/reasoning-failures-stream_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 148,
+            "node_id": "I_kwDORAMgA88AAAABK6zVuA",
+            "url": "https://github.com/edithatogo/authentext/issues/148",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "reasoning-failures-stream_20260215.phase3",
+          "number": 3,
+          "title": "Repo Documentation and Skill-Stream Integration",
+          "source": "conductor/tracks/archive/reasoning-failures-stream_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 149,
+            "node_id": "I_kwDORAMgA88AAAABK6zW9w",
+            "url": "https://github.com/edithatogo/authentext/issues/149",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "reasoning-failures-stream_20260215.phase4",
+          "number": 4,
+          "title": "Wikipedia Edit Workflow Execution",
+          "source": "conductor/tracks/archive/reasoning-failures-stream_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 150,
+            "node_id": "I_kwDORAMgA88AAAABK6zYTg",
+            "url": "https://github.com/edithatogo/authentext/issues/150",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "reasoning-failures-stream_20260215.phase5",
+          "number": 5,
+          "title": "Recommendations, Release Gate, and Handoff",
+          "source": "conductor/tracks/archive/reasoning-failures-stream_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 151,
+            "node_id": "I_kwDORAMgA88AAAABK6zZjQ",
+            "url": "https://github.com/edithatogo/authentext/issues/151",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "reasoning-stream-implementation_20260215",
+      "title": "Implement Reasoning-Focused Humanizer Stream",
+      "path": "conductor/tracks/archive/reasoning-stream-implementation_20260215",
+      "priority": "P0",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 152,
+        "node_id": "I_kwDORAMgA88AAAABK6zbbg",
+        "url": "https://github.com/edithatogo/authentext/issues/152",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "reasoning-stream-implementation_20260215.phase1",
+          "number": 1,
+          "title": "Stream Architecture and Source Integration",
+          "source": "conductor/tracks/archive/reasoning-stream-implementation_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 153,
+            "node_id": "I_kwDORAMgA88AAAABK6zbrQ",
+            "url": "https://github.com/edithatogo/authentext/issues/153",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "reasoning-stream-implementation_20260215.phase2",
+          "number": 2,
+          "title": "Build, Adapter, and Test Integration",
+          "source": "conductor/tracks/archive/reasoning-stream-implementation_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 154,
+            "node_id": "I_kwDORAMgA88AAAABK6zcxA",
+            "url": "https://github.com/edithatogo/authentext/issues/154",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "reasoning-stream-implementation_20260215.phase3",
+          "number": 3,
+          "title": "Release Notes and Handoff",
+          "source": "conductor/tracks/archive/reasoning-stream-implementation_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 155,
+            "node_id": "I_kwDORAMgA88AAAABK6zeDg",
+            "url": "https://github.com/edithatogo/authentext/issues/155",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "repo-hardening-release-ops_20260215",
+      "title": "Repo Hardening, CI/CD, and Release Operations",
+      "path": "conductor/tracks/archive/repo-hardening-release-ops_20260215",
+      "priority": "P1",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 156,
+        "node_id": "I_kwDORAMgA88AAAABK6zf-w",
+        "url": "https://github.com/edithatogo/authentext/issues/156",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "repo-hardening-release-ops_20260215.phase1",
+          "number": 1,
+          "title": "Assessment and Policy Drafting",
+          "source": "conductor/tracks/archive/repo-hardening-release-ops_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 157,
+            "node_id": "I_kwDORAMgA88AAAABK6zgUw",
+            "url": "https://github.com/edithatogo/authentext/issues/157",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-hardening-release-ops_20260215.phase2",
+          "number": 2,
+          "title": "Hardening Implementation",
+          "source": "conductor/tracks/archive/repo-hardening-release-ops_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 158,
+            "node_id": "I_kwDORAMgA88AAAABK6zhfQ",
+            "url": "https://github.com/edithatogo/authentext/issues/158",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-hardening-release-ops_20260215.phase3",
+          "number": 3,
+          "title": "Operational Readiness",
+          "source": "conductor/tracks/archive/repo-hardening-release-ops_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 159,
+            "node_id": "I_kwDORAMgA88AAAABK6ziog",
+            "url": "https://github.com/edithatogo/authentext/issues/159",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "repo-hardening-skill-distribution_20260215",
+      "title": "Repository Hardening and Skill Distribution Optimization",
+      "path": "conductor/tracks/archive/repo-hardening-skill-distribution_20260215",
+      "priority": "P1",
+      "historical": true,
+      "metadata_status": "new",
+      "parent_issue": {
+        "number": 160,
+        "node_id": "I_kwDORAMgA88AAAABK6zkKA",
+        "url": "https://github.com/edithatogo/authentext/issues/160",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "repo-hardening-skill-distribution_20260215.phase1",
+          "number": 1,
+          "title": "Repository Structure Cleanup",
+          "source": "conductor/tracks/archive/repo-hardening-skill-distribution_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 161,
+            "node_id": "I_kwDORAMgA88AAAABK6zkbg",
+            "url": "https://github.com/edithatogo/authentext/issues/161",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-hardening-skill-distribution_20260215.phase2",
+          "number": 2,
+          "title": "Skill Installation Validation",
+          "source": "conductor/tracks/archive/repo-hardening-skill-distribution_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 162,
+            "node_id": "I_kwDORAMgA88AAAABK6zluw",
+            "url": "https://github.com/edithatogo/authentext/issues/162",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-hardening-skill-distribution_20260215.phase3",
+          "number": 3,
+          "title": "Repository Optimization and Documentation",
+          "source": "conductor/tracks/archive/repo-hardening-skill-distribution_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 163,
+            "node_id": "I_kwDORAMgA88AAAABK6zm3Q",
+            "url": "https://github.com/edithatogo/authentext/issues/163",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "repo-self-improvement_20260303",
+      "title": "Repository Self-Improvement Cycle #1 (2026-03-03)",
+      "path": "conductor/tracks/archive/repo-self-improvement_20260303",
+      "priority": "P1",
+      "historical": true,
+      "metadata_status": "in_progress",
+      "parent_issue": {
+        "number": 164,
+        "node_id": "I_kwDORAMgA88AAAABK6zokQ",
+        "url": "https://github.com/edithatogo/authentext/issues/164",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "repo-self-improvement_20260303.phase1",
+          "number": 1,
+          "title": "Dependency Updates & Security Baseline",
+          "source": "conductor/tracks/archive/repo-self-improvement_20260303/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 165,
+            "node_id": "I_kwDORAMgA88AAAABK6zo5A",
+            "url": "https://github.com/edithatogo/authentext/issues/165",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-self-improvement_20260303.phase2",
+          "number": 2,
+          "title": "Upstream PR Assessment & Adoption",
+          "source": "conductor/tracks/archive/repo-self-improvement_20260303/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 166,
+            "node_id": "I_kwDORAMgA88AAAABK6zp8g",
+            "url": "https://github.com/edithatogo/authentext/issues/166",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-self-improvement_20260303.phase3",
+          "number": 3,
+          "title": "Architecture Evaluation & Modularization",
+          "source": "conductor/tracks/archive/repo-self-improvement_20260303/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 167,
+            "node_id": "I_kwDORAMgA88AAAABK6zrNw",
+            "url": "https://github.com/edithatogo/authentext/issues/167",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-self-improvement_20260303.phase4",
+          "number": 4,
+          "title": "Adapter Synchronization & Validation",
+          "source": "conductor/tracks/archive/repo-self-improvement_20260303/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 168,
+            "node_id": "I_kwDORAMgA88AAAABK6zsYA",
+            "url": "https://github.com/edithatogo/authentext/issues/168",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-self-improvement_20260303.phase5",
+          "number": 5,
+          "title": "CI/CD Enhancement & Release Automation",
+          "source": "conductor/tracks/archive/repo-self-improvement_20260303/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 169,
+            "node_id": "I_kwDORAMgA88AAAABK6ztkQ",
+            "url": "https://github.com/edithatogo/authentext/issues/169",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-self-improvement_20260303.phase6",
+          "number": 6,
+          "title": "Ralph Loop Integration & Self-Improvement",
+          "source": "conductor/tracks/archive/repo-self-improvement_20260303/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 170,
+            "node_id": "I_kwDORAMgA88AAAABK6zvbg",
+            "url": "https://github.com/edithatogo/authentext/issues/170",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-self-improvement_20260303.phase7",
+          "number": 7,
+          "title": "Final Validation & Track Closure",
+          "source": "conductor/tracks/archive/repo-self-improvement_20260303/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 171,
+            "node_id": "I_kwDORAMgA88AAAABK6zwlg",
+            "url": "https://github.com/edithatogo/authentext/issues/171",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "repo-tooling-enhancements_20260214",
+      "title": "Repository quality tooling and multi-agent distribution hardening",
+      "path": "conductor/tracks/archive/repo-tooling-enhancements_20260214",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "in_progress",
+      "parent_issue": {
+        "number": 172,
+        "node_id": "I_kwDORAMgA88AAAABK6zyeg",
+        "url": "https://github.com/edithatogo/authentext/issues/172",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "repo-tooling-enhancements_20260214.phase1",
+          "number": 1,
+          "title": "Conductor track and baseline wiring",
+          "source": "conductor/tracks/archive/repo-tooling-enhancements_20260214/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 173,
+            "node_id": "I_kwDORAMgA88AAAABK6zy5A",
+            "url": "https://github.com/edithatogo/authentext/issues/173",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-tooling-enhancements_20260214.phase2",
+          "number": 2,
+          "title": "Quality tooling integration",
+          "source": "conductor/tracks/archive/repo-tooling-enhancements_20260214/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 174,
+            "node_id": "I_kwDORAMgA88AAAABK6z0IQ",
+            "url": "https://github.com/edithatogo/authentext/issues/174",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "repo-tooling-enhancements_20260214.phase3",
+          "number": 3,
+          "title": "Distribution docs expansion",
+          "source": "conductor/tracks/archive/repo-tooling-enhancements_20260214/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 175,
+            "node_id": "I_kwDORAMgA88AAAABK6z16A",
+            "url": "https://github.com/edithatogo/authentext/issues/175",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "self-improvement-cycle2_20260304",
+      "title": "Self-Improvement Cycle #2",
+      "path": "conductor/archive/self-improvement-cycle2_20260304",
+      "priority": "P1",
+      "historical": true,
+      "metadata_status": null,
+      "parent_issue": {
+        "number": 176,
+        "node_id": "I_kwDORAMgA88AAAABK6z3qA",
+        "url": "https://github.com/edithatogo/authentext/issues/176",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "self-improvement-cycle2_20260304.phase1",
+          "number": 1,
+          "title": "Cycle 1: AI Pattern Detection & Cleanup",
+          "source": "conductor/archive/self-improvement-cycle2_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 177,
+            "node_id": "I_kwDORAMgA88AAAABK6z4EQ",
+            "url": "https://github.com/edithatogo/authentext/issues/177",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "self-improvement-cycle2_20260304.phase2",
+          "number": 2,
+          "title": "Cycle 2: Pattern Quality Review",
+          "source": "conductor/archive/self-improvement-cycle2_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 178,
+            "node_id": "I_kwDORAMgA88AAAABK6z5Qg",
+            "url": "https://github.com/edithatogo/authentext/issues/178",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "self-improvement-cycle2_20260304.phase3",
+          "number": 3,
+          "title": "Cycle 3: Module Quality",
+          "source": "conductor/archive/self-improvement-cycle2_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 179,
+            "node_id": "I_kwDORAMgA88AAAABK6z68g",
+            "url": "https://github.com/edithatogo/authentext/issues/179",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "self-improvement-cycle2_20260304.phase4",
+          "number": 4,
+          "title": "Cycle 4: Repository Health",
+          "source": "conductor/archive/self-improvement-cycle2_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 180,
+            "node_id": "I_kwDORAMgA88AAAABK6z8rg",
+            "url": "https://github.com/edithatogo/authentext/issues/180",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "skill-distribution_20260131",
+      "title": "Skill distribution and validation (Skillshare + AIX)",
+      "path": "conductor/tracks/archive/skill-distribution_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "in_progress",
+      "parent_issue": {
+        "number": 181,
+        "node_id": "I_kwDORAMgA88AAAABK6z-Ww",
+        "url": "https://github.com/edithatogo/authentext/issues/181",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "skill-distribution_20260131.phase1",
+          "number": 1,
+          "title": "Define scope and acceptance",
+          "source": "conductor/tracks/archive/skill-distribution_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 182,
+            "node_id": "I_kwDORAMgA88AAAABK6z-sQ",
+            "url": "https://github.com/edithatogo/authentext/issues/182",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "skill-distribution_20260131.phase2",
+          "number": 2,
+          "title": "Documentation and examples",
+          "source": "conductor/tracks/archive/skill-distribution_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 183,
+            "node_id": "I_kwDORAMgA88AAAABK60AMA",
+            "url": "https://github.com/edithatogo/authentext/issues/183",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "skill-distribution_20260131.phase3",
+          "number": 3,
+          "title": "CI Integration and validation",
+          "source": "conductor/tracks/archive/skill-distribution_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 184,
+            "node_id": "I_kwDORAMgA88AAAABK60Bkw",
+            "url": "https://github.com/edithatogo/authentext/issues/184",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "skill-distribution_20260131.phase4",
+          "number": 4,
+          "title": "Submission and Release",
+          "source": "conductor/tracks/archive/skill-distribution_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 185,
+            "node_id": "I_kwDORAMgA88AAAABK60DEw",
+            "url": "https://github.com/edithatogo/authentext/issues/185",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "skill-expansion_20260201",
+      "title": "Skill Expansion & Portable Compilation",
+      "path": "conductor/tracks/archive/skill-expansion_20260201",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": null,
+      "parent_issue": {
+        "number": 186,
+        "node_id": "I_kwDORAMgA88AAAABK60EqQ",
+        "url": "https://github.com/edithatogo/authentext/issues/186",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "skill-expansion_20260201.phase1",
+          "number": 1,
+          "title": "Skill Modularization",
+          "source": "conductor/tracks/archive/skill-expansion_20260201/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 187,
+            "node_id": "I_kwDORAMgA88AAAABK60E-A",
+            "url": "https://github.com/edithatogo/authentext/issues/187",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "skill-expansion_20260201.phase2",
+          "number": 2,
+          "title": "Router & Compiler",
+          "source": "conductor/tracks/archive/skill-expansion_20260201/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 188,
+            "node_id": "I_kwDORAMgA88AAAABK60GyA",
+            "url": "https://github.com/edithatogo/authentext/issues/188",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "skill-expansion_20260201.phase3",
+          "number": 3,
+          "title": "Final Verification",
+          "source": "conductor/tracks/archive/skill-expansion_20260201/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 189,
+            "node_id": "I_kwDORAMgA88AAAABK60IjA",
+            "url": "https://github.com/edithatogo/authentext/issues/189",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "skill-expansion_20260201.phase4",
+          "number": 4,
+          "title": "Adapter Reconfiguration (User Request)",
+          "source": "conductor/tracks/archive/skill-expansion_20260201/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 190,
+            "node_id": "I_kwDORAMgA88AAAABK60JqQ",
+            "url": "https://github.com/edithatogo/authentext/issues/190",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "source-verification_20260131",
+      "title": "Systematic Source Verification & Archival",
+      "path": "conductor/tracks/archive/source-verification_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": null,
+      "parent_issue": {
+        "number": 191,
+        "node_id": "I_kwDORAMgA88AAAABK60LeA",
+        "url": "https://github.com/edithatogo/authentext/issues/191",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "source-verification_20260131.phase1",
+          "number": 1,
+          "title": "Primary Academic Studies",
+          "source": "conductor/tracks/archive/source-verification_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 192,
+            "node_id": "I_kwDORAMgA88AAAABK60LzQ",
+            "url": "https://github.com/edithatogo/authentext/issues/192",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "source-verification_20260131.phase2",
+          "number": 2,
+          "title": "Technical & Industry",
+          "source": "conductor/tracks/archive/source-verification_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 193,
+            "node_id": "I_kwDORAMgA88AAAABK60NDw",
+            "url": "https://github.com/edithatogo/authentext/issues/193",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "source-verification_20260131.phase3",
+          "number": 3,
+          "title": "Standards & Governance",
+          "source": "conductor/tracks/archive/source-verification_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 194,
+            "node_id": "I_kwDORAMgA88AAAABK60OYQ",
+            "url": "https://github.com/edithatogo/authentext/issues/194",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "source-verification_20260131.phase4",
+          "number": 4,
+          "title": "Datasets & Benchmarks",
+          "source": "conductor/tracks/archive/source-verification_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 195,
+            "node_id": "I_kwDORAMgA88AAAABK60Pkw",
+            "url": "https://github.com/edithatogo/authentext/issues/195",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "source-verification_20260131.phase5",
+          "number": 5,
+          "title": "Architecture Implementation (SOTA)",
+          "source": "conductor/tracks/archive/source-verification_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 196,
+            "node_id": "I_kwDORAMgA88AAAABK60Rxg",
+            "url": "https://github.com/edithatogo/authentext/issues/196",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "systematic-refactor-hardening_20260215",
+      "title": "Systematic Refactor and Hardening Baseline",
+      "path": "conductor/tracks/archive/systematic-refactor-hardening_20260215",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "completed",
+      "parent_issue": {
+        "number": 197,
+        "node_id": "I_kwDORAMgA88AAAABK60TtQ",
+        "url": "https://github.com/edithatogo/authentext/issues/197",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "systematic-refactor-hardening_20260215.phase1",
+          "number": 1,
+          "title": "Hotspot Discovery and Refactor Plan",
+          "source": "conductor/tracks/archive/systematic-refactor-hardening_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 198,
+            "node_id": "I_kwDORAMgA88AAAABK60UJA",
+            "url": "https://github.com/edithatogo/authentext/issues/198",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "systematic-refactor-hardening_20260215.phase2",
+          "number": 2,
+          "title": "Refactor Execution",
+          "source": "conductor/tracks/archive/systematic-refactor-hardening_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 199,
+            "node_id": "I_kwDORAMgA88AAAABK60Vmw",
+            "url": "https://github.com/edithatogo/authentext/issues/199",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "systematic-refactor-hardening_20260215.phase3",
+          "number": 3,
+          "title": "Guardrails and Maintenance",
+          "source": "conductor/tracks/archive/systematic-refactor-hardening_20260215/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 200,
+            "node_id": "I_kwDORAMgA88AAAABK60XdQ",
+            "url": "https://github.com/edithatogo/authentext/issues/200",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "universal-automated-adapters_20260131",
+      "title": "Universal Automated Adapters",
+      "path": "conductor/tracks/archive/universal-automated-adapters_20260131",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "archived",
+      "parent_issue": {
+        "number": 201,
+        "node_id": "I_kwDORAMgA88AAAABK60ZVg",
+        "url": "https://github.com/edithatogo/authentext/issues/201",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "universal-automated-adapters_20260131.phase1",
+          "number": 1,
+          "title": "Script Refactoring",
+          "source": "conductor/tracks/archive/universal-automated-adapters_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 202,
+            "node_id": "I_kwDORAMgA88AAAABK60ZtQ",
+            "url": "https://github.com/edithatogo/authentext/issues/202",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "universal-automated-adapters_20260131.phase2",
+          "number": 2,
+          "title": "Create Installation Script",
+          "source": "conductor/tracks/archive/universal-automated-adapters_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 203,
+            "node_id": "I_kwDORAMgA88AAAABK60a-A",
+            "url": "https://github.com/edithatogo/authentext/issues/203",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "universal-automated-adapters_20260131.phase3",
+          "number": 3,
+          "title": "Alignment and Testing",
+          "source": "conductor/tracks/archive/universal-automated-adapters_20260131/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 204,
+            "node_id": "I_kwDORAMgA88AAAABK60cRA",
+            "url": "https://github.com/edithatogo/authentext/issues/204",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "upstream-pr-adoption_20260304",
+      "title": "Upstream PR Adoption",
+      "path": "conductor/archive/upstream-pr-adoption_20260304",
+      "priority": "P0",
+      "historical": true,
+      "metadata_status": null,
+      "parent_issue": {
+        "number": 205,
+        "node_id": "I_kwDORAMgA88AAAABK60eYw",
+        "url": "https://github.com/edithatogo/authentext/issues/205",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "upstream-pr-adoption_20260304.phase1",
+          "number": 1,
+          "title": "Fetch and Review (2 hours)",
+          "source": "conductor/archive/upstream-pr-adoption_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 206,
+            "node_id": "I_kwDORAMgA88AAAABK60fFw",
+            "url": "https://github.com/edithatogo/authentext/issues/206",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "upstream-pr-adoption_20260304.phase2",
+          "number": 2,
+          "title": "Adopt Critical Fixes (4 hours)",
+          "source": "conductor/archive/upstream-pr-adoption_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 207,
+            "node_id": "I_kwDORAMgA88AAAABK60gQA",
+            "url": "https://github.com/edithatogo/authentext/issues/207",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "upstream-pr-adoption_20260304.phase3",
+          "number": 3,
+          "title": "Adopt Pattern Enhancements (4 hours)",
+          "source": "conductor/archive/upstream-pr-adoption_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 208,
+            "node_id": "I_kwDORAMgA88AAAABK60hdQ",
+            "url": "https://github.com/edithatogo/authentext/issues/208",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "upstream-pr-adoption_20260304.phase4",
+          "number": 4,
+          "title": "Security Review (2 hours)",
+          "source": "conductor/archive/upstream-pr-adoption_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 209,
+            "node_id": "I_kwDORAMgA88AAAABK60ipg",
+            "url": "https://github.com/edithatogo/authentext/issues/209",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "upstream-pr-adoption_20260304.phase5",
+          "number": 5,
+          "title": "Validation & Closure (2 hours)",
+          "source": "conductor/archive/upstream-pr-adoption_20260304/spec.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 210,
+            "node_id": "I_kwDORAMgA88AAAABK60kJQ",
+            "url": "https://github.com/edithatogo/authentext/issues/210",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "v4-architecture_20260415",
+      "title": "Modular V4 Architecture & Ecosystem Overhaul",
+      "path": "conductor/tracks/archive/v4-architecture_20260415",
+      "priority": "P2",
+      "historical": true,
+      "metadata_status": "archived",
+      "parent_issue": {
+        "number": 211,
+        "node_id": "I_kwDORAMgA88AAAABK60mgw",
+        "url": "https://github.com/edithatogo/authentext/issues/211",
+        "state": "closed"
+      },
+      "phases": [
+        {
+          "phase_id": "v4-architecture_20260415.phase1",
+          "number": 1,
+          "title": "Dependency Modernization & Scaffolding",
+          "source": "conductor/tracks/archive/v4-architecture_20260415/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 212,
+            "node_id": "I_kwDORAMgA88AAAABK60m8A",
+            "url": "https://github.com/edithatogo/authentext/issues/212",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "v4-architecture_20260415.phase2",
+          "number": 2,
+          "title": "Upstream Triage Workflow",
+          "source": "conductor/tracks/archive/v4-architecture_20260415/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 213,
+            "node_id": "I_kwDORAMgA88AAAABK60oLw",
+            "url": "https://github.com/edithatogo/authentext/issues/213",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "v4-architecture_20260415.phase3",
+          "number": 3,
+          "title": "Skill Implementation & Standardization (TDD)",
+          "source": "conductor/tracks/archive/v4-architecture_20260415/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 214,
+            "node_id": "I_kwDORAMgA88AAAABK60p-A",
+            "url": "https://github.com/edithatogo/authentext/issues/214",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "v4-architecture_20260415.phase4",
+          "number": 4,
+          "title": "Model Context Protocol (MCP) & Orchestrator",
+          "source": "conductor/tracks/archive/v4-architecture_20260415/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 215,
+            "node_id": "I_kwDORAMgA88AAAABK60rjw",
+            "url": "https://github.com/edithatogo/authentext/issues/215",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "v4-architecture_20260415.phase5",
+          "number": 5,
+          "title": "SOTA Advanced Features",
+          "source": "conductor/tracks/archive/v4-architecture_20260415/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 216,
+            "node_id": "I_kwDORAMgA88AAAABK60s2w",
+            "url": "https://github.com/edithatogo/authentext/issues/216",
+            "state": "closed"
+          }
+        },
+        {
+          "phase_id": "v4-architecture_20260415.phase6",
+          "number": 6,
+          "title": "Academic Benchmarking & Launch",
+          "source": "conductor/tracks/archive/v4-architecture_20260415/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 217,
+            "node_id": "I_kwDORAMgA88AAAABK60uyw",
+            "url": "https://github.com/edithatogo/authentext/issues/217",
+            "state": "closed"
+          }
+        }
+      ]
+    }
+  ]
+}

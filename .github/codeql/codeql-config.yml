@@ -1,0 +1,5 @@
+name: Authentext maintained surface
+
+paths-ignore:
+  - skills/**
+  - experiments/**

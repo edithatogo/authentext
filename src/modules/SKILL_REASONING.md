@@ -1,6 +1,6 @@
 ---
 module_id: reasoning
-version: 1.0.0
+version: 3.2.0
 description: Module for detecting and addressing LLM reasoning failures
 severity_levels:
   - Critical
@@ -9,7 +9,7 @@ severity_levels:
   - Low
 ---
 
-# Humanizer Reasoning Module: LLM Reasoning Failures
+# Authentext Reasoning Module: LLM Reasoning Failures
 
 This module identifies and addresses reasoning failures in Large Language Model (LLM) outputs that manifest as detectable patterns in the generated text.
 
@@ -77,7 +77,7 @@ This module identifies and addresses reasoning failures in Large Language Model 
 
 ## INTEGRATION WITH OTHER MODULES
 
-- Core Humanizer addresses surface-level writing quality issues
+- Core Authentext guidance addresses surface-level writing quality issues
 - Reasoning module addresses deeper logical consistency issues
 - Both modules can operate independently or in combination
 - Reasoning module defers to Core for surface-level fixes

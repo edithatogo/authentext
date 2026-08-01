@@ -1,1 +1,8 @@
-{ "last_successful_step": "3.3_initial_track_generated" }
+{
+  "setup_complete": true,
+  "last_successful_step": "3_handshake_generated",
+  "updated_at": "2026-07-31",
+  "conductor_upstream_commit": "99ba10e1a11130fc159f681b7ba8803489239cbf",
+  "conductor_upstream_version": "0.3.0",
+  "gemini_extension_release": "conductor-v0.4.1"
+}

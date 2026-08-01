@@ -1,20 +1,18 @@
 {
-  "name": "authentext-next",
+  "name": "authentext",
   "version": "3.2.0",
   "description": "Remove signs of AI-generated writing from text.",
   "private": true,
-  "workspaces": [
-    "skills/authentext-next",
-    "skills/authentext-logic",
-    "skills/authentext-read",
-    "skills/authentext-orchestrate"
-  ],
   "type": "module",
   "scripts": {
+    "evaluate": "node scripts/run-evaluations.js",
+    "conductor:reconcile": "node scripts/reconcile-conductor-github.js",
     "sync": "node scripts/compile-skill.js",
     "check:sync": "node scripts/check-sync-clean.js",
     "check:upstream": "node scripts/check-upstream.js",
     "validate": "node scripts/validate-docs.js",
+    "validate:hosts": "node scripts/validate-host-overlays.js",
+    "validate:conductor": "node scripts/validate-conductor.js",
     "validate:docs": "node scripts/validate-docs.js",
     "vale": "vale --minAlertLevel=error docs/skill-distribution.md",
     "lint": "node scripts/lint-markdown.js",
@@ -25,9 +23,8 @@
     "lint:all": "npm run lint && npm run vale && npm run lint:js && npm run typecheck && npm run format:check",
     "test": "node scripts/run-node-tests.js && node scripts/run-tests.js",
     "build": "node scripts/compile-skill.js",
-    "install:mcp-server": "node scripts/install-mcp-server.js",
     "prepare": "node -e \"if (!process.env.CI) require('child_process').execSync('npx husky install', { stdio: 'inherit' })\"",
-    "release": "echo 'No npm release: humanizer-next ships agent skill artifacts, not a publishable library'",
+    "release": "echo 'No npm release: Authentext ships Agent Skill artifacts, not a publishable npm library'",
     "version": "npm run sync && git add SKILL.md SKILL_PROFESSIONAL.md references AGENTS.md README.md"
   },
   "lint-staged": {
@@ -45,12 +42,12 @@
   "keywords": [
     "agent-skill",
     "writing",
-    "humanizer",
+    "authentext",
     "prompt-engineering",
     "ai-writing"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^25.6.0",
     "eslint": "^10.2.1",
@@ -58,9 +55,11 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-node": "^11.1.0",
     "husky": "^9.1.7",
+    "js-yaml": "^4.3.0",
     "lint-staged": "^16.4.0",
     "markdownlint-cli": "^0.48.0",
     "prettier": "^3.8.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "yaml": "^2.9.0"
   }
 }

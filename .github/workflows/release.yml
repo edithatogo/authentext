@@ -16,7 +16,9 @@ jobs:
       contents: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
 
       - name: Set up shared maintainer toolchain
         uses: ./.github/actions/setup-maintainer-env
@@ -37,42 +39,50 @@ jobs:
 
       - name: Package release artifacts
         run: |
-          mkdir -p release-artifacts
+          mkdir -p release-artifacts/references
           cp SKILL.md release-artifacts/
           cp SKILL_PROFESSIONAL.md release-artifacts/
           cp README.md release-artifacts/
-          cp AGENTS.md release-artifacts/
-          cp docs/install-matrix.md release-artifacts/
-          cp docs/skill-distribution.md release-artifacts/
-          cp -R adapters release-artifacts/adapters
-          tar -czf authentext-next-skill-artifacts.tar.gz -C release-artifacts .
-          (cd release-artifacts && zip -r ../authentext-next-skill-artifacts.zip .)
+          cp LICENSE release-artifacts/
+          cp -R references/. release-artifacts/references/
+          tar -czf authentext-skill-artifacts.tar.gz \
+            -C release-artifacts \
+            SKILL.md SKILL_PROFESSIONAL.md README.md LICENSE references
+          (
+            cd release-artifacts
+            zip -r ../authentext-skill-artifacts.zip \
+              SKILL.md SKILL_PROFESSIONAL.md README.md LICENSE references
+          )
 
       - name: Verify packaged artifact surface
-         run: |
-          test -f authentext-next-skill-artifacts.tar.gz
-          test -f authentext-next-skill-artifacts.zip
-          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^SKILL\.md$'
-          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^SKILL_PROFESSIONAL\.md$'
-          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^README\.md$'
-          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^AGENTS\.md$'
-          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^docs/install-matrix\.md$'
-          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^docs/skill-distribution\.md$'
-          tar -tzf authentext-next-skill-artifacts.tar.gz | grep -E '^adapters/'
+        run: |
+          test -f authentext-skill-artifacts.tar.gz
+          test -f authentext-skill-artifacts.zip
+          tar -tzf authentext-skill-artifacts.tar.gz | sort > artifact-contents.txt
+          grep -Fx 'SKILL.md' artifact-contents.txt
+          grep -Fx 'SKILL_PROFESSIONAL.md' artifact-contents.txt
+          grep -Fx 'README.md' artifact-contents.txt
+          grep -Fx 'LICENSE' artifact-contents.txt
+          grep -Fx 'references/core-patterns.md' artifact-contents.txt
+          grep -Fx 'references/technical.md' artifact-contents.txt
+          grep -Fx 'references/academic.md' artifact-contents.txt
+          grep -Fx 'references/governance.md' artifact-contents.txt
+          grep -Fx 'references/reasoning-failures.md' artifact-contents.txt
 
       - name: Upload release artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: authentext-next-skill-artifacts
+          name: authentext-skill-artifacts
           path: |
             release-artifacts
-            authentext-next-skill-artifacts.tar.gz
-            authentext-next-skill-artifacts.zip
+            authentext-skill-artifacts.tar.gz
+            authentext-skill-artifacts.zip
+            artifact-contents.txt
 
       - name: Publish GitHub release
         if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           files: |
-            authentext-next-skill-artifacts.tar.gz
-            authentext-next-skill-artifacts.zip
+            authentext-skill-artifacts.tar.gz
+            authentext-skill-artifacts.zip

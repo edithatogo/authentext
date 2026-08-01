@@ -34,12 +34,15 @@ test('references/core-patterns.md integrity', async (t) => {
   });
 });
 
-test('Professional SKILL_PROFESSIONAL.md integrity', async (t) => {
+test('Professional routing reference integrity', async (t) => {
   assert.ok(fs.existsSync(SKILL_PRO_PATH), 'SKILL_PROFESSIONAL.md should exist');
   const content = fs.readFileSync(SKILL_PRO_PATH, 'utf8');
 
   await t.test('contains Router Logic', () => {
-    assert.ok(content.includes('Humanizer Pro'), 'Pro header identity missing');
+    assert.ok(
+      content.includes('Authentext Professional Routing Reference'),
+      'Professional reference identity missing'
+    );
     assert.ok(content.includes('ROUTING LOGIC'), 'Routing logic missing');
   });
 
@@ -53,4 +56,31 @@ test('Professional SKILL_PROFESSIONAL.md integrity', async (t) => {
       'Link to reasoning reference missing'
     );
   });
+});
+
+test('long generated references provide deterministic navigation', () => {
+  for (const filename of ['core-patterns.md', 'technical.md', 'academic.md', 'governance.md']) {
+    const content = fs.readFileSync(`references/${filename}`, 'utf8');
+    const navigation = content.match(/## Navigation\n\n([\s\S]*?)\n\n## /);
+
+    assert.ok(navigation, `${filename} should include navigation before its first section`);
+    const sectionHeadings = [...content.matchAll(/^## (?!Navigation$)(.+)$/gm)].map(
+      ([, heading]) => heading
+    );
+    for (const heading of sectionHeadings) {
+      const anchor = heading
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-');
+      assert.match(
+        navigation[1],
+        new RegExp(
+          `^- \\[${heading.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}\\]\\(#${anchor}\\)$`,
+          'm'
+        ),
+        `${filename} should link section ${heading}`
+      );
+    }
+  }
 });

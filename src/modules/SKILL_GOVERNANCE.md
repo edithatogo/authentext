@@ -1,6 +1,6 @@
 ---
 module_id: governance
-version: 3.0.0
+version: 3.2.0
 description: Governance module for policy, risk, and compliance writing
 applies_to: policies, risk assessments, compliance docs, legal writing
 severity_levels:
@@ -275,6 +275,6 @@ This module applies to governance writing: policies, risk assessments, complianc
 
 ---
 
-_Module Version: 3.0.0_
+_Module Version: 3.2.0_
 _Last Updated: 2026-03-03_
 _Applies to: Policies, risk assessments, compliance docs, legal writing, regulatory submissions_

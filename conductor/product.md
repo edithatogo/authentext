@@ -1,59 +1,73 @@
-# Product Guide: Authentext (Agent-Agnostic Skill/Workflow Pack)
+# Product Guide: Authentext
 
 ## Summary
 
-Authentext is a set of writing-editing instructions that removes common “AI voice” patterns from text while preserving meaning and tone. Today it is packaged as a Claude Code skill (`SKILL.md`). The next step is to expand it into a multi-agent deliverable that can be used consistently across popular coding agents, while keeping `SKILL.md` as the canonical source of truth.
+Authentext is a portable Agent Skill for rewriting or reviewing prose to remove
+recurring AI-writing patterns while preserving meaning, voice, stance,
+citations, code, URLs, paths, and technical identifiers. This repository is the
+skill's maintenance and build system, not a standalone rewriting application or
+a compatibility-bundle repository.
 
-## Primary Users
+## Primary users
 
-- People using coding agents who want their writing to sound natural and human (docs, READMEs, PRDs, changelogs, comments, emails)
-- Maintainers who want a consistent editing workflow across multiple agent environments
+- People using coding agents to edit documentation, manuscripts, product text,
+  changelogs, comments, and correspondence.
+- Maintainers who need a deterministic, reviewable skill package across
+  standards-compliant hosts.
+- Integrators who need optional host metadata without contaminating the
+  portable skill contract.
 
-## Target Environments (Initial)
+## Canonical architecture
 
-- OpenAI Codex CLI
-- Gemini CLI
-- Google Antigravity
-- VS Code
+- `src/` contains the hand-edited canonical fragments.
+- `scripts/compile-skill.js` generates the root skill artifacts and references.
+- `SKILL.md` is the discoverable portable runtime skill.
+- `SKILL_PROFESSIONAL.md` is a generated professional routing surface until the
+  bleeding-edge track resolves its final packaging role.
+- `references/` provides progressively disclosed pattern and domain guidance.
+- `conductor/` defines product context, roadmap, tracks, requirements, design,
+  plans, and evidence boundaries.
 
 ## Goals
 
-- **Modular Excellence (V4)**: Decompose the monolithic skill into 8 independent, specialized MCP-compatible skills.
-- **Agent Orchestration**: Provide a global MCP server allowing multi-agent "swarming" for complex humanization tasks.
-- **Canonical Integrity**: Maintain `SKILL.md` as the source of truth, synced via automated tooling to all adapters.
+1. **Portable compliance:** conform to the current Agent Skills specification
+   without requiring a particular host.
+2. **Editorial integrity:** make restrained edits and preserve literal,
+   factual, tonal, and structural invariants.
+3. **Generated consistency:** prevent identity, version, license, source, and
+   generated-output drift.
+4. **Behavioral evidence:** evaluate discovery, restraint, rewrite quality, and
+   literal preservation rather than relying on manifest shape alone.
+5. **Layered extensibility:** generate optional host metadata and experiments
+   separately from the portable core.
 
-## Non-Goals (for initial rollout)
+## Non-goals
 
-- Rewriting the underlying Authentext guidance into a fundamentally different editorial philosophy.
-- Building a full standalone rewriting app; focus remains on agent-facing skills/workflows.
+- Proving human authorship or reliably detecting whether text was AI-generated.
+- Building a hosted rewriting service or full standalone editor.
+- Maintaining adapter bundles, installation shims, or legacy consumer paths.
+- Treating experimental host features or proposed manifests as portable
+  standards.
+- Publishing or releasing without explicit approval and verified gates.
 
-## Key Product Decisions
+## Product decisions
 
-- **Modular Architecture**: Split into `next`, `logic`, `cite`, `read`, `structure`, `factcheck`, `inclusive`, and `orchestrate`.
-- **MCP Protocol**: Use the Model Context Protocol (MCP) as the primary interface for tool discovery and execution.
+- One portable Authentext runtime skill is authoritative.
+- `src/` is the source of truth; generated roots must never be edited as
+  independent copies.
+- Professional behavior should route within the canonical skill unless a
+  separately discoverable package is justified by evaluation.
+- Host-specific metadata belongs in generated overlays such as
+  `agents/openai.yaml`.
+- External publication state is distinct from local build, test, and planning
+  state.
 
-## Deliverables
+## Success criteria
 
-- **Canonical Skillset**:
-  - `SKILL.md` / `SKILL_PROFESSIONAL.md`
-- **MCP Infrastructure**:
-  - Authentext MCP Server exposing specialized authentext tools.
-  - Orchestrator for parallel execution swarms.
-- **Standardized Adapters**:
-  - Support for Antigravity, VS Code, Claude, Gemini, and other SOTA agent environments.
-
-## Quality Bar
-
-- Adapters remain consistent with `SKILL.md` in:
-  - Pattern coverage (the same core “AI writing signs”)
-  - Output expectations (rewrite + optional brief change summary)
-  - Tone control (preserve intended voice; avoid sterile or robotic rewrites)
-- Documentation clearly states:
-  - Which file is canonical (`SKILL.md`)
-  - What each adapter is for and how to use it
-
-## Success Criteria
-
-- 100% decoupling of the 8 skill modules.
-- Successful MCP tool registration and parallel execution.
-- Mathematical verification of "Meaning Preservation" across humanized outputs.
+- Official Agent Skills validators accept the portable package.
+- Trigger and output evaluations cover positive, near-miss, negative,
+  low-density, and technical-literal cases.
+- Generated sync is deterministic across supported platforms.
+- Documentation and package metadata use coherent Authentext identity, version,
+  and license roles.
+- Optional host layers can be disabled without changing portable behavior.

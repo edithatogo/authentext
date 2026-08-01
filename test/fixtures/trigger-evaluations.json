@@ -1,0 +1,50 @@
+[
+  {
+    "id": "positive-rewrite",
+    "category": "positive",
+    "prompt": "Rewrite this draft so it sounds natural and remove the obvious AI-writing patterns.",
+    "expected": { "activate": true, "operation": "rewrite", "material": "general" }
+  },
+  {
+    "id": "positive-review-technical",
+    "category": "positive",
+    "prompt": "Review this README for robotic prose without changing the code or API names.",
+    "expected": { "activate": true, "operation": "review", "material": "technical" }
+  },
+  {
+    "id": "paraphrased-academic",
+    "category": "paraphrased",
+    "prompt": "Make the manuscript less formulaic while retaining citations and scholarly caution.",
+    "expected": { "activate": true, "operation": "rewrite", "material": "academic" }
+  },
+  {
+    "id": "paraphrased-governance-review",
+    "category": "paraphrased",
+    "prompt": "Flag canned or inflated wording in this compliance policy and suggest precise alternatives.",
+    "expected": { "activate": true, "operation": "review", "material": "governance" }
+  },
+  {
+    "id": "near-miss-grammar",
+    "category": "near_miss",
+    "prompt": "Correct spelling and punctuation in this paragraph, but do not change its style.",
+    "expected": { "activate": false, "operation": "none", "material": "general" }
+  },
+  {
+    "id": "near-miss-translation",
+    "category": "near_miss",
+    "prompt": "Translate this natural-sounding English paragraph into te reo Maori.",
+    "expected": { "activate": false, "operation": "none", "material": "general" }
+  },
+  {
+    "id": "negative-code",
+    "category": "negative",
+    "prompt": "Implement calculateChecksum() and add unit tests.",
+    "expected": { "activate": false, "operation": "none", "material": "technical" }
+  },
+  {
+    "id": "negative-summary",
+    "category": "negative",
+    "prompt": "Summarize the attached quarterly report in five bullets.",
+    "expected": { "activate": false, "operation": "none", "material": "general" }
+  }
+]

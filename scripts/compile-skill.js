@@ -32,6 +32,7 @@ const OUTPUT = {
   skill: 'SKILL.md',
   skillPro: 'SKILL_PROFESSIONAL.md',
   referencesDir: 'references',
+  openaiMetadata: 'agents/openai.yaml',
 };
 
 const REFERENCE_FILES = {
@@ -43,11 +44,6 @@ const REFERENCE_FILES = {
 };
 
 const STANDARD_DESCRIPTION = `Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance.`;
-
-const PRO_DESCRIPTION = `Remove signs of AI-generated writing for professional, technical, academic, and policy prose. Use when editing client-facing or formal text that must stay precise and restrained. Routes across core, technical, academic, and governance pattern modules plus reasoning-failure detection. Based on Wikipedia's "Signs of AI writing" guide with severity classification and literal preservation rules.`;
-
-const COMPATIBILITY =
-  'Requires an agent host that supports the Agent Skills format and Read, Write, Edit, Grep, and Glob tools (Claude Code, Cursor, Codex CLI, Gemini CLI, GitHub Copilot, and compatible hosts).';
 
 /**
 
@@ -168,6 +164,33 @@ function stripFrontmatter(content) {
 }
 
 /**
+ * Add a compact table of contents to long generated references.
+ * @param {string} content
+ * @returns {string}
+ */
+function addReferenceNavigation(content) {
+  if (content.split('\n').length < 200) {
+    return content;
+  }
+
+  const headings = [...content.matchAll(/^## (.+)$/gm)].map(([, heading]) => heading);
+  if (headings.length < 2) {
+    return content;
+  }
+
+  const links = headings.map((heading) => {
+    const anchor = heading
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim()
+      .replace(/\s+/g, '-');
+    return `- [${heading}](#${anchor})`;
+  });
+  const firstSection = content.search(/^## /m);
+  return `${content.slice(0, firstSection).trimEnd()}\n\n## Navigation\n\n${links.join('\n')}\n\n${content.slice(firstSection)}`;
+}
+
+/**
 
 * @param {string} content
 * @param {string} startHeading
@@ -217,21 +240,32 @@ function buildStandardIntro(strippedCore) {
 function buildAgentSkillsFrontmatter({ name, version, description }) {
   return `---
 name: ${name}
-version: ${version}
-description: ${description}
+description: ${JSON.stringify(description)}
 license: MIT
-compatibility: ${COMPATIBILITY}
-allowed-tools:
-
-* Read
-* Write
-* Edit
-* Grep
-* Glob
-* AskUserQuestion
-
+metadata:
+  version: ${JSON.stringify(version)}
 ---
 
+`;
+}
+
+/**
+ * Build the optional OpenAI host overlay. The portable Agent Skills contract
+ * remains in SKILL.md; this generated file only supplies host presentation and
+ * invocation policy.
+ * @returns {string}
+ */
+function buildOpenAiMetadata() {
+  return `interface:
+  display_name: "Authentext"
+  short_description: "Rewrite prose naturally while preserving meaning and literals"
+  default_prompt: "Use $authentext to rewrite this text naturally while preserving its meaning and technical literals."
+
+policy:
+  products:
+    - "CHAT"
+    - "CODEX"
+  allow_implicit_invocation: true
 `;
 }
 
@@ -249,7 +283,7 @@ function writeReferenceTree(modules) {
       continue;
     }
 
-    const body = stripFrontmatter(moduleContent).trim();
+    const body = addReferenceNavigation(stripFrontmatter(moduleContent).trim());
     const targetPath = path.join(referencesDir, filename);
     fs.writeFileSync(targetPath, `${body}\n`, 'utf-8');
     console.log(`✓ Written: ${OUTPUT.referencesDir}/${filename}`);
@@ -258,16 +292,15 @@ function writeReferenceTree(modules) {
 
 /**
 
-* @param {string} coreModule
-* @param {boolean} hasReasoning
-* @returns {string}
+ * @param {Record<string, string|null>} modules
+ * @returns {string}
  */
-function compileStandardSkill(coreModule, hasReasoning) {
+function compileStandardSkill(modules) {
   console.log('\n=== Compiling Standard Authentext ===');
 
-  const coreFrontmatter = extractFrontmatter(coreModule);
+  const coreFrontmatter = extractFrontmatter(modules.core);
   const version = coreFrontmatter?.version || '3.0.0';
-  const strippedCore = stripFrontmatter(coreModule);
+  const strippedCore = stripFrontmatter(modules.core);
 
   const intro = buildStandardIntro(strippedCore);
   const severity = extractSection(
@@ -279,14 +312,51 @@ function compileStandardSkill(coreModule, hasReasoning) {
 
   const referenceLinks = [
     '- [Core patterns (39 patterns, before/after examples)](references/core-patterns.md)',
-  ];
-  if (hasReasoning) {
-    referenceLinks.push(
-      '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)'
-    );
-  }
+    modules.technical && '- [Technical writing and literal preservation](references/technical.md)',
+    modules.academic && '- [Academic and research prose](references/academic.md)',
+    modules.governance && '- [Policy, governance, and compliance prose](references/governance.md)',
+    modules.reasoning &&
+      '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)',
+  ].filter(Boolean);
 
   const body = `${intro}
+
+## Routing by task and content type
+
+Route in two stages. Do not load a content reference until both stages are
+classified.
+
+### Stage 1: Operation
+
+- **Rewrite:** Return revised prose. Preserve meaning, coverage, voice,
+  technical literals, citations, and epistemic qualifiers.
+- **Review:** Return findings tied to specific passages with proposed changes.
+  Do not silently rewrite the source.
+- **Both:** Return the review first, then a clearly separated revision.
+
+If the request does not make the operation clear, infer it from the requested
+output. Ask only when review versus rewrite would materially change the result.
+
+### Stage 2: Material
+
+Apply the root workflow for every task, then load only the references matching
+the material:
+
+- Technical documentation or code-adjacent prose: read
+  [technical.md](references/technical.md).
+- Papers, manuscripts, citations, or research prose: read
+  [academic.md](references/academic.md).
+- Policy, governance, legal, risk, or compliance prose: read
+  [governance.md](references/governance.md).
+- Claims with contradictions or reasoning failures: read
+  [reasoning-failures.md](references/reasoning-failures.md).
+
+Load more than one content reference only when the material genuinely crosses
+domains. Reasoning guidance supplements a content reference; it does not replace
+technical, academic, or governance rules.
+
+For low-density or clearly human-authored prose, make only the smallest
+defensible edits.
 
 ## Reference material
 
@@ -294,7 +364,9 @@ Read these files for the full pattern catalog, examples, and remediation guidanc
 
 ${referenceLinks.join('\n')}
 
-Apply every pattern in the reference files when humanizing text. This root skill keeps workflow, severity tiers, and detection guardrails; the references hold the exhaustive pattern definitions.
+Apply the relevant patterns from the selected reference files. This root skill
+keeps workflow, severity tiers, and detection guardrails; the references hold
+the detailed pattern definitions.
 
 ${severity}
 
@@ -316,10 +388,7 @@ ${detection}
 * @returns {string}
  */
 function compileProfessionalSkill(modules) {
-  console.log('\n=== Compiling Authentext Pro ===');
-
-  const coreFrontmatter = extractFrontmatter(modules.core);
-  const version = coreFrontmatter?.version || '3.0.0';
+  console.log('\n=== Compiling Authentext Professional Reference ===');
 
   const availableReferences = Object.entries(REFERENCE_FILES)
     .filter(([key]) => modules[key])
@@ -336,11 +405,15 @@ function compileProfessionalSkill(modules) {
     .filter(Boolean)
     .join('\n');
 
-  const introduction = `# Authentext: Remove AI Writing Patterns
+  const introduction = `# Authentext Professional Routing Reference
 
-You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup.
+This generated reference is not a separately discoverable Agent Skill.
+The authoritative runtime entry point is [SKILL.md](SKILL.md), which owns
+activation and routing. Use this file as supplementary professional-editing
+guidance when the main skill selects a technical, academic, governance, or
+client-facing route.
 
-## Authentext Pro: Professional Editing
+## Professional editing profile
 
 Use this variant for technical, policy, academic, and client-facing prose. Keep the text precise, restrained, and readable.
 
@@ -412,13 +485,7 @@ For severity tiers and false-positive guidance, read [Core patterns](references/
 Available reference files: ${availableReferences.join(', ')}.
 `;
 
-  return (
-    buildAgentSkillsFrontmatter({
-      name: 'authentext-pro',
-      version,
-      description: PRO_DESCRIPTION,
-    }) + introduction
-  );
+  return introduction;
 }
 
 /**
@@ -444,7 +511,7 @@ function compile() {
 
     writeReferenceTree(modules);
 
-    const skillContent = compileStandardSkill(modules.core, Boolean(modules.reasoning));
+    const skillContent = compileStandardSkill(modules);
     const skillPath = path.join(ROOT_DIR, OUTPUT.skill);
     fs.writeFileSync(skillPath, skillContent, 'utf-8');
     console.log(`✓ Written: ${OUTPUT.skill} (${skillContent.split('\n').length} lines)`);
@@ -454,11 +521,18 @@ function compile() {
     fs.writeFileSync(proPath, proContent, 'utf-8');
     console.log(`✓ Written: ${OUTPUT.skillPro} (${proContent.split('\n').length} lines)`);
 
+    const openaiMetadataPath = path.join(ROOT_DIR, OUTPUT.openaiMetadata);
+    fs.mkdirSync(path.dirname(openaiMetadataPath), { recursive: true });
+    fs.writeFileSync(openaiMetadataPath, buildOpenAiMetadata(), 'utf-8');
+    console.log(`✓ Written: ${OUTPUT.openaiMetadata}`);
+
     console.log('\n╔════════════════════════════════════════╗');
     console.log('║  ✓ Compilation Complete              ║');
     console.log('╚════════════════════════════════════════╝');
     console.log(`\nVersion: ${skillVersion}`);
-    console.log('Output: Agent Skills package (SKILL.md + references/)');
+    console.log(
+      'Output: Agent Skills package (SKILL.md + references/) with optional host metadata'
+    );
   } catch (error) {
     console.error('\n❌ Compilation failed:');
     console.error(error.message);

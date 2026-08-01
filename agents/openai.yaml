@@ -1,0 +1,10 @@
+interface:
+  display_name: "Authentext"
+  short_description: "Rewrite prose naturally while preserving meaning and literals"
+  default_prompt: "Use $authentext to rewrite this text naturally while preserving its meaning and technical literals."
+
+policy:
+  products:
+    - "CHAT"
+    - "CODEX"
+  allow_implicit_invocation: true
