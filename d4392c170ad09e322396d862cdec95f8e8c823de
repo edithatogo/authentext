@@ -1,0 +1,1 @@
+Phase 1 architecture decision: release staging is authoritative; a generated distribution repository is conditional on a concrete approved transport need. Documents threat boundaries, least privilege, and per-channel publication gates.
