@@ -5,6 +5,8 @@ prepare, validate, and verify packages before submission.
 
 ## Phase 1: Baseline, architecture, and reconciliation
 
+GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
+
 - [ ] Task: Repair stale Conductor links and reconcile the archived Renovate
       track and closed GitHub issues. (M-016)
 - [ ] Task: Write failing schema and integrity tests for the registry matrix,
@@ -23,11 +25,13 @@ prepare, validate, and verify packages before submission.
 
 ## Phase 2: Portable registries and cross-host installation
 
+GitHub subissue: [#247](https://github.com/edithatogo/authentext/issues/247)
+
 - [ ] Task: Write failing tests for reference validation, `gh skill`, skills
       CLI discovery, clean installation, update provenance, and stale-name
       detection. (M-003, M-004, M-005, M-006, M-011)
 - [ ] Task: Run the Agent Skills reference validator and current `gh skill
-    publish --dry-run`; resolve only portable-contract findings. (M-003)
+  publish --dry-run`; resolve only portable-contract findings. (M-003)
 - [ ] Task: Verify `gh skill preview`, publish, install, and update behavior for
       GitHub Copilot and supported target agents. (M-006)
 - [ ] Task: Establish a current skills.sh Authentext catalog entry, verify its
@@ -44,6 +48,8 @@ prepare, validate, and verify packages before submission.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 3: Claude plugin and marketplace distribution
+
+GitHub subissue: [#248](https://github.com/edithatogo/authentext/issues/248)
 
 - [ ] Task: Write failing tests for Claude plugin identity, manifest schema,
       marketplace schema, version/hash pinning, package contents, and absence of
@@ -63,6 +69,8 @@ prepare, validate, and verify packages before submission.
 
 ## Phase 4: Codex, ChatGPT, and GitHub Copilot distribution
 
+GitHub subissue: [#249](https://github.com/edithatogo/authentext/issues/249)
+
 - [ ] Task: Write failing tests for Codex skill-only plugin packaging, OpenAI
       overlay consistency, portable-field isolation, and prohibited app/tool
       dependencies. (M-008, M-013)
@@ -80,6 +88,8 @@ prepare, validate, and verify packages before submission.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 5: Gemini CLI, OpenCode, and extended host channels
+
+GitHub subissue: [#250](https://github.com/edithatogo/authentext/issues/250)
 
 - [ ] Task: Write failing tests for Gemini extension manifests, bundled skill
       hashes, OpenCode discovery/catalog metadata, and the OpenCode npm-plugin
@@ -103,6 +113,8 @@ prepare, validate, and verify packages before submission.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 6: Update automation, release, and governed closeout
+
+GitHub subissue: [#251](https://github.com/edithatogo/authentext/issues/251)
 
 - [ ] Task: Write failing tests for registry drift, stale releases, changed
       manifests, broken listings, removed packages, and false acceptance

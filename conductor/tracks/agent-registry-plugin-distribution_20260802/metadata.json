@@ -15,8 +15,9 @@
   "github": {
     "project_number": 36,
     "project_url": "https://github.com/users/edithatogo/projects/36",
-    "parent_issue": null,
-    "phase_issues": []
+    "parent_issue": 245,
+    "parent_issue_url": "https://github.com/edithatogo/authentext/issues/245",
+    "phase_issues": [246, 247, 248, 249, 250, 251]
   },
   "external_gates": [
     "registry submission",
@@ -26,4 +27,3 @@
     "host workspace publication"
   ]
 }
-

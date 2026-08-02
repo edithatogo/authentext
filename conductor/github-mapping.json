@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-01T08:00:00.000Z",
+  "generated_at": "2026-08-02T00:00:00.000Z",
   "repository": "edithatogo/authentext",
   "project": {
     "number": 36,
@@ -8,40 +8,40 @@
     "url": "https://github.com/users/edithatogo/projects/36"
   },
   "counts": {
-    "tracks": 33,
-    "phases": 132,
-    "repository_issues": 174,
+    "tracks": 34,
+    "phases": 138,
+    "repository_issues": 181,
     "open_tracks": 1,
-    "historical_tracks": 32
+    "historical_tracks": 33
   },
   "verification": {
-    "verified_at": "2026-08-01",
+    "verified_at": "2026-08-02",
     "duplicate_track_markers": 0,
     "duplicate_phase_markers": 0,
     "native_parent_child_relationships": "verified",
     "issue_states": "verified",
-    "project_membership": "165/165"
+    "project_membership": "172/172"
   },
   "tracks": [
     {
       "track_id": "renovate-codecov-verification_20260801",
       "title": "Renovate and Codecov Verification",
-      "path": "conductor/tracks/renovate-codecov-verification_20260801",
+      "path": "conductor/tracks/archive/renovate-codecov-verification_20260801",
       "priority": "P1",
-      "historical": false,
-      "metadata_status": "in_progress",
+      "historical": true,
+      "metadata_status": "completed",
       "parent_issue": {
         "number": 234,
         "node_id": "I_kwDORAMgA88AAAABLCgAGQ",
         "url": "https://github.com/edithatogo/authentext/issues/234",
-        "state": "open"
+        "state": "closed"
       },
       "phases": [
         {
           "phase_id": "renovate-codecov-verification_20260801.phase1",
           "number": 1,
           "title": "Repository integration",
-          "source": "conductor/tracks/renovate-codecov-verification_20260801/plan.md",
+          "source": "conductor/tracks/archive/renovate-codecov-verification_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 235,
@@ -54,12 +54,106 @@
           "phase_id": "renovate-codecov-verification_20260801.phase2",
           "number": 2,
           "title": "Hosted verification",
-          "source": "conductor/tracks/renovate-codecov-verification_20260801/plan.md",
+          "source": "conductor/tracks/archive/renovate-codecov-verification_20260801/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 236,
             "node_id": "I_kwDORAMgA88AAAABLCgBLw",
             "url": "https://github.com/edithatogo/authentext/issues/236",
+            "state": "closed"
+          }
+        }
+      ]
+    },
+    {
+      "track_id": "agent-registry-plugin-distribution_20260802",
+      "title": "Agent Registry and Plugin Distribution",
+      "path": "conductor/tracks/agent-registry-plugin-distribution_20260802",
+      "priority": "P1",
+      "historical": false,
+      "metadata_status": "new",
+      "parent_issue": {
+        "number": 245,
+        "node_id": "I_kwDORAMgA88AAAABLIkPiQ",
+        "url": "https://github.com/edithatogo/authentext/issues/245",
+        "state": "open"
+      },
+      "phases": [
+        {
+          "phase_id": "agent-registry-plugin-distribution_20260802.phase1",
+          "number": 1,
+          "title": "Baseline, architecture, and reconciliation",
+          "source": "conductor/tracks/agent-registry-plugin-distribution_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 246,
+            "node_id": "I_kwDORAMgA88AAAABLIkP_g",
+            "url": "https://github.com/edithatogo/authentext/issues/246",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "agent-registry-plugin-distribution_20260802.phase2",
+          "number": 2,
+          "title": "Portable registries and cross-host installation",
+          "source": "conductor/tracks/agent-registry-plugin-distribution_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 247,
+            "node_id": "I_kwDORAMgA88AAAABLIkQmg",
+            "url": "https://github.com/edithatogo/authentext/issues/247",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "agent-registry-plugin-distribution_20260802.phase3",
+          "number": 3,
+          "title": "Claude plugin and marketplace distribution",
+          "source": "conductor/tracks/agent-registry-plugin-distribution_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 248,
+            "node_id": "I_kwDORAMgA88AAAABLIkRPQ",
+            "url": "https://github.com/edithatogo/authentext/issues/248",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "agent-registry-plugin-distribution_20260802.phase4",
+          "number": 4,
+          "title": "Codex, ChatGPT, and GitHub Copilot distribution",
+          "source": "conductor/tracks/agent-registry-plugin-distribution_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 249,
+            "node_id": "I_kwDORAMgA88AAAABLIkSAA",
+            "url": "https://github.com/edithatogo/authentext/issues/249",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "agent-registry-plugin-distribution_20260802.phase5",
+          "number": 5,
+          "title": "Gemini CLI, OpenCode, and extended host channels",
+          "source": "conductor/tracks/agent-registry-plugin-distribution_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 250,
+            "node_id": "I_kwDORAMgA88AAAABLIkTKg",
+            "url": "https://github.com/edithatogo/authentext/issues/250",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "agent-registry-plugin-distribution_20260802.phase6",
+          "number": 6,
+          "title": "Update automation, release, and governed closeout",
+          "source": "conductor/tracks/agent-registry-plugin-distribution_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 251,
+            "node_id": "I_kwDORAMgA88AAAABLIkTxg",
+            "url": "https://github.com/edithatogo/authentext/issues/251",
             "state": "open"
           }
         }

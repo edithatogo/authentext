@@ -6,6 +6,16 @@
 - **Status:** New
 - **Current phase:** Phase 1 — Baseline, architecture, and reconciliation
 - **GitHub Project:** [Authentext Conductor Roadmap](https://github.com/users/edithatogo/projects/36)
+- **GitHub track:** [#245](https://github.com/edithatogo/authentext/issues/245)
+
+## Native phase subissues
+
+- [#246 — Baseline, architecture, and reconciliation](https://github.com/edithatogo/authentext/issues/246)
+- [#247 — Portable registries and cross-host installation](https://github.com/edithatogo/authentext/issues/247)
+- [#248 — Claude plugin and marketplace distribution](https://github.com/edithatogo/authentext/issues/248)
+- [#249 — Codex, ChatGPT, and GitHub Copilot distribution](https://github.com/edithatogo/authentext/issues/249)
+- [#250 — Gemini CLI, OpenCode, and extended host channels](https://github.com/edithatogo/authentext/issues/250)
+- [#251 — Update automation, release, and governed closeout](https://github.com/edithatogo/authentext/issues/251)
 
 ## Artifacts
 
