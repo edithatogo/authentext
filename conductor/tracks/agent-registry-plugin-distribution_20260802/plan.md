@@ -9,10 +9,10 @@ GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
 
 - [x] Task: Repair stale Conductor links and reconcile the archived Renovate
       track and closed GitHub issues. (M-016)
-- [ ] Task: Write failing schema and integrity tests for the registry matrix,
+- [x] Task: Write failing schema and integrity tests for the registry matrix,
       governed status vocabulary, host coverage, and canonical-source rules.
       (M-001, M-002, M-013)
-- [ ] Task: Recheck current official specifications and pin dated host/channel
+- [x] Task: Recheck current official specifications and pin dated host/channel
       capabilities in the matrix. (M-002)
 - [ ] Task: Decide between a dedicated generated distribution repository and
       release-staged host packages; document the ADR and threat boundary.
