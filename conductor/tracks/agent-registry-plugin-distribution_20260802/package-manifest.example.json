@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "package": {
+    "id": "authentext-portable",
+    "version": "3.2.0",
+    "target": "portable-agent-skill",
+    "format": "tar+gzip",
+    "generated": true
+  },
+  "source": {
+    "repository": "https://github.com/edithatogo/authentext",
+    "commit": "fd14e92b8bc2f070a509851f3fbfc9a245280e3c",
+    "releaseTag": "v3.2.0",
+    "sourceDateEpoch": 1785585600,
+    "canonicalInputs": [
+      "src/",
+      "scripts/compile-skill.js",
+      "package.json",
+      "package-lock.json",
+      "SKILL.md",
+      "SKILL_PROFESSIONAL.md",
+      "references/"
+    ],
+    "buildCommands": ["npm ci", "npm run sync", "npm run package:portable"]
+  },
+  "artifact": {
+    "path": "dist/authentext-portable-3.2.0.tar.gz",
+    "mediaType": "application/gzip",
+    "sizeBytes": 12345,
+    "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "contents": [
+    {
+      "path": "authentext/SKILL.md",
+      "sourcePath": "SKILL.md",
+      "role": "portable-skill",
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    {
+      "path": "authentext/references/core-patterns.md",
+      "sourcePath": "references/core-patterns.md",
+      "role": "reference",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    {
+      "path": "authentext/LICENSE",
+      "sourcePath": "LICENSE",
+      "role": "license",
+      "sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+    }
+  ],
+  "exclusions": [
+    "repository-internals",
+    "credentials-and-secrets",
+    "development-inputs",
+    "governance-history",
+    "unsafe-filesystem-entries"
+  ],
+  "capabilities": {
+    "apps": [],
+    "tools": [],
+    "hooks": [],
+    "network": []
+  },
+  "sbom": {
+    "format": "SPDX-2.3-JSON",
+    "path": "evidence/authentext-portable-3.2.0.spdx.json",
+    "sha256": "5555555555555555555555555555555555555555555555555555555555555555"
+  },
+  "provenance": {
+    "format": "in-toto-slsa-provenance-v1",
+    "path": "evidence/authentext-portable-3.2.0.intoto.jsonl",
+    "sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "builderId": "https://github.com/edithatogo/authentext/actions/workflows/package.yml",
+    "buildType": "https://github.com/edithatogo/authentext/blob/main/docs/distribution-build-v1",
+    "invocationSha256": "7777777777777777777777777777777777777777777777777777777777777777",
+    "hosted": true,
+    "materials": [
+      {
+        "uri": "git+https://github.com/edithatogo/authentext@fd14e92b8bc2f070a509851f3fbfc9a245280e3c",
+        "sha256": "8888888888888888888888888888888888888888888888888888888888888888"
+      }
+    ],
+    "signature": null,
+    "transparencyLog": null
+  }
+}

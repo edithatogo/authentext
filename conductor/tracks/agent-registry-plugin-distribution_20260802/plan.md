@@ -17,7 +17,7 @@ GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
 - [x] Task: Decide between a dedicated generated distribution repository and
       release-staged host packages; document the ADR and threat boundary.
       (S-001)
-- [ ] Task: Define deterministic package manifests, hashes, SBOM/provenance
+- [x] Task: Define deterministic package manifests, hashes, SBOM/provenance
       fields, inclusion lists, and exclusion rules. (M-001, M-013, C-005)
 - [x] Task: Mirror this track and all phases as native GitHub issues/subissues
       in Project 36 and update `conductor/github-mapping.json`. (M-015)
