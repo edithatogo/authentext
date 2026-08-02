@@ -1,0 +1,1 @@
+Phase 1 package contract and checkpoint evidence: deterministic manifests, SHA-256 contents, mandatory exclusions, empty skill-only capabilities, SBOM and SLSA provenance contracts. Verification passed npm sync, validate, lint:all, test:coverage (79.65% lines), 92 tests, Conductor validation, and registry CLI validation.
