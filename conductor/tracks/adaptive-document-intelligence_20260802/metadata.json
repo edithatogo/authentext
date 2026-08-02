@@ -11,6 +11,13 @@
   "parallel_safe": true,
   "depends_on": ["bleeding-edge-agent-skills-conductor_20260731"],
   "coordinates_with": ["agent-registry-plugin-distribution_20260802"],
+  "github": {
+    "project_number": 36,
+    "project_url": "https://github.com/users/edithatogo/projects/36",
+    "parent_issue": 254,
+    "parent_issue_url": "https://github.com/edithatogo/authentext/issues/254",
+    "phase_issues": [255, 256, 257, 258, 259, 260]
+  },
   "external_gates": [
     "external guidance retrieval involving sensitive metadata",
     "legal or clinical approval",

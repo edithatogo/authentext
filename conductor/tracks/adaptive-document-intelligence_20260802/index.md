@@ -6,6 +6,17 @@
 - **Status:** New
 - **Current phase:** Phase 1 — Contracts, evidence, and migration boundary
 - **Coordinates with:** Agent Registry and Plugin Distribution
+- **GitHub Project:** [Authentext Conductor Roadmap](https://github.com/users/edithatogo/projects/36)
+- **GitHub track:** [#254](https://github.com/edithatogo/authentext/issues/254)
+
+## Native phase subissues
+
+- [#255 — Contracts, evidence, and migration boundary](https://github.com/edithatogo/authentext/issues/255)
+- [#256 — Confidence-aware intake and routing](https://github.com/edithatogo/authentext/issues/256)
+- [#257 — Governed research and source intelligence](https://github.com/edithatogo/authentext/issues/257)
+- [#258 — Diagnostics, editing strength, and safety](https://github.com/edithatogo/authentext/issues/258)
+- [#259 — Evaluation and document-profile quality](https://github.com/edithatogo/authentext/issues/259)
+- [#260 — Portable skill integration and closeout](https://github.com/edithatogo/authentext/issues/260)
 
 ## Artifacts
 

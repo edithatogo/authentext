@@ -2,6 +2,8 @@
 
 ## Phase 1: Contracts, evidence, and migration boundary
 
+GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
+
 - [ ] Task: Write failing tests for one-runtime-skill ownership, profile schema,
       unknown/composite types, confidence, provenance, and source precedence.
       (M-001, M-002, M-003, M-005)
@@ -20,6 +22,8 @@
 
 ## Phase 2: Confidence-aware intake and routing
 
+GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
+
 - [ ] Task: Write failing classifier tests for operation, type, subtype,
       purpose, audience, stakes, authority, lifecycle, constraints, strength,
       permission, ambiguity, and composite documents. (M-002, M-003, M-008)
@@ -36,6 +40,8 @@
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 3: Governed research and source intelligence
+
+GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
 
 - [ ] Task: Write failing privacy tests for research-off defaults, allow-listed
       metadata queries, embedded instructions, secrets, names, citations, and
@@ -55,6 +61,8 @@
 
 ## Phase 4: Diagnostics, editing strength, and safety
 
+GitHub subissue: [#258](https://github.com/edithatogo/authentext/issues/258)
+
 - [ ] Task: Write failing tests for profile-specific dimensions, source-linked
       findings, safe-fix decisions, and non-applicable checks. (S-007)
 - [ ] Task: Implement the diagnostic pipeline for completeness, structure,
@@ -72,6 +80,8 @@
 
 ## Phase 5: Evaluation and document-profile quality
 
+GitHub subissue: [#259](https://github.com/edithatogo/authentext/issues/259)
+
 - [ ] Task: Build positive, near-miss, negative, ambiguous, composite, and
       adversarial fixtures for at least ten representative subtypes. (M-012)
 - [ ] Task: Add task/concept/reference/troubleshooting technical evaluations.
@@ -88,6 +98,8 @@
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 6: Portable skill integration and closeout
+
+GitHub subissue: [#260](https://github.com/edithatogo/authentext/issues/260)
 
 - [ ] Task: Update canonical skill fragments with adaptive intake, source
       hierarchy, research gate, untrusted-document boundary, and operation
