@@ -1,6 +1,6 @@
 # Implementation Plan: Adaptive Document Intelligence
 
-## Phase 1: Contracts, evidence, and migration boundary
+## Phase 1: Contracts, evidence, and migration boundary [checkpoint: 03c6b0b]
 
 GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 
@@ -9,21 +9,24 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
       ideas and record explicit reject decisions. (M-016, M-017, M-018, M-019,
       M-020, M-021, W-006, W-007, W-008, W-009) (commit: cff27cc)
 
-- [ ] Task: Write failing tests for one-runtime-skill ownership, profile schema,
+- [x] Task: Write failing tests for one-runtime-skill ownership, profile schema,
       unknown/composite types, confidence, provenance, and source precedence.
-      (M-001, M-002, M-003, M-005)
-- [ ] Task: Inventory existing canonical, generated, legacy-looking, and
+      (M-001, M-002, M-003, M-005) (commit: 5391ef6)
+- [x] Task: Inventory existing canonical, generated, legacy-looking, and
       non-discoverable source files; resolve `humanizer` identity remnants
-      without deleting historical evidence. (M-001, M-011)
-- [ ] Task: Define the machine-readable document-profile, guidance-source,
+      without deleting historical evidence. (M-001, M-011) (commit: 6d49d89)
+- [x] Task: Define the machine-readable document-profile, guidance-source,
       conflict, and diagnostic-receipt schemas. (M-002, M-005, M-007, M-014)
-- [ ] Task: Verify and record the first-party evidence baseline, scope,
+      (commit: 5391ef6)
+- [x] Task: Verify and record the first-party evidence baseline, scope,
       licensing, freshness, and authority classifications. (M-007)
-- [ ] Task: Document the `SKILL_PROFESSIONAL.md` compatibility and retirement
-      boundary with downstream checks. (M-001, W-001)
-- [ ] Task: Mirror the track and phases as native GitHub issues/subissues in
-      Project 36 and update `conductor/github-mapping.json`.
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: ccfd224)
+- [x] Task: Document the `SKILL_PROFESSIONAL.md` compatibility and retirement
+      boundary with downstream checks. (M-001, W-001) (commit: 6d49d89)
+- [x] Task: Mirror the track and phases as native GitHub issues/subissues in
+      Project 36 and update `conductor/github-mapping.json`. (commit: 4d66e01)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 03c6b0b)
 
 ## Phase 2: Confidence-aware intake and routing
 

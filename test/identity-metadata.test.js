@@ -1,6 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {
+  countPatternsInMarkdown,
+  DEFAULT_LOCAL_REPO,
+  getLocalPatternCount,
+  getUpstreamFullName,
+  getUpstreamUrl,
+} from '../scripts/lib/repo-config.js';
 
 test('canonical manifests share Authentext identity, version, and MIT license', () => {
   const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -46,4 +53,17 @@ test('canonical modules use the package version and Authentext identity', () => 
     fs.readFileSync('src/modules/SKILL_REASONING.md', 'utf8'),
     /Humanizer Reasoning Module/
   );
+});
+
+test('maintenance tooling falls back to the current Authentext repository identity', () => {
+  assert.equal(DEFAULT_LOCAL_REPO, 'edithatogo/authentext');
+  assert.equal(getUpstreamFullName(), 'blader/humanizer');
+  assert.equal(getUpstreamUrl(), 'https://github.com/blader/humanizer');
+});
+
+test('maintenance tooling reads the canonical pattern count', () => {
+  assert.equal(countPatternsInMarkdown('---\npatterns: 7\n---\n'), 7);
+  assert.equal(countPatternsInMarkdown('### Pattern 1: A\n### Pattern 2: B\n'), 2);
+  assert.equal(countPatternsInMarkdown('### 1. A\n### 2. B\n'), 2);
+  assert.equal(getLocalPatternCount(), 39);
 });

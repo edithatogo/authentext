@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/authentext/blob/main/src/document-intelligence/diagnostic-receipt.schema.json",
+  "title": "Authentext diagnostic receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_sha256",
+    "source_ids",
+    "findings",
+    "conflicts",
+    "protected_items",
+    "audit"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "profile_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "source_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "dimension", "severity", "confidence", "source_id", "safe_to_fix"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "dimension": { "type": "string", "minLength": 1 },
+          "severity": { "enum": ["low", "medium", "high", "critical"] },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "source_id": { "type": "string", "minLength": 1 },
+          "safe_to_fix": { "type": "boolean" }
+        }
+      }
+    },
+    "conflicts": { "type": "array" },
+    "protected_items": { "type": "object" },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "revision_count", "unresolved_finding_ids"],
+      "properties": {
+        "passed": { "type": "boolean" },
+        "revision_count": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "unresolved_finding_ids": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+  }
+}

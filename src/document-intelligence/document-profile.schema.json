@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/authentext/blob/main/src/document-intelligence/document-profile.schema.json",
+  "title": "Authentext document profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "operation",
+    "delivery_mode",
+    "archetype",
+    "subtypes",
+    "purpose",
+    "audience",
+    "stakes",
+    "authorities",
+    "lifecycle",
+    "constraints",
+    "editing_strength",
+    "research_permission",
+    "composite",
+    "components"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "operation": { "$ref": "#/$defs/operationField" },
+    "delivery_mode": { "$ref": "#/$defs/deliveryField" },
+    "archetype": { "$ref": "#/$defs/archetypeField" },
+    "subtypes": { "type": "array", "items": { "$ref": "#/$defs/field" } },
+    "purpose": { "$ref": "#/$defs/field" },
+    "audience": { "$ref": "#/$defs/field" },
+    "stakes": { "$ref": "#/$defs/stakesField" },
+    "authorities": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "lifecycle": { "$ref": "#/$defs/lifecycleField" },
+    "constraints": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "editing_strength": { "$ref": "#/$defs/strengthField" },
+    "research_permission": { "$ref": "#/$defs/researchField" },
+    "composite": { "type": "boolean" },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["archetype", "subtype"],
+        "properties": {
+          "archetype": { "type": "string", "minLength": 1 },
+          "subtype": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "provenance": { "enum": ["user", "document", "project", "heuristic", "external-source"] },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "confidence", "provenance"],
+      "properties": {
+        "value": {},
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      }
+    },
+    "operationField": {
+      "allOf": [
+        { "$ref": "#/$defs/field" },
+        {
+          "properties": {
+            "value": {
+              "enum": ["review", "rewrite", "final-pass", "structural", "research-assisted"]
+            }
+          }
+        }
+      ]
+    },
+    "deliveryField": {
+      "allOf": [
+        { "$ref": "#/$defs/field" },
+        { "properties": { "value": { "enum": ["pasted", "file", "embedded"] } } }
+      ]
+    },
+    "archetypeField": {
+      "allOf": [
+        { "$ref": "#/$defs/field" },
+        {
+          "properties": {
+            "value": {
+              "enum": [
+                "unknown",
+                "composite",
+                "correspondence",
+                "workplace",
+                "public-content",
+                "technical",
+                "product",
+                "academic",
+                "health-research",
+                "governance",
+                "legal-regulatory",
+                "clinical-safety",
+                "commercial",
+                "employment",
+                "creative-narrative"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "stakesField": {
+      "allOf": [
+        { "$ref": "#/$defs/field" },
+        { "properties": { "value": { "enum": ["low", "medium", "high", "critical"] } } }
+      ]
+    },
+    "lifecycleField": {
+      "allOf": [
+        { "$ref": "#/$defs/field" },
+        {
+          "properties": {
+            "value": { "enum": ["outline", "draft", "review", "final", "submission-ready"] }
+          }
+        }
+      ]
+    },
+    "strengthField": {
+      "allOf": [
+        { "$ref": "#/$defs/field" },
+        { "properties": { "value": { "enum": ["conservative", "standard", "strong"] } } }
+      ]
+    },
+    "researchField": {
+      "allOf": [
+        { "$ref": "#/$defs/field" },
+        {
+          "properties": { "value": { "enum": ["not_requested", "denied", "allowed", "required"] } }
+        }
+      ]
+    }
+  }
+}

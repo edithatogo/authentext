@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "levels": [
+    { "authority": "user", "rank": 1 },
+    { "authority": "project", "rank": 2 },
+    { "authority": "binding", "rank": 3 },
+    { "authority": "document_type", "rank": 4 },
+    { "authority": "domain", "rank": 5 },
+    { "authority": "general", "rank": 6 },
+    { "authority": "authentext", "rank": 7 }
+  ],
+  "rule": "Lower numeric rank wins. Suppressed rules remain visible as conflicts."
+}

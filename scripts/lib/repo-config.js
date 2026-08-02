@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/** Repository root (humanizer-next). */
+/** Authentext repository root. */
 export const REPO_ROOT = path.resolve(__dirname, '../..');
 
 /** Upstream canonical skill repository. */
@@ -17,7 +17,7 @@ export const UPSTREAM = {
 };
 
 /** Default local fork when git remote detection fails. */
-export const DEFAULT_LOCAL_REPO = 'edithatogo/humanizer-next';
+export const DEFAULT_LOCAL_REPO = 'edithatogo/authentext';
 
 /**
  * @returns {string} owner/repo slug for upstream.
@@ -38,6 +38,9 @@ export function getUpstreamUrl() {
  * @returns {string}
  */
 export function getLocalFullName() {
+  if (process.env.AUTHENTEXT_LOCAL_REPO) {
+    return process.env.AUTHENTEXT_LOCAL_REPO;
+  }
   if (process.env.HUMANIZER_LOCAL_REPO) {
     return process.env.HUMANIZER_LOCAL_REPO;
   }
