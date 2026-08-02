@@ -12,16 +12,16 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 - [x] Task: Write failing tests for one-runtime-skill ownership, profile schema,
       unknown/composite types, confidence, provenance, and source precedence.
       (M-001, M-002, M-003, M-005) (commit: 5391ef6)
-- [ ] Task: Inventory existing canonical, generated, legacy-looking, and
+- [x] Task: Inventory existing canonical, generated, legacy-looking, and
       non-discoverable source files; resolve `humanizer` identity remnants
-      without deleting historical evidence. (M-001, M-011)
+      without deleting historical evidence. (M-001, M-011) (commit: 6d49d89)
 - [x] Task: Define the machine-readable document-profile, guidance-source,
       conflict, and diagnostic-receipt schemas. (M-002, M-005, M-007, M-014)
       (commit: 5391ef6)
 - [ ] Task: Verify and record the first-party evidence baseline, scope,
       licensing, freshness, and authority classifications. (M-007)
-- [ ] Task: Document the `SKILL_PROFESSIONAL.md` compatibility and retirement
-      boundary with downstream checks. (M-001, W-001)
+- [x] Task: Document the `SKILL_PROFESSIONAL.md` compatibility and retirement
+      boundary with downstream checks. (M-001, W-001) (commit: 6d49d89)
 - [ ] Task: Mirror the track and phases as native GitHub issues/subissues in
       Project 36 and update `conductor/github-mapping.json`.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
