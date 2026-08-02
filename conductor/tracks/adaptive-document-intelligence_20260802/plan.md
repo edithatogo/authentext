@@ -1,6 +1,6 @@
 # Implementation Plan: Adaptive Document Intelligence
 
-## Phase 1: Contracts, evidence, and migration boundary
+## Phase 1: Contracts, evidence, and migration boundary [checkpoint: 03c6b0b]
 
 GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 
@@ -25,7 +25,8 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
       boundary with downstream checks. (M-001, W-001) (commit: 6d49d89)
 - [x] Task: Mirror the track and phases as native GitHub issues/subissues in
       Project 36 and update `conductor/github-mapping.json`. (commit: 4d66e01)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 03c6b0b)
 
 ## Phase 2: Confidence-aware intake and routing
 
