@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/authentext/blob/main/conductor/tracks/agent-registry-plugin-distribution_20260802/package-manifest.schema.json",
+  "title": "Authentext distribution package manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "package",
+    "source",
+    "artifact",
+    "contents",
+    "exclusions",
+    "capabilities",
+    "sbom",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "target", "format", "generated"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+        },
+        "target": {
+          "enum": [
+            "portable-agent-skill",
+            "claude-plugin",
+            "codex-plugin",
+            "github-copilot-skill",
+            "gemini-cli-extension",
+            "opencode-skill"
+          ]
+        },
+        "format": { "type": "string", "minLength": 1 },
+        "generated": { "const": true }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "commit",
+        "releaseTag",
+        "sourceDateEpoch",
+        "canonicalInputs",
+        "buildCommands"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/edithatogo/authentext"
+        },
+        "commit": { "$ref": "#/$defs/sha1" },
+        "releaseTag": { "type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+" },
+        "sourceDateEpoch": { "type": "integer", "minimum": 0 },
+        "canonicalInputs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/relativePath" }
+        },
+        "buildCommands": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "mediaType", "sizeBytes", "sha256"],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" },
+        "mediaType": { "type": "string", "minLength": 1 },
+        "sizeBytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "contents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sourcePath", "role", "sha256"],
+        "properties": {
+          "path": { "$ref": "#/$defs/relativePath" },
+          "sourcePath": { "$ref": "#/$defs/relativePath" },
+          "role": {
+            "enum": ["portable-skill", "reference", "host-manifest", "license", "package-manifest"]
+          },
+          "sha256": { "$ref": "#/$defs/sha256" }
+        }
+      }
+    },
+    "exclusions": {
+      "type": "array",
+      "uniqueItems": true,
+      "allOf": [
+        { "contains": { "const": "repository-internals" } },
+        { "contains": { "const": "credentials-and-secrets" } },
+        { "contains": { "const": "development-inputs" } },
+        { "contains": { "const": "governance-history" } },
+        { "contains": { "const": "unsafe-filesystem-entries" } }
+      ],
+      "items": {
+        "enum": [
+          "repository-internals",
+          "credentials-and-secrets",
+          "development-inputs",
+          "governance-history",
+          "unsafe-filesystem-entries"
+        ]
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["apps", "tools", "hooks", "network"],
+      "properties": {
+        "apps": { "type": "array", "maxItems": 0 },
+        "tools": { "type": "array", "maxItems": 0 },
+        "hooks": { "type": "array", "maxItems": 0 },
+        "network": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "sbom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "path", "sha256"],
+      "properties": {
+        "format": { "enum": ["SPDX-2.3-JSON", "CycloneDX-1.6-JSON"] },
+        "path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "path",
+        "sha256",
+        "builderId",
+        "buildType",
+        "invocationSha256",
+        "hosted",
+        "materials"
+      ],
+      "properties": {
+        "format": { "const": "in-toto-slsa-provenance-v1" },
+        "path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "builderId": { "type": "string", "format": "uri" },
+        "buildType": { "type": "string", "format": "uri" },
+        "invocationSha256": { "$ref": "#/$defs/sha256" },
+        "hosted": { "type": "boolean" },
+        "materials": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["uri", "sha256"],
+            "properties": {
+              "uri": { "type": "string", "format": "uri" },
+              "sha256": { "$ref": "#/$defs/sha256" }
+            }
+          }
+        },
+        "signature": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["type", "reference"],
+          "properties": {
+            "type": { "type": "string", "minLength": 1 },
+            "reference": { "type": "string", "minLength": 1 }
+          }
+        },
+        "transparencyLog": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["log", "entry"],
+          "properties": {
+            "log": { "type": "string", "format": "uri" },
+            "entry": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+    },
+    "sha1": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
