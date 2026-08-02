@@ -30,9 +30,9 @@ GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
 
 GitHub subissue: [#247](https://github.com/edithatogo/authentext/issues/247)
 
-- [ ] Task: Write failing tests for reference validation, `gh skill`, skills
-      CLI discovery, clean installation, update provenance, and stale-name
-      detection. (M-003, M-004, M-005, M-006, M-011)
+- [~] Task: Write failing tests for reference validation, `gh skill`, skills
+  CLI discovery, clean installation, update provenance, and stale-name
+  detection. (M-003, M-004, M-005, M-006, M-011)
 - [ ] Task: Run the Agent Skills reference validator and current `gh skill
 publish --dry-run`; resolve only portable-contract findings. (M-003)
 - [ ] Task: Verify `gh skill preview`, publish, install, and update behavior for
