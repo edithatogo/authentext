@@ -8,10 +8,10 @@
     "url": "https://github.com/users/edithatogo/projects/36"
   },
   "counts": {
-    "tracks": 34,
-    "phases": 138,
-    "repository_issues": 181,
-    "open_tracks": 1,
+    "tracks": 35,
+    "phases": 144,
+    "repository_issues": 188,
+    "open_tracks": 2,
     "historical_tracks": 33
   },
   "verification": {
@@ -20,9 +20,103 @@
     "duplicate_phase_markers": 0,
     "native_parent_child_relationships": "verified",
     "issue_states": "verified",
-    "project_membership": "172/172"
+    "project_membership": "179/179"
   },
   "tracks": [
+    {
+      "track_id": "adaptive-document-intelligence_20260802",
+      "title": "Adaptive Document Intelligence",
+      "path": "conductor/tracks/adaptive-document-intelligence_20260802",
+      "priority": "P1",
+      "historical": false,
+      "metadata_status": "new",
+      "parent_issue": {
+        "number": 254,
+        "node_id": "I_kwDORAMgA88AAAABLJL2_w",
+        "url": "https://github.com/edithatogo/authentext/issues/254",
+        "state": "open"
+      },
+      "phases": [
+        {
+          "phase_id": "adaptive-document-intelligence_20260802.phase1",
+          "number": 1,
+          "title": "Contracts, evidence, and migration boundary",
+          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 255,
+            "node_id": "I_kwDORAMgA88AAAABLJL4_w",
+            "url": "https://github.com/edithatogo/authentext/issues/255",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "adaptive-document-intelligence_20260802.phase2",
+          "number": 2,
+          "title": "Confidence-aware intake and routing",
+          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 256,
+            "node_id": "I_kwDORAMgA88AAAABLJL6YA",
+            "url": "https://github.com/edithatogo/authentext/issues/256",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "adaptive-document-intelligence_20260802.phase3",
+          "number": 3,
+          "title": "Governed research and source intelligence",
+          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 257,
+            "node_id": "I_kwDORAMgA88AAAABLJL6-g",
+            "url": "https://github.com/edithatogo/authentext/issues/257",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "adaptive-document-intelligence_20260802.phase4",
+          "number": 4,
+          "title": "Diagnostics, editing strength, and safety",
+          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 258,
+            "node_id": "I_kwDORAMgA88AAAABLJL7kA",
+            "url": "https://github.com/edithatogo/authentext/issues/258",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "adaptive-document-intelligence_20260802.phase5",
+          "number": 5,
+          "title": "Evaluation and document-profile quality",
+          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 259,
+            "node_id": "I_kwDORAMgA88AAAABLJL9IQ",
+            "url": "https://github.com/edithatogo/authentext/issues/259",
+            "state": "open"
+          }
+        },
+        {
+          "phase_id": "adaptive-document-intelligence_20260802.phase6",
+          "number": 6,
+          "title": "Portable skill integration and closeout",
+          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "reconstructed": false,
+          "issue": {
+            "number": 260,
+            "node_id": "I_kwDORAMgA88AAAABLJL98A",
+            "url": "https://github.com/edithatogo/authentext/issues/260",
+            "state": "open"
+          }
+        }
+      ]
+    },
     {
       "track_id": "renovate-codecov-verification_20260801",
       "title": "Renovate and Codecov Verification",

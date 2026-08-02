@@ -7,6 +7,22 @@ Local Conductor files define scope and evidence. GitHub issues, subissues, and
 Project fields mirror that state; they do not establish implementation,
 publication, or release.
 
+## Active: adaptive document intelligence
+
+- Replace the historical Standard/Pro split with one confidence-aware runtime
+  skill that profiles document purpose, audience, stakes, authority, lifecycle,
+  and constraints.
+- Route to focused, data-driven document profiles and assess genre-specific
+  completeness, structure, evidence, accessibility, tone, safety, AI patterns,
+  and preservation risk.
+- Research current external guidance only when material and permitted, using
+  nonsensitive metadata, source precedence, and auditable receipts.
+- Add conservative, standard, and strong editing budgets plus prompt-injection,
+  ambiguity, high-stakes, and cross-host evaluations.
+
+Primary track:
+[`adaptive-document-intelligence_20260802`](./tracks/adaptive-document-intelligence_20260802/index.md).
+
 ## Active: hosted dependency closeout
 
 - Verify Renovate hosted access while retaining Dependabot until health is
