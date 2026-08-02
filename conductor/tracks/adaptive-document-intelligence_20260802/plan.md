@@ -32,14 +32,15 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 
 GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 
-- [~] Task: Write failing classifier tests for operation, type, subtype,
-  purpose, audience, stakes, authority, lifecycle, constraints, strength,
-  permission, ambiguity, and composite documents. (M-002, M-003, M-008)
+- [x] Task: Write failing classifier tests for operation, type, subtype,
+      purpose, audience, stakes, authority, lifecycle, constraints, strength,
+      permission, ambiguity, and composite documents. (M-002, M-003, M-008)
+      (commit: b8132fa)
 - [ ] Task: Write failing tests for pasted, file, and embedded delivery modes,
       capability boundaries, voice-sample calibration, and non-inference.
       (M-016, M-017)
-- [ ] Task: Implement the deterministic profile builder with field-level
-      confidence and provenance. (M-002, M-003)
+- [x] Task: Implement the deterministic profile builder with field-level
+      confidence and provenance. (M-002, M-003) (commit: b8132fa)
 - [ ] Task: Implement material-question logic and conservative fallback without
       mandatory questionnaires. (M-004)
 - [ ] Task: Implement the source-precedence and conflict resolver. (M-005)
