@@ -32,9 +32,9 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 
 GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 
-- [ ] Task: Write failing classifier tests for operation, type, subtype,
-      purpose, audience, stakes, authority, lifecycle, constraints, strength,
-      permission, ambiguity, and composite documents. (M-002, M-003, M-008)
+- [~] Task: Write failing classifier tests for operation, type, subtype,
+  purpose, audience, stakes, authority, lifecycle, constraints, strength,
+  permission, ambiguity, and composite documents. (M-002, M-003, M-008)
 - [ ] Task: Write failing tests for pasted, file, and embedded delivery modes,
       capability boundaries, voice-sample calibration, and non-inference.
       (M-016, M-017)
