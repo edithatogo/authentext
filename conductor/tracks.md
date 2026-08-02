@@ -8,7 +8,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [ ] **agent-registry-plugin-distribution_20260802** (P1) - Distribute
+- [~] **agent-registry-plugin-distribution_20260802** (P1) - Distribute
       Authentext through credible Agent Skills registries and justified
       host-native plugin or extension channels while preserving a single
       canonical skill and governed publication receipts. See
