@@ -4,7 +4,7 @@
   "description": "Replace the historical Standard/Pro split with confidence-aware document profiling, governed source research, profile-specific diagnostics, and bounded editing in one portable Authentext skill.",
   "type": "feature",
   "priority": "P1",
-  "status": "new",
+  "status": "in_progress",
   "created_at": "2026-08-02",
   "updated_at": "2026-08-02",
   "current_phase": "Phase 1: Contracts, evidence, and migration boundary",
