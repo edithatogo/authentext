@@ -8,11 +8,11 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [ ] **adaptive-document-intelligence_20260802** (P1) - Replace the historical
-      Standard/Pro split with confidence-aware document profiling, governed source
-      research, profile-specific diagnostics, and bounded editing in one portable
-      Authentext skill. See
-      [`tracks/adaptive-document-intelligence_20260802/`](./tracks/adaptive-document-intelligence_20260802/index.md).
+- [~] **adaptive-document-intelligence_20260802** (P1) - Replace the historical
+  Standard/Pro split with confidence-aware document profiling, governed source
+  research, profile-specific diagnostics, and bounded editing in one portable
+  Authentext skill. See
+  [`tracks/adaptive-document-intelligence_20260802/`](./tracks/adaptive-document-intelligence_20260802/index.md).
 
 - [~] **agent-registry-plugin-distribution_20260802** (P1) - Distribute
   Authentext through credible Agent Skills registries and justified

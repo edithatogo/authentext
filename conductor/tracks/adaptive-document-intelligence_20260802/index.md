@@ -24,6 +24,7 @@
 - [MoSCoW requirements](./requirements.md)
 - [Architecture and Mermaid design](./design.md)
 - [Research baseline](./research-baseline.md)
+- [Humanizer ecosystem review](./ecosystem-review.md)
 - [Implementation plan](./plan.md)
 - [Metadata](./metadata.json)
 

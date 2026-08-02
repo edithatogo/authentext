@@ -43,6 +43,15 @@ Determine whether the user wants a rewrite, review, final editorial pass,
 structural assessment, compliance-oriented check, or a combination. Do not
 rewrite merely because text was supplied.
 
+Resolve delivery mode separately:
+
+- **pasted:** return the revised text and requested diagnostic or summary;
+- **file:** edit only an explicitly authorised file and report a concise
+  summary rather than duplicating its contents;
+- **embedded:** return only the artifact required by the calling workflow.
+
+Delivery mode never grants file mutation, research, or publication authority.
+
 ### 2. Build a document profile
 
 Infer, accept, or ask for the minimum information needed:
@@ -61,6 +70,12 @@ Each inferred field records confidence and provenance (`user`, `document`,
 `project`, `heuristic`, or `external-source`). Ask one concise question only
 when a missing answer would materially change the result. Otherwise use a
 conservative default and disclose it briefly.
+
+If the user supplies a genuine writing sample, build a bounded voice profile
+from observable features such as rhythm, vocabulary, formality, contractions,
+punctuation, paragraphing, and stance. Do not infer identity, demographics,
+disability, or authorship, and do not treat generic voice presets as a
+substitute for document purpose.
 
 ### 3. Resolve the guidance hierarchy
 
@@ -113,6 +128,12 @@ Assess only relevant dimensions:
 Findings identify their rule source, confidence, severity, and whether they are
 safe to fix automatically.
 
+Run structural and discourse checks before word-level pattern checks. Ordinary
+style findings require clustering, repetition, density, or profile-specific
+corroboration; one word or punctuation mark is not evidence by itself. A short
+sample can still receive conservative edits, but it cannot support confident
+style-profile or pattern-density conclusions.
+
 ### 6. Apply the requested operation
 
 - **Review:** return prioritised findings and suggested changes without
@@ -123,6 +144,16 @@ safe to fix automatically.
   citations, qualifiers, legal boundaries, or required sections drift.
 - **Research-assisted review:** cite the external guidance used and separate
   mandatory requirements from recommendations.
+
+Perform one bounded audit after the first result: check protected content,
+unsupported facts, remaining high-severity findings, register consistency, and
+profile fit. Revise once when the audit identifies a concrete failure. Further
+passes require a specific failed invariant rather than a vague request to sound
+more human.
+
+Do not optimise for detector scores, infer human or AI authorship, invent
+specifics, inject errors or disfluency, impose universal punctuation bans, or
+force personality into a profile where neutral prose is appropriate.
 
 ## Initial document profile families
 

@@ -4,6 +4,11 @@
 
 GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 
+- [x] Task: Review the original `blader/humanizer` and selected current
+      Humanizer skills at pinned revisions; incorporate compatible operational
+      ideas and record explicit reject decisions. (M-016, M-017, M-018, M-019,
+      M-020, M-021, W-006, W-007, W-008, W-009) (commit: cff27cc)
+
 - [ ] Task: Write failing tests for one-runtime-skill ownership, profile schema,
       unknown/composite types, confidence, provenance, and source precedence.
       (M-001, M-002, M-003, M-005)
@@ -27,6 +32,9 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 - [ ] Task: Write failing classifier tests for operation, type, subtype,
       purpose, audience, stakes, authority, lifecycle, constraints, strength,
       permission, ambiguity, and composite documents. (M-002, M-003, M-008)
+- [ ] Task: Write failing tests for pasted, file, and embedded delivery modes,
+      capability boundaries, voice-sample calibration, and non-inference.
+      (M-016, M-017)
 - [ ] Task: Implement the deterministic profile builder with field-level
       confidence and provenance. (M-002, M-003)
 - [ ] Task: Implement material-question logic and conservative fallback without
@@ -65,6 +73,9 @@ GitHub subissue: [#258](https://github.com/edithatogo/authentext/issues/258)
 
 - [ ] Task: Write failing tests for profile-specific dimensions, source-linked
       findings, safe-fix decisions, and non-applicable checks. (S-007)
+- [ ] Task: Write failing tests for structure-first ordering, cluster evidence,
+      short-sample limits, language-aware typography, and bounded audit
+      termination. (M-018, M-019, M-020, M-021)
 - [ ] Task: Implement the diagnostic pipeline for completeness, structure,
       evidence, accessibility, tone, safety, AI patterns, and preservation.
       (S-007)
@@ -90,6 +101,9 @@ GitHub subissue: [#259](https://github.com/edithatogo/authentext/issues/259)
       claiming submission compliance. (S-003, W-004)
 - [ ] Task: Add prompt-injection, privacy, source-conflict, and stale-guidance
       adversarial cases. (M-006, M-010, M-013)
+- [ ] Task: Add detector-evasion, authorship-inference, invented-specificity,
+      artificial-disfluency, and universal-punctuation negative fixtures.
+      (W-006, W-007, W-008)
 - [ ] Task: Measure restraint, false positives, preservation, requirement
       coverage, change density, and classification calibration separately.
       (S-008)
