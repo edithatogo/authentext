@@ -9,9 +9,9 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
       ideas and record explicit reject decisions. (M-016, M-017, M-018, M-019,
       M-020, M-021, W-006, W-007, W-008, W-009) (commit: cff27cc)
 
-- [ ] Task: Write failing tests for one-runtime-skill ownership, profile schema,
-      unknown/composite types, confidence, provenance, and source precedence.
-      (M-001, M-002, M-003, M-005)
+- [~] Task: Write failing tests for one-runtime-skill ownership, profile schema,
+  unknown/composite types, confidence, provenance, and source precedence.
+  (M-001, M-002, M-003, M-005)
 - [ ] Task: Inventory existing canonical, generated, legacy-looking, and
       non-discoverable source files; resolve `humanizer` identity remnants
       without deleting historical evidence. (M-001, M-011)
