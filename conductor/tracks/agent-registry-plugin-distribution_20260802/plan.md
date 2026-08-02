@@ -3,25 +3,28 @@
 Every external mutation remains gated by explicit publication approval. Tasks
 prepare, validate, and verify packages before submission.
 
-## Phase 1: Baseline, architecture, and reconciliation
+## Phase 1: Baseline, architecture, and reconciliation [checkpoint: 44d617d]
 
 GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
 
 - [x] Task: Repair stale Conductor links and reconcile the archived Renovate
-      track and closed GitHub issues. (M-016)
+      track and closed GitHub issues. (M-016) (commit: 1898570)
 - [x] Task: Write failing schema and integrity tests for the registry matrix,
       governed status vocabulary, host coverage, and canonical-source rules.
-      (M-001, M-002, M-013)
+      (M-001, M-002, M-013) (commit: 97b1ad8)
 - [x] Task: Recheck current official specifications and pin dated host/channel
-      capabilities in the matrix. (M-002)
+      capabilities in the matrix. (M-002) (commit: 97b1ad8)
 - [x] Task: Decide between a dedicated generated distribution repository and
       release-staged host packages; document the ADR and threat boundary.
-      (S-001)
+      (S-001) (commit: d4392c1)
 - [x] Task: Define deterministic package manifests, hashes, SBOM/provenance
       fields, inclusion lists, and exclusion rules. (M-001, M-013, C-005)
+      (commit: 44d617d)
 - [x] Task: Mirror this track and all phases as native GitHub issues/subissues
       in Project 36 and update `conductor/github-mapping.json`. (M-015)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 1898570)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (evidence: 44d617d)
 
 ## Phase 2: Portable registries and cross-host installation
 
