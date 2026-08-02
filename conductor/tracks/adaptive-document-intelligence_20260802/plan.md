@@ -36,9 +36,9 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
       purpose, audience, stakes, authority, lifecycle, constraints, strength,
       permission, ambiguity, and composite documents. (M-002, M-003, M-008)
       (commit: b8132fa)
-- [ ] Task: Write failing tests for pasted, file, and embedded delivery modes,
-      capability boundaries, voice-sample calibration, and non-inference.
-      (M-016, M-017)
+- [~] Task: Write failing tests for pasted, file, and embedded delivery modes,
+  capability boundaries, voice-sample calibration, and non-inference.
+  (M-016, M-017)
 - [x] Task: Implement the deterministic profile builder with field-level
       confidence and provenance. (M-002, M-003) (commit: b8132fa)
 - [ ] Task: Implement material-question logic and conservative fallback without
