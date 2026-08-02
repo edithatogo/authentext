@@ -14,7 +14,7 @@ GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
       (M-001, M-002, M-013)
 - [x] Task: Recheck current official specifications and pin dated host/channel
       capabilities in the matrix. (M-002)
-- [ ] Task: Decide between a dedicated generated distribution repository and
+- [x] Task: Decide between a dedicated generated distribution repository and
       release-staged host packages; document the ADR and threat boundary.
       (S-001)
 - [ ] Task: Define deterministic package manifests, hashes, SBOM/provenance
