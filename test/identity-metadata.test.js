@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { DEFAULT_LOCAL_REPO } from '../scripts/lib/repo-config.js';
 
 test('canonical manifests share Authentext identity, version, and MIT license', () => {
   const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -46,4 +47,8 @@ test('canonical modules use the package version and Authentext identity', () => 
     fs.readFileSync('src/modules/SKILL_REASONING.md', 'utf8'),
     /Humanizer Reasoning Module/
   );
+});
+
+test('maintenance tooling falls back to the current Authentext repository identity', () => {
+  assert.equal(DEFAULT_LOCAL_REPO, 'edithatogo/authentext');
 });

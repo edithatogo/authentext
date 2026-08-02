@@ -1,1 +1,1 @@
-"""Scripts for managing Humanizer adapters."""
+"""Maintenance scripts for the Authentext Agent Skill."""
