@@ -1,0 +1,29 @@
+{
+  "track_id": "agent-registry-plugin-distribution_20260802",
+  "title": "Agent Registry and Plugin Distribution",
+  "description": "Distribute Authentext through credible Agent Skills registries and justified host-native plugin or extension channels while preserving one canonical portable skill and auditable publication gates.",
+  "type": "chore",
+  "priority": "P1",
+  "status": "new",
+  "created_at": "2026-08-02",
+  "updated_at": "2026-08-02",
+  "current_phase": "Phase 1: Baseline, architecture, and reconciliation",
+  "parallel_safe": false,
+  "depends_on": [
+    "bleeding-edge-agent-skills-conductor_20260731"
+  ],
+  "github": {
+    "project_number": 36,
+    "project_url": "https://github.com/users/edithatogo/projects/36",
+    "parent_issue": null,
+    "phase_issues": []
+  },
+  "external_gates": [
+    "registry submission",
+    "marketplace upload",
+    "npm publication",
+    "tag or release",
+    "host workspace publication"
+  ]
+}
+
