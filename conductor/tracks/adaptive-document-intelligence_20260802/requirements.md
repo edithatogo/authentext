@@ -19,6 +19,12 @@
 | M-013 | Fail closed for high-stakes profiles when protected content or sourced requirements drift.                                                       | Adversarial tests.                      |
 | M-014 | Preserve source hierarchy and research citations in a machine-readable diagnostic receipt.                                                       | Receipt schema tests.                   |
 | M-015 | Validate bounded routing and output similarity across supported hosts.                                                                           | Cross-host evaluation matrix.           |
+| M-016 | Resolve pasted, file, and embedded delivery modes without expanding mutation or research authority.                                              | Mode and authority tests.               |
+| M-017 | Support sample-based voice calibration using observable writing features without personal or authorship inference.                               | Voice-profile and privacy fixtures.     |
+| M-018 | Run structural and discourse diagnosis before lexical pattern cleanup.                                                                           | Ordered-pipeline tests.                 |
+| M-019 | Require contextual or clustered evidence for ordinary style findings and disclose material short-sample limits.                                  | Density and short-input tests.          |
+| M-020 | Perform one bounded audit-revise loop driven by concrete invariant failures.                                                                     | Audit-loop and termination tests.       |
+| M-021 | Preserve source-language typography and applicable house punctuation rather than imposing global English rules.                                  | Multilingual typography fixtures.       |
 
 ## Should
 
@@ -32,6 +38,8 @@
 | S-006 | Explain classification and assumptions briefly on request without burdening ordinary rewrite output.                                                                            | Output snapshots.             |
 | S-007 | Generate a structured issue profile showing completeness, structure, evidence, accessibility, tone, safety, AI-pattern, and preservation dimensions.                            | Diagnostic snapshots.         |
 | S-008 | Measure restraint, false positives, protected-item preservation, requirement coverage, and change density separately.                                                           | Benchmark report.             |
+| S-009 | Report observable register or terminology discontinuities without inferring mixed human/AI authorship.                                                                          | Non-attribution fixtures.     |
+| S-010 | Permit explicit project-local voice and brand guidance through the normal source hierarchy without convention-based arbitrary file loading.                                     | Overlay discovery tests.      |
 
 ## Could
 
@@ -45,10 +53,14 @@
 
 ## Won't
 
-| ID    | Boundary                                                                                               | Reason                                                     |
-| ----- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| W-001 | Restore separate Humanizer and Humanizer Pro runtime skills.                                           | Duplicates routing and creates drift.                      |
-| W-002 | Search the web for every document.                                                                     | Unnecessary latency, privacy exposure, and nondeterminism. |
-| W-003 | Send raw document content to search or classification services by default.                             | Violates the privacy boundary.                             |
-| W-004 | Claim compliance, publication readiness, legal sufficiency, or clinical safety from an editorial pass. | Requires external authority and human judgement.           |
-| W-005 | Treat all deviations from a generic style guide as errors.                                             | Project and genre conventions take precedence.             |
+| ID    | Boundary                                                                                                 | Reason                                                     |
+| ----- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| W-001 | Restore separate Humanizer and Humanizer Pro runtime skills.                                             | Duplicates routing and creates drift.                      |
+| W-002 | Search the web for every document.                                                                       | Unnecessary latency, privacy exposure, and nondeterminism. |
+| W-003 | Send raw document content to search or classification services by default.                               | Violates the privacy boundary.                             |
+| W-004 | Claim compliance, publication readiness, legal sufficiency, or clinical safety from an editorial pass.   | Requires external authority and human judgement.           |
+| W-005 | Treat all deviations from a generic style guide as errors.                                               | Project and genre conventions take precedence.             |
+| W-006 | Score or claim AI authorship likelihood or optimise against commercial AI detectors.                     | Unreliable and outside the editorial product goal.         |
+| W-007 | Invent plausible specifics, errors, disfluency, slang, asymmetry, or opinions to simulate human writing. | Violates factual and voice integrity.                      |
+| W-008 | Ban punctuation or typographic forms globally.                                                           | Language, user sample, venue, and house style govern them. |
+| W-009 | Add paid API, account, or telemetry dependencies to the portable editing workflow.                       | Violates portability and privacy goals.                    |

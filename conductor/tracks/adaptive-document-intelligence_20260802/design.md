@@ -5,7 +5,8 @@
 ```mermaid
 flowchart TD
     U["User request and document"] --> O["Operation resolver"]
-    O --> P["Document profile builder"]
+    O --> M["Delivery mode and authority resolver"]
+    M --> P["Document profile builder"]
     P --> C{"Material uncertainty?"}
     C -->|"Yes"| Q["Ask one focused question"]
     C -->|"No"| H["Guidance hierarchy resolver"]
@@ -28,11 +29,21 @@ flowchart TD
 Classifies the requested action independently of document type. Its output is
 one or more ordered operations with an explicit `rewrite_allowed` flag.
 
+### Delivery mode and authority resolver
+
+Distinguishes pasted, file, and embedded delivery without treating mode as
+permission. File mutation, external research, and publication remain separate
+capabilities that default to false.
+
 ### Document profile builder
 
 Combines user-supplied context, project metadata, structural document signals,
 and conservative heuristics. Each field includes value, confidence,
 provenance, and whether confirmation is material.
+
+An optional voice sample produces a feature profile, not a personal profile.
+The extractor records observable cadence, vocabulary, formality, punctuation,
+paragraphing, and stance while prohibiting identity and authorship inference.
 
 ### Profile registry
 
@@ -60,12 +71,21 @@ confidence, source, location, proposed action, auto-fix safety, and conflict
 state. The engine avoids scoring a dimension that does not apply to the
 profile.
 
+The pipeline orders structural and discourse checks before lexical checks.
+Ordinary stylistic findings use cluster evidence; safety and invariant
+violations can remain single-instance findings. Insufficient samples carry an
+explicit evidence limitation rather than a fabricated score.
+
 ### Editing and preservation gate
 
 The editor consumes approved findings and an editing-strength budget. The gate
 compares protected literals, facts, numbers, citations, qualifiers, required
 sections, and high-stakes boundaries. It can return a partial edit with
 unresolved findings; it cannot silently waive a failed invariant.
+
+One audit pass revalidates these invariants and can trigger one revision. The
+loop terminates after a clean audit or the bounded revision; it never targets a
+detector score.
 
 ## Source precedence
 
