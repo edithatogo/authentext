@@ -1,0 +1,1 @@
+Adaptive document-intelligence contracts: red test confirmed missing module; added governed document-profile, guidance-source, precedence, and diagnostic-receipt contracts plus validation and deterministic conflict resolution. npm run validate and npm test passed (97 tests plus integration).
