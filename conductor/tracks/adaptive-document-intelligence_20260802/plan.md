@@ -23,8 +23,8 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
       (commit: ccfd224)
 - [x] Task: Document the `SKILL_PROFESSIONAL.md` compatibility and retirement
       boundary with downstream checks. (M-001, W-001) (commit: 6d49d89)
-- [ ] Task: Mirror the track and phases as native GitHub issues/subissues in
-      Project 36 and update `conductor/github-mapping.json`.
+- [x] Task: Mirror the track and phases as native GitHub issues/subissues in
+      Project 36 and update `conductor/github-mapping.json`. (commit: 4d66e01)
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 2: Confidence-aware intake and routing
