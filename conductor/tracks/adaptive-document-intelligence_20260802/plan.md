@@ -18,8 +18,9 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 - [x] Task: Define the machine-readable document-profile, guidance-source,
       conflict, and diagnostic-receipt schemas. (M-002, M-005, M-007, M-014)
       (commit: 5391ef6)
-- [~] Task: Verify and record the first-party evidence baseline, scope,
-  licensing, freshness, and authority classifications. (M-007)
+- [x] Task: Verify and record the first-party evidence baseline, scope,
+      licensing, freshness, and authority classifications. (M-007)
+      (commit: ccfd224)
 - [x] Task: Document the `SKILL_PROFESSIONAL.md` compatibility and retirement
       boundary with downstream checks. (M-001, W-001) (commit: 6d49d89)
 - [ ] Task: Mirror the track and phases as native GitHub issues/subissues in
