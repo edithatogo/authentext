@@ -7,7 +7,7 @@ prepare, validate, and verify packages before submission.
 
 GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
 
-- [ ] Task: Repair stale Conductor links and reconcile the archived Renovate
+- [x] Task: Repair stale Conductor links and reconcile the archived Renovate
       track and closed GitHub issues. (M-016)
 - [ ] Task: Write failing schema and integrity tests for the registry matrix,
       governed status vocabulary, host coverage, and canonical-source rules.
@@ -19,7 +19,7 @@ GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
       (S-001)
 - [ ] Task: Define deterministic package manifests, hashes, SBOM/provenance
       fields, inclusion lists, and exclusion rules. (M-001, M-013, C-005)
-- [ ] Task: Mirror this track and all phases as native GitHub issues/subissues
+- [x] Task: Mirror this track and all phases as native GitHub issues/subissues
       in Project 36 and update `conductor/github-mapping.json`. (M-015)
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
@@ -31,7 +31,7 @@ GitHub subissue: [#247](https://github.com/edithatogo/authentext/issues/247)
       CLI discovery, clean installation, update provenance, and stale-name
       detection. (M-003, M-004, M-005, M-006, M-011)
 - [ ] Task: Run the Agent Skills reference validator and current `gh skill
-  publish --dry-run`; resolve only portable-contract findings. (M-003)
+publish --dry-run`; resolve only portable-contract findings. (M-003)
 - [ ] Task: Verify `gh skill preview`, publish, install, and update behavior for
       GitHub Copilot and supported target agents. (M-006)
 - [ ] Task: Establish a current skills.sh Authentext catalog entry, verify its
