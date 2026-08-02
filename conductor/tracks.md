@@ -8,10 +8,11 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [x] **renovate-codecov-verification_20260801** (P1) - Verify shared Renovate
-      onboarding and Codecov OIDC without removing repository-controlled
-      fallbacks; Renovate onboarding deferred by owner, Dependabot retained. See
-      [`tracks/renovate-codecov-verification_20260801/`](./tracks/renovate-codecov-verification_20260801/index.md).
+- [ ] **agent-registry-plugin-distribution_20260802** (P1) - Distribute
+      Authentext through credible Agent Skills registries and justified
+      host-native plugin or extension channels while preserving a single
+      canonical skill and governed publication receipts. See
+      [`tracks/agent-registry-plugin-distribution_20260802/`](./tracks/agent-registry-plugin-distribution_20260802/index.md).
 
 ---
 
@@ -25,9 +26,15 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Archived Tracks
 
-**Total archived track directories:** 27
+**Total archived track directories:** 28
 
 **Latest archives:**
+
+- [x] **renovate-codecov-verification_20260801** - Codecov OIDC and repository
+      dependency-update safeguards verified; Mend Renovate onboarding deferred
+      by owner and Dependabot retained. See
+      [`tracks/archive/renovate-codecov-verification_20260801/`](./tracks/archive/renovate-codecov-verification_20260801/index.md)
+      and GitHub [#234](https://github.com/edithatogo/authentext/issues/234).
 
 - [x] **foio-editorial-workflow_20260801** - Portable, fail-closed FOI-O final
       editorial workflow with privacy-conscious evidence receipts and retained

@@ -19,7 +19,8 @@ than guessing paths.
 
 - [Roadmap](./roadmap.md)
 - [Tracks Registry](./tracks.md)
-- [Active Renovate and Codecov Track](./tracks/renovate-codecov-verification_20260801/index.md)
+- [Active Agent Registry and Plugin Distribution Track](./tracks/agent-registry-plugin-distribution_20260802/index.md)
+- [Archived Renovate and Codecov Track](./tracks/archive/renovate-codecov-verification_20260801/index.md)
 - [Archived FOI-O Editorial Workflow Track](./tracks/archive/foio-editorial-workflow_20260801/index.md)
 - [Archived Security and Quality Track](./tracks/archive/post-release-security-quality-frontier_20260801/index.md)
 - [Released Bleeding-Edge Track](./tracks/archive/bleeding-edge-agent-skills-conductor_20260731/index.md)
