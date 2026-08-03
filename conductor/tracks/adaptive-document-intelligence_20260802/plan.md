@@ -64,9 +64,9 @@ GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
       (commit: 0104c54)
 - [x] Task: Implement metadata-only query construction and fail-closed source
       ingestion. (M-006, M-010) (commit: 4e11b4f)
-- [ ] Task: Implement source records with authority, scope, licensing,
+- [x] Task: Implement source records with authority, scope, licensing,
       retrieval date, freshness, drift, and supported-check mappings. (M-007,
-      S-005)
+      S-005) (commit: 18c0b1d)
 - [ ] Task: Add governed resolvers for project style, technical documentation,
       public content, academic venue, health study type, and named
       jurisdiction or organisation. (S-002, S-003, S-004)
