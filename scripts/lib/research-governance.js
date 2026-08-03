@@ -17,6 +17,10 @@ const APPROVED_SOURCE_CLASSES = new Set([
   'project-local',
 ]);
 
+export function isApprovedSourceClass(value) {
+  return APPROVED_SOURCE_CLASSES.has(value);
+}
+
 const KNOWN_MULTIWORD_PLACES = new Set([
   'new zealand',
   'united kingdom',
