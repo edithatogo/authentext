@@ -114,4 +114,33 @@ test('guidance precedence is deterministic and higher authority wins conflicts',
     resolved.conflicts.map((entry) => entry.suppressed.id),
     ['general-active', 'authentext-plain']
   );
+  assert.equal(resolved.conflicts[0].reason, 'higher-authority');
+});
+
+test('guidance resolution rejects malformed and ungoverned rules', () => {
+  assert.throws(
+    () =>
+      resolveGuidance([
+        { id: 'rogue', authority: 'unknown-source', rule_key: 'voice', value: 'override' },
+      ]),
+    /authority/
+  );
+  assert.throws(
+    () => resolveGuidance([{ id: '', authority: 'user', rule_key: 'voice', value: 'direct' }]),
+    /id/
+  );
+  assert.throws(
+    () => resolveGuidance([{ id: 'missing-key', authority: 'user', value: 'direct' }]),
+    /rule_key/
+  );
+});
+
+test('equal-authority conflicts retain stable input order', () => {
+  const resolved = resolveGuidance([
+    { id: 'first', authority: 'project', rule_key: 'voice', value: 'formal' },
+    { id: 'second', authority: 'project', rule_key: 'voice', value: 'conversational' },
+  ]);
+  assert.equal(resolved.active[0].id, 'first');
+  assert.equal(resolved.conflicts[0].suppressed.id, 'second');
+  assert.equal(resolved.conflicts[0].reason, 'stable-tie-break');
 });

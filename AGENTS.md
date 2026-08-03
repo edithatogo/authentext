@@ -2,7 +2,7 @@
 adapter_metadata:
   skill_name: authentext
   skill_version: 3.2.0
-  last_synced: 2026-08-02
+  last_synced: 2026-08-03
   source_path: SKILL.md
   adapter_id: codex-cli
   adapter_format: AGENTS.md

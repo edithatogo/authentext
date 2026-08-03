@@ -28,27 +28,30 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (commit: 03c6b0b)
 
-## Phase 2: Confidence-aware intake and routing
+## Phase 2: Confidence-aware intake and routing [checkpoint: 7591b8c]
 
 GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 
-- [ ] Task: Write failing classifier tests for operation, type, subtype,
+- [x] Task: Write failing classifier tests for operation, type, subtype,
       purpose, audience, stakes, authority, lifecycle, constraints, strength,
       permission, ambiguity, and composite documents. (M-002, M-003, M-008)
-- [ ] Task: Write failing tests for pasted, file, and embedded delivery modes,
+      (commit: b8132fa)
+- [x] Task: Write failing tests for pasted, file, and embedded delivery modes,
       capability boundaries, voice-sample calibration, and non-inference.
-      (M-016, M-017)
-- [ ] Task: Implement the deterministic profile builder with field-level
-      confidence and provenance. (M-002, M-003)
-- [ ] Task: Implement material-question logic and conservative fallback without
-      mandatory questionnaires. (M-004)
-- [ ] Task: Implement the source-precedence and conflict resolver. (M-005)
-- [ ] Task: Seed correspondence, workplace, public, technical, product,
+      (M-016, M-017) (commit: 0830d0b)
+- [x] Task: Implement the deterministic profile builder with field-level
+      confidence and provenance. (M-002, M-003) (commit: b8132fa)
+- [x] Task: Implement material-question logic and conservative fallback without
+      mandatory questionnaires. (M-004) (commit: 994a5bb)
+- [x] Task: Implement the source-precedence and conflict resolver. (M-005)
+      (commit: 5b9bccf)
+- [x] Task: Seed correspondence, workplace, public, technical, product,
       academic, health-research, governance, legal, clinical, commercial,
-      employment, and narrative profile families. (S-001)
-- [ ] Task: Convert existing domain routing to registry-backed progressive
-      disclosure without duplicating module content. (M-011)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      employment, and narrative profile families. (S-001) (commit: 528f8ec)
+- [x] Task: Convert existing domain routing to registry-backed progressive
+      disclosure without duplicating module content. (M-011) (commit: 7591b8c)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 7591b8c)
 
 ## Phase 3: Governed research and source intelligence
 
