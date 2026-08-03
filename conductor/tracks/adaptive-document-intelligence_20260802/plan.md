@@ -62,8 +62,8 @@ GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
       sensitive document content. (M-006, M-010) (commit: 0104c54)
 - [x] Task: Implement the material-need and permission research gate. (M-006)
       (commit: 0104c54)
-- [ ] Task: Implement metadata-only query construction and fail-closed source
-      ingestion. (M-006, M-010)
+- [x] Task: Implement metadata-only query construction and fail-closed source
+      ingestion. (M-006, M-010) (commit: 4e11b4f)
 - [ ] Task: Implement source records with authority, scope, licensing,
       retrieval date, freshness, drift, and supported-check mappings. (M-007,
       S-005)
