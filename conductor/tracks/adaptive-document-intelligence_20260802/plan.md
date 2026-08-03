@@ -45,9 +45,9 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
       mandatory questionnaires. (M-004) (commit: 994a5bb)
 - [x] Task: Implement the source-precedence and conflict resolver. (M-005)
       (commit: 5b9bccf)
-- [~] Task: Seed correspondence, workplace, public, technical, product,
-  academic, health-research, governance, legal, clinical, commercial,
-  employment, and narrative profile families. (S-001)
+- [x] Task: Seed correspondence, workplace, public, technical, product,
+      academic, health-research, governance, legal, clinical, commercial,
+      employment, and narrative profile families. (S-001) (commit: 528f8ec)
 - [ ] Task: Convert existing domain routing to registry-backed progressive
       disclosure without duplicating module content. (M-011)
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
