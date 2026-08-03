@@ -43,7 +43,7 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
       confidence and provenance. (M-002, M-003) (commit: b8132fa)
 - [x] Task: Implement material-question logic and conservative fallback without
       mandatory questionnaires. (M-004) (commit: 994a5bb)
-- [ ] Task: Implement the source-precedence and conflict resolver. (M-005)
+- [~] Task: Implement the source-precedence and conflict resolver. (M-005)
 - [ ] Task: Seed correspondence, workplace, public, technical, product,
       academic, health-research, governance, legal, clinical, commercial,
       employment, and narrative profile families. (S-001)
