@@ -38,6 +38,7 @@ test_*.txt
 test-*.json
 pr*.diff
 pr*.json
+!src/document-intelligence/profile-registry.json
 issues*.json
 issues_*.txt
 list.txt

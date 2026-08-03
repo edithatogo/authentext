@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "profiles": [
+    {
+      "id": "correspondence",
+      "subtypes": ["email", "letter", "response", "announcement"],
+      "references": ["references/core-patterns.md"],
+      "checks": ["purpose", "reader-action", "tone", "brevity"],
+      "false_positive_risks": ["intentional greeting and sign-off conventions"],
+      "source_resolvers": ["project-style"],
+      "safe_boundaries": ["preserve names, dates, commitments, and contact details"]
+    },
+    {
+      "id": "workplace",
+      "subtypes": ["memo", "briefing-note", "executive-summary", "minutes", "report"],
+      "references": ["references/core-patterns.md", "references/governance.md"],
+      "checks": ["decision-purpose", "actions", "ownership", "structure"],
+      "false_positive_risks": ["required organisational register"],
+      "source_resolvers": ["project-style", "organisation-template"],
+      "safe_boundaries": ["preserve decisions, owners, deadlines, and approved terminology"]
+    },
+    {
+      "id": "public-content",
+      "subtypes": ["web-page", "service-guidance", "faq", "form", "social-content"],
+      "references": ["references/core-patterns.md"],
+      "checks": ["user-need", "accessibility", "navigation", "plain-language"],
+      "false_positive_risks": ["controlled service and policy wording"],
+      "source_resolvers": ["public-content-guidance", "project-style"],
+      "safe_boundaries": ["preserve eligibility, service, legal, and contact information"]
+    },
+    {
+      "id": "technical",
+      "subtypes": ["concept", "tutorial", "how-to", "reference", "troubleshooting", "api-docs"],
+      "references": ["references/core-patterns.md", "references/technical.md"],
+      "checks": ["task-success", "prerequisites", "technical-accuracy", "navigation"],
+      "false_positive_risks": ["precise technical terminology and repeated identifiers"],
+      "source_resolvers": ["project-style", "technical-product-guidance"],
+      "safe_boundaries": ["preserve code, commands, identifiers, errors, and version constraints"]
+    },
+    {
+      "id": "product",
+      "subtypes": ["requirements", "design", "decision-record", "changelog", "release-notes"],
+      "references": ["references/core-patterns.md", "references/technical.md"],
+      "checks": ["decision-context", "acceptance-criteria", "tradeoffs", "change-scope"],
+      "false_positive_risks": ["deliberate requirement keywords and repeated component names"],
+      "source_resolvers": ["project-style", "product-template"],
+      "safe_boundaries": [
+        "preserve normative keywords, identifiers, decisions, and compatibility claims"
+      ]
+    },
+    {
+      "id": "academic",
+      "subtypes": ["essay", "abstract", "manuscript", "review", "thesis", "grant-application"],
+      "references": ["references/core-patterns.md", "references/academic.md"],
+      "checks": ["claim-strength", "evidence", "citation-integrity", "scholarly-structure"],
+      "false_positive_risks": ["legitimate hedging and discipline-specific terminology"],
+      "source_resolvers": ["academic-venue", "project-style"],
+      "safe_boundaries": ["preserve citations, qualifiers, results, methods, and author stance"]
+    },
+    {
+      "id": "health-research",
+      "subtypes": [
+        "randomised-trial",
+        "observational-study",
+        "systematic-review",
+        "study-protocol",
+        "case-report"
+      ],
+      "references": [
+        "references/core-patterns.md",
+        "references/academic.md",
+        "references/governance.md"
+      ],
+      "checks": ["study-type", "minimum-reporting", "claim-strength", "ethics-boundary"],
+      "false_positive_risks": ["required reporting language and cautious clinical claims"],
+      "source_resolvers": ["health-study-type", "academic-venue"],
+      "safe_boundaries": [
+        "preserve results, denominators, harms, registrations, ethics, and limitations"
+      ]
+    },
+    {
+      "id": "governance",
+      "subtypes": ["policy", "procedure", "standard", "risk", "audit", "consultation"],
+      "references": ["references/core-patterns.md", "references/governance.md"],
+      "checks": ["authority", "scope", "accountability", "control-language"],
+      "false_positive_risks": ["normative repetition and defined governance terms"],
+      "source_resolvers": ["project-style", "named-jurisdiction", "organisation-template"],
+      "safe_boundaries": ["preserve obligations, approvals, controls, roles, and review dates"]
+    },
+    {
+      "id": "legal-regulatory",
+      "subtypes": ["advice", "submission", "affidavit", "contract", "notice"],
+      "references": ["references/core-patterns.md", "references/governance.md"],
+      "checks": ["legal-meaning", "authority", "defined-terms", "evidentiary-boundary"],
+      "false_positive_risks": ["formulaic language required by law, court, or contract"],
+      "source_resolvers": ["named-jurisdiction", "publisher-requirements"],
+      "safe_boundaries": [
+        "preserve legal effect, quotations, evidence, defined terms, and uncertainty"
+      ]
+    },
+    {
+      "id": "clinical-safety",
+      "subtypes": ["guideline", "handover", "incident-review", "patient-material"],
+      "references": [
+        "references/core-patterns.md",
+        "references/academic.md",
+        "references/governance.md"
+      ],
+      "checks": ["clinical-meaning", "safety-actions", "audience", "evidence-boundary"],
+      "false_positive_risks": [
+        "necessary repetition, qualifiers, and standard clinical terminology"
+      ],
+      "source_resolvers": ["named-jurisdiction", "organisation-template", "clinical-guidance"],
+      "safe_boundaries": [
+        "preserve doses, units, observations, escalation criteria, and uncertainty"
+      ]
+    },
+    {
+      "id": "commercial",
+      "subtypes": ["proposal", "business-case", "marketing", "case-study"],
+      "references": ["references/core-patterns.md"],
+      "checks": ["audience-value", "claim-support", "decision-case", "tone"],
+      "false_positive_risks": ["approved brand language and substantiated persuasive claims"],
+      "source_resolvers": ["project-style", "brand-guidance"],
+      "safe_boundaries": ["preserve prices, quantified claims, conditions, and approvals"]
+    },
+    {
+      "id": "employment",
+      "subtypes": ["cv", "cover-letter", "selection-criteria", "performance-material"],
+      "references": ["references/core-patterns.md"],
+      "checks": ["role-fit", "evidence", "voice", "claim-specificity"],
+      "false_positive_risks": ["industry terminology and applicant's genuine voice"],
+      "source_resolvers": ["project-style", "employer-requirements"],
+      "safe_boundaries": [
+        "preserve employment history, qualifications, achievements, and attribution"
+      ]
+    },
+    {
+      "id": "creative-narrative",
+      "subtypes": ["profile", "speech", "personal-essay", "narrative-non-fiction"],
+      "references": ["references/core-patterns.md"],
+      "checks": ["voice", "rhythm", "narrative-purpose", "factual-boundary"],
+      "false_positive_risks": ["intentional fragments, repetition, punctuation, and tonal shifts"],
+      "source_resolvers": ["project-style", "voice-sample"],
+      "safe_boundaries": ["preserve narrator stance, facts, quotations, and intentional style"]
+    }
+  ]
+}
