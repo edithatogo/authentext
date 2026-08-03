@@ -104,3 +104,55 @@ export function calibrateVoiceSample(sample) {
     },
   };
 }
+
+function distinct(values) {
+  return [...new Set(Array.isArray(values) ? values : [])];
+}
+
+/**
+ * Select no more than one question whose answer changes authority, operation,
+ * routing, or safety. Non-material gaps receive conservative assumptions.
+ * @param {Record<string, unknown>} intake
+ * @returns {{question: Record<string, string>|null, remaining_material_questions: number, assumptions: Record<string, string>}}
+ */
+export function selectMaterialQuestion(intake = {}) {
+  const questions = [];
+  const operationCandidates = distinct(intake.operation_candidates);
+  const archetypeCandidates = distinct(intake.archetype_candidates);
+
+  if (intake.requires_current_guidance === true && intake.research_permission === 'not_requested') {
+    questions.push({
+      field: 'research_permission',
+      text: 'May I search current guidance using nonsensitive document-profile metadata?',
+      reason: 'Current guidance is material, but research authority has not been granted.',
+    });
+  }
+  if (operationCandidates.length > 1) {
+    questions.push({
+      field: 'operation',
+      text: 'Should I review or rewrite this document?',
+      reason: 'The requested operation changes the output contract.',
+    });
+  }
+  if (archetypeCandidates.length > 1) {
+    questions.push({
+      field: 'archetype',
+      text: `Which document type best applies: ${archetypeCandidates.join(' or ')}?`,
+      reason: 'The candidate document types use different routing or safety boundaries.',
+    });
+  }
+
+  return {
+    question: questions[0] ?? null,
+    remaining_material_questions: Math.max(questions.length - 1, 0),
+    assumptions: {
+      audience: typeof intake.audience === 'string' ? intake.audience : 'general',
+      editing_strength:
+        typeof intake.editing_strength === 'string' ? intake.editing_strength : 'conservative',
+      research_permission:
+        typeof intake.research_permission === 'string'
+          ? intake.research_permission
+          : 'not_requested',
+    },
+  };
+}

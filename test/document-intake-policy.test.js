@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   calibrateVoiceSample,
   resolveDeliveryMode,
+  selectMaterialQuestion,
 } from '../scripts/lib/document-intake-policy.js';
 
 test('delivery modes never imply mutation, research, or publication authority', () => {
@@ -69,4 +70,46 @@ test('short samples disclose limits instead of fabricating a voice profile', () 
   assert.equal(profile.status, 'insufficient-sample');
   assert.equal(profile.features, null);
   assert.match(profile.limitation, /short/i);
+});
+
+test('asks at most one question when operation ambiguity changes the output contract', () => {
+  const decision = selectMaterialQuestion({
+    operation_candidates: ['review', 'rewrite'],
+    archetype_candidates: ['workplace', 'technical'],
+  });
+  assert.equal(decision.question.field, 'operation');
+  assert.match(decision.question.text, /review or rewrite/i);
+  assert.equal(decision.remaining_material_questions, 1);
+});
+
+test('asks for research permission only when current guidance is materially required', () => {
+  const decision = selectMaterialQuestion({
+    requires_current_guidance: true,
+    research_permission: 'not_requested',
+  });
+  assert.equal(decision.question.field, 'research_permission');
+  assert.match(decision.question.text, /search current guidance/i);
+});
+
+test('asks document type when candidates have different safety boundaries', () => {
+  const decision = selectMaterialQuestion({
+    operation_candidates: ['review'],
+    archetype_candidates: ['workplace', 'legal-regulatory'],
+  });
+  assert.equal(decision.question.field, 'archetype');
+  assert.match(decision.question.reason, /safety|routing/i);
+});
+
+test('uses conservative assumptions when missing fields do not materially change routing', () => {
+  const decision = selectMaterialQuestion({
+    operation_candidates: ['review'],
+    archetype_candidates: ['workplace'],
+    audience: null,
+  });
+  assert.equal(decision.question, null);
+  assert.deepEqual(decision.assumptions, {
+    audience: 'general',
+    editing_strength: 'conservative',
+    research_permission: 'not_requested',
+  });
 });
