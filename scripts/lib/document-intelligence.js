@@ -109,8 +109,19 @@ export function validateDocumentProfile(profile) {
 }
 
 export function resolveGuidance(rules) {
+  if (!Array.isArray(rules)) throw new TypeError('guidance rules must be an array');
   const grouped = new Map();
+  const ids = new Set();
   for (const [index, rule] of rules.entries()) {
+    if (!isNonEmptyString(rule?.id)) throw new TypeError(`rules[${index}].id must be non-empty`);
+    if (ids.has(rule.id)) throw new TypeError(`rules[${index}].id must be unique`);
+    ids.add(rule.id);
+    if (!isNonEmptyString(rule.rule_key)) {
+      throw new TypeError(`rules[${index}].rule_key must be non-empty`);
+    }
+    if (!GUIDANCE_PRECEDENCE.includes(rule.authority)) {
+      throw new TypeError(`rules[${index}].authority must be governed`);
+    }
     if (!grouped.has(rule.rule_key)) grouped.set(rule.rule_key, []);
     grouped.get(rule.rule_key).push({ ...rule, input_index: index });
   }
@@ -130,7 +141,12 @@ export function resolveGuidance(rules) {
     for (const suppressed of candidates.filter((candidate) => candidate.id !== winner.id)) {
       const clean = { ...suppressed };
       delete clean.input_index;
-      conflicts.push({ winner: winner.id, suppressed: clean });
+      conflicts.push({
+        winner: winner.id,
+        winner_authority: winner.authority,
+        suppressed: clean,
+        reason: winner.authority === suppressed.authority ? 'stable-tie-break' : 'higher-authority',
+      });
     }
   }
   return { active, conflicts };
