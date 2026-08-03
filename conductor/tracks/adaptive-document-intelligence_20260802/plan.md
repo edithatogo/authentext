@@ -48,8 +48,8 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 - [x] Task: Seed correspondence, workplace, public, technical, product,
       academic, health-research, governance, legal, clinical, commercial,
       employment, and narrative profile families. (S-001) (commit: 528f8ec)
-- [~] Task: Convert existing domain routing to registry-backed progressive
-  disclosure without duplicating module content. (M-011)
+- [x] Task: Convert existing domain routing to registry-backed progressive
+      disclosure without duplicating module content. (M-011) (commit: 7591b8c)
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 3: Governed research and source intelligence
