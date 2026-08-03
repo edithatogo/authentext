@@ -28,7 +28,7 @@ GitHub subissue: [#255](https://github.com/edithatogo/authentext/issues/255)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (commit: 03c6b0b)
 
-## Phase 2: Confidence-aware intake and routing
+## Phase 2: Confidence-aware intake and routing [checkpoint: 7591b8c]
 
 GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 
@@ -50,7 +50,8 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
       employment, and narrative profile families. (S-001) (commit: 528f8ec)
 - [x] Task: Convert existing domain routing to registry-backed progressive
       disclosure without duplicating module content. (M-011) (commit: 7591b8c)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 7591b8c)
 
 ## Phase 3: Governed research and source intelligence
 
