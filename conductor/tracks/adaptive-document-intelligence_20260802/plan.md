@@ -57,10 +57,11 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 
 GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
 
-- [ ] Task: Write failing privacy tests for research-off defaults, allow-listed
+- [x] Task: Write failing privacy tests for research-off defaults, allow-listed
       metadata queries, embedded instructions, secrets, names, citations, and
-      sensitive document content. (M-006, M-010)
-- [ ] Task: Implement the material-need and permission research gate. (M-006)
+      sensitive document content. (M-006, M-010) (commit: 0104c54)
+- [x] Task: Implement the material-need and permission research gate. (M-006)
+      (commit: 0104c54)
 - [ ] Task: Implement metadata-only query construction and fail-closed source
       ingestion. (M-006, M-010)
 - [ ] Task: Implement source records with authority, scope, licensing,
