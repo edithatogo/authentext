@@ -41,8 +41,8 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
       (M-016, M-017) (commit: 0830d0b)
 - [x] Task: Implement the deterministic profile builder with field-level
       confidence and provenance. (M-002, M-003) (commit: b8132fa)
-- [~] Task: Implement material-question logic and conservative fallback without
-  mandatory questionnaires. (M-004)
+- [x] Task: Implement material-question logic and conservative fallback without
+      mandatory questionnaires. (M-004) (commit: 994a5bb)
 - [ ] Task: Implement the source-precedence and conflict resolver. (M-005)
 - [ ] Task: Seed correspondence, workplace, public, technical, product,
       academic, health-research, governance, legal, clinical, commercial,
