@@ -4,6 +4,7 @@ const QUERY_FIELDS = Object.freeze([
   'jurisdiction',
   'organisation',
   'venue',
+  'product',
   'study_type',
   'project_style',
 ]);

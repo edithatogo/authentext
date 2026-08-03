@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "resolvers": [
+    {
+      "id": "academic-venue",
+      "mode": "metadata-query",
+      "required_fields": ["venue"],
+      "optional_fields": ["document_type"],
+      "source_class": "publisher-guidance",
+      "authority": "binding",
+      "supported_checks": ["submission-structure", "venue-style"]
+    },
+    {
+      "id": "health-study-type",
+      "mode": "metadata-query",
+      "required_fields": ["study_type"],
+      "optional_fields": ["venue"],
+      "source_class": "professional-body",
+      "authority": "document_type",
+      "supported_checks": ["minimum-reporting", "study-type"]
+    },
+    {
+      "id": "named-jurisdiction",
+      "mode": "metadata-query",
+      "required_fields": ["jurisdiction"],
+      "optional_fields": ["document_type"],
+      "source_class": "government",
+      "authority": "binding",
+      "supported_checks": ["authority", "jurisdiction"]
+    },
+    {
+      "id": "organisation-template",
+      "mode": "metadata-query",
+      "required_fields": ["organisation"],
+      "optional_fields": ["document_type"],
+      "source_class": "official-guidance",
+      "authority": "project",
+      "supported_checks": ["required-structure", "terminology"]
+    },
+    {
+      "id": "project-style",
+      "mode": "project-local",
+      "required_fields": ["project_style_source"],
+      "optional_fields": [],
+      "source_class": "project-local",
+      "authority": "project",
+      "supported_checks": ["style", "terminology"]
+    },
+    {
+      "id": "public-content-guidance",
+      "mode": "metadata-query",
+      "required_fields": ["document_type"],
+      "optional_fields": ["jurisdiction"],
+      "source_class": "government",
+      "authority": "document_type",
+      "supported_checks": ["accessibility", "plain-language", "user-need"]
+    },
+    {
+      "id": "technical-product-guidance",
+      "mode": "metadata-query",
+      "required_fields": ["document_type", "product"],
+      "optional_fields": [],
+      "source_class": "official-guidance",
+      "authority": "project",
+      "supported_checks": ["technical-accuracy", "technical-structure"]
+    }
+  ]
+}
