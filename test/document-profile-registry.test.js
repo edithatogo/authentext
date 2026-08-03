@@ -2,6 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import {
+  listDocumentProfiles,
+  resolveProfileRoute,
+} from '../scripts/lib/document-profile-registry.js';
 
 const REGISTRY_PATH = path.join('src', 'document-intelligence', 'profile-registry.json');
 const EXPECTED_FAMILIES = [
@@ -52,4 +56,38 @@ test('technical family distinguishes task, concept, reference, and troubleshooti
     ),
     ['concept', 'how-to', 'reference', 'troubleshooting']
   );
+});
+
+test('registry resolver loads only references selected by the profile', () => {
+  assert.equal(listDocumentProfiles().length, 13);
+  assert.deepEqual(resolveProfileRoute({ archetype: 'commercial' }).references, [
+    'references/core-patterns.md',
+  ]);
+  assert.deepEqual(resolveProfileRoute({ archetype: 'technical' }).references, [
+    'references/core-patterns.md',
+    'references/technical.md',
+  ]);
+});
+
+test('composite routing unions references without copying module content', () => {
+  const route = resolveProfileRoute({
+    archetype: 'composite',
+    components: [
+      { archetype: 'academic', subtype: 'manuscript' },
+      { archetype: 'governance', subtype: 'policy' },
+    ],
+  });
+  assert.deepEqual(route.references, [
+    'references/core-patterns.md',
+    'references/academic.md',
+    'references/governance.md',
+  ]);
+  assert.equal(Object.hasOwn(route, 'instructions'), false);
+  assert.equal(Object.hasOwn(route, 'patterns'), false);
+});
+
+test('unknown profiles fail closed to core guidance only', () => {
+  const route = resolveProfileRoute({ archetype: 'unknown' });
+  assert.equal(route.status, 'fallback');
+  assert.deepEqual(route.references, ['references/core-patterns.md']);
 });
