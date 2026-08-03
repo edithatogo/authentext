@@ -2,9 +2,9 @@
 
 **Location:** `conductor/self-improvement/`
 
-**Generated:** 2026-06-21T14:19:30.635Z
+**Generated:** 2026-08-03T12:26:03.754Z
 
-**Local Repository:** edithatogo/humanizer-next
+**Local Repository:** edithatogo/authentext
 
 **Upstream Repository:** blader/humanizer
 
@@ -26,30 +26,31 @@
 
 ## Local Repository Decisions
 
-- local #51: chore(deps): bump the dev-dependencies group across 1 directory with 5 updates
-  Decision: DEFER
-  Why: No repo-specific automation rule exists for this PR yet. Review manually.
-- local #50: chore(deps): bump markdown-it and markdownlint-cli
-  Decision: DEFER
-  Why: No repo-specific automation rule exists for this PR yet. Review manually.
+- None
 
 ## Upstream Repository Decisions
 
-- upstream #159: Add pattern #34: hallucinated data, fake citations, and fabricated links
+- upstream #209: Extend pattern 11 to cover repeated sentence openings (v2.9.2)
   Decision: DEFER
   Why: Review against the evidence rubric: overlap with the local catalog, false-positive risk, and maintainer burden.
-- upstream #155: Add pattern #34: casual intensifiers and dismissive amplifiers
+- upstream #208: Add pattern #34 for invisible-context defenses
   Decision: DEFER
   Why: Review against the evidence rubric: overlap with the local catalog, false-positive risk, and maintainer burden.
-- upstream #154: Add secondhand-text exemption to Detection Guidance
-  Decision: DEFER
-  Why: No automation rule matched. Review manually against the modernization track rubric.
-- upstream #151: Add Spanish pattern catalog with automatic language detection (v2.9.0)
+- upstream #207: Add shadowboxing and editorial scar tissue patterns (v2.10.0)
   Decision: DEFER
   Why: Review against the evidence rubric: overlap with the local catalog, false-positive risk, and maintainer burden.
-- upstream #147: Extend §13 to cover subjectless fragments from humanizing overcorrection
+- upstream #205: Add pluggable language packs, starting with Arabic (v2.10.0)
+  Decision: REJECT
+  Why: Non-English language versions and translations are out of scope for this core English Agent Skills package.
+- upstream #204: docs: add Localization section stating the separate-repo policy
   Decision: DEFER
   Why: No automation rule matched. Review manually against the modernization track rubric.
-- upstream #145: Revise README for Humanizer installation instructions
+- upstream #201: feat: add pattern 34 for abrupt idea shifts
+  Decision: DEFER
+  Why: Review against the evidence rubric: overlap with the local catalog, false-positive risk, and maintainer burden.
+- upstream #200: Add advanced anti-detector exploits section to SKILL.md
   Decision: DEFER
   Why: No automation rule matched. Review manually against the modernization track rubric.
+- upstream #196: Add pattern 34 (vague "This" back-references) and a mechanical final scan (v2.10.0)
+  Decision: DEFER
+  Why: Review against the evidence rubric: overlap with the local catalog, false-positive risk, and maintainer burden.
