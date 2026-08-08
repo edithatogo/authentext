@@ -37,6 +37,20 @@ jobs:
           npm run validate
           npm run check:sync
 
+      - name: Build and dry-run validate distribution packages
+        run: |
+          npm run validate:distribution
+          npm run build:distribution -- --output distribution-staging
+          test -f distribution-staging/portable/distribution-receipt.json
+
+      - name: Upload distribution packages
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: authentext-distribution-packages
+          path: distribution-staging
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Package release artifacts
         run: |
           mkdir -p release-artifacts/references

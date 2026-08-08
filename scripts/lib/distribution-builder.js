@@ -89,9 +89,15 @@ function writeClaudeManifests(root, packageRoot) {
   );
 }
 
+function writeOpenAiOverlay(root, packageRoot) {
+  const targetRoot = path.join(packageRoot, 'agents');
+  fs.mkdirSync(targetRoot, { recursive: true });
+  fs.copyFileSync(path.join(root, 'agents', 'openai.yaml'), path.join(targetRoot, 'openai.yaml'));
+}
+
 /** Build a deterministic, allow-listed portable distribution staging tree. */
 export function buildDistributionPackage({ root, output, target, sourceCommit }) {
-  if (!['portable', 'claude'].includes(target)) {
+  if (!['portable', 'claude', 'codex'].includes(target)) {
     throw new TypeError(`Unsupported distribution target: ${target}`);
   }
   if (!/^[a-f0-9]{40}$/.test(sourceCommit)) throw new TypeError('sourceCommit must be a SHA-1');
@@ -100,6 +106,7 @@ export function buildDistributionPackage({ root, output, target, sourceCommit })
   fs.rmSync(packageRoot, { recursive: true, force: true });
   copyPortableSurface(root, packageRoot);
   if (target === 'claude') writeClaudeManifests(root, packageRoot);
+  if (target === 'codex') writeOpenAiOverlay(root, packageRoot);
 
   const files = walk(packageRoot).map((filePath) => ({
     path: normalize(path.relative(packageRoot, filePath)),
@@ -126,6 +133,18 @@ export function buildDistributionPackage({ root, output, target, sourceCommit })
 /** Validate a host wrapper while preserving the canonical portable package. */
 export function validateHostPackage(packageRoot, target) {
   const errors = validatePortablePackage(packageRoot);
+  if (target === 'codex') {
+    const skillPath = path.join(packageRoot, 'skills', 'authentext', 'SKILL.md');
+    const overlayPath = path.join(packageRoot, 'agents', 'openai.yaml');
+    if (/^allowed-tools:/m.test(fs.readFileSync(skillPath, 'utf8'))) {
+      errors.push('portable-field isolation violation: allowed-tools');
+    }
+    if (!fs.existsSync(overlayPath)) errors.push('OpenAI overlay is missing');
+    else if (/^apps:/m.test(fs.readFileSync(overlayPath, 'utf8'))) {
+      errors.push('prohibited OpenAI app declaration');
+    }
+    return errors;
+  }
   if (target !== 'claude') return [...errors, `unsupported host package: ${target}`];
   const pluginPath = path.join(packageRoot, '.claude-plugin', 'plugin.json');
   const marketplacePath = path.join(packageRoot, '.claude-plugin', 'marketplace.json');

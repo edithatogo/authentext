@@ -152,6 +152,27 @@ test('release workflow packages only maintained, existing paths', () => {
   assert.doesNotMatch(source, /humanizer-next/);
 });
 
+test('release workflow stages validated distribution packages without publishing them', () => {
+  const source = fs.readFileSync(path.join(WORKFLOW_DIR, 'release.yml'), 'utf8');
+  const workflow = parseYaml(source);
+  const release = workflow.jobs.release;
+  const distributionStep = release.steps.find(
+    (step) => step.name === 'Build and dry-run validate distribution packages'
+  );
+  const uploadStep = release.steps.find((step) => step.name === 'Upload distribution packages');
+
+  assert.ok(distributionStep, 'release workflow should build distribution packages');
+  assert.match(distributionStep.run, /npm run build:distribution -- --output distribution-staging/);
+  assert.match(distributionStep.run, /npm run validate:distribution/);
+  assert.ok(uploadStep, 'release workflow should retain distribution packages as CI artifacts');
+  assert.match(uploadStep.uses, /^actions\/upload-artifact@[0-9a-f]{40}$/);
+  assert.equal(uploadStep.with?.path, 'distribution-staging');
+  assert.equal(uploadStep.with?.['if-no-files-found'], 'error');
+
+  assert.doesNotMatch(source, /npm publish|gh skill publish(?!\s+--dry-run)/);
+  assert.doesNotMatch(source, /secrets\.[A-Z0-9_]*(NPM|REGISTRY|MARKETPLACE|ANTHROPIC|OPENAI)/i);
+});
+
 test('solo-maintainer contribution context is current and reviewer-neutral', () => {
   for (const file of [
     'CONTRIBUTING.md',
