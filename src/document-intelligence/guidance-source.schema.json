@@ -11,10 +11,14 @@
     "publisher",
     "url",
     "retrieved_at",
+    "source_class",
     "authority",
     "scope",
+    "license",
     "status",
-    "supported_checks"
+    "supported_checks",
+    "freshness",
+    "drift"
   ],
   "properties": {
     "schema_version": { "const": 1 },
@@ -23,6 +27,16 @@
     "publisher": { "type": "string", "minLength": 1 },
     "url": { "type": "string", "format": "uri" },
     "retrieved_at": { "type": "string", "format": "date" },
+    "source_class": {
+      "enum": [
+        "official-guidance",
+        "standards-body",
+        "publisher-guidance",
+        "government",
+        "professional-body",
+        "project-local"
+      ]
+    },
     "authority": {
       "enum": ["user", "project", "binding", "document_type", "domain", "general", "authentext"]
     },
@@ -34,6 +48,29 @@
       "minItems": 1,
       "uniqueItems": true,
       "items": { "type": "string", "minLength": 1 }
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_age_days", "expires_at"],
+      "properties": {
+        "max_age_days": { "type": "integer", "minimum": 1 },
+        "expires_at": { "type": "string", "format": "date" }
+      }
+    },
+    "drift": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "checked_at", "previous_hash", "current_hash"],
+      "properties": {
+        "state": { "enum": ["unknown", "unchanged", "changed"] },
+        "checked_at": { "type": ["string", "null"], "format": "date" },
+        "previous_hash": {
+          "type": ["string", "null"],
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "current_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+      }
     }
   }
 }

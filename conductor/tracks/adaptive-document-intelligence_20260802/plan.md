@@ -53,25 +53,27 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (commit: 7591b8c)
 
-## Phase 3: Governed research and source intelligence
+## Phase 3: Governed research and source intelligence [checkpoint: 0aa4149]
 
 GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
 
-- [ ] Task: Write failing privacy tests for research-off defaults, allow-listed
+- [x] Task: Write failing privacy tests for research-off defaults, allow-listed
       metadata queries, embedded instructions, secrets, names, citations, and
-      sensitive document content. (M-006, M-010)
-- [ ] Task: Implement the material-need and permission research gate. (M-006)
-- [ ] Task: Implement metadata-only query construction and fail-closed source
-      ingestion. (M-006, M-010)
-- [ ] Task: Implement source records with authority, scope, licensing,
+      sensitive document content. (M-006, M-010) (commit: 0104c54)
+- [x] Task: Implement the material-need and permission research gate. (M-006)
+      (commit: 0104c54)
+- [x] Task: Implement metadata-only query construction and fail-closed source
+      ingestion. (M-006, M-010) (commit: 4e11b4f)
+- [x] Task: Implement source records with authority, scope, licensing,
       retrieval date, freshness, drift, and supported-check mappings. (M-007,
-      S-005)
-- [ ] Task: Add governed resolvers for project style, technical documentation,
+      S-005) (commit: 18c0b1d)
+- [x] Task: Add governed resolvers for project style, technical documentation,
       public content, academic venue, health study type, and named
-      jurisdiction or organisation. (S-002, S-003, S-004)
-- [ ] Task: Add a non-publishing guidance-drift receipt and review workflow.
-      (C-005)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      jurisdiction or organisation. (S-002, S-003, S-004) (commit: 78f89a9)
+- [x] Task: Add a non-publishing guidance-drift receipt and review workflow.
+      (C-005) (commit: d6494de)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 0aa4149)
 
 ## Phase 4: Diagnostics, editing strength, and safety
 
