@@ -75,27 +75,32 @@ GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (commit: 0aa4149)
 
-## Phase 4: Diagnostics, editing strength, and safety
+## Phase 4: Diagnostics, editing strength, and safety [checkpoint: 8a2a905]
 
 GitHub subissue: [#258](https://github.com/edithatogo/authentext/issues/258)
 
-- [ ] Task: Write failing tests for profile-specific dimensions, source-linked
+- [x] Task: Write failing tests for profile-specific dimensions, source-linked
       findings, safe-fix decisions, and non-applicable checks. (S-007)
-- [ ] Task: Write failing tests for structure-first ordering, cluster evidence,
+      (commit: 8a2a905)
+- [x] Task: Write failing tests for structure-first ordering, cluster evidence,
       short-sample limits, language-aware typography, and bounded audit
-      termination. (M-018, M-019, M-020, M-021)
-- [ ] Task: Implement the diagnostic pipeline for completeness, structure,
+      termination. (M-018, M-019, M-020, M-021) (commit: 8a2a905)
+- [x] Task: Implement the diagnostic pipeline for completeness, structure,
       evidence, accessibility, tone, safety, AI patterns, and preservation.
-      (S-007)
-- [ ] Task: Implement review, rewrite, structural, final-pass, and
+      (S-007) (commit: 8a2a905)
+- [x] Task: Implement review, rewrite, structural, final-pass, and
       research-assisted operations with distinct output contracts. (M-008)
-- [ ] Task: Define and implement conservative, standard, and strong change
-      budgets. (M-009)
-- [ ] Task: Extend protected-item checks for required sections, sourced rules,
+      (commit: 8a2a905)
+- [x] Task: Define and implement conservative, standard, and strong change
+      budgets. (M-009) (commit: 8a2a905)
+- [x] Task: Extend protected-item checks for required sections, sourced rules,
       legal/clinical boundaries, and high-stakes fail-closed behaviour. (M-013)
-- [ ] Task: Implement concise assumptions, conflicts, unresolved findings, and
+      (commit: 8a2a905)
+- [x] Task: Implement concise assumptions, conflicts, unresolved findings, and
       optional diagnostic receipts. (M-014, S-006)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 8a2a905)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 8a2a905)
 
 ## Phase 5: Evaluation and document-profile quality
 
