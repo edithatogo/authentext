@@ -169,3 +169,5 @@ GitHub subissue: [#260](https://github.com/edithatogo/authentext/issues/260)
 
 - [x] Task: Move adaptive intake policy into the canonical source fragment and
       enforce its provenance in integration tests. (commit: db6ad4d)
+- [x] Task: Add explicit regression coverage for empty, invalid, and
+      zero-denominator evaluator inputs after hosted review. (commit: dbdb632)
