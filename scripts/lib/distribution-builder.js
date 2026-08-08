@@ -56,14 +56,50 @@ function copyPortableSurface(root, packageRoot) {
   });
 }
 
+function writeClaudeManifests(root, packageRoot) {
+  const version = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
+  const metadataRoot = path.join(packageRoot, '.claude-plugin');
+  fs.mkdirSync(metadataRoot, { recursive: true });
+  const plugin = {
+    name: 'authentext',
+    version,
+    description: 'Review and rewrite prose naturally while preserving meaning and literals.',
+    author: { name: 'edithatogo', url: 'https://github.com/edithatogo' },
+    homepage: 'https://github.com/edithatogo/authentext',
+    repository: 'https://github.com/edithatogo/authentext',
+    license: 'MIT',
+    keywords: ['agent-skill', 'writing', 'editing'],
+  };
+  const marketplace = {
+    name: 'authentext-marketplace',
+    owner: { name: 'edithatogo' },
+    plugins: [
+      {
+        name: 'authentext',
+        source: './',
+        description: plugin.description,
+        version,
+      },
+    ],
+  };
+  fs.writeFileSync(path.join(metadataRoot, 'plugin.json'), `${JSON.stringify(plugin, null, 2)}\n`);
+  fs.writeFileSync(
+    path.join(metadataRoot, 'marketplace.json'),
+    `${JSON.stringify(marketplace, null, 2)}\n`
+  );
+}
+
 /** Build a deterministic, allow-listed portable distribution staging tree. */
 export function buildDistributionPackage({ root, output, target, sourceCommit }) {
-  if (target !== 'portable') throw new TypeError(`Unsupported distribution target: ${target}`);
+  if (!['portable', 'claude'].includes(target)) {
+    throw new TypeError(`Unsupported distribution target: ${target}`);
+  }
   if (!/^[a-f0-9]{40}$/.test(sourceCommit)) throw new TypeError('sourceCommit must be a SHA-1');
 
   const packageRoot = path.join(output, target);
   fs.rmSync(packageRoot, { recursive: true, force: true });
   copyPortableSurface(root, packageRoot);
+  if (target === 'claude') writeClaudeManifests(root, packageRoot);
 
   const files = walk(packageRoot).map((filePath) => ({
     path: normalize(path.relative(packageRoot, filePath)),
@@ -85,6 +121,43 @@ export function buildDistributionPackage({ root, output, target, sourceCommit })
     'utf8'
   );
   return receipt;
+}
+
+/** Validate a host wrapper while preserving the canonical portable package. */
+export function validateHostPackage(packageRoot, target) {
+  const errors = validatePortablePackage(packageRoot);
+  if (target !== 'claude') return [...errors, `unsupported host package: ${target}`];
+  const pluginPath = path.join(packageRoot, '.claude-plugin', 'plugin.json');
+  const marketplacePath = path.join(packageRoot, '.claude-plugin', 'marketplace.json');
+  for (const requiredPath of [pluginPath, marketplacePath]) {
+    if (!fs.existsSync(requiredPath))
+      errors.push(`required Claude manifest is missing: ${requiredPath}`);
+  }
+  if (fs.existsSync(pluginPath)) {
+    const plugin = JSON.parse(fs.readFileSync(pluginPath, 'utf8'));
+    if (plugin.name !== 'authentext') errors.push('Claude plugin identity must be authentext');
+    for (const capability of ['apps', 'tools', 'hooks', 'mcpServers', 'network', 'telemetry']) {
+      if (plugin[capability] !== undefined) {
+        errors.push(`prohibited capability in Claude plugin: ${capability}`);
+      }
+    }
+  }
+  return errors;
+}
+
+/** Enforce immutable versions and a stable package identity across lifecycle operations. */
+export function evaluatePackageTransition(fromVersion, toVersion, fromName, toName) {
+  if (fromName !== toName || toName !== 'authentext') {
+    return { allowed: false, operation: 'rename-rejected' };
+  }
+  if (fromVersion === toVersion) return { allowed: false, operation: 'immutable-version' };
+  const from = fromVersion.split('.').map(Number);
+  const to = toVersion.split('.').map(Number);
+  const direction = to.findIndex((part, index) => part !== from[index]);
+  return {
+    allowed: true,
+    operation: to[direction] > from[direction] ? 'update' : 'rollback',
+  };
 }
 
 /** Validate the staged portable surface and reject drift or unsafe additions. */
