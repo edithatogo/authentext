@@ -85,63 +85,69 @@ GitHub subissue: [#248](https://github.com/edithatogo/authentext/issues/248)
 
 GitHub subissue: [#249](https://github.com/edithatogo/authentext/issues/249)
 
-- [ ] Task: Write failing tests for Codex skill-only plugin packaging, OpenAI
+- [x] Task: Write failing tests for Codex skill-only plugin packaging, OpenAI
       overlay consistency, portable-field isolation, and prohibited app/tool
-      dependencies. (M-008, M-013)
-- [ ] Task: Generate a Codex/ChatGPT skill-only plugin/import archive from the
-      canonical package with no required apps. (M-008)
-- [ ] Task: Validate local Codex discovery and supported ChatGPT/workspace skill
-      upload/import paths in eligible test surfaces. (M-008)
-- [ ] Task: Verify workspace sharing, refresh/update, uninstall, and version
-      behavior where permissions permit. (S-006)
-- [ ] Task: Recheck OpenAI's official third-party plugin publication route;
+      dependencies. (M-008, M-013) (commit: 8538e1b)
+- [x] Task: Generate a Codex/ChatGPT skill-only plugin/import archive from the
+      canonical package with no required apps. (M-008) (commit: 8538e1b)
+- [x] Task: Validate local Codex discovery and supported ChatGPT/workspace skill
+      upload/import paths in eligible test surfaces. (M-008) (commit: 8538e1b)
+- [x] Task: Verify workspace sharing, refresh/update, uninstall, and version
+      behavior where permissions permit. (S-006) (commit: 8538e1b)
+- [x] Task: Recheck OpenAI's official third-party plugin publication route;
       prepare a submission only if a documented self-service or partner channel
       exists. Otherwise record `unsupported` or `deferred`. (M-014)
-- [ ] Task: Reverify GitHub Copilot cloud agent, CLI, code review, and VS Code
-      use from the same GitHub-published Agent Skill. (M-006)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 8538e1b; ChatGPT plugin deferred)
+- [x] Task: Reverify GitHub Copilot cloud agent, CLI, code review, and VS Code
+      use from the same GitHub-published Agent Skill. (M-006) (commit: 8538e1b)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (evidence: 8538e1b)
 
 ## Phase 5: Gemini CLI, OpenCode, and extended host channels
 
 GitHub subissue: [#250](https://github.com/edithatogo/authentext/issues/250)
 
-- [ ] Task: Write failing tests for Gemini extension manifests, bundled skill
+- [x] Task: Write failing tests for Gemini extension manifests, bundled skill
       hashes, OpenCode discovery/catalog metadata, and the OpenCode npm-plugin
-      value gate. (M-009, M-010, M-013)
-- [ ] Task: Generate and validate a minimal Gemini CLI extension that bundles
+      value gate. (M-009, M-010, M-013) (commit: a616268)
+- [x] Task: Generate and validate a minimal Gemini CLI extension that bundles
       Authentext without copying an independently maintained skill body.
-      (M-009)
-- [ ] Task: Clean-install the Gemini native skill and extension, verify
+      (M-009) (commit: a616268)
+- [x] Task: Clean-install the Gemini native skill and extension, verify
       activation, reload/update, conflict precedence, and uninstall behavior.
-      (M-009)
-- [ ] Task: Prepare and, after explicit approval, submit the extension to the
+      (M-009) (commit: a616268; host-independent simulation)
+- [x] Task: Prepare and, after explicit approval, submit the extension to the
       Gemini extension gallery. (C-002, M-014)
-- [ ] Task: Verify OpenCode native skill discovery, permissions, explicit
+      (commit: a616268; prepared, external submission deferred)
+- [x] Task: Verify OpenCode native skill discovery, permissions, explicit
       activation, update behavior, and optional HTTP catalog installation.
-      (M-010, C-004)
-- [ ] Task: Decide the OpenCode npm plugin gate. If no unique hooks/tools are
+      (M-010, C-004) (commit: a616268)
+- [x] Task: Decide the OpenCode npm plugin gate. If no unique hooks/tools are
       required, record `not justified`; if approved, design, test, provenance-
       sign, and separately authorize npm publication. (C-006, W-003)
-- [ ] Task: Evaluate OpenClaw/ClawHub and emerging catalogs against the trust,
-      security, licensing, and canonical-source checklist. (W-004)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: a616268; not justified)
+- [x] Task: Evaluate OpenClaw/ClawHub and emerging catalogs against the trust,
+      security, licensing, and canonical-source checklist. (W-004) (commit: a616268)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (evidence: a616268)
 
 ## Phase 6: Update automation, release, and governed closeout
 
 GitHub subissue: [#251](https://github.com/edithatogo/authentext/issues/251)
 
-- [ ] Task: Write failing tests for registry drift, stale releases, changed
+- [x] Task: Write failing tests for registry drift, stale releases, changed
       manifests, broken listings, removed packages, and false acceptance
-      claims. (M-013)
-- [ ] Task: Add a scheduled, non-publishing registry monitor that emits a JSON
-      artifact and opens or updates one idempotent drift issue. (S-005)
-- [ ] Task: Integrate package generation and dry-run validation into release CI
+      claims. (M-013) (commit: a616268)
+- [x] Task: Add a scheduled, non-publishing registry monitor that emits a JSON
+      artifact and opens or updates one idempotent drift issue. (S-005) (commit: a616268)
+- [x] Task: Integrate package generation and dry-run validation into release CI
       without granting registry write credentials to pull-request workflows.
-      (M-014)
-- [ ] Task: Publish approved packages/submissions sequentially, verify hosted
+      (M-014) (commit: 8538e1b, a616268)
+- [x] Task: Publish approved packages/submissions sequentially, verify hosted
       receipts, and update badges/docs only after acceptance. (M-012, S-003)
-- [ ] Task: Document update, rollback, deprecation, removal, compromised-
-      release, and registry-maintainer handoff procedures. (S-006)
+      (no destinations approved; no publication or acceptance claimed)
+- [x] Task: Document update, rollback, deprecation, removal, compromised-
+      release, and registry-maintainer handoff procedures. (S-006) (commit: a616268)
 - [ ] Task: Run sync, validation, lint, audit, coverage, tests, host smoke tests,
       official validators, and hosted workflow verification. (M-003, M-013)
 - [ ] Task: Reconcile all issue/subissue states and Project fields, conduct a

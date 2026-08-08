@@ -25,7 +25,7 @@ Recorded: 2026-08-08
   staging tree and installed with `gh skill install --from-local --agent codex`.
 - The pre-existing user installation contained obsolete repository files. It
   was moved intact to
-  `C:\Users\60217257\.codex\skills\authentext.backup-20260808-213058`, then
+  `C:\Users\60217257\.codex\skill-backups\authentext.backup-20260808-213058`, then
   replaced by the minimal skill surface (`SKILL.md`, `LICENSE`, `references/`).
 - The installer adds local provenance metadata and normalizes YAML, so semantic
   equality rather than raw-byte equality is the appropriate installed-skill
