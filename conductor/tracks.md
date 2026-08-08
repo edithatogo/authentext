@@ -8,12 +8,6 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [~] **adaptive-document-intelligence_20260802** (P1) - Replace the historical
-  Standard/Pro split with confidence-aware document profiling, governed source
-  research, profile-specific diagnostics, and bounded editing in one portable
-  Authentext skill. See
-  [`tracks/adaptive-document-intelligence_20260802/`](./tracks/adaptive-document-intelligence_20260802/index.md).
-
 - [~] **agent-registry-plugin-distribution_20260802** (P1) - Distribute
   Authentext through credible Agent Skills registries and justified
   host-native plugin or extension channels while preserving a single
@@ -32,9 +26,15 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Archived Tracks
 
-**Total archived track directories:** 28
+**Total archived track directories:** 29
 
 **Latest archives:**
+
+- [x] **adaptive-document-intelligence_20260802** - Confidence-aware document
+      profiling, governed research, bounded diagnostics, evaluation, and
+      portable skill integration completed. See
+      [`tracks/archive/adaptive-document-intelligence_20260802/`](./tracks/archive/adaptive-document-intelligence_20260802/index.md)
+      and GitHub [#254](https://github.com/edithatogo/authentext/issues/254).
 
 - [x] **renovate-codecov-verification_20260801** - Codecov OIDC and repository
       dependency-update safeguards verified; Mend Renovate onboarding deferred

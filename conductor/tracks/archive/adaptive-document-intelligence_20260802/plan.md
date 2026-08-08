@@ -132,7 +132,7 @@ GitHub subissue: [#259](https://github.com/edithatogo/authentext/issues/259)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (commit: f070702)
 
-## Phase 6: Portable skill integration and closeout
+## Phase 6: Portable skill integration and closeout [checkpoint: 08f30c5]
 
 GitHub subissue: [#260](https://github.com/edithatogo/authentext/issues/260)
 
@@ -150,11 +150,14 @@ GitHub subissue: [#260](https://github.com/edithatogo/authentext/issues/260)
       `SKILL_PROFESSIONAL.md`; retain it if any discovery or downstream gate is
       unresolved. (W-001)
       (commit: 2f1824f; retained pending downstream evidence)
-- [ ] Task: Run sync, validation, lint, coverage, tests, official Agent Skills
+- [x] Task: Run sync, validation, lint, coverage, tests, official Agent Skills
       validation, cross-platform CI, CodeQL, and hosted exact-revision checks.
-- [ ] Task: Reconcile GitHub issues/subissues and Project fields, conduct a
+      (verified at PR #266 head 08f30c5)
+- [x] Task: Reconcile GitHub issues/subissues and Project fields, conduct a
       formal review, and archive the track only after hosted evidence passes.
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (review fix: db6ad4d; reconciliation: 179 mapped nodes clean)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (verified at PR #266 head 08f30c5)
 
 ## Handoff artifacts
 

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-02T15:23:07.245Z",
+  "generated_at": "2026-08-08T10:51:52.424Z",
   "repository": "edithatogo/authentext",
   "project": {
     "number": 36,
@@ -15,7 +15,7 @@
     "historical_tracks": 33
   },
   "verification": {
-    "verified_at": "2026-08-02",
+    "verified_at": "2026-08-08",
     "duplicate_track_markers": 0,
     "duplicate_phase_markers": 0,
     "native_parent_child_relationships": "verified",
@@ -26,10 +26,10 @@
     {
       "track_id": "adaptive-document-intelligence_20260802",
       "title": "Adaptive Document Intelligence",
-      "path": "conductor/tracks/adaptive-document-intelligence_20260802",
+      "path": "conductor/tracks/archive/adaptive-document-intelligence_20260802",
       "priority": "P1",
-      "historical": false,
-      "metadata_status": "new",
+      "historical": true,
+      "metadata_status": "completed",
       "parent_issue": {
         "number": 254,
         "node_id": "I_kwDORAMgA88AAAABLJL2_w",
@@ -41,7 +41,7 @@
           "phase_id": "adaptive-document-intelligence_20260802.phase1",
           "number": 1,
           "title": "Contracts, evidence, and migration boundary",
-          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "source": "conductor/tracks/archive/adaptive-document-intelligence_20260802/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 255,
@@ -54,33 +54,33 @@
           "phase_id": "adaptive-document-intelligence_20260802.phase2",
           "number": 2,
           "title": "Confidence-aware intake and routing",
-          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "source": "conductor/tracks/archive/adaptive-document-intelligence_20260802/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 256,
             "node_id": "I_kwDORAMgA88AAAABLJL6YA",
             "url": "https://github.com/edithatogo/authentext/issues/256",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
           "phase_id": "adaptive-document-intelligence_20260802.phase3",
           "number": 3,
           "title": "Governed research and source intelligence",
-          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "source": "conductor/tracks/archive/adaptive-document-intelligence_20260802/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 257,
             "node_id": "I_kwDORAMgA88AAAABLJL6-g",
             "url": "https://github.com/edithatogo/authentext/issues/257",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
           "phase_id": "adaptive-document-intelligence_20260802.phase4",
           "number": 4,
           "title": "Diagnostics, editing strength, and safety",
-          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "source": "conductor/tracks/archive/adaptive-document-intelligence_20260802/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 258,
@@ -93,7 +93,7 @@
           "phase_id": "adaptive-document-intelligence_20260802.phase5",
           "number": 5,
           "title": "Evaluation and document-profile quality",
-          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "source": "conductor/tracks/archive/adaptive-document-intelligence_20260802/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 259,
@@ -106,7 +106,7 @@
           "phase_id": "adaptive-document-intelligence_20260802.phase6",
           "number": 6,
           "title": "Portable skill integration and closeout",
-          "source": "conductor/tracks/adaptive-document-intelligence_20260802/plan.md",
+          "source": "conductor/tracks/archive/adaptive-document-intelligence_20260802/plan.md",
           "reconstructed": false,
           "issue": {
             "number": 260,
