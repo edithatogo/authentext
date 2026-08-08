@@ -8,6 +8,7 @@
     "node": ">=24"
   },
   "scripts": {
+    "build:distribution": "node scripts/build-distribution-packages.js",
     "evaluate": "node scripts/run-evaluations.js",
     "conductor:reconcile": "node scripts/reconcile-conductor-github.js",
     "sync": "node scripts/compile-skill.js",
@@ -16,6 +17,7 @@
     "validate": "node scripts/validate-docs.js",
     "validate:hosts": "node scripts/validate-host-overlays.js",
     "validate:conductor": "node scripts/validate-conductor.js",
+    "validate:distribution": "node scripts/validate-registry-distribution.js",
     "validate:docs": "node scripts/validate-docs.js",
     "vale": "vale --minAlertLevel=error docs/skill-distribution.md",
     "lint": "node scripts/lint-markdown.js",

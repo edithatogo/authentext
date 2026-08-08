@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-02",
+  "as_of": "2026-08-08",
   "canonical_source": {
     "repository": "https://github.com/edithatogo/authentext",
     "paths": ["src/", "SKILL.md", "SKILL_PROFESSIONAL.md", "references/"],
@@ -13,12 +13,12 @@
       "host": "skills.sh",
       "channel_type": "portable_registry",
       "capabilities": [
-        "CLI installation telemetry drives automatic catalog discovery; no separate submission form is documented"
+        "CLI installation telemetry drives automatic catalog discovery; the canonical Authentext URL currently renders an application-level not-found state"
       ],
       "status": "researched",
       "source": { "mode": "canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-02",
+        "checked_on": "2026-08-08",
         "spec_url": "https://www.skills.sh/docs/faq"
       },
       "publication_requires_approval": true
@@ -28,10 +28,10 @@
       "host": "VoltAgent",
       "channel_type": "curated_registry",
       "capabilities": ["Repository listing is maintained through reviewed GitHub pull requests"],
-      "status": "researched",
+      "status": "prepared",
       "source": { "mode": "canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-02",
+        "checked_on": "2026-08-08",
         "spec_url": "https://github.com/VoltAgent/awesome-agent-skills"
       },
       "publication_requires_approval": true
@@ -43,10 +43,10 @@
       "capabilities": [
         "Skill-only plugins and self-hosted marketplace manifests are supported; official directory submission is separately reviewed"
       ],
-      "status": "researched",
+      "status": "prepared",
       "source": { "mode": "generated_from_canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-02",
+        "checked_on": "2026-08-08",
         "spec_url": "https://code.claude.com/docs/en/plugin-marketplaces"
       },
       "publication_requires_approval": true
@@ -58,10 +58,10 @@
       "capabilities": [
         "Codex plugins can package skills without requiring an app or MCP server; public third-party listing remains conditional"
       ],
-      "status": "researched",
+      "status": "prepared",
       "source": { "mode": "generated_from_canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-02",
+        "checked_on": "2026-08-08",
         "spec_url": "https://help.openai.com/en/articles/20001256-plugins-in-codex/"
       },
       "publication_requires_approval": true
@@ -73,10 +73,10 @@
       "capabilities": [
         "Workspace plugin import and sharing can carry skills; a public self-service directory route is not documented"
       ],
-      "status": "researched",
+      "status": "deferred",
       "source": { "mode": "generated_from_canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-02",
+        "checked_on": "2026-08-08",
         "spec_url": "https://help.openai.com/en/articles/20001256-plugins-in-codex/"
       },
       "publication_requires_approval": true
@@ -88,10 +88,10 @@
       "capabilities": [
         "Agent Skills are supported for Copilot coding agent and can be previewed and published with gh skill"
       ],
-      "status": "researched",
+      "status": "prepared",
       "source": { "mode": "canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-02",
+        "checked_on": "2026-08-08",
         "spec_url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills"
       },
       "publication_requires_approval": true
@@ -103,10 +103,10 @@
       "capabilities": [
         "Gemini CLI extensions may bundle a skills directory and can be distributed through extension repositories and the gallery"
       ],
-      "status": "researched",
+      "status": "prepared",
       "source": { "mode": "generated_from_canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-02",
+        "checked_on": "2026-08-08",
         "spec_url": "https://geminicli.com/docs/extensions/"
       },
       "publication_requires_approval": true
@@ -121,7 +121,7 @@
       "status": "researched",
       "source": { "mode": "canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-02",
+        "checked_on": "2026-08-08",
         "spec_url": "https://opencode.ai/docs/skills"
       },
       "publication_requires_approval": true
