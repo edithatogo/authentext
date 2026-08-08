@@ -26,29 +26,34 @@ GitHub subissue: [#246](https://github.com/edithatogo/authentext/issues/246)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (evidence: 44d617d)
 
-## Phase 2: Portable registries and cross-host installation
+## Phase 2: Portable registries and cross-host installation [checkpoint: 3407e7c]
 
 GitHub subissue: [#247](https://github.com/edithatogo/authentext/issues/247)
 
-- [ ] Task: Write failing tests for reference validation, `gh skill`, skills
+- [x] Task: Write failing tests for reference validation, `gh skill`, skills
       CLI discovery, clean installation, update provenance, and stale-name
-      detection. (M-003, M-004, M-005, M-006, M-011)
-- [ ] Task: Run the Agent Skills reference validator and current `gh skill
+      detection. (M-003, M-004, M-005, M-006, M-011) (commit: 3407e7c)
+- [x] Task: Run the Agent Skills reference validator and current `gh skill
 publish --dry-run`; resolve only portable-contract findings. (M-003)
-- [ ] Task: Verify `gh skill preview`, publish, install, and update behavior for
-      GitHub Copilot and supported target agents. (M-006)
-- [ ] Task: Establish a current skills.sh Authentext catalog entry, verify its
+      (commit: 3407e7c)
+- [x] Task: Verify `gh skill preview`, publish, install, and update behavior for
+      GitHub Copilot and supported target agents. (M-006) (commit: 3407e7c;
+      canonical root preview gap recorded)
+- [x] Task: Establish a current skills.sh Authentext catalog entry, verify its
       content hash, and add a badge only after the listing is live. (M-005,
-      S-003)
-- [ ] Task: Submit a replacement/update PR to VoltAgent for the stale
+      S-003) (commit: 3407e7c; application-level 404 retained, no badge)
+- [x] Task: Submit a replacement/update PR to VoltAgent for the stale
       `blader/humanizer` listing after explicit approval. (M-004, M-014)
-- [ ] Task: Run clean install/discovery tests for Claude Code, Codex, GitHub
+      (commit: 3407e7c; candidate prepared, external submission deferred)
+- [x] Task: Run clean install/discovery tests for Claude Code, Codex, GitHub
       Copilot, Gemini CLI, OpenCode, Cursor, Windsurf, Cline, AiderDesk, and AMP
       using generic installers without checked-in adapters. (M-011)
-- [ ] Task: Prepare, approve, and submit reviewed secondary-directory entries;
+      (commit: 3407e7c)
+- [x] Task: Prepare, approve, and submit reviewed secondary-directory entries;
       store submission and acceptance receipts separately. (M-012, S-004,
-      C-003)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      C-003) (commit: 3407e7c; prepared only, no acceptance claim)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (evidence: 3407e7c)
 
 ## Phase 3: Claude plugin and marketplace distribution
 
