@@ -43,6 +43,10 @@ Agent Skills contract.
 
 Citation tooling lives in the separate **sourceright** project; it's not part of this package.
 
+See [Adaptive document intelligence](adaptive-document-intelligence.md) for
+document-profile routing, privacy and research boundaries, migration from the
+former Standard/Professional split, and current limitations.
+
 ## Local verification
 
 After editing `src/modules/`:
