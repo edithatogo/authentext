@@ -1,0 +1,52 @@
+name: Registry distribution monitor
+
+on:
+  schedule:
+    - cron: '23 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+
+      - name: Monitor governed registry state
+        run: >-
+          node scripts/monitor-registry-distribution.js
+          --probe-listings
+          --output registry-drift.json
+          --issue-body registry-drift.md
+
+      - name: Upload monitor artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: registry-distribution-drift
+          path: registry-drift.json
+
+      - name: Create, update, or close the drift issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          issue_number="$(gh issue list --state open --search 'authentext-registry-monitor in:body' --json number --jq '.[0].number // empty')"
+          healthy="$(jq -r '.healthy' registry-drift.json)"
+          if [[ "$healthy" == "false" && -n "$issue_number" ]]; then
+            gh issue edit "$issue_number" --body-file registry-drift.md
+          elif [[ "$healthy" == "false" ]]; then
+            gh issue create --title 'Registry distribution drift detected' --body-file registry-drift.md
+          elif [[ -n "$issue_number" ]]; then
+            gh issue close "$issue_number" --comment 'The scheduled registry monitor reports no remaining drift.'
+          fi

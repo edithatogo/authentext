@@ -2,20 +2,22 @@
 
 import process from 'node:process';
 import { execFileSync } from 'node:child_process';
-import { buildDistributionPackage, validatePortablePackage } from './lib/distribution-builder.js';
+import fs from 'node:fs';
+import path from 'node:path';
+import { buildDistributionPackage, validateHostPackage } from './lib/distribution-builder.js';
 
 const outputIndex = process.argv.indexOf('--output');
 const output = outputIndex >= 0 ? process.argv[outputIndex + 1] : 'distribution-staging';
 const sourceCommit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
-const receipt = buildDistributionPackage({
-  root: process.cwd(),
-  output,
-  target: 'portable',
-  sourceCommit,
+const targets = ['portable', 'claude', 'codex', 'gemini', 'opencode'];
+const receipts = targets.map((target) => {
+  const receipt = buildDistributionPackage({ root: process.cwd(), output, target, sourceCommit });
+  const errors = validateHostPackage(receipt.packageRoot, target);
+  if (errors.length > 0) throw new TypeError(`${target}: ${errors.join('; ')}`);
+  return { ...receipt, packageRoot: undefined };
 });
-const errors = validatePortablePackage(receipt.packageRoot);
-if (errors.length > 0) {
-  console.error(errors.join('\n'));
-  process.exit(1);
-}
-console.log(JSON.stringify(receipt, null, 2));
+fs.writeFileSync(
+  path.join(output, 'distribution-receipt.json'),
+  `${JSON.stringify({ schema_version: 1, source_commit: sourceCommit, receipts }, null, 2)}\n`
+);
+console.log(JSON.stringify({ output, targets, sourceCommit }, null, 2));

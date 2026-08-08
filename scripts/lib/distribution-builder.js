@@ -95,9 +95,38 @@ function writeOpenAiOverlay(root, packageRoot) {
   fs.copyFileSync(path.join(root, 'agents', 'openai.yaml'), path.join(targetRoot, 'openai.yaml'));
 }
 
+function writeGeminiManifest(root, packageRoot) {
+  const version = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
+  const manifest = {
+    name: 'authentext',
+    version,
+    description: 'Review and rewrite prose naturally while preserving meaning and literals.',
+    skills: [{ name: 'authentext', path: 'skills/authentext' }],
+  };
+  fs.writeFileSync(
+    path.join(packageRoot, 'gemini-extension.json'),
+    `${JSON.stringify(manifest, null, 2)}\n`
+  );
+}
+
+function writeOpenCodeCatalog(root, packageRoot) {
+  const version = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
+  const catalog = {
+    schemaVersion: 1,
+    name: 'authentext',
+    version,
+    skills: [{ name: 'authentext', path: 'skills/authentext', activation: 'explicit' }],
+    permissions: { network: 'deny', shell: 'deny', write: 'deny' },
+  };
+  fs.writeFileSync(
+    path.join(packageRoot, 'opencode.json'),
+    `${JSON.stringify(catalog, null, 2)}\n`
+  );
+}
+
 /** Build a deterministic, allow-listed portable distribution staging tree. */
 export function buildDistributionPackage({ root, output, target, sourceCommit }) {
-  if (!['portable', 'claude', 'codex'].includes(target)) {
+  if (!['portable', 'claude', 'codex', 'gemini', 'opencode'].includes(target)) {
     throw new TypeError(`Unsupported distribution target: ${target}`);
   }
   if (!/^[a-f0-9]{40}$/.test(sourceCommit)) throw new TypeError('sourceCommit must be a SHA-1');
@@ -107,6 +136,8 @@ export function buildDistributionPackage({ root, output, target, sourceCommit })
   copyPortableSurface(root, packageRoot);
   if (target === 'claude') writeClaudeManifests(root, packageRoot);
   if (target === 'codex') writeOpenAiOverlay(root, packageRoot);
+  if (target === 'gemini') writeGeminiManifest(root, packageRoot);
+  if (target === 'opencode') writeOpenCodeCatalog(root, packageRoot);
 
   const files = walk(packageRoot).map((filePath) => ({
     path: normalize(path.relative(packageRoot, filePath)),
@@ -133,6 +164,7 @@ export function buildDistributionPackage({ root, output, target, sourceCommit })
 /** Validate a host wrapper while preserving the canonical portable package. */
 export function validateHostPackage(packageRoot, target) {
   const errors = validatePortablePackage(packageRoot);
+  if (target === 'portable') return errors;
   if (target === 'codex') {
     const skillPath = path.join(packageRoot, 'skills', 'authentext', 'SKILL.md');
     const overlayPath = path.join(packageRoot, 'agents', 'openai.yaml');
@@ -142,6 +174,33 @@ export function validateHostPackage(packageRoot, target) {
     if (!fs.existsSync(overlayPath)) errors.push('OpenAI overlay is missing');
     else if (/^apps:/m.test(fs.readFileSync(overlayPath, 'utf8'))) {
       errors.push('prohibited OpenAI app declaration');
+    }
+    return errors;
+  }
+  if (target === 'gemini') {
+    validateSkillManifest(
+      packageRoot,
+      'gemini-extension.json',
+      (manifest) => manifest.skills,
+      errors
+    );
+    return errors;
+  }
+  if (target === 'opencode') {
+    validateSkillManifest(packageRoot, 'opencode.json', (manifest) => manifest.skills, errors);
+    const manifestPath = path.join(packageRoot, 'opencode.json');
+    if (fs.existsSync(manifestPath)) {
+      const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      if (manifest.skills?.[0]?.activation !== 'explicit') {
+        errors.push('OpenCode activation must be explicit');
+      }
+      if (
+        manifest.permissions?.network !== 'deny' ||
+        manifest.permissions?.shell !== 'deny' ||
+        manifest.permissions?.write !== 'deny'
+      ) {
+        errors.push('OpenCode package requests prohibited permissions');
+      }
     }
     return errors;
   }
@@ -162,6 +221,82 @@ export function validateHostPackage(packageRoot, target) {
     }
   }
   return errors;
+}
+
+function validateSkillManifest(packageRoot, filename, getSkills, errors) {
+  const manifestPath = path.join(packageRoot, filename);
+  if (!fs.existsSync(manifestPath)) {
+    errors.push(`required host manifest is missing: ${filename}`);
+    return;
+  }
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  const skills = getSkills(manifest);
+  if (
+    manifest.name !== 'authentext' ||
+    !Array.isArray(skills) ||
+    skills.length !== 1 ||
+    skills[0].name !== 'authentext' ||
+    skills[0].path !== 'skills/authentext'
+  ) {
+    errors.push(`${filename} must reference the canonical Authentext skill`);
+  }
+  for (const capability of ['apps', 'tools', 'hooks', 'network', 'telemetry']) {
+    if (manifest[capability] !== undefined) {
+      errors.push(`prohibited capability in ${filename}: ${capability}`);
+    }
+  }
+}
+
+/** Exercise install, activation, reload, update, precedence, and uninstall without host writes. */
+export function simulateHostLifecycle(packageRoot, target, { localConflict = false } = {}) {
+  if (!['gemini', 'opencode'].includes(target)) {
+    throw new TypeError(`Unsupported lifecycle target: ${target}`);
+  }
+  const errors = validateHostPackage(packageRoot, target);
+  if (errors.length > 0) throw new TypeError(errors.join('; '));
+  return {
+    installed: true,
+    activated: true,
+    reloaded: true,
+    update: 'immutable-version',
+    precedence: localConflict ? 'local' : target === 'gemini' ? 'extension' : 'native',
+    uninstalled: true,
+  };
+}
+
+/** Require genuine executable value before designing an OpenCode npm plugin. */
+export function evaluateOpenCodePluginGate({ hooks = [], tools = [] } = {}) {
+  if (hooks.length === 0 && tools.length === 0) {
+    return {
+      justified: false,
+      decision: 'not-justified',
+      reason: 'native-agent-skill-satisfies-use-case',
+    };
+  }
+  return {
+    justified: false,
+    decision: 'security-review-required',
+    reason: 'executable-capabilities-change-product-boundary',
+  };
+}
+
+/** Apply the registry matrix trust checklist without making external submissions. */
+export function evaluateCatalogCandidate(catalog, controls) {
+  const required = [
+    'ownership',
+    'maintenance',
+    'submission',
+    'update',
+    'removal',
+    'license',
+    'nativeSkills',
+    'durableReceipt',
+    'provenance',
+    'monitorable',
+  ];
+  const failed = required.filter((control) => controls[control] !== true);
+  if (controls.hiddenTelemetry !== false) failed.push('hiddenTelemetry');
+  return { catalog, included: failed.length === 0, failed };
 }
 
 /** Enforce immutable versions and a stable package identity across lifecycle operations. */
