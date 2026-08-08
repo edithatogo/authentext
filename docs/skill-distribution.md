@@ -47,6 +47,11 @@ See [Adaptive document intelligence](adaptive-document-intelligence.md) for
 document-profile routing, privacy and research boundaries, migration from the
 former Standard/Professional split, and current limitations.
 
+Generated portable and host-specific staging packages are non-publishing build
+artifacts. See [Distribution operations](distribution-operations.md) for the
+registry monitor, release verification, rollback, deprecation, compromise, and
+maintainer-handoff procedures.
+
 ## Local verification
 
 After editing `src/modules/`:
