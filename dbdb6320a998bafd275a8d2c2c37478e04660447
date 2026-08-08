@@ -1,0 +1,1 @@
+Hosted review follow-up: compareHostEvaluations already rejected arrays shorter than two before numeric spreads. Added an explicit empty-array regression plus invalid-route, invalid-similarity, and zero-denominator coverage; targeted tests and full 164-test hook suite passed.
