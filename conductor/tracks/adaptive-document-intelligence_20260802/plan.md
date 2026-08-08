@@ -102,27 +102,35 @@ GitHub subissue: [#258](https://github.com/edithatogo/authentext/issues/258)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (commit: 8a2a905)
 
-## Phase 5: Evaluation and document-profile quality
+## Phase 5: Evaluation and document-profile quality [checkpoint: f070702]
 
 GitHub subissue: [#259](https://github.com/edithatogo/authentext/issues/259)
 
-- [ ] Task: Build positive, near-miss, negative, ambiguous, composite, and
+- [x] Task: Build positive, near-miss, negative, ambiguous, composite, and
       adversarial fixtures for at least ten representative subtypes. (M-012)
-- [ ] Task: Add task/concept/reference/troubleshooting technical evaluations.
+      (commit: f070702)
+- [x] Task: Add task/concept/reference/troubleshooting technical evaluations.
       (S-002)
-- [ ] Task: Add study-type routing and minimum-reporting evaluations without
+      (commit: f070702)
+- [x] Task: Add study-type routing and minimum-reporting evaluations without
       claiming submission compliance. (S-003, W-004)
-- [ ] Task: Add prompt-injection, privacy, source-conflict, and stale-guidance
+      (commit: f070702)
+- [x] Task: Add prompt-injection, privacy, source-conflict, and stale-guidance
       adversarial cases. (M-006, M-010, M-013)
-- [ ] Task: Add detector-evasion, authorship-inference, invented-specificity,
+      (commit: f070702)
+- [x] Task: Add detector-evasion, authorship-inference, invented-specificity,
       artificial-disfluency, and universal-punctuation negative fixtures.
       (W-006, W-007, W-008)
-- [ ] Task: Measure restraint, false positives, preservation, requirement
+      (commit: f070702)
+- [x] Task: Measure restraint, false positives, preservation, requirement
       coverage, change density, and classification calibration separately.
       (S-008)
-- [ ] Task: Run supported-host routing and output-similarity evaluations and
+      (commit: f070702)
+- [x] Task: Run supported-host routing and output-similarity evaluations and
       record bounded variance. (M-015)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: f070702)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: f070702)
 
 ## Phase 6: Portable skill integration and closeout
 
