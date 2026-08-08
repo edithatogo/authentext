@@ -53,7 +53,7 @@ GitHub subissue: [#256](https://github.com/edithatogo/authentext/issues/256)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (commit: 7591b8c)
 
-## Phase 3: Governed research and source intelligence
+## Phase 3: Governed research and source intelligence [checkpoint: 0aa4149]
 
 GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
 
@@ -72,7 +72,8 @@ GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
       jurisdiction or organisation. (S-002, S-003, S-004) (commit: 78f89a9)
 - [x] Task: Add a non-publishing guidance-drift receipt and review workflow.
       (C-005) (commit: d6494de)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 0aa4149)
 
 ## Phase 4: Diagnostics, editing strength, and safety
 
