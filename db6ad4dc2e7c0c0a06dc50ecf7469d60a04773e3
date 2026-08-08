@@ -1,0 +1,1 @@
+Formal Conductor review fix: moved adaptive intake and safety policy from compiler literals into src/modules/SKILL_CORE_PATTERNS.md; added provenance regression coverage; 162 tests and integration checks passed; official skills-ref validation passed.
