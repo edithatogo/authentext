@@ -164,3 +164,8 @@ GitHub subissue: [#260](https://github.com/edithatogo/authentext/issues/260)
 - Profile-specific diagnostic and editing contracts.
 - Document-type, ambiguity, prompt-injection, and cross-host evaluation corpus.
 - Migration evidence for the former Standard/Pro split.
+
+## Phase: Review fixes
+
+- [x] Task: Move adaptive intake policy into the canonical source fragment and
+      enforce its provenance in integration tests. (commit: db6ad4d)
