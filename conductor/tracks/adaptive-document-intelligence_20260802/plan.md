@@ -70,8 +70,8 @@ GitHub subissue: [#257](https://github.com/edithatogo/authentext/issues/257)
 - [x] Task: Add governed resolvers for project style, technical documentation,
       public content, academic venue, health study type, and named
       jurisdiction or organisation. (S-002, S-003, S-004) (commit: 78f89a9)
-- [ ] Task: Add a non-publishing guidance-drift receipt and review workflow.
-      (C-005)
+- [x] Task: Add a non-publishing guidance-drift receipt and review workflow.
+      (C-005) (commit: d6494de)
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 4: Diagnostics, editing strength, and safety
