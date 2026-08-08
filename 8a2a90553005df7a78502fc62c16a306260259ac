@@ -1,1 +1,3 @@
 Phase 4 functional implementation: profile-aware diagnostics, ordered structure-first pipeline, cluster and short-sample evidence limits, distinct operation contracts, bounded editing strengths, protected-item fail-closed checks, language-aware typography preservation, one-revision audit termination, and concise diagnostic receipts. Verification: targeted tests, lint/type/format, full commit-hook suite (148 tests plus integrations), coverage 87.32% lines, 92.11% functions, 76.34% branches.
+
+Phase 4 checkpoint: validation, lint/type/format, coverage (87.32% lines, 92.11% functions, 76.34% branches), live reconciliation (179 mapped nodes clean), and official Agent Skills validation passed. Full 148-test suite and integrations passed in the functional commit hook.
