@@ -136,16 +136,20 @@ GitHub subissue: [#259](https://github.com/edithatogo/authentext/issues/259)
 
 GitHub subissue: [#260](https://github.com/edithatogo/authentext/issues/260)
 
-- [ ] Task: Update canonical skill fragments with adaptive intake, source
+- [x] Task: Update canonical skill fragments with adaptive intake, source
       hierarchy, research gate, untrusted-document boundary, and operation
       routing. (M-001, M-004, M-006, M-008, M-010)
-- [ ] Task: Regenerate `SKILL.md`, references, host metadata, and the temporary
+      (commit: 2f1824f)
+- [x] Task: Regenerate `SKILL.md`, references, host metadata, and the temporary
       professional compatibility reference. (M-001)
-- [ ] Task: Update documentation with profile examples, research disclosures,
+      (commit: 2f1824f)
+- [x] Task: Update documentation with profile examples, research disclosures,
       privacy behaviour, migration guidance, and limitations.
-- [ ] Task: Decide whether evidence supports retiring
+      (commit: 2f1824f)
+- [x] Task: Decide whether evidence supports retiring
       `SKILL_PROFESSIONAL.md`; retain it if any discovery or downstream gate is
       unresolved. (W-001)
+      (commit: 2f1824f; retained pending downstream evidence)
 - [ ] Task: Run sync, validation, lint, coverage, tests, official Agent Skills
       validation, cross-platform CI, CodeQL, and hosted exact-revision checks.
 - [ ] Task: Reconcile GitHub issues/subissues and Project fields, conduct a
