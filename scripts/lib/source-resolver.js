@@ -20,6 +20,20 @@ function readRegistry() {
   return registry.resolvers;
 }
 
+function isSafeProjectRelativePath(value) {
+  if (typeof value !== 'string' || value.trim() === '') return false;
+  const normalized = value.trim().replace(/\\/gu, '/');
+  if (
+    /^[A-Za-z]:\//u.test(normalized) ||
+    normalized.startsWith('/') ||
+    normalized.includes('://')
+  ) {
+    return false;
+  }
+  const segments = normalized.split('/');
+  return !segments.includes('..') && !segments.includes('') && normalized !== '.';
+}
+
 export function listSourceResolvers() {
   return readRegistry()
     .map((resolver) => resolver.id)
@@ -52,6 +66,10 @@ export function resolveSourceRequests(resolverIds, context = {}) {
     }
 
     if (resolver.mode === 'project-local') {
+      if (!isSafeProjectRelativePath(context.project_style_source)) {
+        unresolved.push({ resolver: resolverId, reason: 'unsafe-project-source' });
+        continue;
+      }
       requests.push({
         resolver: resolverId,
         mode: resolver.mode,

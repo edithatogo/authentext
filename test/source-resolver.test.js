@@ -37,6 +37,20 @@ test('project style never guesses a conventional file path', () => {
   assert.equal(result.unresolved[0].reason, 'explicit-project-source-required');
 });
 
+test('project style rejects URLs, absolute paths, and parent traversal', () => {
+  for (const source of [
+    'https://example.org/style.md',
+    'C:\\private\\style.md',
+    '/private/style.md',
+    '../private/style.md',
+    'docs/../../private/style.md',
+  ]) {
+    const result = resolveSourceRequests(['project-style'], { project_style_source: source });
+    assert.deepEqual(result.requests, [], source);
+    assert.equal(result.unresolved[0].reason, 'unsafe-project-source', source);
+  }
+});
+
 test('external resolvers emit bounded metadata requests for each governed family', () => {
   const result = resolveSourceRequests(
     [

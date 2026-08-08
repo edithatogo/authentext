@@ -43,6 +43,7 @@ test('source records require governed authority, scope, licence decision, and ch
     { authority: 'popular' },
     { scope: '' },
     { license: undefined },
+    { license: '' },
     { supported_checks: [] },
     { max_age_days: 0 },
     { content_hash: 'not-a-hash' },

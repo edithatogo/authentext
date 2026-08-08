@@ -42,8 +42,11 @@ export function createGuidanceSourceRecord(input) {
     throw new TypeError('authority must use the guidance hierarchy');
   }
   if (!Object.hasOwn(input, 'license')) throw new TypeError('license decision is required');
-  if (input.license !== null && typeof input.license !== 'string') {
-    throw new TypeError('license must be text or null');
+  if (
+    input.license !== null &&
+    (typeof input.license !== 'string' || input.license.trim() === '')
+  ) {
+    throw new TypeError('license must be non-empty text or null');
   }
   if (!Array.isArray(input.supported_checks) || input.supported_checks.length === 0) {
     throw new TypeError('supported_checks must be non-empty');
@@ -86,7 +89,7 @@ export function createGuidanceSourceRecord(input) {
     source_class: input.source_class,
     authority: input.authority,
     scope: requireText(input.scope, 'scope'),
-    license: input.license,
+    license: typeof input.license === 'string' ? input.license.trim() : null,
     status: 'current',
     supported_checks: supportedChecks.sort(),
     freshness: {
