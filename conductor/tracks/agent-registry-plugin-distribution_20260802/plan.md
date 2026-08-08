@@ -162,4 +162,10 @@ GitHub subissue: [#251](https://github.com/edithatogo/authentext/issues/251)
 - GitHub/Copilot publication evidence and cross-host install matrix.
 - External submission and acceptance/rejection URLs.
 - Scheduled drift-monitor artifacts.
+
+## Phase: Review Fixes
+
+- [x] Task: Apply review suggestions for missing-skill discovery, CLI argument
+      validation, git discovery failures, and malformed registry matrices.
+      (commit: b5c8dbc)
 - Distribution security, rollback, deprecation, and compromise runbook.
