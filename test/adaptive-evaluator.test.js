@@ -103,3 +103,46 @@ test('host comparison permits bounded variance but rejects routing drift', () =>
     false
   );
 });
+
+test('invalid evaluator inputs fail predictably without reaching numeric spreads', () => {
+  assert.throws(() => compareHostEvaluations([]), {
+    name: 'TypeError',
+    message: 'At least two host evaluations are required',
+  });
+  assert.throws(
+    () =>
+      compareHostEvaluations([
+        { host: 'codex', route: 'technical:reference', similarity: 1 },
+        { host: 'other', route: 'technical:reference', similarity: 2 },
+      ]),
+    RangeError
+  );
+  assert.throws(() => routeTechnicalSubtype('unknown'), TypeError);
+  assert.throws(() => routeHealthStudyType('unknown'), TypeError);
+  assert.throws(() => evaluateAdversarialCase({ kind: 'unknown' }), TypeError);
+});
+
+test('zero denominators produce bounded zero metrics', () => {
+  assert.deepEqual(
+    measureQuality({
+      proposed_changes: 0,
+      total_units: 0,
+      false_positives: 0,
+      findings: 0,
+      protected_total: 0,
+      protected_preserved: 0,
+      requirements_total: 0,
+      requirements_covered: 0,
+      calibrated: 0,
+      classified: 0,
+    }),
+    {
+      restraint: 1,
+      false_positive_rate: 0,
+      preservation: 0,
+      requirement_coverage: 0,
+      change_density: 0,
+      classification_calibration: 0,
+    }
+  );
+});
