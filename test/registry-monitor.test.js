@@ -114,3 +114,25 @@ test('issue rendering carries a stable idempotency marker', () => {
   assert.match(body, /^<!-- authentext-registry-monitor -->/);
   assert.match(body, /never publishes packages/);
 });
+
+test('CLI rejects flags without values with a precise error', () => {
+  const result = spawnSync(process.execPath, [CLI, '--output'], {
+    cwd: ROOT,
+    encoding: 'utf8',
+  });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /--output requires a value/);
+});
+
+test('listing probes tolerate a malformed matrix without a channels array', () => {
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'authentext-registry-malformed-'));
+  const matrixPath = path.join(temp, 'matrix.json');
+  const outputPath = path.join(temp, 'report.json');
+  fs.writeFileSync(matrixPath, '{"schema_version":1}\n');
+  const result = spawnSync(
+    process.execPath,
+    [CLI, '--matrix', matrixPath, '--output', outputPath, '--probe-listings'],
+    { cwd: ROOT, encoding: 'utf8' }
+  );
+  assert.equal(result.status, 0, result.stderr);
+});

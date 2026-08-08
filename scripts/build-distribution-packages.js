@@ -7,8 +7,16 @@ import path from 'node:path';
 import { buildDistributionPackage, validateHostPackage } from './lib/distribution-builder.js';
 
 const outputIndex = process.argv.indexOf('--output');
+if (outputIndex >= 0 && !process.argv[outputIndex + 1]) {
+  throw new TypeError('--output requires a directory path');
+}
 const output = outputIndex >= 0 ? process.argv[outputIndex + 1] : 'distribution-staging';
-const sourceCommit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+let sourceCommit;
+try {
+  sourceCommit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+} catch (error) {
+  throw new TypeError(`Failed to determine git commit: ${error.message}`, { cause: error });
+}
 const targets = ['portable', 'claude', 'codex', 'gemini', 'opencode'];
 const receipts = targets.map((target) => {
   const receipt = buildDistributionPackage({ root: process.cwd(), output, target, sourceCommit });

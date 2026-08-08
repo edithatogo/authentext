@@ -7,6 +7,7 @@ import { monitorRegistryDistribution, renderRegistryDriftIssue } from './lib/reg
 
 function argument(name, fallback) {
   const index = process.argv.indexOf(name);
+  if (index >= 0 && !process.argv[index + 1]) throw new TypeError(`${name} requires a value`);
   return index >= 0 ? process.argv[index + 1] : fallback;
 }
 
@@ -39,6 +40,7 @@ if (!Number.isInteger(maxAgeDays) || maxAgeDays < 1) {
 
 async function probeListings(currentObservations) {
   const probed = { ...currentObservations };
+  if (!Array.isArray(matrix.channels)) return probed;
   await Promise.all(
     matrix.channels.map(async (channel) => {
       const listingUrl = channel.evidence?.listing_url;

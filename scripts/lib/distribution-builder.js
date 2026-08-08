@@ -347,11 +347,12 @@ export function validatePortablePackage(packageRoot) {
 export function discoverInstalledSkill(packageRoot, host) {
   if (!HOSTS.has(host)) throw new TypeError(`Unsupported host: ${host}`);
   const skillPath = path.join(packageRoot, 'skills', 'authentext', 'SKILL.md');
+  const discovered = fs.existsSync(skillPath);
   return {
     host,
     name: 'authentext',
-    sha256: sha256(fs.readFileSync(skillPath)),
-    discovered: fs.existsSync(skillPath),
+    sha256: discovered ? sha256(fs.readFileSync(skillPath)) : null,
+    discovered,
   };
 }
 

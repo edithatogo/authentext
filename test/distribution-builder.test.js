@@ -89,3 +89,13 @@ test('catalog inspection distinguishes HTTP success from an application 404', ()
     reason: 'install-receipt-present',
   });
 });
+
+test('missing installed skills return a non-discovery receipt instead of throwing', (t) => {
+  const output = temporaryDirectory(t);
+  assert.deepEqual(discoverInstalledSkill(output, 'codex'), {
+    host: 'codex',
+    name: 'authentext',
+    sha256: null,
+    discovered: false,
+  });
+});
