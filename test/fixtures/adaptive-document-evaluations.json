@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "cases": [
+    { "id": "email-positive", "class": "positive", "subtype": "email" },
+    { "id": "memo-near-miss", "class": "near-miss", "subtype": "memo" },
+    { "id": "web-negative", "class": "negative", "subtype": "web-page" },
+    { "id": "technical-ambiguous", "class": "ambiguous", "subtype": "api-docs" },
+    { "id": "product-composite", "class": "composite", "subtype": "requirements" },
+    { "id": "academic-adversarial", "class": "adversarial", "subtype": "manuscript" },
+    { "id": "trial-positive", "class": "positive", "subtype": "randomised-trial" },
+    { "id": "policy-near-miss", "class": "near-miss", "subtype": "policy" },
+    { "id": "contract-negative", "class": "negative", "subtype": "contract" },
+    { "id": "clinical-ambiguous", "class": "ambiguous", "subtype": "guideline" },
+    { "id": "proposal-composite", "class": "composite", "subtype": "proposal" },
+    { "id": "cv-adversarial", "class": "adversarial", "subtype": "cv" }
+  ]
+}

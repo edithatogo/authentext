@@ -40,6 +40,9 @@ a compatibility-bundle repository.
    literal preservation rather than relying on manifest shape alone.
 5. **Layered extensibility:** generate optional host metadata and experiments
    separately from the portable core.
+6. **Adaptive document intelligence:** route by operation, document profile,
+   applicable authority, and protected content while keeping research
+   permissioned and private source text out of external queries.
 
 ## Non-goals
 

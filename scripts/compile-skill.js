@@ -336,6 +336,10 @@ classified.
   technical literals, citations, and epistemic qualifiers.
 - **Review:** Return findings tied to specific passages with proposed changes.
   Do not silently rewrite the source.
+- **Structural edit:** Reorganize sections only when structure blocks the
+  document's purpose; preserve required headings and trace moved content.
+- **Final pass:** Apply one bounded polish pass after substantive review. Do
+  not reopen settled content or expand scope.
 - **Both:** Return the review first, then a clearly separated revision.
 
 If the request does not make the operation clear, infer it from the requested
