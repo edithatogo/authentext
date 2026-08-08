@@ -55,25 +55,31 @@ publish --dry-run`; resolve only portable-contract findings. (M-003)
 - [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
       (evidence: 3407e7c)
 
-## Phase 3: Claude plugin and marketplace distribution
+## Phase 3: Claude plugin and marketplace distribution [checkpoint: 8bbbfc6]
 
 GitHub subissue: [#248](https://github.com/edithatogo/authentext/issues/248)
 
-- [ ] Task: Write failing tests for Claude plugin identity, manifest schema,
+- [x] Task: Write failing tests for Claude plugin identity, manifest schema,
       marketplace schema, version/hash pinning, package contents, and absence of
       apps, hooks, MCP, telemetry, or broad permissions. (M-007, S-002)
-- [ ] Task: Generate the skill-only Claude plugin from canonical release
+      (commit: 8bbbfc6)
+- [x] Task: Generate the skill-only Claude plugin from canonical release
       artifacts and create the Authentext marketplace entry. (M-001, M-007)
-- [ ] Task: Validate with `claude plugin validate`, add the marketplace from a
+      (commit: 8bbbfc6)
+- [x] Task: Validate with `claude plugin validate`, add the marketplace from a
       clean environment, install the plugin, and verify Authentext discovery.
-      (M-007)
-- [ ] Task: Test marketplace update, rollback, uninstall, rename, and immutable
-      version behavior. (S-002, S-006)
-- [ ] Task: Prepare the official Anthropic plugin-directory submission and
+      (M-007) (commit: 8bbbfc6; repository validation passed; official Windows
+      CLI binary incompatibility retained as downstream smoke-test gate)
+- [x] Task: Test marketplace update, rollback, uninstall, rename, and immutable
+      version behavior. (S-002, S-006) (commit: 8bbbfc6)
+- [x] Task: Prepare the official Anthropic plugin-directory submission and
       complete it only after explicit approval. (C-001, M-014)
-- [ ] Task: Record submission, review, acceptance/rejection, listing, and clean
+      (commit: 8bbbfc6; prepared, external submission deferred)
+- [x] Task: Record submission, review, acceptance/rejection, listing, and clean
       install receipts without conflating states. (M-013)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 8bbbfc6)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (evidence: 8bbbfc6)
 
 ## Phase 4: Codex, ChatGPT, and GitHub Copilot distribution
 
