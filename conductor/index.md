@@ -20,7 +20,7 @@ than guessing paths.
 - [Roadmap](./roadmap.md)
 - [Tracks Registry](./tracks.md)
 - [Archived Adaptive Document Intelligence Track](./tracks/archive/adaptive-document-intelligence_20260802/index.md)
-- [Active Agent Registry and Plugin Distribution Track](./tracks/agent-registry-plugin-distribution_20260802/index.md)
+- [Archived Agent Registry and Plugin Distribution Track](./tracks/archive/agent-registry-plugin-distribution_20260802/index.md)
 - [Archived Renovate and Codecov Track](./tracks/archive/renovate-codecov-verification_20260801/index.md)
 - [Archived FOI-O Editorial Workflow Track](./tracks/archive/foio-editorial-workflow_20260801/index.md)
 - [Archived Security and Quality Track](./tracks/archive/post-release-security-quality-frontier_20260801/index.md)

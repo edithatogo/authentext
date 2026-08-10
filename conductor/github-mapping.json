@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-08T10:51:52.424Z",
+  "generated_at": "2026-08-08T12:06:39.067Z",
   "repository": "edithatogo/authentext",
   "project": {
     "number": 36,
@@ -34,7 +34,7 @@
         "number": 254,
         "node_id": "I_kwDORAMgA88AAAABLJL2_w",
         "url": "https://github.com/edithatogo/authentext/issues/254",
-        "state": "open"
+        "state": "closed"
       },
       "phases": [
         {
@@ -86,7 +86,7 @@
             "number": 258,
             "node_id": "I_kwDORAMgA88AAAABLJL7kA",
             "url": "https://github.com/edithatogo/authentext/issues/258",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -99,7 +99,7 @@
             "number": 259,
             "node_id": "I_kwDORAMgA88AAAABLJL9IQ",
             "url": "https://github.com/edithatogo/authentext/issues/259",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -112,7 +112,7 @@
             "number": 260,
             "node_id": "I_kwDORAMgA88AAAABLJL98A",
             "url": "https://github.com/edithatogo/authentext/issues/260",
-            "state": "open"
+            "state": "closed"
           }
         }
       ]
@@ -170,7 +170,7 @@
         "number": 245,
         "node_id": "I_kwDORAMgA88AAAABLIkPiQ",
         "url": "https://github.com/edithatogo/authentext/issues/245",
-        "state": "open"
+        "state": "closed"
       },
       "phases": [
         {
@@ -196,7 +196,7 @@
             "number": 247,
             "node_id": "I_kwDORAMgA88AAAABLIkQmg",
             "url": "https://github.com/edithatogo/authentext/issues/247",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -209,7 +209,7 @@
             "number": 248,
             "node_id": "I_kwDORAMgA88AAAABLIkRPQ",
             "url": "https://github.com/edithatogo/authentext/issues/248",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -222,7 +222,7 @@
             "number": 249,
             "node_id": "I_kwDORAMgA88AAAABLIkSAA",
             "url": "https://github.com/edithatogo/authentext/issues/249",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -235,7 +235,7 @@
             "number": 250,
             "node_id": "I_kwDORAMgA88AAAABLIkTKg",
             "url": "https://github.com/edithatogo/authentext/issues/250",
-            "state": "open"
+            "state": "closed"
           }
         },
         {
@@ -248,7 +248,7 @@
             "number": 251,
             "node_id": "I_kwDORAMgA88AAAABLIkTxg",
             "url": "https://github.com/edithatogo/authentext/issues/251",
-            "state": "open"
+            "state": "closed"
           }
         }
       ]
