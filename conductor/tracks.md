@@ -8,11 +8,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-- [~] **agent-registry-plugin-distribution_20260802** (P1) - Distribute
-  Authentext through credible Agent Skills registries and justified
-  host-native plugin or extension channels while preserving a single
-  canonical skill and governed publication receipts. See
-  [`tracks/agent-registry-plugin-distribution_20260802/`](./tracks/agent-registry-plugin-distribution_20260802/index.md).
+None.
 
 ---
 
@@ -26,9 +22,15 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Archived Tracks
 
-**Total archived track directories:** 29
+**Total archived track directories:** 30
 
 **Latest archives:**
+
+- [x] **agent-registry-plugin-distribution_20260802** - Deterministic portable,
+      Claude, Codex, Gemini, and OpenCode packages, non-publishing release CI,
+      governed registry monitoring, and external-publication follow-ups. See
+      [`tracks/archive/agent-registry-plugin-distribution_20260802/`](./tracks/archive/agent-registry-plugin-distribution_20260802/index.md)
+      and GitHub [#245](https://github.com/edithatogo/authentext/issues/245).
 
 - [x] **adaptive-document-intelligence_20260802** - Confidence-aware document
       profiling, governed research, bounded diagnostics, evaluation, and
@@ -219,6 +221,6 @@ Live self-improvement outputs (not a track): `conductor/self-improvement/`
 
 ---
 
-Last updated: 2026-07-31.
+Last updated: 2026-08-08.
 
-Active P0 track: post-release security and quality frontier.
+Active tracks: none.

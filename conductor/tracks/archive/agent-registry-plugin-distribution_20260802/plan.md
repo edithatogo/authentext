@@ -148,12 +148,14 @@ GitHub subissue: [#251](https://github.com/edithatogo/authentext/issues/251)
       (no destinations approved; no publication or acceptance claimed)
 - [x] Task: Document update, rollback, deprecation, removal, compromised-
       release, and registry-maintainer handoff procedures. (S-006) (commit: a616268)
-- [ ] Task: Run sync, validation, lint, audit, coverage, tests, host smoke tests,
+- [x] Task: Run sync, validation, lint, audit, coverage, tests, host smoke tests,
       official validators, and hosted workflow verification. (M-003, M-013)
-- [ ] Task: Reconcile all issue/subissue states and Project fields, conduct a
+      (evidence: PR #267; merge commit: 3cf7a9a)
+- [x] Task: Reconcile all issue/subissue states and Project fields, conduct a
       formal review, archive the track, and retain any external channel gaps as
-      explicit follow-up issues. (M-015)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      explicit follow-up issues. (M-015) (issues: #268, #269)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (evidence: PR #267; merge commit: 3cf7a9a)
 
 ## Handoff Artifacts
 

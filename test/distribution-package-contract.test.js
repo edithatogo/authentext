@@ -7,6 +7,7 @@ const TRACK = path.join(
   process.cwd(),
   'conductor',
   'tracks',
+  'archive',
   'agent-registry-plugin-distribution_20260802'
 );
 const schema = JSON.parse(

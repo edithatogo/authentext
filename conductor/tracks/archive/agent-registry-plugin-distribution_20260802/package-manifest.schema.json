@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/edithatogo/authentext/blob/main/conductor/tracks/agent-registry-plugin-distribution_20260802/package-manifest.schema.json",
+  "$id": "https://github.com/edithatogo/authentext/blob/main/conductor/tracks/archive/agent-registry-plugin-distribution_20260802/package-manifest.schema.json",
   "title": "Authentext distribution package manifest",
   "type": "object",
   "additionalProperties": false,
