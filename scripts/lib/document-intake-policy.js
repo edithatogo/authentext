@@ -499,3 +499,63 @@ export function selectMaterialQuestion(intake = {}) {
     },
   };
 }
+
+const RESTRICTED_VOICE_CLASSES = new Set(['clinical', 'legal', 'regulatory', 'submitted-academic']);
+
+/**
+ * Decide whether a calibrated sample may override a style rule, and whether a
+ * corpus fact may enter the current draft. Never-add, never-lose, and
+ * protected spans still win.
+ * @param {{
+ *   sampleUsesEmDash?: boolean,
+ *   styleRule?: string,
+ *   corpusFact?: string,
+ *   currentSourceSupports?: boolean,
+ *   userAsked?: boolean,
+ *   protectedSpan?: boolean,
+ *   neverAddConflict?: boolean,
+ *   neverLoseConflict?: boolean,
+ *   documentClass?: string,
+ * }} [input]
+ */
+export function resolveVoicePrecedence({
+  sampleUsesEmDash = false,
+  styleRule = 'dash-ban',
+  corpusFact,
+  currentSourceSupports = false,
+  userAsked = false,
+  protectedSpan = false,
+  neverAddConflict = false,
+  neverLoseConflict = false,
+  documentClass,
+} = {}) {
+  const styleOverride =
+    styleRule === 'dash-ban' && sampleUsesEmDash === true ? 'keep-sample-dash' : 'apply-style-rule';
+
+  let insert = false;
+  let insertReason = 'corpus-fact-not-requested';
+  if (protectedSpan === true) {
+    insertReason = 'protected-span';
+  } else if (neverAddConflict === true) {
+    insertReason = 'never-add';
+  } else if (neverLoseConflict === true) {
+    insertReason = 'never-lose';
+  } else if (corpusFact && userAsked === true && currentSourceSupports === true) {
+    insert = true;
+    insertReason = 'user-asked-and-source-supports';
+  } else if (corpusFact && userAsked === true && currentSourceSupports !== true) {
+    insertReason = 'current-source-lacks-claim';
+  } else if (corpusFact) {
+    insertReason = 'corpus-does-not-license-fabrication';
+  }
+
+  return {
+    style_override: styleOverride,
+    may_insert_corpus_fact: insert,
+    insert_reason: insertReason,
+    skip_personality:
+      typeof documentClass === 'string' && RESTRICTED_VOICE_CLASSES.has(documentClass),
+    skip_first_person_texture:
+      typeof documentClass === 'string' && RESTRICTED_VOICE_CLASSES.has(documentClass),
+  };
+}

@@ -23,16 +23,18 @@
 
 ## Phase 3: Optional plugin sources
 
-- [~] Task: Write failing tests that email and other plugins are off by
-      default and require a named grant.
-- [~] Task: Add a thin adapter interface. Do not ship a mail client.
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Write failing tests that email and other plugins are off by
+      default and require a named grant. (commit: 488a3af)
+- [x] Task: Add a thin adapter interface. Do not ship a mail client.
+      (commit: 488a3af)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      [checkpoint: fa40812]
 
 ## Phase 4: Precedence wiring
 
-- [ ] Task: Write failing tests that a calibrated sample outranks the dash
+- [~] Task: Write failing tests that a calibrated sample outranks the dash
       ban and that corpus facts cannot be inserted into the current draft.
-- [ ] Task: Wire precedence in skill prose and in the intake/diagnostic
+- [~] Task: Wire precedence in skill prose and in the intake/diagnostic
       contracts.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 

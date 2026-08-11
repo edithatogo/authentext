@@ -11,6 +11,7 @@ import {
   parseCorpusPointer,
   resolveDeliveryMode,
   resolvePluginSource,
+  resolveVoicePrecedence,
   selectMaterialQuestion,
 } from '../scripts/lib/document-intake-policy.js';
 
@@ -391,4 +392,60 @@ test('asks for a plugin grant when a plugin is named without one', () => {
   const decision = selectMaterialQuestion({ plugin: 'email' });
   assert.equal(decision.question.field, 'plugin_grant');
   assert.match(decision.question.text, /plugin/i);
+});
+
+test('a calibrated sample outranks the dash ban but not never-add or protected spans', () => {
+  const dash = resolveVoicePrecedence({ sampleUsesEmDash: true, styleRule: 'dash-ban' });
+  assert.equal(dash.style_override, 'keep-sample-dash');
+
+  const blocked = resolveVoicePrecedence({
+    sampleUsesEmDash: true,
+    styleRule: 'dash-ban',
+    corpusFact: 'I worked at Example Hospital in 2019.',
+    protectedSpan: true,
+  });
+  assert.equal(blocked.style_override, 'keep-sample-dash');
+  assert.equal(blocked.may_insert_corpus_fact, false);
+  assert.equal(blocked.insert_reason, 'protected-span');
+
+  const neverAdd = resolveVoicePrecedence({
+    corpusFact: 'I worked at Example Hospital in 2019.',
+    neverAddConflict: true,
+  });
+  assert.equal(neverAdd.may_insert_corpus_fact, false);
+  assert.equal(neverAdd.insert_reason, 'never-add');
+});
+
+test('corpus facts cannot be inserted into the current draft unless asked and supported', () => {
+  const silent = resolveVoicePrecedence({
+    corpusFact: 'The 2019 cohort used a stepped-wedge design.',
+  });
+  assert.equal(silent.may_insert_corpus_fact, false);
+  assert.equal(silent.insert_reason, 'corpus-does-not-license-fabrication');
+
+  const askedOnly = resolveVoicePrecedence({
+    corpusFact: 'The 2019 cohort used a stepped-wedge design.',
+    userAsked: true,
+    currentSourceSupports: false,
+  });
+  assert.equal(askedOnly.may_insert_corpus_fact, false);
+  assert.equal(askedOnly.insert_reason, 'current-source-lacks-claim');
+
+  const allowed = resolveVoicePrecedence({
+    corpusFact: 'The 2019 cohort used a stepped-wedge design.',
+    userAsked: true,
+    currentSourceSupports: true,
+  });
+  assert.equal(allowed.may_insert_corpus_fact, true);
+  assert.equal(allowed.insert_reason, 'user-asked-and-source-supports');
+});
+
+test('skips personality and first-person texture for restricted document classes', () => {
+  for (const documentClass of ['clinical', 'legal', 'regulatory', 'submitted-academic']) {
+    const decision = resolveVoicePrecedence({ documentClass });
+    assert.equal(decision.skip_personality, true, documentClass);
+    assert.equal(decision.skip_first_person_texture, true, documentClass);
+  }
+  const ordinary = resolveVoicePrecedence({ documentClass: 'workplace' });
+  assert.equal(ordinary.skip_personality, false);
 });
