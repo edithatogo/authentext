@@ -43,11 +43,15 @@
       "capabilities": [
         "Skill-only plugins and self-hosted marketplace manifests are supported; official directory submission is separately reviewed"
       ],
-      "status": "prepared",
+      "status": "submitted",
       "source": { "mode": "generated_from_canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-08",
-        "spec_url": "https://code.claude.com/docs/en/plugin-marketplaces"
+        "checked_on": "2026-08-11",
+        "spec_url": "https://code.claude.com/docs/en/discover-plugins",
+        "receipt_url": "https://platform.claude.com/plugins/submissions",
+        "repository_url": "https://github.com/edithatogo/authentext-distribution",
+        "release_version": "3.2.0",
+        "verification": "Authenticated submission dashboard shows Authentext as Submitted and pending review; acceptance and listing remain pending."
       },
       "publication_requires_approval": true
     },
