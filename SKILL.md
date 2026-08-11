@@ -1,6 +1,6 @@
 ---
 name: authentext
-description: "Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's \"Signs of AI writing\" guide. Detects and fixes inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts. Includes severity classification, technical literal preservation, and density-aware detection guidance."
+description: "Repair editorial defects in prose with verified diffs. Remove recurring AI-writing patterns while preserving meaning, voice, citations, and technical literals. Do not optimise against detector scores or claim undetectability. Based on Wikipedia's \"Signs of AI writing\" guide. Detects inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts."
 license: MIT
 metadata:
   version: "3.2.0"
