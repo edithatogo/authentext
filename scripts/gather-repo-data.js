@@ -7,7 +7,7 @@
  * Outputs structured JSON for track specification population.
  *
  * Usage: node scripts/gather-repo-data.js <local_repo> <upstream_repo>
- * Example: node scripts/gather-repo-data.js edithatogo/humanizer-next blader/humanizer
+ * Example: node scripts/gather-repo-data.js edithatogo/authentext blader/humanizer
  */
 
 import fs from 'fs';
