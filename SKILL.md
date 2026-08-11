@@ -104,12 +104,15 @@ If the user supplies a writing sample of their own previous prose, analyse it be
 
 A sample outranks Authentext style rules, including the Pattern 13 dash ban: if the sample uses em dashes, keep them at roughly the sample's frequency. Matching the author beats scrubbing the tell. The sample does not outrank Never add, Never lose, or protected spans.
 
-The sample may be pasted text, or an explicit pointer to local prior work:
+The sample may be pasted text, or an explicit pointer the user names:
 
-- Local file: a path the user names, such as `./drafts/column.md`
-- Local folder: a directory the user names, such as `./prior-writing/`
+- Local file: a path such as `./drafts/column.md`
+- Local folder: a directory such as `./prior-writing/`
+- Published work: a DOI, URL, ORCID, or institutional-repo identifier
 
 Do not search a disk or inbox to find a voice. Read a local path only when the user pointed at it and granted consent. Private corpus text stays local. It never becomes a search query.
+
+Published-work research is metadata-only unless the user also grants a public full-text fetch. Query with the identifier. Never send the current manuscript. Never upload private document text to search.
 
 ## Invocation Modes
 

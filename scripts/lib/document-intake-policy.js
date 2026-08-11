@@ -9,7 +9,10 @@ const DELIVERY_CONTRACTS = Object.freeze({
 const CAPABILITIES = Object.freeze(['mutate_file', 'research', 'publish']);
 const MINIMUM_SAMPLE_WORDS = 40;
 const LOCAL_POINTER_KINDS = new Set(['local-file', 'local-folder']);
+const PUBLISHED_POINTER_KINDS = new Set(['doi', 'url', 'orcid', 'institutional-repo']);
 const TEXT_CORPUS_EXTENSIONS = new Set(['.md', '.markdown', '.txt', '.text', '.rst']);
+const DOI_PATTERN = /^(?:doi:)?(10\.\d{4,9}\/\S+)$/iu;
+const ORCID_PATTERN = /^(?:https?:\/\/orcid\.org\/)?(\d{4}-\d{4}-\d{4}-\d{3}[\dX])$/iu;
 
 /**
  * Resolve output shape and explicit capability grants independently.
@@ -129,23 +132,45 @@ function defaultListFiles(directory) {
     .map((entry) => path.join(directory, entry.name));
 }
 
-function corpusFailure(status, limitation) {
+function corpusFailure(status, limitation, provenance = 'local-corpus') {
   return {
     status,
-    provenance: 'local-corpus',
+    provenance,
     sample_words: 0,
     features: null,
     limitation,
     uploaded_to_search: false,
     search_query: null,
+    sent_current_document: false,
   };
+}
+
+function classifyStringPointer(text) {
+  const doi = text.match(DOI_PATTERN);
+  if (doi) return { ok: true, kind: 'doi', value: doi[1] };
+
+  const orcid = text.match(ORCID_PATTERN);
+  if (orcid) return { ok: true, kind: 'orcid', value: orcid[1].toUpperCase() };
+
+  if (/^https?:\/\//iu.test(text)) {
+    if (/orcid\.org/iu.test(text)) {
+      const fromUrl = text.match(/(\d{4}-\d{4}-\d{4}-\d{3}[\dX])/iu);
+      if (fromUrl) return { ok: true, kind: 'orcid', value: fromUrl[1].toUpperCase() };
+    }
+    if (/handle\.net|hdl\.handle\.net|\/handle\/|repository|eprints?/iu.test(text)) {
+      return { ok: true, kind: 'institutional-repo', value: text };
+    }
+    return { ok: true, kind: 'url', value: text };
+  }
+
+  return { ok: true, kind: 'local-file', path: text };
 }
 
 /**
  * Classify an explicit corpus pointer. A missing pointer is not a license to
  * search a disk or inbox.
  * @param {unknown} input
- * @returns {{ok: true, kind: string, path: string}|{ok: false, reason: string}}
+ * @returns {{ok: true, kind: string, path?: string, value?: string}|{ok: false, reason: string}}
  */
 export function parseCorpusPointer(input) {
   if (input === null || input === undefined || input === '') {
@@ -154,23 +179,133 @@ export function parseCorpusPointer(input) {
   if (typeof input === 'string') {
     const trimmed = input.trim();
     if (!trimmed) return { ok: false, reason: 'An explicit corpus pointer is required.' };
-    return { ok: true, kind: 'local-file', path: trimmed };
+    return classifyStringPointer(trimmed);
   }
   if (typeof input !== 'object' || Array.isArray(input)) {
     return { ok: false, reason: 'An explicit corpus pointer is required.' };
   }
 
   const kind = typeof input.kind === 'string' ? input.kind : '';
-  const pointerPath =
-    typeof input.path === 'string'
-      ? input.path
-      : typeof input.value === 'string'
-        ? input.value
-        : '';
-  if (!LOCAL_POINTER_KINDS.has(kind) || !pointerPath.trim()) {
+  const pointerValue =
+    typeof input.value === 'string'
+      ? input.value
+      : typeof input.path === 'string'
+        ? input.path
+        : typeof input.id === 'string'
+          ? input.id
+          : '';
+  if (!pointerValue.trim()) {
     return { ok: false, reason: 'Unsupported or incomplete corpus pointer.' };
   }
-  return { ok: true, kind, path: pointerPath };
+  if (LOCAL_POINTER_KINDS.has(kind)) {
+    return { ok: true, kind, path: pointerValue };
+  }
+  if (PUBLISHED_POINTER_KINDS.has(kind)) {
+    return { ok: true, kind, value: pointerValue };
+  }
+  return { ok: false, reason: 'Unsupported or incomplete corpus pointer.' };
+}
+
+function publishedIdentifier(parsed) {
+  return parsed.value ?? parsed.path;
+}
+
+/**
+ * Fetch public metadata for a named published-work pointer. The query is the
+ * identifier only. The current document is never sent. Full text requires a
+ * separate grant.
+ * @param {{
+ *   pointer?: unknown,
+ *   consent?: boolean,
+ *   fullTextGrant?: boolean,
+ *   fetchMetadata?: (query: {kind: string, identifier: string}) => Record<string, unknown>,
+ *   fetchFullText?: (query: {kind: string, identifier: string}) => string,
+ *   currentDocument?: string,
+ * }} [input]
+ * @returns {Record<string, unknown>}
+ */
+export function ingestPublishedWork({
+  pointer,
+  consent = false,
+  fullTextGrant = false,
+  fetchMetadata,
+  fetchFullText,
+  currentDocument,
+} = {}) {
+  const parsed = parseCorpusPointer(pointer);
+  if (!parsed.ok) {
+    return corpusFailure(
+      parsed.reason.includes('Unsupported') ? 'unsupported-pointer' : 'missing-pointer',
+      parsed.reason,
+      'published-work'
+    );
+  }
+  if (!PUBLISHED_POINTER_KINDS.has(parsed.kind)) {
+    return corpusFailure(
+      'not-published',
+      'Published intake accepts a DOI, URL, ORCID, or institutional-repo identifier.',
+      'published-work'
+    );
+  }
+  if (consent !== true) {
+    return corpusFailure(
+      'consent-required',
+      'Published work is fetched only after the user grants consent.',
+      'published-work'
+    );
+  }
+
+  const query = { kind: parsed.kind, identifier: publishedIdentifier(parsed) };
+  if (
+    typeof currentDocument === 'string' &&
+    currentDocument &&
+    JSON.stringify(query).includes(currentDocument)
+  ) {
+    return corpusFailure(
+      'unsafe-query',
+      'The current document must not appear in a published-work query.',
+      'published-work'
+    );
+  }
+
+  let metadata = null;
+  if (typeof fetchMetadata === 'function') {
+    metadata = fetchMetadata(query);
+  }
+
+  if (fullTextGrant === true && typeof fetchFullText === 'function') {
+    const text = fetchFullText(query);
+    if (typeof text !== 'string') {
+      return {
+        ...corpusFailure('unreadable', 'The public full text could not be read.', 'published-work'),
+        query,
+        metadata,
+      };
+    }
+    const profile = calibrateVoiceSample(text);
+    return {
+      ...profile,
+      provenance: 'published-work',
+      query,
+      metadata,
+      uploaded_to_search: false,
+      search_query: null,
+      sent_current_document: false,
+    };
+  }
+
+  return {
+    status: 'metadata-only',
+    provenance: 'published-work',
+    features: null,
+    query,
+    metadata,
+    uploaded_to_search: false,
+    search_query: null,
+    sent_current_document: false,
+    limitation:
+      'Public metadata was fetched. Voice calibration needs the public full text, and that requires a separate grant.',
+  };
 }
 
 /**
@@ -258,11 +393,29 @@ export function selectMaterialQuestion(intake = {}) {
       reason: 'Current guidance is material, but research authority has not been granted.',
     });
   }
-  if (intake.corpus_pointer && intake.corpus_consent !== true) {
+  const parsedPointer = intake.corpus_pointer
+    ? parseCorpusPointer(intake.corpus_pointer)
+    : { ok: false };
+  if (
+    parsedPointer.ok &&
+    LOCAL_POINTER_KINDS.has(parsedPointer.kind) &&
+    intake.corpus_consent !== true
+  ) {
     questions.push({
       field: 'corpus_consent',
       text: 'May I read the named local files to build a voice profile? The text stays local and will not be uploaded to search.',
       reason: 'A corpus pointer was named, but local-read consent has not been granted.',
+    });
+  }
+  if (
+    parsedPointer.ok &&
+    PUBLISHED_POINTER_KINDS.has(parsedPointer.kind) &&
+    intake.published_consent !== true
+  ) {
+    questions.push({
+      field: 'published_consent',
+      text: 'May I fetch public metadata for the named DOI, URL, ORCID, or repository record? I will not send the current document.',
+      reason: 'A published-work pointer was named, but fetch consent has not been granted.',
     });
   }
   if (operationCandidates.length > 1) {

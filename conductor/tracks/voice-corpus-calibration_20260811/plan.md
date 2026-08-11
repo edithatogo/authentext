@@ -8,13 +8,14 @@
       the same feature record as a pasted sample. (commit: 286195c)
 - [x] Task: Document the pointer syntax in the compiled skill.
       (commit: 286195c)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      [checkpoint: d5a0d98]
 
 ## Phase 2: Published-work metadata intake
 
-- [ ] Task: Write failing tests for DOI, URL, ORCID, and institutional-repo
+- [~] Task: Write failing tests for DOI, URL, ORCID, and institutional-repo
       identifiers. Queries must be metadata-only.
-- [ ] Task: Implement permissioned fetch of public metadata and, when the
+- [~] Task: Implement permissioned fetch of public metadata and, when the
       user grants it, the public full text. Never send the current document.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
