@@ -1,0 +1,662 @@
+{
+  "schema_version": 1,
+  "source_module": "src/modules/SKILL_CORE_PATTERNS.md",
+  "patterns": [
+    {
+      "schema_version": 1,
+      "id": "pattern-1",
+      "number": 1,
+      "title": "Undue Emphasis on Significance",
+      "severity": "high",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "stands/serves as",
+        "is a testament/reminder",
+        "a vital/significant/crucial/pivotal/key role/moment",
+        "underscores/highlights its importance/significance",
+        "reflects broader",
+        "symbolizing its ongoing/enduring/lasting",
+        "contributing to the",
+        "setting the stage for",
+        "marking/shaping the",
+        "represents/marks a shift",
+        "key turning point",
+        "evolving landscape",
+        "focal point",
+        "indelible mark",
+        "deeply rooted"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-2",
+      "number": 2,
+      "title": "Undue Emphasis on Notability",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "independent coverage",
+        "local/regional/national media outlets",
+        "written by a leading expert",
+        "active social media presence"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-3",
+      "number": 3,
+      "title": "Superficial -ing Analyses",
+      "severity": "high",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "highlighting/underscoring/emphasizing...",
+        "ensuring...",
+        "reflecting/symbolizing...",
+        "contributing to...",
+        "cultivating/fostering...",
+        "encompassing...",
+        "showcasing..."
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-4",
+      "number": 4,
+      "title": "Promotional Language",
+      "severity": "high",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "boasts a",
+        "vibrant",
+        "rich (figurative)",
+        "profound",
+        "enhancing its",
+        "showcasing",
+        "exemplifies",
+        "commitment to",
+        "natural beauty",
+        "nestled",
+        "in the heart of",
+        "groundbreaking (figurative)",
+        "renowned",
+        "breathtaking",
+        "must-visit",
+        "stunning"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-5",
+      "number": 5,
+      "title": "Vague Attributions and Back-References",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "Industry reports",
+        "Observers have cited",
+        "Experts argue",
+        "Some critics argue",
+        "several sources/publications (when few cited)",
+        "This ensures",
+        "This means",
+        "This allows",
+        "This makes it",
+        "This creates",
+        "This is why",
+        "This is",
+        "when the \"this\" points at a whole preceding clause rather than a named thing."
+      ],
+      "false_positive_guards": [
+        "A single \"This\" or \"This means\" has a clear antecedent you can point to. Demonstratives are ordinary English. The tell is a run of them, or one whose antecedent you cannot name."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-6",
+      "number": 6,
+      "title": "Formulaic \"Challenges\" Sections",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "Despite its... faces several challenges...",
+        "Despite these challenges",
+        "Challenges and Legacy",
+        "Future Outlook"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-7",
+      "number": 7,
+      "title": "Overused AI Vocabulary",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "Additionally",
+        "align with",
+        "commendable",
+        "crucial",
+        "delve",
+        "emphasizing",
+        "enduring",
+        "enhance",
+        "fostering",
+        "garner",
+        "highlight (verb)",
+        "interplay",
+        "intricate/intricacies",
+        "key (adjective)",
+        "landscape (abstract noun)",
+        "meticulous",
+        "pivotal",
+        "quietly",
+        "showcase",
+        "tapestry (abstract noun)",
+        "testament",
+        "underscore (verb)",
+        "valuable",
+        "vibrant"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-8",
+      "number": 8,
+      "title": "Copula Avoidance",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": ["serves as/stands as/marks/represents [a]", "boasts/features/offers [a]"],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-9",
+      "number": 9,
+      "title": "Negative Parallelisms",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": ["Not only...but", "It's not just about", "It's not merely"],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-10",
+      "number": 10,
+      "title": "Rule of Three Overuse",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-11",
+      "number": 11,
+      "title": "Elegant Variation and Repeated Sentence Openings",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-12",
+      "number": 12,
+      "title": "False Ranges",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-13",
+      "number": 13,
+      "title": "Em/En Dash Hard Cut",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": ["—", "–", "--"],
+      "false_positive_guards": [
+        "Used sparingly by a human editor or journalist and not clustered with other sales-y tells.",
+        "Match a user writing sample's em-dash frequency instead of banning dashes.",
+        "Keep annotated-link or definition separators; embedded mode cannot ask, so keep them."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-14",
+      "number": 14,
+      "title": "Overuse of Boldface",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-15",
+      "number": 15,
+      "title": "Inline-Header Vertical Lists",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-16",
+      "number": 16,
+      "title": "Title Case in Headings",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-17",
+      "number": 17,
+      "title": "Emojis",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-18",
+      "number": 18,
+      "title": "Quotation Mark Issues",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-19",
+      "number": 19,
+      "title": "Collaborative Communication Artifacts",
+      "severity": "critical",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "I hope this helps",
+        "Of course!",
+        "Certainly!",
+        "You're absolutely right!",
+        "Would you like...",
+        "let me know",
+        "here is a..."
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-20",
+      "number": 20,
+      "title": "Knowledge-Cutoff Disclaimers and Speculative Gap-Filling (includes upstream v2.8 refinement)",
+      "severity": "critical",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "as of [date]",
+        "Up to my last training update",
+        "While specific details are limited/scarce...",
+        "based on available information...",
+        "maintains a low profile",
+        "keeps personal details private (when unsourced)"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-21",
+      "number": 21,
+      "title": "Sycophantic Tone",
+      "severity": "critical",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": ["Great question!", "You're absolutely right", "That's an excellent point"],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-22",
+      "number": 22,
+      "title": "Filler Phrases",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "In order to",
+        "Due to the fact that",
+        "At this point in time",
+        "In the event that",
+        "has the ability to",
+        "It is important to note that"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-23",
+      "number": 23,
+      "title": "Excessive Hedging",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "to be fair",
+        "it's also possible",
+        "could potentially",
+        "might arguably",
+        "in some cases it may",
+        "this is an inference"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-24",
+      "number": 24,
+      "title": "Generic Positive Conclusions",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-25",
+      "number": 25,
+      "title": "AI Signatures in Code",
+      "severity": "critical",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "// Generated by",
+        "Produced by",
+        "Created with [AI Model]",
+        "/* AI-generated */",
+        "// Here is the refactored code:"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-26",
+      "number": 26,
+      "title": "Over-Structuring",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "In summary",
+        "Table 1:",
+        "Breakdown:",
+        "Key takeaways: (when used with mechanical lists)"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-27",
+      "number": 27,
+      "title": "Technical Literal Preservation",
+      "severity": "critical",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": [
+        "Never modify inline code, fenced code, URLs, paths, versions, hashes, API names, identifiers, CLI flags, config keys, or error messages."
+      ],
+      "must_preserve": true
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-28",
+      "number": 28,
+      "title": "Persuasive Tropes",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "The real question is",
+        "At its core",
+        "What this really means is",
+        "The truth is"
+      ],
+      "false_positive_guards": ["Used in legitimate contexts like op-eds or presentation scripts."]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-29",
+      "number": 29,
+      "title": "Signposting",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "Let's dive in",
+        "Here's what you need to know",
+        "Let's explore",
+        "In this article we'll"
+      ],
+      "false_positive_guards": [
+        "Used in legitimate contexts like presentation scripts or tutorials."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-30",
+      "number": 30,
+      "title": "Fragmented Headers",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": ["Used in legitimate contexts like op-eds or persuasive writing."]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-31",
+      "number": 31,
+      "title": "Extended Thinking Tags",
+      "severity": "high",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "<thinking>",
+        "</thinking>",
+        "<reflection>",
+        "<analysis>",
+        "</analysis>",
+        "<reasoning>",
+        "</reasoning>"
+      ],
+      "false_positive_guards": [
+        "Model is explicitly asked to show its reasoning in structured format."
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-32",
+      "number": 32,
+      "title": "JSON Mode Artifacts",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": ["Here is the", "json", "JSON:", "as requested"],
+      "false_positive_guards": ["Actual API responses or configuration files."]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-33",
+      "number": 33,
+      "title": "Tool Use Documentation",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "I will use",
+        "I am going to use",
+        "Calling function",
+        "Executing",
+        "Running",
+        "invoking"
+      ],
+      "false_positive_guards": ["Explicit tutorials or documentation about tool usage."]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-34",
+      "number": 34,
+      "title": "Over-Polished Conclusions",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "hope this helps",
+        "let me know if",
+        "happy to help",
+        "feel free to",
+        "don't hesitate to",
+        "anytime"
+      ],
+      "false_positive_guards": ["Genuine customer service contexts."]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-35",
+      "number": 35,
+      "title": "Manufactured Punchlines and Staccato Drama (Upstream #31)",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-36",
+      "number": 36,
+      "title": "Aphorism Formulas (Upstream #32)",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "X is the Y of Z",
+        "X becomes a trap",
+        "X is not a tool but a mirror",
+        "the language of",
+        "the currency of",
+        "the architecture of"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-37",
+      "number": 37,
+      "title": "Conversational Rhetorical Openers (Upstream #33)",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "Honestly?",
+        "Look",
+        "Here's the thing",
+        "The thing is",
+        "Let's be honest",
+        "Real talk (when used as standalone hooks or fake-candid pauses before an ordinary point)."
+      ],
+      "false_positive_guards": ["Genuine conversational speech or quoted dialogue."]
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-38",
+      "number": 38,
+      "title": "Diff-Anchored Writing, Shadowboxing, and Editorial Scar Tissue",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "This isn't (mainly/really) about",
+        "I'm not saying/arguing/trying to",
+        "To be clear",
+        "Don't get me wrong",
+        "This is not to say",
+        "You could argue/frame this differently but",
+        "Some might say... but",
+        "A tempting option/approach would be",
+        "One might be tempted to",
+        "An obvious approach would be",
+        "You might think... but",
+        "It would be easy to just",
+        "Some would suggest"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-39",
+      "number": 39,
+      "title": "Hyphenated Word Pair Overuse (narrowed rule, upstream v2.8)",
+      "severity": "low",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [
+        "third-party",
+        "cross-functional",
+        "client-facing",
+        "data-driven",
+        "decision-making",
+        "well-known",
+        "high-quality",
+        "real-time",
+        "long-term",
+        "end-to-end"
+      ],
+      "false_positive_guards": []
+    },
+    {
+      "schema_version": 1,
+      "id": "pattern-40",
+      "number": 40,
+      "title": "Passive Voice and Subjectless Fragments (Upstream §13, #146)",
+      "severity": "medium",
+      "domain_applicability": ["all"],
+      "mode_carve_outs": [],
+      "trigger_terms": [],
+      "false_positive_guards": [
+        "The source already uses a standard imperative (\"Hit reply to opt out.\") or ordinary conversational ellipsis. Do not invent a subject the source never implied. Distinguished from Pattern 35: that pattern is a run of short fragments stacked for drama. This pattern is an isolated missing-subject line, including one produced while trying to sound casual."
+      ]
+    }
+  ]
+}

@@ -40,5 +40,13 @@ Schemas live next to the other document-intelligence contracts:
 
 - `src/document-intelligence/agent-skills-portable.schema.json`
 - `src/document-intelligence/pattern.schema.json`
+- `src/document-intelligence/patterns-registry.schema.json`
+- `src/document-intelligence/patterns.json`
 - `src/document-intelligence/protected-span.schema.json`
 - `src/document-intelligence/evaluation-fixture.schema.json`
+
+`patterns.json` is the machine-readable seed for the 40 core patterns. The
+validator checks it against `src/modules/SKILL_CORE_PATTERNS.md` headings,
+body severities, the severity-table IDs, and the frontmatter `patterns`
+count. Pattern bodies stay in the Markdown module until a later compile
+slice.

@@ -52,6 +52,8 @@ test('document profile contract files are checked in and parseable', () => {
     'diagnostic-receipt.schema.json',
     'guidance-precedence.json',
     'pattern.schema.json',
+    'patterns-registry.schema.json',
+    'patterns.json',
     'protected-span.schema.json',
     'evaluation-fixture.schema.json',
     'agent-skills-portable.schema.json',

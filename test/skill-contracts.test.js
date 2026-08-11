@@ -8,9 +8,12 @@ import { spawnSync } from 'node:child_process';
 import {
   AGENT_SKILLS_PORTABLE_SCHEMA,
   CONTRACT_DIR,
+  CORE_PATTERNS_MODULE,
   EVALUATION_FIXTURE_SCHEMA,
   FORBIDDEN_PORTABLE_FIELDS,
   PATTERN_SCHEMA,
+  PATTERNS_REGISTRY,
+  PATTERNS_REGISTRY_SCHEMA,
   PORTABLE_FIELDS,
   PROTECTED_SPAN_CATALOG,
   PROTECTED_SPAN_SCHEMA,
@@ -21,6 +24,7 @@ import {
   validatePackagedSkillLayout,
   validatePatternRecord,
   validatePatternRecords,
+  validatePatternRegistryConcordance,
   validatePortableFrontmatter,
 } from '../scripts/lib/skill-contracts.js';
 
@@ -51,11 +55,12 @@ function runValidator(root) {
 
 test('contract schemas are checked in, closed, and name required fields', () => {
   const pattern = loadContractJson(ROOT, PATTERN_SCHEMA);
+  const registrySchema = loadContractJson(ROOT, PATTERNS_REGISTRY_SCHEMA);
   const span = loadContractJson(ROOT, PROTECTED_SPAN_SCHEMA);
   const fixtures = loadContractJson(ROOT, EVALUATION_FIXTURE_SCHEMA);
   const portable = loadContractJson(ROOT, AGENT_SKILLS_PORTABLE_SCHEMA);
 
-  for (const schema of [pattern, span, fixtures, portable]) {
+  for (const schema of [pattern, registrySchema, span, fixtures, portable]) {
     assert.equal(schema.$schema, 'https://json-schema.org/draft/2020-12/schema');
     assert.ok(schema.$id.includes('src/document-intelligence/'));
   }
@@ -180,6 +185,44 @@ test('repo contracts validate and the CLI names the Agent Skills spec', () => {
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, /Skill contract validation passed/);
   assert.match(result.stdout, /https:\/\/agentskills\.io\/specification/);
+});
+
+test('checked-in registry matches core-pattern headings and counts', () => {
+  const registry = loadContractJson(ROOT, PATTERNS_REGISTRY);
+  const source = fs.readFileSync(path.join(ROOT, CORE_PATTERNS_MODULE), 'utf8');
+  assert.deepEqual(
+    validateAgainstSchema(registry, loadContractJson(ROOT, PATTERNS_REGISTRY_SCHEMA)),
+    []
+  );
+  assert.deepEqual(validatePatternRegistryConcordance(registry, source), []);
+  assert.equal(registry.patterns.length, 40);
+  const preserved = registry.patterns.find((pattern) => pattern.number === 27);
+  assert.equal(preserved?.severity, 'critical');
+  assert.equal(preserved?.must_preserve, true);
+});
+
+test('a heading mismatch, duplicate severity-table ID, or count drift fails', () => {
+  const registry = structuredClone(loadContractJson(ROOT, PATTERNS_REGISTRY));
+  const source = fs.readFileSync(path.join(ROOT, CORE_PATTERNS_MODULE), 'utf8');
+
+  const retitled = structuredClone(registry);
+  retitled.patterns[0].title = 'Wrong Title';
+  assert.match(
+    validatePatternRegistryConcordance(retitled, source).join('\n'),
+    /does not match heading/
+  );
+
+  const duplicated = source.replace(
+    '- Pattern 39: Hyphenated word pair overuse (narrowed, upstream)',
+    '- Pattern 9: Negative parallelisms\n- Pattern 39: Hyphenated word pair overuse (narrowed, upstream)'
+  );
+  assert.match(
+    validatePatternRegistryConcordance(registry, duplicated).join('\n'),
+    /duplicate Pattern 9/
+  );
+
+  const recount = source.replace(/^patterns: 40$/m, 'patterns: 39');
+  assert.match(validatePatternRegistryConcordance(registry, recount).join('\n'), /frontmatter=39/);
 });
 
 test('CLI fails on a known-bad portable field', () => {
