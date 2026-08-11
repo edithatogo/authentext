@@ -125,7 +125,7 @@ Avoiding AI patterns is only half the job. Sterile, voiceless writing is just as
 
 ### How to add voice
 
-Have opinions and react to facts. Vary sentence rhythm with short and long lines. Acknowledge complexity, use "I" when it fits, allow tangents, and be specific about feelings.
+Have opinions and react to facts. Vary sentence rhythm with short and long lines; if the source is even and mid-length, repair it (see Generative repair). Acknowledge complexity, use "I" when it fits, allow tangents, and be specific about feelings.
 
 ### The limit on voice
 
@@ -323,19 +323,29 @@ Skip this section entirely for clinical, legal, regulatory, and submitted academ
 
 ---
 
-### Pattern 11: Elegant Variation (Synonym Cycling)
+### Pattern 11: Elegant Variation and Repeated Sentence Openings
 
-**Problem:** AI has repetition-penalty code causing excessive synonym substitution.
+**Problem:** AI has repetition-penalty code causing excessive synonym substitution. The same machinery misses in the other direction in narrative prose, where consecutive sentences all open on the same subject, usually a pronoun, and nothing varies where the sentence starts. Both are one defect: the model is managing repetition by rule instead of by ear. Cure over-variation by settling on a single referent. Cure under-variation by merging the sentences, by giving the subject role to something other than the character, or by opening on the action so the pronoun arrives later.
 
 **Severity:** Medium
 
-**Before:**
+**Before (synonym cycling):**
 
 > The protagonist faces many challenges. The main character must overcome obstacles. The central figure eventually triumphs. The hero returns home.
 
 **After:**
 
 > The protagonist faces many challenges but eventually triumphs and returns home.
+
+**Before (repeated openings):**
+
+> She noted the door. She noted the lock on it. She filed both away.
+
+**After:**
+
+> She noted the door and its lock, then filed both away.
+
+The fix is not banning the repeated word. A run of three sentences becoming one is what removes the tell; the survivor may still start with "She."
 
 ---
 
@@ -745,7 +755,7 @@ The system processes requests in under 100ms.
 - Pattern 6: Formulaic "Challenges" sections
 - Pattern 7: Overused AI vocabulary
 - Pattern 8: Copula avoidance
-- Pattern 11: Elegant variation
+- Pattern 11: Elegant variation and repeated openings
 - Pattern 32: JSON mode artifacts
 - Pattern 33: Tool use documentation
 - Pattern 40: Passive voice and subjectless fragments (Upstream §13)
@@ -1001,9 +1011,11 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **Em dashes alone.** Many editors and journalists use them often. Em dashes are evidence only when paired with formulaic sales-y rhythm.
 - **Annotated-link or definition separators.** `[Title](url)` or `**Term**` followed by an em dash and a description is list formatting, not a tell. Ask once whether to keep those separators; in embedded mode, keep them. Other em dashes still follow Pattern 13.
 - **One short emphatic sentence.** Humans use clipped sentences to land a point. Flag staccato drama only when several short fragments appear in a row and inflate the tone.
+- **Deliberate anaphora.** Repeating a sentence opening on purpose is an old device, and good prose uses it to build cadence or pressure ("She came. She saw. She conquered."). Flag a repeated opening only when the run does no rhetorical work and reads as the model failing to vary rather than a writer choosing.
 - **"Honestly" or "look" mid-sentence.** These are ordinary in casual writing. The tell is the standalone theatrical opener, not the word itself.
 - **Unsourced claims.** Most of the web is unsourced. Lack of citations doesn't prove anything.
 - **Correct, complex formatting.** Visual editors and templates produce clean output without any AI.
+- **Even sentence or paragraph length in reference material.** Reference documentation, API docs, procedures, and legal text are uniform by design. Low variance is only a tell in prose meant to be read start to finish.
 - **Secondhand text.** Do not rewrite watched phrases inside quotations, titles, proper names, or examples where the phrase is being discussed rather than used.
 
 When in doubt, look for **clusters** of tells, not isolated ones. A single em dash means nothing; em dashes plus rule-of-three plus _vibrant tapestry_ plus a "Conclusion" section is a confession.
@@ -1016,9 +1028,41 @@ When you see these, lean toward leaving the prose alone — they are evidence of
 - **Mixed feelings and unresolved tension.** "I think this is mostly good, but it bothers me, and I can't fully explain why." LLMs default to clean takes.
 - **Dated, era-bound references.** Slang, memes, or in-jokes that map to a specific year and subculture. Models lag by a year or more.
 - **First-person editorial choices the writer can defend.** If the writer can explain _why_ they made a particular cut or used a particular word, that's a strong human signal.
-- **Variety in sentence length.** Real writing alternates short and long. AI writing tends toward an even, mid-length cadence.
+- **Variety in sentence length.** Real writing alternates short and long. AI writing tends toward an even, mid-length cadence. Preserve existing variety. When the source lacks it, repair it (see Generative repair below).
 - **Genuine asides, parentheticals, or self-corrections.** "(I keep wanting to say 'almost' here, but it really was certain.)" Models rarely interrupt themselves like this.
 - **Edits made before November 30, 2022.** ChatGPT's public launch. Anything older than that is, with very rare exceptions, not AI-written.
+
+### Generative repair: sentence and paragraph length
+
+Variety in sentence length is a repair target, not only a reason to leave prose alone. LLMs settle into a narrow mid-length band and stay there. Paragraphs come out the same size and the same internal shape. Count words per sentence across two or three paragraphs. If the spread is narrow, break one sentence hard and let another run long. Do not only shorten. Do not alternate short-long-short-long; that is another uniform pattern. Aim for genuine unevenness.
+
+Do not overcorrect into Pattern 35. Stacking short fragments to manufacture drama is its own tell. One long sentence next to one short one is rhythm. A run of fragments is staccato drama. The goal is variance, not brevity.
+
+**Sentence length before:**
+
+> The migration improved system performance across all measured dimensions. Response times dropped by roughly forty percent after the initial rollout completed. The team attributed most of this gain to the new caching layer. Latency in the reporting module remained a known outstanding issue.
+
+**After:**
+
+> Performance improved across all measured dimensions. Response times dropped by roughly forty percent after the initial rollout completed, and the team attributed most of this gain to the new caching layer. Latency in the reporting module remained a known outstanding issue.
+
+Every paragraph running three to five sentences with the same claim-support-implication shape is the same defect at a larger scale. Check whether any paragraph is a single sentence. If none is, find one idea that can stand alone and let it. Splitting and merging paragraphs is already allowed under Information over shape.
+
+**Paragraph length before:**
+
+> The archive opened on a Tuesday. Staff spent the morning boxing the last of the correspondence, and the afternoon went to labeling. By evening the rooms were empty except for the tables.
+>
+> The next day the painters arrived. They worked from the street side inward, and the smell of primer filled the stairwell. Nobody expected the job to finish before Friday.
+
+**After:**
+
+> The archive opened on a Tuesday. Staff spent the morning boxing the last of the correspondence and the afternoon labeling; by evening the rooms were empty except for the tables.
+>
+> The painters arrived the next day.
+>
+> They worked from the street side inward, and the smell of primer filled the stairwell. Nobody expected the job to finish before Friday.
+
+**Genre limit:** Do not force variance into reference documentation, API docs, procedures, or legal text. Those genres are uniform by design. This repair applies to prose meant to be read start to finish, not to material meant to be consulted.
 
 ---
 
