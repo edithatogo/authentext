@@ -16,14 +16,7 @@
   },
   "$defs": {
     "classId": {
-      "enum": [
-        "quantity",
-        "citation",
-        "negation",
-        "epistemic",
-        "scope",
-        "proper-name"
-      ]
+      "enum": ["quantity", "citation", "negation", "epistemic", "scope", "proper-name"]
     },
     "spanClass": {
       "type": "object",
