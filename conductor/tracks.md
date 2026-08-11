@@ -8,7 +8,34 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ## Active Tracks
 
-None.
+- [ ] **editorial-safety-invariants_20260811** (P0) - Claim-preservation
+      invariants and remaining upstream v2.9 / stranded-pattern work.
+      [#276](https://github.com/edithatogo/authentext/issues/276). Phase 1 is
+      [PR #275](https://github.com/edithatogo/authentext/pull/275).
+      _Link: [tracks/editorial-safety-invariants_20260811/index.md](./tracks/editorial-safety-invariants_20260811/index.md)_
+
+- [ ] **domain-and-citation_20260811** (P0) - Clinical, legal, and creative
+      references; academic disclosure upgrade; sourceright/citeweft handoff.
+      [#277](https://github.com/edithatogo/authentext/issues/277). Depends on
+      the safety track.
+      _Link: [tracks/domain-and-citation_20260811/index.md](./tracks/domain-and-citation_20260811/index.md)_
+
+- [ ] **pattern-registry-contracts_20260811** (P1) - Machine-readable
+      pattern registry and a stricter Agent Skills contract, extending
+      `src/document-intelligence/`.
+      [#278](https://github.com/edithatogo/authentext/issues/278).
+      _Link: [tracks/pattern-registry-contracts_20260811/index.md](./tracks/pattern-registry-contracts_20260811/index.md)_
+
+- [ ] **voice-corpus-calibration_20260811** (P1) - Point Authentext at
+      local or published prior work for voice matching without inventing
+      biography.
+      [#279](https://github.com/edithatogo/authentext/issues/279).
+      _Link: [tracks/voice-corpus-calibration_20260811/index.md](./tracks/voice-corpus-calibration_20260811/index.md)_
+
+- [ ] **quality-harness-and-matrix_20260811** (P2) - Feature matrix, Vale
+      and self-compliance, scored harness, watcher/hygiene.
+      [#280](https://github.com/edithatogo/authentext/issues/280).
+      _Link: [tracks/quality-harness-and-matrix_20260811/index.md](./tracks/quality-harness-and-matrix_20260811/index.md)_
 
 ---
 
@@ -221,6 +248,8 @@ Live self-improvement outputs (not a track): `conductor/self-improvement/`
 
 ---
 
-Last updated: 2026-08-08.
+Last updated: 2026-08-11.
 
-Active tracks: none.
+Active tracks: 5. Sequence is safety, then domain/citation; registry and
+quality can proceed in parallel after safety Phase 1 merges. Voice depends
+on the safety invariants.

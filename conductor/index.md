@@ -19,6 +19,11 @@ than guessing paths.
 
 - [Roadmap](./roadmap.md)
 - [Tracks Registry](./tracks.md)
+- [Editorial Safety Invariants](./tracks/editorial-safety-invariants_20260811/index.md)
+- [Domain and Citation Coverage](./tracks/domain-and-citation_20260811/index.md)
+- [Pattern Registry and Skills Contracts](./tracks/pattern-registry-contracts_20260811/index.md)
+- [Voice and Corpus Calibration](./tracks/voice-corpus-calibration_20260811/index.md)
+- [Quality Harness and Feature Matrix](./tracks/quality-harness-and-matrix_20260811/index.md)
 - [Archived Adaptive Document Intelligence Track](./tracks/archive/adaptive-document-intelligence_20260802/index.md)
 - [Archived Agent Registry and Plugin Distribution Track](./tracks/archive/agent-registry-plugin-distribution_20260802/index.md)
 - [Archived Renovate and Codecov Track](./tracks/archive/renovate-codecov-verification_20260801/index.md)

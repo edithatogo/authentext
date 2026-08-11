@@ -4,7 +4,8 @@
 
 Authentext is a portable Agent Skill for rewriting or reviewing prose to remove
 recurring AI-writing patterns while preserving meaning, voice, stance,
-citations, code, URLs, paths, and technical identifiers. This repository is the
+citations, code, URLs, paths, and technical identifiers. The job is editorial
+defect repair with verified diffs, not detector evasion. This repository is the
 skill's maintenance and build system, not a standalone rewriting application or
 a compatibility-bundle repository.
 
@@ -47,10 +48,14 @@ a compatibility-bundle repository.
 ## Non-goals
 
 - Proving human authorship or reliably detecting whether text was AI-generated.
+- Optimising against detector scores, claiming undetectability, injecting
+  typos, or inventing biography to "sound human."
 - Building a hosted rewriting service or full standalone editor.
 - Maintaining adapter bundles, installation shims, or legacy consumer paths.
 - Treating experimental host features or proposed manifests as portable
   standards.
+- Generating, completing, or reformatting reference lists. That work belongs
+  to sourceright/citeweft when present.
 - Publishing or releasing without explicit approval and verified gates.
 
 ## Product decisions

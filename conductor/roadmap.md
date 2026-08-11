@@ -7,26 +7,40 @@ Local Conductor files define scope and evidence. GitHub issues, subissues, and
 Project fields mirror that state; they do not establish implementation,
 publication, or release.
 
-## Active: adaptive document intelligence
+## Active: editorial program (2026-08-11)
 
-- Replace the historical Standard/Pro split with one confidence-aware runtime
-  skill that profiles document purpose, audience, stakes, authority, lifecycle,
-  and constraints.
-- Route to focused, data-driven document profiles and assess genre-specific
-  completeness, structure, evidence, accessibility, tone, safety, AI patterns,
-  and preservation risk.
-- Research current external guidance only when material and permitted, using
-  nonsensitive metadata, source precedence, and auditable receipts.
-- Add conservative, standard, and strong editing budgets plus prompt-injection,
-  ambiguity, high-stakes, and cross-host evaluations.
+Authentext repairs editorial defects with verified diffs. It does not
+optimise against detector scores.
 
-Primary track:
-[`adaptive-document-intelligence_20260802`](./tracks/adaptive-document-intelligence_20260802/index.md).
+Delivery is small PRs, Actions green, then merge. Sequence:
 
-## Active: hosted dependency closeout
+1. [`editorial-safety-invariants_20260811`](./tracks/editorial-safety-invariants_20260811/index.md)
+   — claim preservation, then remaining upstream rules. Phase 1:
+   [PR #275](https://github.com/edithatogo/authentext/pull/275).
+2. [`domain-and-citation_20260811`](./tracks/domain-and-citation_20260811/index.md)
+   — clinical, legal, creative, academic disclosure, sourceright handoff.
+3. [`pattern-registry-contracts_20260811`](./tracks/pattern-registry-contracts_20260811/index.md)
+   — `patterns.json` and Agent Skills contracts.
+4. [`voice-corpus-calibration_20260811`](./tracks/voice-corpus-calibration_20260811/index.md)
+   — point at local or published prior work.
+5. [`quality-harness-and-matrix_20260811`](./tracks/quality-harness-and-matrix_20260811/index.md)
+   — feature matrix, Vale, scored harness, hygiene.
 
-- Verify Renovate hosted access while retaining Dependabot until health is
-  evidenced; retain Codecov OIDC alongside repository-owned coverage gates.
+Tracks 3 and 5 may start after safety Phase 1 merges. Track 4 needs the
+never-add invariant in the compiled skill.
+
+## Completed: adaptive document intelligence
+
+Archived at
+[`tracks/archive/adaptive-document-intelligence_20260802/`](./tracks/archive/adaptive-document-intelligence_20260802/index.md).
+The new domain modules and voice-corpus work extend that contract; they do
+not reopen the archived track.
+
+## Completed: hosted dependency closeout
+
+Archived at
+[`tracks/archive/renovate-codecov-verification_20260801/`](./tracks/archive/renovate-codecov-verification_20260801/index.md).
+Mend Renovate onboarding remains deferred; Dependabot is retained.
 
 ## Completed: FOI-O editorial workflow
 
