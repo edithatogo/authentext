@@ -1,0 +1,26 @@
+{
+  "track_id": "domain-and-citation_20260811",
+  "title": "Domain and Citation Coverage",
+  "description": "Add clinical, legal, and creative references, upgrade academic disclosure and artefact rules, route profile families to real files, and hand citation work to sourceright/citeweft.",
+  "type": "feature",
+  "priority": "P0",
+  "status": "new",
+  "created_at": "2026-08-11",
+  "updated_at": "2026-08-11",
+  "current_phase": "Phase 1: Positioning and academic upgrade",
+  "parallel_safe": false,
+  "depends_on": ["editorial-safety-invariants_20260811"],
+  "coordinates_with": ["pattern-registry-contracts_20260811"],
+  "github": {
+    "project_number": 36,
+    "project_url": "https://github.com/users/edithatogo/projects/36",
+    "parent_issue": 277,
+    "parent_issue_url": "https://github.com/edithatogo/authentext/issues/277",
+    "phase_issues": []
+  },
+  "external_gates": [
+    "legal or clinical approval of any real case text",
+    "publication or submission",
+    "citation verification against a source of record"
+  ]
+}
