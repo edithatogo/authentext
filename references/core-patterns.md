@@ -119,6 +119,7 @@ The sample may be pasted text, or an explicit pointer the user names:
 - Local file: a path such as `./drafts/column.md`
 - Local folder: a directory such as `./prior-writing/`
 - Published work: a DOI, URL, ORCID, or institutional-repo identifier
+- Host plugin: an email or other plugin the user named, and only when the host has granted that plugin. Default is off.
 
 Do not search a disk or inbox to find a voice. Read a local path only when the user pointed at it and granted consent. Private corpus text stays local. It never becomes a search query.
 

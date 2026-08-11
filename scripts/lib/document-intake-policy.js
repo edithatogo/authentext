@@ -376,6 +376,51 @@ export function calibrateLocalCorpus({
 }
 
 /**
+ * Email and other host plugins stay off unless the user names the plugin and
+ * the host has granted it. This is a gate, not a mail client.
+ * @param {{plugin?: string, namedGrant?: string, hostGranted?: boolean}} [input]
+ * @returns {{enabled: boolean, reason: string, plugin: string|null}}
+ */
+export function resolvePluginSource({ plugin, namedGrant, hostGranted = false } = {}) {
+  if (typeof plugin !== 'string' || !plugin.trim()) {
+    return { enabled: false, reason: 'plugin-off-by-default', plugin: null };
+  }
+  if (hostGranted !== true) {
+    return { enabled: false, reason: 'host-not-granted', plugin };
+  }
+  if (namedGrant !== plugin) {
+    return { enabled: false, reason: 'named-grant-required', plugin };
+  }
+  return { enabled: true, reason: 'granted', plugin };
+}
+
+/**
+ * Thin adapter for a named host plugin. Callers supply readItems. Authentext
+ * does not open a mailbox or scrape an inbox.
+ * @param {{name: string, readItems?: () => unknown[]}} spec
+ */
+export function createPluginAdapter(spec = {}) {
+  const name = typeof spec.name === 'string' ? spec.name : '';
+  return {
+    name,
+    collect({ grant, hostGranted = false } = {}) {
+      const gate = resolvePluginSource({
+        plugin: name,
+        namedGrant: grant,
+        hostGranted,
+      });
+      if (!gate.enabled) {
+        return { ...gate, items: [] };
+      }
+      if (typeof spec.readItems !== 'function') {
+        return { ...gate, items: [], reason: 'reader-not-provided' };
+      }
+      return { ...gate, items: spec.readItems() };
+    },
+  };
+}
+
+/**
  * Select no more than one question whose answer changes authority, operation,
  * routing, or safety. Non-material gaps receive conservative assumptions.
  * @param {Record<string, unknown>} intake
@@ -416,6 +461,13 @@ export function selectMaterialQuestion(intake = {}) {
       field: 'published_consent',
       text: 'May I fetch public metadata for the named DOI, URL, ORCID, or repository record? I will not send the current document.',
       reason: 'A published-work pointer was named, but fetch consent has not been granted.',
+    });
+  }
+  if (intake.plugin && intake.plugin_grant !== intake.plugin) {
+    questions.push({
+      field: 'plugin_grant',
+      text: `May I use the named host plugin "${intake.plugin}" as a voice source? Plugins stay off until you name them and the host grants them.`,
+      reason: 'A plugin was named, but it does not have a matching grant.',
     });
   }
   if (operationCandidates.length > 1) {

@@ -18,13 +18,14 @@
 - [x] Task: Implement permissioned fetch of public metadata and, when the
       user grants it, the public full text. Never send the current document.
       (commit: 2a2768f)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      [checkpoint: 6f2fb87]
 
 ## Phase 3: Optional plugin sources
 
-- [ ] Task: Write failing tests that email and other plugins are off by
+- [~] Task: Write failing tests that email and other plugins are off by
       default and require a named grant.
-- [ ] Task: Add a thin adapter interface. Do not ship a mail client.
+- [~] Task: Add a thin adapter interface. Do not ship a mail client.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 4: Precedence wiring
