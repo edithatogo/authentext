@@ -13,10 +13,11 @@
 
 ## Phase 2: Published-work metadata intake
 
-- [~] Task: Write failing tests for DOI, URL, ORCID, and institutional-repo
-      identifiers. Queries must be metadata-only.
-- [~] Task: Implement permissioned fetch of public metadata and, when the
+- [x] Task: Write failing tests for DOI, URL, ORCID, and institutional-repo
+      identifiers. Queries must be metadata-only. (commit: 2a2768f)
+- [x] Task: Implement permissioned fetch of public metadata and, when the
       user grants it, the public full text. Never send the current document.
+      (commit: 2a2768f)
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 3: Optional plugin sources
