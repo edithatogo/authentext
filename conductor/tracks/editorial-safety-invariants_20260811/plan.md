@@ -26,14 +26,17 @@ Separate PRs unless two fixes are one-line each.
 
 - [x] Task: Write failing tests for voice-sample precedence, including the
       dash-ban override, and for pasted/file/embedded delivery wording in
-      `SKILL.md`.
+      `SKILL.md`. (commit: 3331078)
 - [x] Task: Add the seven-line voice calibration section and the sample
-      outranks style rule.
+      outranks style rule. (commit: 3331078)
 - [x] Task: Add invocation modes and keep the host-controls wording from
       [upstream PR #213](https://github.com/blader/humanizer/pull/213).
+      (commit: 3331078)
 - [x] Task: Add the secondhand-text false-positive guard (v2.8.1).
+      (commit: 3331078)
 - [x] Task: Add `quietly` to Pattern 7
       ([PR #192](https://github.com/blader/humanizer/pull/192)).
+      (commit: 3331078)
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 3: Remaining upstream patterns
