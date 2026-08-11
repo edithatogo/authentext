@@ -4,10 +4,11 @@
 - **Type:** Feature
 - **Priority:** P0
 - **Status:** In progress
-- **Current phase:** Phase 2 — Voice, modes, and cheap catalogue fixes
+- **Current phase:** Phase 3 — Remaining upstream patterns
 - **Coordinates with:** Domain and citation coverage; pattern registry
 - **GitHub track:** [#276](https://github.com/edithatogo/authentext/issues/276)
 - **Phase 1 PR:** [#275](https://github.com/edithatogo/authentext/pull/275)
+- **Phase 2 PR:** [#282](https://github.com/edithatogo/authentext/pull/282)
 
 ## Artifacts
 
@@ -25,6 +26,5 @@ out of this track.
 ## Delivery
 
 Small PRs, one theme each. Phase 1 shipped as
-[PR #275](https://github.com/edithatogo/authentext/pull/275). Phase 2 is
-voice calibration, invocation modes, the secondhand-text guard, and
-Pattern 7 `quietly`.
+[PR #275](https://github.com/edithatogo/authentext/pull/275). Phase 2
+shipped as [PR #282](https://github.com/edithatogo/authentext/pull/282).
