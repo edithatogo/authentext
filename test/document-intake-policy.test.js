@@ -6,9 +6,11 @@ import path from 'node:path';
 import {
   calibrateLocalCorpus,
   calibrateVoiceSample,
+  createPluginAdapter,
   ingestPublishedWork,
   parseCorpusPointer,
   resolveDeliveryMode,
+  resolvePluginSource,
   selectMaterialQuestion,
 } from '../scripts/lib/document-intake-policy.js';
 
@@ -335,4 +337,58 @@ test('asks for published-work consent when a DOI is named without a grant', () =
   });
   assert.equal(decision.question.field, 'published_consent');
   assert.match(decision.question.text, /metadata|DOI|current document/i);
+});
+
+test('email and other plugins are off by default', () => {
+  assert.deepEqual(resolvePluginSource(), {
+    enabled: false,
+    reason: 'plugin-off-by-default',
+    plugin: null,
+  });
+  assert.equal(resolvePluginSource({ plugin: 'email' }).enabled, false);
+  assert.equal(
+    resolvePluginSource({ plugin: 'email', hostGranted: true }).reason,
+    'named-grant-required'
+  );
+});
+
+test('a plugin source requires a named grant and a host grant', () => {
+  assert.deepEqual(
+    resolvePluginSource({ plugin: 'email', namedGrant: 'email', hostGranted: true }),
+    { enabled: true, reason: 'granted', plugin: 'email' }
+  );
+  assert.equal(
+    resolvePluginSource({ plugin: 'email', namedGrant: 'calendar', hostGranted: true }).enabled,
+    false
+  );
+});
+
+test('plugin adapter collects only after a named grant and does not ship a mail client', () => {
+  const source = fs.readFileSync('scripts/lib/document-intake-policy.js', 'utf8');
+  assert.doesNotMatch(source, /from ['"]node:(?:net|tls)['"]|nodemailer/i);
+
+  let reads = 0;
+  const adapter = createPluginAdapter({
+    name: 'email',
+    readItems() {
+      reads += 1;
+      return [{ id: 'msg-1' }];
+    },
+  });
+
+  const blocked = adapter.collect();
+  assert.equal(blocked.enabled, false);
+  assert.deepEqual(blocked.items, []);
+  assert.equal(reads, 0);
+
+  const allowed = adapter.collect({ grant: 'email', hostGranted: true });
+  assert.equal(allowed.enabled, true);
+  assert.deepEqual(allowed.items, [{ id: 'msg-1' }]);
+  assert.equal(reads, 1);
+});
+
+test('asks for a plugin grant when a plugin is named without one', () => {
+  const decision = selectMaterialQuestion({ plugin: 'email' });
+  assert.equal(decision.question.field, 'plugin_grant');
+  assert.match(decision.question.text, /plugin/i);
 });

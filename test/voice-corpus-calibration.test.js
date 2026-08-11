@@ -26,3 +26,10 @@ test('voice calibration documents published-work pointers and metadata-only rese
     assert.match(source, /Never send the current manuscript/);
   }
 });
+
+test('voice calibration keeps host plugins off until named and granted', () => {
+  for (const source of [canonicalSource, generated, coreReference]) {
+    assert.match(source, /Host plugin/);
+    assert.match(source, /Default is off/);
+  }
+});
