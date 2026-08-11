@@ -19,10 +19,14 @@ Based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cl
 When given text to humanize:
 
 1. **Identify AI patterns** - Scan for the patterns listed below
-2. **Rewrite, don't delete** - Replace AI-isms with natural alternatives and cover everything the original covers. If the original has five paragraphs, the rewrite has five paragraphs. (Content-preservation guarantee from upstream v2.8.)
-3. **Preserve meaning** - Keep the core message intact
-4. **Maintain voice** - Match the intended tone (formal, casual, technical, etc.)
-5. **Add soul** - Don't just remove bad patterns; inject actual personality when appropriate (see PERSONALITY AND SOUL)
+2. **Never add** - Do not state any fact, name, number, date, citation, quotation, or example that is not already in the source. If the source does not support a claim, cut the claim or say what is not known. Opinions and reactions are voice rather than fact, so stance may still be added where the document type allows it. Fiction is the one exception: invented detail is the work.
+3. **Never lose** - Every claim in the source survives the rewrite. A deletion that costs the text a real claim is as much a defect as an invention. Rankings, superlatives, simultaneity, scope limits, and negations carry meaning in ordinary words and are the ones most often lost to pattern removal.
+4. **Information over shape** - Coverage is measured in claims, not paragraphs. Depth need not be uniform: compress the dull parts, dwell where a human would, and merge or split paragraphs freely. When information and structure conflict, information wins.
+5. **Respect host controls** - Do not bypass the host application's approval, logging, verification, provenance, permission, or safety mechanisms. Rewrite a file in place only when the caller has granted write access.
+6. **Maintain voice** - Match the intended tone (formal, casual, technical, etc.)
+7. **Add soul** - Don't just remove bad patterns; inject actual personality when appropriate (see PERSONALITY AND SOUL)
+
+Rules 2 and 3 are invariants, not preferences. They outrank every pattern below. If removing a pattern would require inventing a fact or dropping a claim, leave the pattern in place and report it instead.
 
 ---
 
@@ -56,6 +60,28 @@ citations, quantities, required sections, sourced rules, voice, and epistemic
 qualifiers. Stop after at most one revision audit and disclose assumptions,
 conflicts, and unresolved findings concisely.
 
+### Protected spans
+
+Some spans cannot be edited as prose, because changing them changes what the
+document asserts. Treat the following as locked in every document type:
+
+- Numerals, quantities, units, dates, currencies, and periodicity.
+- Citations, references, quotations, and pinpoints.
+- Negation and polarity, including "not", "no evidence of", and "should not".
+- Epistemic qualifiers and their strength, including "may", "suggests", and
+  "is associated with".
+- Scope limits on a claim, whether population, geography, time, or subject.
+- Proper names, defined terms, and identifiers.
+
+A locked span may be moved, but not reworded, rounded, normalised, strengthened,
+or dropped. Where a locked span genuinely blocks the edit, report it with the
+proposed change and leave the original in place. Do not convert a past-tense,
+study-scoped statement into a present-tense general one; that transformation
+loses a scope limit even when every word looks preserved.
+
+Domain references extend this list. Read them before editing clinical, legal,
+academic, or regulatory material.
+
 ---
 
 ## PERSONALITY AND SOUL
@@ -75,13 +101,21 @@ Avoiding AI patterns is only half the job. Sterile, voiceless writing is just as
 
 Have opinions and react to facts. Vary sentence rhythm with short and long lines. Acknowledge complexity, use "I" when it fits, allow tangents, and be specific about feelings.
 
+### The limit on voice
+
+Voice comes from stance and rhythm, never from invented biography. The most common way this pass makes writing worse is manufacturing human texture out of nothing: a remembered conversation, a former job, a specific afternoon, a named colleague, a number the writer never gave you. That is fabrication wearing a human mask, and rule 2 forbids it.
+
+Where prose is flat because it lacks concrete detail, the fix is to ask the writer for the detail, or to flag the gap. It is not to supply one. Stance, reaction, uncertainty, and cadence are yours to add. Facts and history are not.
+
+Skip this section entirely for clinical, legal, regulatory, and submitted academic material, where first-person texture is not the register and the added-voice failure mode is expensive.
+
 ### Before (clean but soulless)
 
 > The experiment produced interesting results. The agents generated 3 million lines of code. Some developers were impressed while others were skeptical. The implications remain unclear.
 
 ### After (has a pulse)
 
-> I genuinely don't know how to feel about this one. 3 million lines of code, generated while the humans presumably slept. Half the dev community is losing their minds, half are explaining why it doesn't count. The truth is probably somewhere boring in the middle - but I keep thinking about those agents working through the night.
+> I don't know what to make of the results. The agents generated 3 million lines of code. Some developers were impressed, others were skeptical, and the implications are still unclear.
 
 ---
 
@@ -196,18 +230,6 @@ the detailed pattern definitions.
 - Pattern 37: Conversational rhetorical openers (Upstream #33)
 - Pattern 38: Diff-anchored writing (upstream refinement)
 - Pattern 39: Hyphenated word pair overuse (narrowed, upstream)
-- Pattern 14: Overuse of boldface
-- Pattern 15: Inline-header lists
-- Pattern 16: Title case in headings
-- Pattern 17: Emojis
-- Pattern 18: Quotation mark issues
-- Pattern 22: Filler phrases
-- Pattern 23: Excessive hedging
-- Pattern 24: Generic positive conclusions
-- Pattern 26: Over-structuring
-- Pattern 28: Persuasive tropes
-- Pattern 29: Signposting
-- Pattern 30: Fragmented headers
 
 ## DETECTION GUIDANCE
 
