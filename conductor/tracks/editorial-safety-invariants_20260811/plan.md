@@ -37,7 +37,8 @@ Separate PRs unless two fixes are one-line each.
 - [x] Task: Add `quietly` to Pattern 7
       ([PR #192](https://github.com/blader/humanizer/pull/192)).
       (commit: 3331078)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      [checkpoint: 34f156d]
 
 ## Phase 3: Remaining upstream patterns
 
