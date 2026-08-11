@@ -12,7 +12,9 @@ This file tracks all major tracks for the project. Each track has its own detail
   invariants and remaining upstream v2.9 / stranded-pattern work.
   [#276](https://github.com/edithatogo/authentext/issues/276). Phase 1 is
   [PR #275](https://github.com/edithatogo/authentext/pull/275). Phase 2
-  is [PR #282](https://github.com/edithatogo/authentext/pull/282).
+  is [PR #282](https://github.com/edithatogo/authentext/pull/282). Phase 3
+  starts with grammar/register (Pattern 40 and the Pattern 13 dash
+  exception).
   _Link: [tracks/editorial-safety-invariants_20260811/index.md](./tracks/editorial-safety-invariants_20260811/index.md)_
 
 - [ ] **domain-and-citation_20260811** (P0) - Clinical, legal, and creative

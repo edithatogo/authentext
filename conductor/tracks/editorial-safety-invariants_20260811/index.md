@@ -9,6 +9,7 @@
 - **GitHub track:** [#276](https://github.com/edithatogo/authentext/issues/276)
 - **Phase 1 PR:** [#275](https://github.com/edithatogo/authentext/pull/275)
 - **Phase 2 PR:** [#282](https://github.com/edithatogo/authentext/pull/282)
+- **Phase 3 PR A:** grammar/register (Pattern 40 + Pattern 13 dash exception)
 
 ## Artifacts
 
