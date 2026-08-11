@@ -44,9 +44,9 @@ Separate PRs unless two fixes are one-line each.
 
 Prefer extending an existing number over minting a new one.
 
-- [ ] Task: Add passive voice and subjectless fragments (upstream §13) with
-      the humanizing-overcorrection register
-      ([#146](https://github.com/blader/humanizer/issues/146)).
+- [~] Task: Add passive voice and subjectless fragments (upstream §13) with
+  the humanizing-overcorrection register
+  ([#146](https://github.com/blader/humanizer/issues/146)).
 - [ ] Task: Add shadowboxing and editorial scar tissue
       ([PR #207](https://github.com/blader/humanizer/pull/207)), including
       rewrite-from-the-point guidance.
@@ -56,8 +56,8 @@ Prefer extending an existing number over minting a new one.
       with genre limits ([PR #211](https://github.com/blader/humanizer/pull/211)).
 - [ ] Task: Fold repeated sentence openings into Pattern 11
       ([PR #209](https://github.com/blader/humanizer/pull/209)).
-- [ ] Task: Add the annotated-link / definition em dash exception
-      ([PR #190](https://github.com/blader/humanizer/pull/190)).
+- [~] Task: Add the annotated-link / definition em dash exception
+  ([PR #190](https://github.com/blader/humanizer/pull/190)).
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 4: Upstream decision-log refresh

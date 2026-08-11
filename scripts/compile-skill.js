@@ -302,6 +302,7 @@ function compileStandardSkill(modules) {
 
   const coreFrontmatter = extractFrontmatter(modules.core);
   const version = coreFrontmatter?.version || '3.0.0';
+  const patternCount = coreFrontmatter?.patterns || '39';
   const strippedCore = stripFrontmatter(modules.core);
 
   const intro = buildStandardIntro(strippedCore);
@@ -313,7 +314,7 @@ function compileStandardSkill(modules) {
   const detection = extractSection(strippedCore, 'DETECTION GUIDANCE');
 
   const referenceLinks = [
-    '- [Core patterns (39 patterns, before/after examples)](references/core-patterns.md)',
+    `- [Core patterns (${patternCount} patterns, before/after examples)](references/core-patterns.md)`,
     modules.technical && '- [Technical writing and literal preservation](references/technical.md)',
     modules.academic && '- [Academic and research prose](references/academic.md)',
     modules.governance && '- [Policy, governance, and compliance prose](references/governance.md)',

@@ -222,7 +222,7 @@ Live self-improvement outputs (not a track): `conductor/self-improvement/`
 
 - `SKILL.md` - Agent Skills standard manifest (~180 lines, under 500)
 - `SKILL_PROFESSIONAL.md` - Pro router variant
-- `references/` - Progressive disclosure modules (39-pattern catalog in `core-patterns.md`)
+- `references/` - Progressive disclosure modules (40-pattern catalog in `core-patterns.md`)
 
 ### Documentation
 

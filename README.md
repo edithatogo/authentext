@@ -28,7 +28,7 @@ npm test
 
 `npm run sync` rebuilds the compiled skill files and refreshes the root manifests. `npm run validate` checks the maintained docs surface. `npm test` runs the Node test suite, the sync check, and the skill tests.
 
-The core pattern catalog in `src/modules/SKILL_CORE_PATTERNS.md` currently defines **39 patterns** (30 general core + 4 local LLM-variant patterns + 3 upstream v2.8.0 style-cadence patterns + 2 upstream v2.8.0 refinements).
+The core pattern catalog in `src/modules/SKILL_CORE_PATTERNS.md` currently defines **40 patterns** (30 general core + 4 local LLM-variant patterns + 3 upstream v2.8.0 style-cadence patterns + 2 upstream v2.8.0 refinements + 1 grammar/register pattern).
 
 Historical workspace and MCP-era files are retained with an explicit
 [non-canonical role](docs/legacy-surfaces.md); they are not installed, built,
