@@ -3,9 +3,13 @@
 - **Track ID:** `voice-corpus-calibration_20260811`
 - **Type:** Feature
 - **Priority:** P1
-- **Status:** In progress
+- **Status:** Complete
 - **Depends on:** `editorial-safety-invariants_20260811`
 - **GitHub track:** [#279](https://github.com/edithatogo/authentext/issues/279)
+- **PRs:** [#291](https://github.com/edithatogo/authentext/pull/291),
+  [#292](https://github.com/edithatogo/authentext/pull/292),
+  [#295](https://github.com/edithatogo/authentext/pull/295),
+  [#298](https://github.com/edithatogo/authentext/pull/298)
 
 ## Artifacts
 

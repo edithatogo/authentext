@@ -32,11 +32,13 @@
 
 ## Phase 4: Precedence wiring
 
-- [~] Task: Write failing tests that a calibrated sample outranks the dash
+- [x] Task: Write failing tests that a calibrated sample outranks the dash
       ban and that corpus facts cannot be inserted into the current draft.
-- [~] Task: Wire precedence in skill prose and in the intake/diagnostic
-      contracts.
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 6077fe1)
+- [x] Task: Wire precedence in skill prose and in the intake/diagnostic
+      contracts. (commit: 6077fe1)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      [checkpoint: 577ae9d]
 
 ## Handoff artifacts
 
