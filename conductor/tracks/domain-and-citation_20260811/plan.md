@@ -2,13 +2,14 @@
 
 ## Phase 1: Positioning and academic upgrade
 
-- [ ] Task: Write failing tests for detector-evasion refusal wording and for
+- [x] Task: Write failing tests for detector-evasion refusal wording and for
       academic disclosure / interface-artefact / tortured-phrase / bibliography
       refuse rules.
-- [ ] Task: Update `conductor/product.md` and the compiled skill description
+- [x] Task: Update `conductor/product.md` and the compiled skill description
       so Authentext is editorial defect repair with verified diffs, not a
-      humanizer that chases detector scores.
-- [ ] Task: Upgrade `src/modules/SKILL_ACADEMIC.md` with publisher-branching
+      humanizer that chases detector scores. `product.md` already stated the
+      refusal; the compiled skill description now matches.
+- [x] Task: Upgrade `src/modules/SKILL_ACADEMIC.md` with publisher-branching
       disclosure, interface-artefact hard errors, tortured-phrase lexicon,
       and out-of-scope reference lists.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).

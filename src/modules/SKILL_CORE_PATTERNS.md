@@ -110,6 +110,8 @@ If the user supplies a writing sample of their own previous prose, analyse it be
 
 A sample outranks Authentext style rules, including the Pattern 13 dash ban: if the sample uses em dashes, keep them at roughly the sample's frequency. Matching the author beats scrubbing the tell. The sample does not outrank Never add, Never lose, or protected spans.
 
+Facts found in the corpus may inform voice. They may be cited back as "you have written this before." They must not be inserted into the current document unless the user asks and the current source already supports the claim. A corpus does not license fabrication or invented biography.
+
 The sample may be pasted text, or an explicit pointer the user names:
 
 - Local file: a path such as `./drafts/column.md`
@@ -165,7 +167,7 @@ Voice comes from stance and rhythm, never from invented biography. The most comm
 
 Where prose is flat because it lacks concrete detail, the fix is to ask the writer for the detail, or to flag the gap. It is not to supply one. Stance, reaction, uncertainty, and cadence are yours to add. Facts and history are not.
 
-Skip this section entirely for clinical, legal, regulatory, and submitted academic material, where first-person texture is not the register and the added-voice failure mode is expensive.
+Skip this section entirely for clinical, legal, regulatory, and submitted academic material, where first-person texture is not the register and the added-voice failure mode is expensive. Skip it even when a first-person corpus is available. Do not import memoir texture, "I", or invented biography into those registers.
 
 ### Before (clean but soulless)
 

@@ -19,11 +19,11 @@ This file tracks all major tracks for the project. Each track has its own detail
   Phase 3 PR D is [PR #287](https://github.com/edithatogo/authentext/pull/287).
   _Link: [tracks/editorial-safety-invariants_20260811/index.md](./tracks/editorial-safety-invariants_20260811/index.md)_
 
-- [ ] **domain-and-citation_20260811** (P0) - Clinical, legal, and creative
-      references; academic disclosure upgrade; sourceright/citeweft handoff.
-      [#277](https://github.com/edithatogo/authentext/issues/277). Depends on
-      the safety track.
-      _Link: [tracks/domain-and-citation_20260811/index.md](./tracks/domain-and-citation_20260811/index.md)_
+- [~] **domain-and-citation_20260811** (P0) - Clinical, legal, and creative
+  references; academic disclosure upgrade; sourceright/citeweft handoff.
+  [#277](https://github.com/edithatogo/authentext/issues/277). Depends on
+  the safety track.
+  _Link: [tracks/domain-and-citation_20260811/index.md](./tracks/domain-and-citation_20260811/index.md)_
 
 - [~] **pattern-registry-contracts_20260811** (P1) - Machine-readable
       pattern registry and a stricter Agent Skills contract, extending
@@ -32,10 +32,14 @@ This file tracks all major tracks for the project. Each track has its own detail
       Contracts are [PR #293](https://github.com/edithatogo/authentext/pull/293).
       _Link: [tracks/pattern-registry-contracts_20260811/index.md](./tracks/pattern-registry-contracts_20260811/index.md)_
 
-- [~] **voice-corpus-calibration_20260811** (P1) - Point Authentext at
+- [x] **voice-corpus-calibration_20260811** (P1) - Point Authentext at
       local or published prior work for voice matching without inventing
       biography.
       [#279](https://github.com/edithatogo/authentext/issues/279).
+      Phase 1 [PR #291](https://github.com/edithatogo/authentext/pull/291).
+      Phase 2 [PR #292](https://github.com/edithatogo/authentext/pull/292).
+      Phase 3 [PR #295](https://github.com/edithatogo/authentext/pull/295).
+      Phase 4 [PR #298](https://github.com/edithatogo/authentext/pull/298).
       _Link: [tracks/voice-corpus-calibration_20260811/index.md](./tracks/voice-corpus-calibration_20260811/index.md)_
 
 - [ ] **quality-harness-and-matrix_20260811** (P2) - Feature matrix, Vale

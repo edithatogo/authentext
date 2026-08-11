@@ -3,7 +3,7 @@
 - **Track ID:** `domain-and-citation_20260811`
 - **Type:** Feature
 - **Priority:** P0
-- **Status:** New
+- **Status:** In progress
 - **Depends on:** `editorial-safety-invariants_20260811`
 - **Current phase:** Phase 1 — Positioning and academic upgrade
 - **GitHub track:** [#277](https://github.com/edithatogo/authentext/issues/277)
