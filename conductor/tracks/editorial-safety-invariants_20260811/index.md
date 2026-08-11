@@ -10,7 +10,8 @@
 - **Phase 1 PR:** [#275](https://github.com/edithatogo/authentext/pull/275)
 - **Phase 2 PR:** [#282](https://github.com/edithatogo/authentext/pull/282)
 - **Phase 3 PR A:** [#284](https://github.com/edithatogo/authentext/pull/284)
-- **Phase 3 PR B:** Pattern 11 repeated openings and generative length repair
+- **Phase 3 PR B:** [#285](https://github.com/edithatogo/authentext/pull/285)
+- **Phase 3 PR C:** Shadowboxing and editorial scar tissue on Pattern 38
 
 ## Artifacts
 
@@ -30,3 +31,5 @@ out of this track.
 Small PRs, one theme each. Phase 1 shipped as
 [PR #275](https://github.com/edithatogo/authentext/pull/275). Phase 2
 shipped as [PR #282](https://github.com/edithatogo/authentext/pull/282).
+Phase 3 PR B shipped as
+[PR #285](https://github.com/edithatogo/authentext/pull/285).

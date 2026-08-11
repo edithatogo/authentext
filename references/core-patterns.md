@@ -69,7 +69,11 @@ Select only applicable diagnostic dimensions. Cluster ordinary style findings,
 but surface each safety or preservation risk. Preserve technical literals,
 citations, quantities, required sections, sourced rules, voice, and epistemic
 qualifiers. Stop after at most one revision audit and disclose assumptions,
-conflicts, and unresolved findings concisely.
+conflicts, and unresolved findings concisely. Revise by re-saying the point,
+not by patching the flagged phrase. A patch that leaves the sentence heavier
+than a person would write it is new scar tissue (Pattern 38). When a sentence
+resists repair, ask how a person would naturally make the point and rewrite
+the paragraph from that.
 
 ### Protected spans
 
@@ -569,7 +573,9 @@ The fix is not banning the repeated word. A run of three sentences becoming one 
 
 ### Pattern 23: Excessive Hedging
 
-**Problem:** Over-qualifying statements.
+**Phrases to watch:** to be fair, it's also possible, could potentially, might arguably, in some cases it may, this is an inference
+
+**Problem:** Over-qualifying statements. Iterative editing compounds this: each pass softens an overstatement, then softens the qualifier, until nearly every conclusion carries a fairness clause and the prose reads as if it were negotiated. A claim earns one honest qualifier at most. A caveat that exists only because an earlier draft overreached should be cut along with the overreach.
 
 **Severity:** Low
 
@@ -787,7 +793,7 @@ The system processes requests in under 100ms.
 - Pattern 35: Manufactured punchlines and staccato drama (Upstream #31)
 - Pattern 36: Aphorism formulas (Upstream #32)
 - Pattern 37: Conversational rhetorical openers (Upstream #33)
-- Pattern 38: Diff-anchored writing (upstream refinement)
+- Pattern 38: Diff-anchored writing, shadowboxing, and editorial scar tissue
 - Pattern 39: Hyphenated word pair overuse (narrowed, upstream)
 
 ---
@@ -940,19 +946,45 @@ _Source: Wikipedia "Signs of AI writing" + Authentext community contributions + 
 
 ---
 
-### Pattern 38: Diff-Anchored Writing (upstream v2.8 refinement)
+### Pattern 38: Diff-Anchored Writing, Shadowboxing, and Editorial Scar Tissue
 
-**Problem:** Documentation or comments written as if narrating a change rather than describing the thing as it is. Unless the document is inherently version-scoped (changelogs, release notes, migration guides), it should read coherently without knowing what changed in the last commit.
+**Problem:** Text that exists because of a previous edit or drafting conversation, not because the published piece needs it. Three surfaces, one defect. Diff-anchored writing narrates a change instead of describing the thing as it is. Shadowboxing answers an objection nobody in the published text raised. Editorial scar tissue rebuts a "tempting" alternative that is usually the model's own corrected mistake, recycled as a strawman. The general test: if you can explain which previous edit caused a sentence to exist, rather than what new information it contributes, rewrite the paragraph from its point. Asking whether a cold reader would arrive at the objection is not operational; the editor usually cannot see the drafting conversation either. Use in-text signals instead. Unless the document is inherently version-scoped (changelogs, release notes, migration guides), the prose should read coherently without the commit, the discarded objection, or the killed option.
 
 **Severity:** Low
 
-**Before:**
+**Phrases to watch (shadowboxing):** This isn't (mainly/really) about, I'm not saying/arguing/trying to, To be clear, Don't get me wrong, This is not to say, You could argue/frame this differently but, Some might say... but
+
+**Phrases to watch (scar tissue):** A tempting option/approach would be, One might be tempted to, An obvious approach would be, You might think... but, It would be easy to just, Some would suggest
+
+**Before (diff-anchored):**
 
 > This function was added to replace the previous approach of iterating through all items, which caused O(n²) performance.
 
 **After:**
 
 > This function uses a hash map for O(1) lookups, avoiding the O(n²) cost of naive iteration.
+
+**Before (shadowboxing):**
+
+> This isn't mainly about prompt length, and I'm not arguing that documentation doesn't matter. You could categorize the problem another way, but the issue is whether the agent can use the instruction when it acts.
+
+**After:**
+
+> The issue is whether the agent can use the instruction when it acts.
+
+The tell is a negation about the piece's own aims or the author's intent that is meta-level, unattributed, dropped within a sentence, and about a topic that appears nowhere else in the piece. An object-level negation ("the API is not thread-safe") is a claim, not shadowboxing.
+
+**Before (scar tissue):**
+
+> Session tokens are rotated every 24 hours. A tempting approach would be to rotate them by restarting the auth service on a cron job, but that would drop every active session. Rotation happens in place, and clients refresh transparently.
+
+**After:**
+
+> Session tokens are rotated every 24 hours, in place, and clients refresh transparently.
+
+The alternative is attributed to no one, appears nowhere else in the piece, and is dismissed in a clause or two. One phantom rebuttal is ambiguous; several on unrelated tangents is the confession.
+
+Cut only the defensive clause or the phantom digression. A defense or rebuttal can smuggle in a real claim: if the piece uses that position, restate it affirmatively instead of deleting it, and delete only pure not-X clauses. An objection the text attributes to someone or genuinely engages stays; Pattern 9 governs its phrasing.
 
 ---
 
@@ -1021,6 +1053,8 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **Unsourced claims.** Most of the web is unsourced. Lack of citations doesn't prove anything.
 - **Correct, complex formatting.** Visual editors and templates produce clean output without any AI.
 - **Even sentence or paragraph length in reference material.** Reference documentation, API docs, procedures, and legal text are uniform by design. Low variance is only a tell in prose meant to be read start to finish.
+- **Disclaimers and scoping that do real work.** "This guide does not cover Windows," legal and safety notices, and corrections of misconceptions readers actually hold are content, not shadowboxing. So are attributed objections the text engages, replies and FAQs that answer someone by design, and a single self-aware aside in a voiced piece.
+- **Alternatives a reader would actually reach for.** Design docs weighing real options, tutorials warning against genuinely tempting mistakes, and essays that steelman before disagreeing are content, not scar tissue. The tell is the implausible alternative dispatched mid-flow and never revisited.
 - **Secondhand text.** Do not rewrite watched phrases inside quotations, titles, proper names, or examples where the phrase is being discussed rather than used.
 
 When in doubt, look for **clusters** of tells, not isolated ones. A single em dash means nothing; em dashes plus rule-of-three plus _vibrant tapestry_ plus a "Conclusion" section is a confession.

@@ -48,9 +48,9 @@ Prefer extending an existing number over minting a new one.
       the humanizing-overcorrection register
       ([#146](https://github.com/blader/humanizer/issues/146)).
       (commit: 7ea274c)
-- [ ] Task: Add shadowboxing and editorial scar tissue
-      ([PR #207](https://github.com/blader/humanizer/pull/207)), including
-      rewrite-from-the-point guidance.
+- [~] Task: Add shadowboxing and editorial scar tissue
+  ([PR #207](https://github.com/blader/humanizer/pull/207)), including
+  rewrite-from-the-point guidance.
 - [ ] Task: Add vague "This" back-references and a mechanical pre-return
       scan ([PR #196](https://github.com/blader/humanizer/pull/196)).
 - [x] Task: Add uniform sentence and paragraph length as generative repair,

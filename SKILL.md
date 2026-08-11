@@ -60,7 +60,11 @@ Select only applicable diagnostic dimensions. Cluster ordinary style findings,
 but surface each safety or preservation risk. Preserve technical literals,
 citations, quantities, required sections, sourced rules, voice, and epistemic
 qualifiers. Stop after at most one revision audit and disclose assumptions,
-conflicts, and unresolved findings concisely.
+conflicts, and unresolved findings concisely. Revise by re-saying the point,
+not by patching the flagged phrase. A patch that leaves the sentence heavier
+than a person would write it is new scar tissue (Pattern 38). When a sentence
+resists repair, ask how a person would naturally make the point and rewrite
+the paragraph from that.
 
 ### Protected spans
 
@@ -251,7 +255,7 @@ the detailed pattern definitions.
 - Pattern 35: Manufactured punchlines and staccato drama (Upstream #31)
 - Pattern 36: Aphorism formulas (Upstream #32)
 - Pattern 37: Conversational rhetorical openers (Upstream #33)
-- Pattern 38: Diff-anchored writing (upstream refinement)
+- Pattern 38: Diff-anchored writing, shadowboxing, and editorial scar tissue
 - Pattern 39: Hyphenated word pair overuse (narrowed, upstream)
 
 ## DETECTION GUIDANCE
@@ -275,6 +279,8 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **Unsourced claims.** Most of the web is unsourced. Lack of citations doesn't prove anything.
 - **Correct, complex formatting.** Visual editors and templates produce clean output without any AI.
 - **Even sentence or paragraph length in reference material.** Reference documentation, API docs, procedures, and legal text are uniform by design. Low variance is only a tell in prose meant to be read start to finish.
+- **Disclaimers and scoping that do real work.** "This guide does not cover Windows," legal and safety notices, and corrections of misconceptions readers actually hold are content, not shadowboxing. So are attributed objections the text engages, replies and FAQs that answer someone by design, and a single self-aware aside in a voiced piece.
+- **Alternatives a reader would actually reach for.** Design docs weighing real options, tutorials warning against genuinely tempting mistakes, and essays that steelman before disagreeing are content, not scar tissue. The tell is the implausible alternative dispatched mid-flow and never revisited.
 - **Secondhand text.** Do not rewrite watched phrases inside quotations, titles, proper names, or examples where the phrase is being discussed rather than used.
 
 When in doubt, look for **clusters** of tells, not isolated ones. A single em dash means nothing; em dashes plus rule-of-three plus _vibrant tapestry_ plus a "Conclusion" section is a confession.
