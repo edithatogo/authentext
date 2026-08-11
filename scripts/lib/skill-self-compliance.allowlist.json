@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "note": "Known non-example dashes in compiled SKILL.md Detection Guidance. Module owners can delete these after the source fragments lose the dashes. New findings fail CI.",
+  "allowed": [
+    {
+      "kind": "em-dash",
+      "excerpt": "habits — not a chatbot."
+    },
+    {
+      "kind": "em-dash",
+      "excerpt": "leaving the prose alone — they are evidence"
+    }
+  ]
+}

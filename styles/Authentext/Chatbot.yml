@@ -1,0 +1,9 @@
+extends: existence
+message: "Leftover chatbot correspondence should not appear in maintained prose."
+level: error
+ignorecase: true
+tokens:
+  - 'I hope this helps'
+  - "You're absolutely right"
+  - 'as an AI'
+  - 'Happy to help!'

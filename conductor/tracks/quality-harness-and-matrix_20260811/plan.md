@@ -10,11 +10,11 @@
 
 ## Phase 2: Vale, self-compliance, UTF-8
 
-- [ ] Task: Write a failing self-compliance test that plants an em dash in
+- [x] Task: Write a failing self-compliance test that plants an em dash in
       non-example `SKILL.md` prose.
-- [ ] Task: Expand Vale to the maintained surface with exceptions for
+- [x] Task: Expand Vale to the maintained surface with exceptions for
       pattern examples.
-- [ ] Task: Audit Python and Node file reads for explicit UTF-8.
+- [x] Task: Audit Python and Node file reads for explicit UTF-8.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 3: Scored harness and optional metrics CLI
