@@ -189,7 +189,7 @@ defensible edits.
 
 Read these files for the full pattern catalog, examples, and remediation guidance:
 
-- [Core patterns (39 patterns, before/after examples)](references/core-patterns.md)
+- [Core patterns (40 patterns, before/after examples)](references/core-patterns.md)
 - [Technical writing and literal preservation](references/technical.md)
 - [Academic and research prose](references/academic.md)
 - [Policy, governance, and compliance prose](references/governance.md)
@@ -227,6 +227,7 @@ the detailed pattern definitions.
 - Pattern 11: Elegant variation
 - Pattern 32: JSON mode artifacts
 - Pattern 33: Tool use documentation
+- Pattern 40: Passive voice and subjectless fragments (Upstream §13)
 
 ### Low (weak AI signals)
 
@@ -267,6 +268,7 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **Common transition words in isolation.** _Additionally_, _moreover_, _consequently_ are AI-coded only when piled up. One _however_ is not a tell.
 - **Curly quotes alone.** macOS, Word, Google Docs, and most CMSes auto-curl by default. Curly quotes only count when stacked with other tells.
 - **Em dashes alone.** Many editors and journalists use them often. Em dashes are evidence only when paired with formulaic sales-y rhythm.
+- **Annotated-link or definition separators.** `[Title](url)` or `**Term**` followed by an em dash and a description is list formatting, not a tell. Ask once whether to keep those separators; in embedded mode, keep them. Other em dashes still follow Pattern 13.
 - **One short emphatic sentence.** Humans use clipped sentences to land a point. Flag staccato drama only when several short fragments appear in a row and inflate the tone.
 - **"Honestly" or "look" mid-sentence.** These are ordinary in casual writing. The tell is the standalone theatrical opener, not the word itself.
 - **Unsourced claims.** Most of the web is unsourced. Lack of citations doesn't prove anything.

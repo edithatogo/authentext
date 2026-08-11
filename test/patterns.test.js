@@ -19,8 +19,8 @@ test('references/core-patterns.md integrity', async (t) => {
     }
   });
 
-  await t.test('contains upstream style patterns 35 through 39', () => {
-    for (let i = 35; i <= 39; i++) {
+  await t.test('contains upstream style patterns 35 through 40', () => {
+    for (let i = 35; i <= 40; i++) {
       const patternHeading = new RegExp(`### Pattern ${i}:`, 'm');
       assert.ok(
         patternHeading.test(content),

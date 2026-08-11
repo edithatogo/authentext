@@ -65,5 +65,5 @@ test('maintenance tooling reads the canonical pattern count', () => {
   assert.equal(countPatternsInMarkdown('---\npatterns: 7\n---\n'), 7);
   assert.equal(countPatternsInMarkdown('### Pattern 1: A\n### Pattern 2: B\n'), 2);
   assert.equal(countPatternsInMarkdown('### 1. A\n### 2. B\n'), 2);
-  assert.equal(getLocalPatternCount(), 39);
+  assert.equal(getLocalPatternCount(), 40);
 });

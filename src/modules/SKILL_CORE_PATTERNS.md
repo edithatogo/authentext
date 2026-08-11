@@ -2,7 +2,7 @@
 module_id: core_patterns
 version: 3.2.0
 description: Core AI writing pattern detection (always applied)
-patterns: 39
+patterns: 40
 severity_levels:
   - Critical
   - High
@@ -361,7 +361,7 @@ Skip this section entirely for clinical, legal, regulatory, and submitted academ
 
 **Problem:** LLMs overuse em dashes (—) and en dashes (–), mimicking punchy sales writing. The em/en dash is one of the most reliable AI tells; treat as a hard constraint in final output, not "use sparingly".
 
-**Rule (final rewrite):** Contains no em dashes (—) or en dashes (–). Also catch spaced (`—`) and double-hyphen (`--`) aliases. Replace in preference order: period (new sentence), comma (tight aside), colon (explanation), parentheses (true aside), or restructure.
+**Rule (final rewrite):** Contains no em dashes (—) or en dashes (–), except a user writing sample (see Voice Calibration) and kept annotated-link or definition separators (below). Also catch spaced (`—`) and double-hyphen (`--`) aliases. Replace in preference order: period (new sentence), comma (tight aside), colon (explanation), parentheses (true aside), or restructure. Before returning, scan for `—` and `–`. Any remaining hit means the draft is not done unless it is one of those exceptions.
 
 **Severity:** Low
 
@@ -373,7 +373,12 @@ Skip this section entirely for clinical, legal, regulatory, and submitted academ
 
 > The term is primarily promoted by Dutch institutions, not by the people themselves. You don't say "Netherlands, Europe" as an address, yet this mislabeling continues in official documents.
 
-**Not a problem when:** Used sparingly by a human editor/journalist and not clustered with other sales-y tells (see Detection Guidance). A user-provided writing sample uses em dashes (see Voice Calibration); match the sample's frequency instead of banning them.
+**Keep (formatting, not a tell):**
+
+> [Title](url) — description
+> **Term** — definition
+
+**Not a problem when:** Used sparingly by a human editor/journalist and not clustered with other sales-y tells (see Detection Guidance). A user-provided writing sample uses em dashes (see Voice Calibration); match the sample's frequency instead of banning them. An em dash that only separates a Markdown link or a bold leading term from its description is formatting, not a tell: `[Title](url) — description` and `**Term** — definition`. On the first such separator, ask once whether to keep these separators or convert them like any other em dash, then apply that choice to every matching separator. Embedded mode cannot ask, so keep them. Em dashes anywhere else in the prose still follow the hard cut.
 
 ---
 
@@ -743,6 +748,7 @@ The system processes requests in under 100ms.
 - Pattern 11: Elegant variation
 - Pattern 32: JSON mode artifacts
 - Pattern 33: Tool use documentation
+- Pattern 40: Passive voice and subjectless fragments (Upstream §13)
 
 ### Low (weak AI signals)
 
@@ -773,7 +779,7 @@ The system processes requests in under 100ms.
 
 _Module Version: 3.2.0_
 _Last Updated: 2026-04-04_
-_Patterns: 39 (30 core + 4 local LLM variants + 3 upstream style 35-37 + 2 upstream refinements 38-39)_
+_Patterns: 40 (30 core + 4 local LLM variants + 3 upstream style 35-37 + 2 upstream refinements 38-39 + 1 grammar/register 40)_
 _Source: Wikipedia "Signs of AI writing" + Authentext community contributions + 2025-2026 LLM analysis_
 
 ---
@@ -953,6 +959,32 @@ _Source: Wikipedia "Signs of AI writing" + Authentext community contributions + 
 
 ---
 
+### Pattern 40: Passive Voice and Subjectless Fragments (Upstream §13, #146)
+
+**Problem:** LLMs hide the actor or drop the subject. Two registers produce the same surface. Technical and UI voice writes lines like "No configuration file needed" or "The results are preserved automatically." Humanizing overcorrection produces isolated casual fragments because the editor treated brevity as natural speech: a noun phrase posed as a sentence ("Ninety days since the quiz.") or a dropped subject on a line that was complete in the source. Restore a subject and prefer active voice when that makes the actor and the claim clearer.
+
+**Severity:** Medium
+
+**Before (technical / UI):**
+
+> No configuration file needed. The results are preserved automatically.
+
+**After:**
+
+> You do not need a configuration file. The system preserves the results automatically.
+
+**Before (humanizing overcorrection):**
+
+> Ninety days since the reader took the quiz. Thirty pages on the same topic.
+
+**After:**
+
+> It has been ninety days since the reader took the quiz. There are thirty pages on the same topic.
+
+**Not a problem when:** The source already uses a standard imperative ("Hit reply to opt out.") or ordinary conversational ellipsis. Do not invent a subject the source never implied. Distinguished from Pattern 35: that pattern is a run of short fragments stacked for drama. This pattern is an isolated missing-subject line, including one produced while trying to sound casual.
+
+---
+
 ## DETECTION GUIDANCE
 
 ### What NOT to flag (false positives)
@@ -967,6 +999,7 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **Common transition words in isolation.** _Additionally_, _moreover_, _consequently_ are AI-coded only when piled up. One _however_ is not a tell.
 - **Curly quotes alone.** macOS, Word, Google Docs, and most CMSes auto-curl by default. Curly quotes only count when stacked with other tells.
 - **Em dashes alone.** Many editors and journalists use them often. Em dashes are evidence only when paired with formulaic sales-y rhythm.
+- **Annotated-link or definition separators.** `[Title](url)` or `**Term**` followed by an em dash and a description is list formatting, not a tell. Ask once whether to keep those separators; in embedded mode, keep them. Other em dashes still follow Pattern 13.
 - **One short emphatic sentence.** Humans use clipped sentences to land a point. Flag staccato drama only when several short fragments appear in a row and inflate the tone.
 - **"Honestly" or "look" mid-sentence.** These are ordinary in casual writing. The tell is the standalone theatrical opener, not the word itself.
 - **Unsourced claims.** Most of the web is unsourced. Lack of citations doesn't prove anything.
