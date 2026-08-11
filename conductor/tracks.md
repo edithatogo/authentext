@@ -19,11 +19,11 @@ This file tracks all major tracks for the project. Each track has its own detail
   Phase 3 PR D is [PR #287](https://github.com/edithatogo/authentext/pull/287).
   _Link: [tracks/editorial-safety-invariants_20260811/index.md](./tracks/editorial-safety-invariants_20260811/index.md)_
 
-- [ ] **domain-and-citation_20260811** (P0) - Clinical, legal, and creative
-      references; academic disclosure upgrade; sourceright/citeweft handoff.
-      [#277](https://github.com/edithatogo/authentext/issues/277). Depends on
-      the safety track.
-      _Link: [tracks/domain-and-citation_20260811/index.md](./tracks/domain-and-citation_20260811/index.md)_
+- [~] **domain-and-citation_20260811** (P0) - Clinical, legal, and creative
+  references; academic disclosure upgrade; sourceright/citeweft handoff.
+  [#277](https://github.com/edithatogo/authentext/issues/277). Depends on
+  the safety track.
+  _Link: [tracks/domain-and-citation_20260811/index.md](./tracks/domain-and-citation_20260811/index.md)_
 
 - [~] **pattern-registry-contracts_20260811** (P1) - Machine-readable
       pattern registry and a stricter Agent Skills contract, extending
