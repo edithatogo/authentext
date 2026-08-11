@@ -16,3 +16,13 @@ test('voice calibration documents local file and folder pointers', () => {
     assert.match(source, /never becomes a search query/i);
   }
 });
+
+test('voice calibration documents published-work pointers and metadata-only research', () => {
+  for (const source of [canonicalSource, generated, coreReference]) {
+    assert.match(source, /DOI/);
+    assert.match(source, /ORCID/);
+    assert.match(source, /institutional-repo/);
+    assert.match(source, /metadata-only/);
+    assert.match(source, /Never send the current manuscript/);
+  }
+});

@@ -6,6 +6,7 @@ import path from 'node:path';
 import {
   calibrateLocalCorpus,
   calibrateVoiceSample,
+  ingestPublishedWork,
   parseCorpusPointer,
   resolveDeliveryMode,
   selectMaterialQuestion,
@@ -223,4 +224,115 @@ test('asks for corpus consent when a local pointer is present without a grant', 
   });
   assert.equal(decision.question.field, 'corpus_consent');
   assert.match(decision.question.text, /read|consent|local/i);
+});
+
+test('parses DOI, URL, ORCID, and institutional-repo pointers', () => {
+  assert.deepEqual(parseCorpusPointer('10.1234/example.paper'), {
+    ok: true,
+    kind: 'doi',
+    value: '10.1234/example.paper',
+  });
+  assert.equal(parseCorpusPointer('doi:10.1234/example.paper').kind, 'doi');
+  assert.deepEqual(parseCorpusPointer('https://journals.example.org/paper'), {
+    ok: true,
+    kind: 'url',
+    value: 'https://journals.example.org/paper',
+  });
+  assert.deepEqual(parseCorpusPointer('0000-0002-1825-0097'), {
+    ok: true,
+    kind: 'orcid',
+    value: '0000-0002-1825-0097',
+  });
+  assert.equal(parseCorpusPointer('https://orcid.org/0000-0002-1825-0097').kind, 'orcid');
+  assert.equal(
+    parseCorpusPointer({
+      kind: 'institutional-repo',
+      value: 'https://hdl.handle.net/2328/12345',
+    }).kind,
+    'institutional-repo'
+  );
+});
+
+test('published-work queries are metadata-only and never include the current document', () => {
+  const currentDocument = 'PRIVATE patient narrative that must not leave this machine.';
+  const calls = [];
+  const result = ingestPublishedWork({
+    pointer: { kind: 'doi', value: '10.1234/example.paper' },
+    consent: true,
+    currentDocument,
+    fetchMetadata(query) {
+      calls.push(query);
+      return { title: 'Example paper', publisher: 'Example Press' };
+    },
+    fetchFullText() {
+      throw new Error('full text must not run on a metadata-only grant');
+    },
+  });
+
+  assert.equal(result.status, 'metadata-only');
+  assert.equal(result.sent_current_document, false);
+  assert.equal(result.uploaded_to_search, false);
+  assert.equal(result.search_query, null);
+  assert.deepEqual(calls, [{ kind: 'doi', identifier: '10.1234/example.paper' }]);
+  assert.equal(JSON.stringify(calls).includes('PRIVATE'), false);
+  assert.equal(JSON.stringify(result.query).includes('PRIVATE'), false);
+});
+
+test('published full text is fetched only with a separate grant and still omits the current document', () => {
+  const currentDocument = 'SECRET manuscript body';
+  const queries = [];
+  const result = ingestPublishedWork({
+    pointer: 'https://example.edu/repository/handle/123',
+    consent: true,
+    fullTextGrant: true,
+    currentDocument,
+    fetchMetadata(query) {
+      queries.push(['metadata', query]);
+      return { title: 'Repo item' };
+    },
+    fetchFullText(query) {
+      queries.push(['full-text', query]);
+      return VOICE_SAMPLE;
+    },
+  });
+
+  assert.equal(result.status, 'calibrated');
+  assert.equal(result.provenance, 'published-work');
+  assert.deepEqual(result.features, calibrateVoiceSample(VOICE_SAMPLE).features);
+  assert.deepEqual(queries, [
+    [
+      'metadata',
+      { kind: 'institutional-repo', identifier: 'https://example.edu/repository/handle/123' },
+    ],
+    [
+      'full-text',
+      { kind: 'institutional-repo', identifier: 'https://example.edu/repository/handle/123' },
+    ],
+  ]);
+  assert.equal(JSON.stringify(queries).includes('SECRET'), false);
+  assert.equal(result.sent_current_document, false);
+});
+
+test('refuses published-work fetches without consent and does not call the fetcher', () => {
+  let fetches = 0;
+  const result = ingestPublishedWork({
+    pointer: { kind: 'url', value: 'https://example.org/essay' },
+    consent: false,
+    fetchMetadata() {
+      fetches += 1;
+      return { title: 'should not run' };
+    },
+  });
+  assert.equal(result.status, 'consent-required');
+  assert.equal(result.features, null);
+  assert.equal(fetches, 0);
+});
+
+test('asks for published-work consent when a DOI is named without a grant', () => {
+  const decision = selectMaterialQuestion({
+    corpus_pointer: { kind: 'doi', value: '10.1234/example.paper' },
+    published_consent: false,
+  });
+  assert.equal(decision.question.field, 'published_consent');
+  assert.match(decision.question.text, /metadata|DOI|current document/i);
 });
