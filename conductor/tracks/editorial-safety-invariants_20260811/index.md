@@ -3,8 +3,8 @@
 - **Track ID:** `editorial-safety-invariants_20260811`
 - **Type:** Feature
 - **Priority:** P0
-- **Status:** In progress
-- **Current phase:** Phase 4 — Upstream decision-log refresh
+- **Status:** Complete
+- **Current phase:** Complete
 - **Coordinates with:** Domain and citation coverage; pattern registry
 - **GitHub track:** [#276](https://github.com/edithatogo/authentext/issues/276)
 - **Phase 1 PR:** [#275](https://github.com/edithatogo/authentext/pull/275)
@@ -13,6 +13,7 @@
 - **Phase 3 PR B:** [#285](https://github.com/edithatogo/authentext/pull/285)
 - **Phase 3 PR C:** [#286](https://github.com/edithatogo/authentext/pull/286)
 - **Phase 3 PR D:** [#287](https://github.com/edithatogo/authentext/pull/287)
+- **Phase 4:** upstream decision-log refresh on this branch
 
 ## Artifacts
 
@@ -36,3 +37,5 @@ Phase 3 shipped as [PR #284](https://github.com/edithatogo/authentext/pull/284),
 [PR #285](https://github.com/edithatogo/authentext/pull/285),
 [PR #286](https://github.com/edithatogo/authentext/pull/286), and
 [PR #287](https://github.com/edithatogo/authentext/pull/287).
+Phase 4 refreshes the upstream decision log and points
+`gather-repo-data.js` at `edithatogo/authentext`.

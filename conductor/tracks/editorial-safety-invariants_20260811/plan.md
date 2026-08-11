@@ -69,14 +69,17 @@ Prefer extending an existing number over minting a new one.
 
 ## Phase 4: Upstream decision-log refresh
 
-- [ ] Task: Rewrite `conductor/self-improvement/upstream-decision-log.md` so
+- [x] Task: Rewrite `conductor/self-improvement/upstream-decision-log.md` so
       it names `edithatogo/authentext`, records v2.9.0, and triages the open
       upstream queue. Keep archived DEFER rows as history.
-- [ ] Task: Confirm `scripts/gather-repo-data.js` examples use
-      `edithatogo/authentext`. If they still say `humanizer-next`, leave the
-      code change to `quality-harness-and-matrix_20260811` and record the
-      pointer.
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      (commit: 6617d95)
+- [x] Task: Confirm `scripts/gather-repo-data.js` examples use
+      `edithatogo/authentext`. The example still said `humanizer-next`; this
+      phase corrected it. `quality-harness-and-matrix_20260811` still owns
+      leftover rename drift outside this example.
+      (commit: 6617d95)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      [checkpoint: 6617d95]
 
 ## Handoff artifacts
 
