@@ -31,7 +31,7 @@ This file tracks all major tracks for the project. Each track has its own detail
       [#278](https://github.com/edithatogo/authentext/issues/278).
       _Link: [tracks/pattern-registry-contracts_20260811/index.md](./tracks/pattern-registry-contracts_20260811/index.md)_
 
-- [ ] **voice-corpus-calibration_20260811** (P1) - Point Authentext at
+- [~] **voice-corpus-calibration_20260811** (P1) - Point Authentext at
       local or published prior work for voice matching without inventing
       biography.
       [#279](https://github.com/edithatogo/authentext/issues/279).

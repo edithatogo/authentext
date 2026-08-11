@@ -1,10 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import {
+  calibrateLocalCorpus,
   calibrateVoiceSample,
+  parseCorpusPointer,
   resolveDeliveryMode,
   selectMaterialQuestion,
 } from '../scripts/lib/document-intake-policy.js';
+
+const VOICE_SAMPLE = [
+  "I don't want a grand introduction. Start with the decision and explain why it matters.",
+  'Use short paragraphs, but let a longer sentence carry detail when the detail earns its place.',
+  'Prefer concrete verbs. Keep the stance measured, direct, and open about uncertainty.',
+  'A heading should help the reader navigate; it should not advertise the prose beneath it.',
+].join('\n\n');
 
 test('delivery modes never imply mutation, research, or publication authority', () => {
   for (const mode of ['pasted', 'file', 'embedded']) {
@@ -37,13 +49,7 @@ test('pasted and embedded modes select bounded response contracts', () => {
 });
 
 test('voice calibration records only observable writing features', () => {
-  const sample = [
-    "I don't want a grand introduction. Start with the decision and explain why it matters.",
-    'Use short paragraphs, but let a longer sentence carry detail when the detail earns its place.',
-    'Prefer concrete verbs. Keep the stance measured, direct, and open about uncertainty.',
-    'A heading should help the reader navigate; it should not advertise the prose beneath it.',
-  ].join('\n\n');
-  const profile = calibrateVoiceSample(sample);
+  const profile = calibrateVoiceSample(VOICE_SAMPLE);
 
   assert.equal(profile.status, 'calibrated');
   assert.equal(profile.provenance, 'user-sample');
@@ -112,4 +118,109 @@ test('uses conservative assumptions when missing fields do not materially change
     editing_strength: 'conservative',
     research_permission: 'not_requested',
   });
+});
+
+test('parses explicit local file and folder pointers', () => {
+  assert.deepEqual(parseCorpusPointer({ kind: 'local-file', path: 'C:\\drafts\\essay.md' }), {
+    ok: true,
+    kind: 'local-file',
+    path: 'C:\\drafts\\essay.md',
+  });
+  assert.deepEqual(parseCorpusPointer({ kind: 'local-folder', path: './prior-writing' }), {
+    ok: true,
+    kind: 'local-folder',
+    path: './prior-writing',
+  });
+  assert.equal(parseCorpusPointer(null).ok, false);
+  assert.match(parseCorpusPointer('').reason, /pointer/i);
+});
+
+test('local file corpus produces the same feature record as a pasted sample', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'authentext-voice-file-'));
+  const filePath = path.join(root, 'sample.md');
+  fs.writeFileSync(filePath, VOICE_SAMPLE, 'utf8');
+
+  const fromFile = calibrateLocalCorpus({
+    pointer: { kind: 'local-file', path: filePath },
+    consent: true,
+  });
+  const fromPaste = calibrateVoiceSample(VOICE_SAMPLE);
+
+  assert.equal(fromFile.status, 'calibrated');
+  assert.equal(fromFile.provenance, 'local-corpus');
+  assert.deepEqual(fromFile.features, fromPaste.features);
+  assert.equal(fromFile.sample_words, fromPaste.sample_words);
+});
+
+test('local folder corpus concatenates readable files into one feature record', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'authentext-voice-folder-'));
+  fs.writeFileSync(path.join(root, 'a.md'), VOICE_SAMPLE.slice(0, 180), 'utf8');
+  fs.writeFileSync(path.join(root, 'b.md'), VOICE_SAMPLE.slice(180), 'utf8');
+  fs.writeFileSync(path.join(root, 'notes.bin'), Buffer.from([0, 1, 2, 3]));
+
+  const fromFolder = calibrateLocalCorpus({
+    pointer: { kind: 'local-folder', path: root },
+    consent: true,
+  });
+  const fromPaste = calibrateVoiceSample(
+    `${VOICE_SAMPLE.slice(0, 180)}\n\n${VOICE_SAMPLE.slice(180)}`
+  );
+
+  assert.equal(fromFolder.status, 'calibrated');
+  assert.deepEqual(fromFolder.features, fromPaste.features);
+  assert.ok(!fromFolder.search_query);
+  assert.equal(fromFolder.uploaded_to_search, false);
+});
+
+test('refuses local corpus reads without explicit consent and does not touch the path', () => {
+  let reads = 0;
+  const profile = calibrateLocalCorpus({
+    pointer: { kind: 'local-file', path: 'C:\\private\\draft.md' },
+    consent: false,
+    readFile() {
+      reads += 1;
+      return VOICE_SAMPLE;
+    },
+  });
+
+  assert.equal(profile.status, 'consent-required');
+  assert.equal(profile.features, null);
+  assert.equal(reads, 0);
+  assert.match(profile.limitation, /consent/i);
+});
+
+test('unreadable local paths disclose the limit instead of inventing a voice', () => {
+  const missing = path.join(os.tmpdir(), 'authentext-missing-voice-corpus.md');
+  const profile = calibrateLocalCorpus({
+    pointer: { kind: 'local-file', path: missing },
+    consent: true,
+  });
+
+  assert.equal(profile.status, 'unreadable');
+  assert.equal(profile.features, null);
+  assert.match(profile.limitation, /unreadable|not found|cannot read/i);
+});
+
+test('insufficient local corpus samples do not fabricate a voice profile', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'authentext-voice-short-'));
+  const filePath = path.join(root, 'short.txt');
+  fs.writeFileSync(filePath, 'Please make this clearer.', 'utf8');
+
+  const profile = calibrateLocalCorpus({
+    pointer: { kind: 'local-file', path: filePath },
+    consent: true,
+  });
+
+  assert.equal(profile.status, 'insufficient-sample');
+  assert.equal(profile.features, null);
+  assert.match(profile.limitation, /short/i);
+});
+
+test('asks for corpus consent when a local pointer is present without a grant', () => {
+  const decision = selectMaterialQuestion({
+    corpus_pointer: { kind: 'local-folder', path: './drafts' },
+    corpus_consent: false,
+  });
+  assert.equal(decision.question.field, 'corpus_consent');
+  assert.match(decision.question.text, /read|consent|local/i);
 });
