@@ -3,7 +3,7 @@
 - **Track ID:** `pattern-registry-contracts_20260811`
 - **Type:** Feature
 - **Priority:** P1
-- **Status:** New
+- **Status:** In progress
 - **Depends on:** `editorial-safety-invariants_20260811`
 - **Parallel-safe:** after Phase 1 of the safety track merges
 - **GitHub track:** [#278](https://github.com/edithatogo/authentext/issues/278)

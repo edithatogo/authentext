@@ -38,7 +38,7 @@
       }
     },
     "conflicts": { "type": "array" },
-    "protected_items": { "type": "object" },
+    "protected_items": { "$ref": "#/$defs/protectedItems" },
     "audit": {
       "type": "object",
       "additionalProperties": false,
@@ -47,6 +47,42 @@
         "passed": { "type": "boolean" },
         "revision_count": { "type": "integer", "minimum": 0, "maximum": 1 },
         "unresolved_finding_ids": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+  },
+  "$defs": {
+    "protectedSpanClass": {
+      "enum": ["quantity", "citation", "negation", "epistemic", "scope", "proper-name"]
+    },
+    "protectedItems": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preserved"],
+      "properties": {
+        "preserved": { "type": "boolean" },
+        "classes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/protectedSpanClass" }
+        },
+        "violations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type"],
+            "properties": {
+              "type": {
+                "enum": ["literal", "number", "required-section", "sourced-rule"]
+              },
+              "class_id": { "$ref": "#/$defs/protectedSpanClass" },
+              "values": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
       }
     }
   }

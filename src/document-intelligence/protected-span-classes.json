@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "classes": [
+    {
+      "id": "quantity",
+      "title": "Numerals, quantities, units, dates, currencies, and periodicity",
+      "lock": "may-move-not-reword",
+      "examples": ["14.2%", "5 mg", "1989", "$40"]
+    },
+    {
+      "id": "citation",
+      "title": "Citations, references, quotations, and pinpoints",
+      "lock": "may-move-not-reword",
+      "examples": ["(Smith, 2024)", "[1]", "section 8"]
+    },
+    {
+      "id": "negation",
+      "title": "Negation and polarity",
+      "lock": "may-move-not-reword",
+      "examples": ["not", "no evidence of", "should not"]
+    },
+    {
+      "id": "epistemic",
+      "title": "Epistemic qualifiers and their strength",
+      "lock": "may-move-not-reword",
+      "examples": ["may", "suggests", "is associated with"]
+    },
+    {
+      "id": "scope",
+      "title": "Scope limits on a claim",
+      "lock": "may-move-not-reword",
+      "examples": ["in adults", "before 2020", "in this cohort"]
+    },
+    {
+      "id": "proper-name",
+      "title": "Proper names, defined terms, and identifiers",
+      "lock": "may-move-not-reword",
+      "examples": ["`--flag`", "CONSORT", "authentext"]
+    }
+  ]
+}

@@ -18,6 +18,8 @@ Always-applied patterns for general writing. These patterns identify and remove 
 
 Based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup.
 
+This skill follows the [Agent Skills specification](https://agentskills.io/specification).
+
 ## Your Task
 
 When given text to humanize:

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/authentext/blob/main/src/document-intelligence/pattern.schema.json",
+  "title": "Authentext pattern record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "number",
+    "title",
+    "severity",
+    "domain_applicability",
+    "mode_carve_outs",
+    "trigger_terms",
+    "false_positive_guards"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "pattern": "^pattern-[1-9][0-9]*$" },
+    "number": { "type": "integer", "minimum": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "severity": { "$ref": "#/$defs/severity" },
+    "must_preserve": { "type": "boolean" },
+    "domain_applicability": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/domain" }
+    },
+    "mode_carve_outs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/invocationMode" }
+    },
+    "trigger_terms": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "false_positive_guards": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "problem": { "type": "string", "minLength": 1 },
+    "before": { "type": "string", "minLength": 1 },
+    "after": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "severity": { "enum": ["critical", "high", "medium", "low"] },
+    "invocationMode": { "enum": ["pasted", "file", "embedded"] },
+    "domain": {
+      "enum": [
+        "all",
+        "correspondence",
+        "workplace",
+        "public-content",
+        "technical",
+        "product",
+        "academic",
+        "health-research",
+        "governance",
+        "legal-regulatory",
+        "clinical-safety",
+        "commercial",
+        "employment",
+        "creative-narrative"
+      ]
+    }
+  }
+}

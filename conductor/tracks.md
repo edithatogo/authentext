@@ -25,7 +25,7 @@ This file tracks all major tracks for the project. Each track has its own detail
       the safety track.
       _Link: [tracks/domain-and-citation_20260811/index.md](./tracks/domain-and-citation_20260811/index.md)_
 
-- [ ] **pattern-registry-contracts_20260811** (P1) - Machine-readable
+- [~] **pattern-registry-contracts_20260811** (P1) - Machine-readable
       pattern registry and a stricter Agent Skills contract, extending
       `src/document-intelligence/`.
       [#278](https://github.com/edithatogo/authentext/issues/278).
