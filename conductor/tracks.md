@@ -37,11 +37,10 @@ This file tracks all major tracks for the project. Each track has its own detail
       [#279](https://github.com/edithatogo/authentext/issues/279).
       _Link: [tracks/voice-corpus-calibration_20260811/index.md](./tracks/voice-corpus-calibration_20260811/index.md)_
 
-- [~] **quality-harness-and-matrix_20260811** (P2) - Feature matrix, Vale
-  and self-compliance, scored harness, watcher/hygiene.
-  [#280](https://github.com/edithatogo/authentext/issues/280).
-  Phase 1 PR is in progress.
-  _Link: [tracks/quality-harness-and-matrix_20260811/index.md](./tracks/quality-harness-and-matrix_20260811/index.md)_
+- [ ] **quality-harness-and-matrix_20260811** (P2) - Feature matrix, Vale
+      and self-compliance, scored harness, watcher/hygiene.
+      [#280](https://github.com/edithatogo/authentext/issues/280).
+      _Link: [tracks/quality-harness-and-matrix_20260811/index.md](./tracks/quality-harness-and-matrix_20260811/index.md)_
 
 ---
 
@@ -258,6 +257,4 @@ Last updated: 2026-08-11.
 
 Active tracks: 5. Sequence is safety, then domain/citation; registry and
 quality can proceed in parallel after safety Phase 1 merges. Voice depends
-on the safety invariants.
-epends
 on the safety invariants.
