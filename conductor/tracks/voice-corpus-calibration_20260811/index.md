@@ -3,7 +3,7 @@
 - **Track ID:** `voice-corpus-calibration_20260811`
 - **Type:** Feature
 - **Priority:** P1
-- **Status:** New
+- **Status:** In progress
 - **Depends on:** `editorial-safety-invariants_20260811`
 - **GitHub track:** [#279](https://github.com/edithatogo/authentext/issues/279)
 

@@ -49,6 +49,9 @@ Research is off by default. Use it only when current external guidance is
 material and the user has granted research permission. Query with bounded,
 non-sensitive metadata; never upload or quote the document as search input.
 
+A voice corpus is another intake source. It needs an explicit pointer and
+consent. Private corpus text never becomes a search query.
+
 ### Source precedence
 
 When guidance conflicts, prefer: user-supplied governing requirements, binding
@@ -97,9 +100,16 @@ If the user supplies a writing sample of their own previous prose, analyse it be
 
 1. Read the sample first. Note sentence lengths, vocabulary, paragraph openings, punctuation, recurring phrases, and transitions.
 2. Match those habits instead of only deleting AI patterns. Do not upgrade casual words or regularise deliberate quirks.
-3. Without a sample, use the default behaviour below.
+3. Without a sample, or if the corpus is too small or unreadable, say so and use the default behaviour below. Do not invent a voice.
 
 A sample outranks Authentext style rules, including the Pattern 13 dash ban: if the sample uses em dashes, keep them at roughly the sample's frequency. Matching the author beats scrubbing the tell. The sample does not outrank Never add, Never lose, or protected spans.
+
+The sample may be pasted text, or an explicit pointer to local prior work:
+
+- Local file: a path the user names, such as `./drafts/column.md`
+- Local folder: a directory the user names, such as `./prior-writing/`
+
+Do not search a disk or inbox to find a voice. Read a local path only when the user pointed at it and granted consent. Private corpus text stays local. It never becomes a search query.
 
 ## Invocation Modes
 

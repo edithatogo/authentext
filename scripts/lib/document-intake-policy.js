@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 const DELIVERY_CONTRACTS = Object.freeze({
   pasted: 'text',
   file: 'summary',
@@ -5,6 +8,8 @@ const DELIVERY_CONTRACTS = Object.freeze({
 });
 const CAPABILITIES = Object.freeze(['mutate_file', 'research', 'publish']);
 const MINIMUM_SAMPLE_WORDS = 40;
+const LOCAL_POINTER_KINDS = new Set(['local-file', 'local-folder']);
+const TEXT_CORPUS_EXTENSIONS = new Set(['.md', '.markdown', '.txt', '.text', '.rst']);
 
 /**
  * Resolve output shape and explicit capability grants independently.
@@ -109,6 +114,132 @@ function distinct(values) {
   return [...new Set(Array.isArray(values) ? values : [])];
 }
 
+function isTextCorpusFile(filePath) {
+  return TEXT_CORPUS_EXTENSIONS.has(path.extname(filePath).toLocaleLowerCase());
+}
+
+function defaultReadFile(filePath) {
+  return fs.readFileSync(filePath, 'utf8');
+}
+
+function defaultListFiles(directory) {
+  return fs
+    .readdirSync(directory, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => path.join(directory, entry.name));
+}
+
+function corpusFailure(status, limitation) {
+  return {
+    status,
+    provenance: 'local-corpus',
+    sample_words: 0,
+    features: null,
+    limitation,
+    uploaded_to_search: false,
+    search_query: null,
+  };
+}
+
+/**
+ * Classify an explicit corpus pointer. A missing pointer is not a license to
+ * search a disk or inbox.
+ * @param {unknown} input
+ * @returns {{ok: true, kind: string, path: string}|{ok: false, reason: string}}
+ */
+export function parseCorpusPointer(input) {
+  if (input === null || input === undefined || input === '') {
+    return { ok: false, reason: 'An explicit corpus pointer is required.' };
+  }
+  if (typeof input === 'string') {
+    const trimmed = input.trim();
+    if (!trimmed) return { ok: false, reason: 'An explicit corpus pointer is required.' };
+    return { ok: true, kind: 'local-file', path: trimmed };
+  }
+  if (typeof input !== 'object' || Array.isArray(input)) {
+    return { ok: false, reason: 'An explicit corpus pointer is required.' };
+  }
+
+  const kind = typeof input.kind === 'string' ? input.kind : '';
+  const pointerPath =
+    typeof input.path === 'string'
+      ? input.path
+      : typeof input.value === 'string'
+        ? input.value
+        : '';
+  if (!LOCAL_POINTER_KINDS.has(kind) || !pointerPath.trim()) {
+    return { ok: false, reason: 'Unsupported or incomplete corpus pointer.' };
+  }
+  return { ok: true, kind, path: pointerPath };
+}
+
+/**
+ * Build a voice profile from a named local file or folder. Consent is required
+ * before any read. The feature record matches a pasted sample of the same text.
+ * @param {{
+ *   pointer?: unknown,
+ *   consent?: boolean,
+ *   readFile?: (filePath: string) => string,
+ *   listFiles?: (directory: string) => string[],
+ * }} [input]
+ * @returns {Record<string, unknown>}
+ */
+export function calibrateLocalCorpus({
+  pointer,
+  consent = false,
+  readFile = defaultReadFile,
+  listFiles = defaultListFiles,
+} = {}) {
+  const parsed = parseCorpusPointer(pointer);
+  if (!parsed.ok) {
+    return corpusFailure(
+      parsed.reason.includes('Unsupported') ? 'unsupported-pointer' : 'missing-pointer',
+      parsed.reason
+    );
+  }
+  if (!LOCAL_POINTER_KINDS.has(parsed.kind)) {
+    return corpusFailure(
+      'unsupported-pointer',
+      'Local calibration accepts only a named file or folder.'
+    );
+  }
+  if (consent !== true) {
+    return corpusFailure(
+      'consent-required',
+      'Local corpus files are read only after the user grants consent.'
+    );
+  }
+
+  try {
+    let text;
+    if (parsed.kind === 'local-file') {
+      text = readFile(parsed.path);
+    } else {
+      const files = listFiles(parsed.path)
+        .filter((filePath) => isTextCorpusFile(filePath))
+        .sort((left, right) => left.localeCompare(right));
+      if (files.length === 0) {
+        return corpusFailure('unreadable', 'The local folder has no readable text files.');
+      }
+      text = files.map((filePath) => readFile(filePath)).join('\n\n');
+    }
+    if (typeof text !== 'string') {
+      return corpusFailure('unreadable', 'The local corpus is unreadable.');
+    }
+
+    const profile = calibrateVoiceSample(text);
+    return {
+      ...profile,
+      provenance: 'local-corpus',
+      uploaded_to_search: false,
+      search_query: null,
+    };
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : 'cannot read';
+    return corpusFailure('unreadable', `The local corpus is unreadable: ${detail}.`);
+  }
+}
+
 /**
  * Select no more than one question whose answer changes authority, operation,
  * routing, or safety. Non-material gaps receive conservative assumptions.
@@ -125,6 +256,13 @@ export function selectMaterialQuestion(intake = {}) {
       field: 'research_permission',
       text: 'May I search current guidance using nonsensitive document-profile metadata?',
       reason: 'Current guidance is material, but research authority has not been granted.',
+    });
+  }
+  if (intake.corpus_pointer && intake.corpus_consent !== true) {
+    questions.push({
+      field: 'corpus_consent',
+      text: 'May I read the named local files to build a voice profile? The text stays local and will not be uploaded to search.',
+      reason: 'A corpus pointer was named, but local-read consent has not been granted.',
     });
   }
   if (operationCandidates.length > 1) {

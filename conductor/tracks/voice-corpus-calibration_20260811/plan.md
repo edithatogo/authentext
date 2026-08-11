@@ -2,11 +2,11 @@
 
 ## Phase 1: Local corpus intake contract
 
-- [ ] Task: Write failing tests for local file/folder pointers, consent,
+- [~] Task: Write failing tests for local file/folder pointers, consent,
       unreadable paths, and insufficient samples.
-- [ ] Task: Extend `document-intake-policy.js` so a local corpus produces
+- [~] Task: Extend `document-intake-policy.js` so a local corpus produces
       the same feature record as a pasted sample.
-- [ ] Task: Document the pointer syntax in the compiled skill.
+- [~] Task: Document the pointer syntax in the compiled skill.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 2: Published-work metadata intake
