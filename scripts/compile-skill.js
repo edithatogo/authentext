@@ -15,6 +15,12 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import {
+  loadContractJson,
+  PATTERNS_REGISTRY,
+  renderSeverityClassification,
+  replaceSeveritySection,
+} from './lib/skill-contracts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -271,6 +277,11 @@ policy:
 `;
 }
 
+function renderedSeverityFromRegistry() {
+  const registry = loadContractJson(ROOT_DIR, PATTERNS_REGISTRY);
+  return renderSeverityClassification(registry.patterns);
+}
+
 /**
 
 * @param {Record<string, string|null>} modules
@@ -285,7 +296,11 @@ function writeReferenceTree(modules) {
       continue;
     }
 
-    const body = addReferenceNavigation(stripFrontmatter(moduleContent).trim());
+    let stripped = stripFrontmatter(moduleContent).trim();
+    if (key === 'core') {
+      stripped = replaceSeveritySection(stripped, renderedSeverityFromRegistry());
+    }
+    const body = addReferenceNavigation(stripped);
     const targetPath = path.join(referencesDir, filename);
     fs.writeFileSync(targetPath, `${body}\n`, 'utf-8');
     console.log(`✓ Written: ${OUTPUT.referencesDir}/${filename}`);
@@ -306,11 +321,7 @@ function compileStandardSkill(modules) {
   const strippedCore = stripFrontmatter(modules.core);
 
   const intro = buildStandardIntro(strippedCore);
-  const severity = extractSection(
-    strippedCore,
-    'SEVERITY CLASSIFICATION',
-    '\n---\n\n_Module Version'
-  );
+  const severity = renderedSeverityFromRegistry();
   const detection = extractSection(strippedCore, 'DETECTION GUIDANCE');
 
   const referenceLinks = [

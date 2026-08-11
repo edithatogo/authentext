@@ -15,7 +15,7 @@
       registry entry fails `npm run sync` / validate.
       Concordance is enforced by `validate-skill-contracts.js` against
       Markdown headings rather than by rewriting `compile-skill.js`.
-- [ ] Task: Teach `compile-skill.js` to emit the severity tables from
+- [x] Task: Teach `compile-skill.js` to emit the severity tables from
       `patterns.json`. Keep pattern bodies in modules until a later slice
       migrates them.
 - [ ] Task: Migrate pattern bodies in small PRs, not one dump.
@@ -44,5 +44,5 @@
 - `src/document-intelligence/patterns-registry.schema.json`
 - `src/document-intelligence/patterns.json`
 - Concordance check: Markdown headings, severity-table IDs, frontmatter count
-- Compiler path that emits severity tables (deferred if `compile-skill.js` is busy)
+- Compiler path that emits severity tables from `patterns.json`
 - Documented Agent Skills contract

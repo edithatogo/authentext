@@ -238,55 +238,55 @@ the detailed pattern definitions.
 
 ### Critical (immediate AI detection)
 
-- Pattern 19: Collaborative communication artifacts
-- Pattern 20: Knowledge-cutoff disclaimers
-- Pattern 21: Sycophantic tone
-- Pattern 25: AI signatures in code
-- Pattern 27: Technical literal preservation (must preserve)
+- Pattern 19: Collaborative Communication Artifacts
+- Pattern 20: Knowledge-Cutoff Disclaimers and Speculative Gap-Filling (includes upstream v2.8 refinement)
+- Pattern 21: Sycophantic Tone
+- Pattern 25: AI Signatures in Code
+- Pattern 27: Technical Literal Preservation (must preserve)
 
 ### High (strong AI signals)
 
-- Pattern 1: Undue emphasis on significance
-- Pattern 3: Superficial -ing analyses
-- Pattern 4: Promotional language
-- Pattern 31: Extended thinking tags
+- Pattern 1: Undue Emphasis on Significance
+- Pattern 3: Superficial -ing Analyses
+- Pattern 4: Promotional Language
+- Pattern 31: Extended Thinking Tags
 
 ### Medium (moderate AI signals)
 
-- Pattern 2: Undue emphasis on notability
-- Pattern 5: Vague attributions and back-references
-- Pattern 6: Formulaic "Challenges" sections
-- Pattern 7: Overused AI vocabulary
-- Pattern 8: Copula avoidance
-- Pattern 11: Elegant variation and repeated openings
-- Pattern 32: JSON mode artifacts
-- Pattern 33: Tool use documentation
-- Pattern 40: Passive voice and subjectless fragments (Upstream §13)
+- Pattern 2: Undue Emphasis on Notability
+- Pattern 5: Vague Attributions and Back-References
+- Pattern 6: Formulaic "Challenges" Sections
+- Pattern 7: Overused AI Vocabulary
+- Pattern 8: Copula Avoidance
+- Pattern 11: Elegant Variation and Repeated Sentence Openings
+- Pattern 32: JSON Mode Artifacts
+- Pattern 33: Tool Use Documentation
+- Pattern 40: Passive Voice and Subjectless Fragments (Upstream §13, #146)
 
 ### Low (weak AI signals)
 
-- Pattern 9: Negative parallelisms
-- Pattern 10: Rule of three overuse
-- Pattern 12: False ranges
-- Pattern 13: Em dash overuse
-- Pattern 14: Overuse of boldface
-- Pattern 15: Inline-header lists
-- Pattern 16: Title case in headings
+- Pattern 9: Negative Parallelisms
+- Pattern 10: Rule of Three Overuse
+- Pattern 12: False Ranges
+- Pattern 13: Em/En Dash Hard Cut
+- Pattern 14: Overuse of Boldface
+- Pattern 15: Inline-Header Vertical Lists
+- Pattern 16: Title Case in Headings
 - Pattern 17: Emojis
-- Pattern 18: Quotation mark issues
-- Pattern 22: Filler phrases
-- Pattern 23: Excessive hedging
-- Pattern 24: Generic positive conclusions
-- Pattern 26: Over-structuring
-- Pattern 28: Persuasive tropes
+- Pattern 18: Quotation Mark Issues
+- Pattern 22: Filler Phrases
+- Pattern 23: Excessive Hedging
+- Pattern 24: Generic Positive Conclusions
+- Pattern 26: Over-Structuring
+- Pattern 28: Persuasive Tropes
 - Pattern 29: Signposting
-- Pattern 30: Fragmented headers
-- Pattern 34: Over-polished conclusions
-- Pattern 35: Manufactured punchlines and staccato drama (Upstream #31)
-- Pattern 36: Aphorism formulas (Upstream #32)
-- Pattern 37: Conversational rhetorical openers (Upstream #33)
-- Pattern 38: Diff-anchored writing, shadowboxing, and editorial scar tissue
-- Pattern 39: Hyphenated word pair overuse (narrowed, upstream)
+- Pattern 30: Fragmented Headers
+- Pattern 34: Over-Polished Conclusions
+- Pattern 35: Manufactured Punchlines and Staccato Drama (Upstream #31)
+- Pattern 36: Aphorism Formulas (Upstream #32)
+- Pattern 37: Conversational Rhetorical Openers (Upstream #33)
+- Pattern 38: Diff-Anchored Writing, Shadowboxing, and Editorial Scar Tissue
+- Pattern 39: Hyphenated Word Pair Overuse (narrowed rule, upstream v2.8)
 
 ## DETECTION GUIDANCE
 

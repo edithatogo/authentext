@@ -30,6 +30,7 @@ This file tracks all major tracks for the project. Each track has its own detail
       `src/document-intelligence/`.
       [#278](https://github.com/edithatogo/authentext/issues/278).
       Contracts are [PR #293](https://github.com/edithatogo/authentext/pull/293).
+      Registry seed is [PR #296](https://github.com/edithatogo/authentext/pull/296).
       _Link: [tracks/pattern-registry-contracts_20260811/index.md](./tracks/pattern-registry-contracts_20260811/index.md)_
 
 - [x] **voice-corpus-calibration_20260811** (P1) - Point Authentext at
