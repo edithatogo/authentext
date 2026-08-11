@@ -15,22 +15,24 @@ GitHub: [#276](https://github.com/edithatogo/authentext/issues/276),
       (commit: 678bcd7)
 - [x] Task: Add regression tests for the invariants and unique Low-tier IDs.
       (commit: 678bcd7)
-- [ ] Task: Merge PR #275 once Actions are green.
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Merge PR #275 once Actions are green.
+      (merged: 141e1ed)
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      [checkpoint: 141e1ed]
 
 ## Phase 2: Voice, modes, and cheap catalogue fixes
 
 Separate PRs unless two fixes are one-line each.
 
-- [ ] Task: Write failing tests for voice-sample precedence, including the
+- [x] Task: Write failing tests for voice-sample precedence, including the
       dash-ban override, and for pasted/file/embedded delivery wording in
       `SKILL.md`.
-- [ ] Task: Add the seven-line voice calibration section and the sample
+- [x] Task: Add the seven-line voice calibration section and the sample
       outranks style rule.
-- [ ] Task: Add invocation modes and keep the host-controls wording from
+- [x] Task: Add invocation modes and keep the host-controls wording from
       [upstream PR #213](https://github.com/blader/humanizer/pull/213).
-- [ ] Task: Add the secondhand-text false-positive guard (v2.8.1).
-- [ ] Task: Add `quietly` to Pattern 7
+- [x] Task: Add the secondhand-text false-positive guard (v2.8.1).
+- [x] Task: Add `quietly` to Pattern 7
       ([PR #192](https://github.com/blader/humanizer/pull/192)).
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 

@@ -28,6 +28,8 @@ When given text to humanize:
 
 Rules 2 and 3 are invariants, not preferences. They outrank every pattern below. If removing a pattern would require inventing a fact or dropping a claim, leave the pattern in place and report it instead.
 
+How you are invoked changes what you deliver (see Invocation Modes).
+
 ---
 
 ## Document intake and safety
@@ -81,6 +83,26 @@ loses a scope limit even when every word looks preserved.
 
 Domain references extend this list. Read them before editing clinical, legal,
 academic, or regulatory material.
+
+---
+
+## Voice Calibration
+
+If the user supplies a writing sample of their own previous prose, analyse it before rewriting:
+
+1. Read the sample first. Note sentence lengths, vocabulary, paragraph openings, punctuation, recurring phrases, and transitions.
+2. Match those habits instead of only deleting AI patterns. Do not upgrade casual words or regularise deliberate quirks.
+3. Without a sample, use the default behaviour below.
+
+A sample outranks Authentext style rules, including the Pattern 13 dash ban: if the sample uses em dashes, keep them at roughly the sample's frequency. Matching the author beats scrubbing the tell. The sample does not outrank Never add, Never lose, or protected spans.
+
+## Invocation Modes
+
+**Pasted text (default).** The user gives text in the conversation. Return the revised prose, and any requested review or summary.
+
+**File mode.** The user points at a file. Read it and rewrite the file in place only when the caller has granted write access. Never try to bypass the host application's approval, logging, verification, provenance, permission, or safety controls. Humanize the prose only: leave code blocks, frontmatter, data, and link targets untouched. In the conversation, report a short summary of what changed rather than pasting the whole rewrite back.
+
+**Embedded mode.** Another task or agent is using this skill as one step of a larger job. Return only the final prose. No draft, no audit bullets, no summary, unless the caller asks for them. The caller wants prose, not ceremony.
 
 ---
 
@@ -249,6 +271,7 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **"Honestly" or "look" mid-sentence.** These are ordinary in casual writing. The tell is the standalone theatrical opener, not the word itself.
 - **Unsourced claims.** Most of the web is unsourced. Lack of citations doesn't prove anything.
 - **Correct, complex formatting.** Visual editors and templates produce clean output without any AI.
+- **Secondhand text.** Do not rewrite watched phrases inside quotations, titles, proper names, or examples where the phrase is being discussed rather than used.
 
 When in doubt, look for **clusters** of tells, not isolated ones. A single em dash means nothing; em dashes plus rule-of-three plus _vibrant tapestry_ plus a "Conclusion" section is a confession.
 

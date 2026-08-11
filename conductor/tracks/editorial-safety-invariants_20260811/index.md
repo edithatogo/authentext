@@ -4,7 +4,7 @@
 - **Type:** Feature
 - **Priority:** P0
 - **Status:** In progress
-- **Current phase:** Phase 1 — Core claim-preservation invariants
+- **Current phase:** Phase 2 — Voice, modes, and cheap catalogue fixes
 - **Coordinates with:** Domain and citation coverage; pattern registry
 - **GitHub track:** [#276](https://github.com/edithatogo/authentext/issues/276)
 - **Phase 1 PR:** [#275](https://github.com/edithatogo/authentext/pull/275)
@@ -24,4 +24,7 @@ out of this track.
 
 ## Delivery
 
-Small PRs, one theme each. Phase 1 is already opened as PR #275.
+Small PRs, one theme each. Phase 1 shipped as
+[PR #275](https://github.com/edithatogo/authentext/pull/275). Phase 2 is
+voice calibration, invocation modes, the secondhand-text guard, and
+Pattern 7 `quietly`.
