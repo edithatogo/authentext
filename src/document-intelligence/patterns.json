@@ -27,7 +27,8 @@
         "indelible mark",
         "deeply rooted"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Undue emphasis on significance"
     },
     {
       "schema_version": 1,
@@ -43,7 +44,8 @@
         "written by a leading expert",
         "active social media presence"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Undue emphasis on notability"
     },
     {
       "schema_version": 1,
@@ -62,7 +64,8 @@
         "encompassing...",
         "showcasing..."
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Superficial -ing analyses"
     },
     {
       "schema_version": 1,
@@ -90,7 +93,8 @@
         "must-visit",
         "stunning"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Promotional language"
     },
     {
       "schema_version": 1,
@@ -117,7 +121,8 @@
       ],
       "false_positive_guards": [
         "A single \"This\" or \"This means\" has a clear antecedent you can point to. Demonstratives are ordinary English. The tell is a run of them, or one whose antecedent you cannot name."
-      ]
+      ],
+      "table_label": "Vague attributions and back-references"
     },
     {
       "schema_version": 1,
@@ -133,7 +138,8 @@
         "Challenges and Legacy",
         "Future Outlook"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Formulaic \"Challenges\" sections"
     },
     {
       "schema_version": 1,
@@ -169,7 +175,8 @@
         "valuable",
         "vibrant"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Overused AI vocabulary"
     },
     {
       "schema_version": 1,
@@ -180,7 +187,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": ["serves as/stands as/marks/represents [a]", "boasts/features/offers [a]"],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Copula avoidance"
     },
     {
       "schema_version": 1,
@@ -191,7 +199,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": ["Not only...but", "It's not just about", "It's not merely"],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Negative parallelisms"
     },
     {
       "schema_version": 1,
@@ -202,7 +211,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Rule of three overuse"
     },
     {
       "schema_version": 1,
@@ -213,7 +223,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Elegant variation and repeated openings"
     },
     {
       "schema_version": 1,
@@ -224,7 +235,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "False ranges"
     },
     {
       "schema_version": 1,
@@ -239,7 +251,8 @@
         "Used sparingly by a human editor or journalist and not clustered with other sales-y tells.",
         "Match a user writing sample's em-dash frequency instead of banning dashes.",
         "Keep annotated-link or definition separators; embedded mode cannot ask, so keep them."
-      ]
+      ],
+      "table_label": "Em dash overuse"
     },
     {
       "schema_version": 1,
@@ -250,7 +263,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Overuse of boldface"
     },
     {
       "schema_version": 1,
@@ -261,7 +275,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Inline-header lists"
     },
     {
       "schema_version": 1,
@@ -272,7 +287,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Title case in headings"
     },
     {
       "schema_version": 1,
@@ -283,7 +299,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Emojis"
     },
     {
       "schema_version": 1,
@@ -294,7 +311,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Quotation mark issues"
     },
     {
       "schema_version": 1,
@@ -313,7 +331,8 @@
         "let me know",
         "here is a..."
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Collaborative communication artifacts"
     },
     {
       "schema_version": 1,
@@ -331,7 +350,8 @@
         "maintains a low profile",
         "keeps personal details private (when unsourced)"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Knowledge-cutoff disclaimers"
     },
     {
       "schema_version": 1,
@@ -342,7 +362,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": ["Great question!", "You're absolutely right", "That's an excellent point"],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Sycophantic tone"
     },
     {
       "schema_version": 1,
@@ -360,7 +381,8 @@
         "has the ability to",
         "It is important to note that"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Filler phrases"
     },
     {
       "schema_version": 1,
@@ -378,7 +400,8 @@
         "in some cases it may",
         "this is an inference"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Excessive hedging"
     },
     {
       "schema_version": 1,
@@ -389,7 +412,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Generic positive conclusions"
     },
     {
       "schema_version": 1,
@@ -406,7 +430,8 @@
         "/* AI-generated */",
         "// Here is the refactored code:"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "AI signatures in code"
     },
     {
       "schema_version": 1,
@@ -422,7 +447,8 @@
         "Breakdown:",
         "Key takeaways: (when used with mechanical lists)"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Over-structuring"
     },
     {
       "schema_version": 1,
@@ -436,7 +462,8 @@
       "false_positive_guards": [
         "Never modify inline code, fenced code, URLs, paths, versions, hashes, API names, identifiers, CLI flags, config keys, or error messages."
       ],
-      "must_preserve": true
+      "must_preserve": true,
+      "table_label": "Technical literal preservation (must preserve)"
     },
     {
       "schema_version": 1,
@@ -452,7 +479,8 @@
         "What this really means is",
         "The truth is"
       ],
-      "false_positive_guards": ["Used in legitimate contexts like op-eds or presentation scripts."]
+      "false_positive_guards": ["Used in legitimate contexts like op-eds or presentation scripts."],
+      "table_label": "Persuasive tropes"
     },
     {
       "schema_version": 1,
@@ -470,7 +498,8 @@
       ],
       "false_positive_guards": [
         "Used in legitimate contexts like presentation scripts or tutorials."
-      ]
+      ],
+      "table_label": "Signposting"
     },
     {
       "schema_version": 1,
@@ -481,7 +510,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": ["Used in legitimate contexts like op-eds or persuasive writing."]
+      "false_positive_guards": ["Used in legitimate contexts like op-eds or persuasive writing."],
+      "table_label": "Fragmented headers"
     },
     {
       "schema_version": 1,
@@ -502,7 +532,8 @@
       ],
       "false_positive_guards": [
         "Model is explicitly asked to show its reasoning in structured format."
-      ]
+      ],
+      "table_label": "Extended thinking tags"
     },
     {
       "schema_version": 1,
@@ -513,7 +544,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": ["Here is the", "json", "JSON:", "as requested"],
-      "false_positive_guards": ["Actual API responses or configuration files."]
+      "false_positive_guards": ["Actual API responses or configuration files."],
+      "table_label": "JSON mode artifacts"
     },
     {
       "schema_version": 1,
@@ -531,7 +563,8 @@
         "Running",
         "invoking"
       ],
-      "false_positive_guards": ["Explicit tutorials or documentation about tool usage."]
+      "false_positive_guards": ["Explicit tutorials or documentation about tool usage."],
+      "table_label": "Tool use documentation"
     },
     {
       "schema_version": 1,
@@ -549,7 +582,8 @@
         "don't hesitate to",
         "anytime"
       ],
-      "false_positive_guards": ["Genuine customer service contexts."]
+      "false_positive_guards": ["Genuine customer service contexts."],
+      "table_label": "Over-polished conclusions"
     },
     {
       "schema_version": 1,
@@ -560,7 +594,8 @@
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
       "trigger_terms": [],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Manufactured punchlines and staccato drama (Upstream #31)"
     },
     {
       "schema_version": 1,
@@ -578,7 +613,8 @@
         "the currency of",
         "the architecture of"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Aphorism formulas (Upstream #32)"
     },
     {
       "schema_version": 1,
@@ -596,7 +632,8 @@
         "Let's be honest",
         "Real talk (when used as standalone hooks or fake-candid pauses before an ordinary point)."
       ],
-      "false_positive_guards": ["Genuine conversational speech or quoted dialogue."]
+      "false_positive_guards": ["Genuine conversational speech or quoted dialogue."],
+      "table_label": "Conversational rhetorical openers (Upstream #33)"
     },
     {
       "schema_version": 1,
@@ -621,7 +658,8 @@
         "It would be easy to just",
         "Some would suggest"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Diff-anchored writing, shadowboxing, and editorial scar tissue"
     },
     {
       "schema_version": 1,
@@ -643,7 +681,8 @@
         "long-term",
         "end-to-end"
       ],
-      "false_positive_guards": []
+      "false_positive_guards": [],
+      "table_label": "Hyphenated word pair overuse (narrowed, upstream)"
     },
     {
       "schema_version": 1,
@@ -656,7 +695,8 @@
       "trigger_terms": [],
       "false_positive_guards": [
         "The source already uses a standard imperative (\"Hit reply to opt out.\") or ordinary conversational ellipsis. Do not invent a subject the source never implied. Distinguished from Pattern 35: that pattern is a run of short fragments stacked for drama. This pattern is an isolated missing-subject line, including one produced while trying to sound casual."
-      ]
+      ],
+      "table_label": "Passive voice and subjectless fragments (Upstream §13)"
     }
   ]
 }

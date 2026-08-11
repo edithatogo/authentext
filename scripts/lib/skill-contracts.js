@@ -394,6 +394,54 @@ export function validatePatternRegistryConcordance(registry, source) {
   return errors;
 }
 
+const SEVERITY_TABLE_HEADINGS = Object.freeze({
+  critical: '### Critical (immediate AI detection)',
+  high: '### High (strong AI signals)',
+  medium: '### Medium (moderate AI signals)',
+  low: '### Low (weak AI signals)',
+});
+
+/**
+ * @param {unknown[]} records
+ * @returns {string}
+ */
+export function renderSeverityClassification(records) {
+  if (!Array.isArray(records)) {
+    throw new TypeError('pattern records must be an array');
+  }
+  const buckets = { critical: [], high: [], medium: [], low: [] };
+  for (const record of [...records].sort((left, right) => left.number - right.number)) {
+    const label = record.table_label || record.title;
+    const suffix =
+      record.must_preserve && !/\(must preserve\)/i.test(label) ? ' (must preserve)' : '';
+    buckets[record.severity].push(`- Pattern ${record.number}: ${label}${suffix}`);
+  }
+  const parts = ['## SEVERITY CLASSIFICATION', ''];
+  for (const severity of Object.keys(SEVERITY_TABLE_HEADINGS)) {
+    parts.push(SEVERITY_TABLE_HEADINGS[severity], '', ...buckets[severity], '');
+  }
+  return parts.join('\n').trim();
+}
+
+/**
+ * Replace the compiled severity block while leaving pattern bodies in place.
+ * @param {string} content
+ * @param {string} rendered
+ * @returns {string}
+ */
+export function replaceSeveritySection(content, rendered) {
+  const startToken = '\n## SEVERITY CLASSIFICATION\n';
+  const start = content.indexOf(startToken);
+  if (start === -1) {
+    throw new Error('missing ## SEVERITY CLASSIFICATION section');
+  }
+  const endMarker = '\n---\n\n_Module Version';
+  const end = content.indexOf(endMarker, start + 1);
+  const prefix = content.slice(0, start + 1);
+  const suffix = end === -1 ? '\n' : content.slice(end);
+  return `${prefix}${rendered}\n${suffix}`;
+}
+
 /**
  * @param {unknown[]} records
  * @param {Record<string, unknown>} schema

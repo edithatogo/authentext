@@ -48,5 +48,5 @@ Schemas live next to the other document-intelligence contracts:
 `patterns.json` is the machine-readable seed for the 40 core patterns. The
 validator checks it against `src/modules/SKILL_CORE_PATTERNS.md` headings,
 body severities, the severity-table IDs, and the frontmatter `patterns`
-count. Pattern bodies stay in the Markdown module until a later compile
-slice.
+count. `npm run sync` emits the severity tables from that registry. Pattern
+bodies stay in the Markdown module until a later compile slice.
