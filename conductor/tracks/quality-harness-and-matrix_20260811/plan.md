@@ -2,9 +2,9 @@
 
 ## Phase 1: Humanizer feature matrix
 
-- [ ] Task: Verify each named tool still exists and record licence, pattern
+- [x] Task: Verify each named tool still exists and record licence, pattern
       count, scoring, and last update.
-- [ ] Task: Add `docs/humanizer-feature-matrix.md` plus JSON or CSV. Mark
+- [x] Task: Add `docs/humanizer-feature-matrix.md` plus JSON or CSV. Mark
       in-skill / integrated / refused / planned.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 

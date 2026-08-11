@@ -3,7 +3,7 @@
 - **Track ID:** `quality-harness-and-matrix_20260811`
 - **Type:** Chore
 - **Priority:** P2
-- **Status:** New
+- **Status:** In progress
 - **Parallel-safe:** yes
 - **GitHub track:** [#280](https://github.com/edithatogo/authentext/issues/280)
 

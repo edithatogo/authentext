@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-08-12",
+  "track": "quality-harness-and-matrix_20260811",
+  "issue": 280,
+  "thesis": "Authentext covers the editorial humanizer set directly or by handoff. Detector evasion, typo injection, and anecdote fabrication are refused, not missing.",
+  "coverage_codes": {
+    "in-skill": "Shipped in the compiled Authentext skill or its references.",
+    "integrated": "Handoff to sourceright, citeweft, or a host plugin. Not compiled into SKILL.md.",
+    "planned": "On an Authentext track. Not shipped.",
+    "out-of-scope": "Not shipped and not on a current Authentext track.",
+    "refused": "Will not implement.",
+    "present": "Verified in that competitor on the check date.",
+    "absent": "Not found in that competitor's public skill on the check date.",
+    "unverified": "Named in a source, but this pass did not confirm current product behaviour.",
+    "n/a": "Does not apply to this tool."
+  },
+  "sources": [
+    {
+      "id": "damage-arxiv",
+      "title": "DAMAGE: Detecting Adversarially Modified AI Generated Text",
+      "url": "https://arxiv.org/html/2501.03437",
+      "authors": "Elyas Masrour, Bradley Emi, Max Spero",
+      "note": "Pangram Labs. Table 1 names 19 paraphrasers and humanizers."
+    },
+    {
+      "id": "blader-humanizer",
+      "title": "blader/humanizer",
+      "url": "https://github.com/blader/humanizer",
+      "license": "MIT",
+      "version_verified": "2.9.1",
+      "last_push_utc": "2026-07-22T06:26:25Z",
+      "stars_on_check": 34950
+    },
+    {
+      "id": "aboudjem-humanizer-skill",
+      "title": "Aboudjem/humanizer-skill",
+      "url": "https://github.com/Aboudjem/humanizer-skill",
+      "license": "MIT",
+      "last_push_utc": "2026-07-15T15:41:08Z",
+      "stars_on_check": 157
+    },
+    {
+      "id": "matt-payne-content-humanizer",
+      "title": "Matt-Payne/content-humanizer",
+      "url": "https://github.com/Matt-Payne/content-humanizer",
+      "license": "MIT",
+      "last_push_utc": "2026-08-04T14:18:59Z",
+      "stars_on_check": 0
+    },
+    {
+      "id": "width-ai-article",
+      "title": "The Claude Humanizer Skill We Built for Content That Has to Keep Ranking",
+      "url": "https://www.width.ai/post/the-claude-humanizer-skill-we-built-for-content-that-has-to-keep-ranking",
+      "published": "2026-08-10",
+      "note": "Install instructions clone Matt-Payne/content-humanizer. Not a second public repo."
+    },
+    {
+      "id": "softaworks-humanizer",
+      "title": "softaworks/agent-toolkit skills/humanizer",
+      "url": "https://github.com/softaworks/agent-toolkit/blob/main/skills/humanizer/README.md",
+      "license": "MIT",
+      "toolkit_last_push_utc": "2026-03-05T16:46:24Z"
+    },
+    {
+      "id": "sourceright",
+      "title": "edithatogo/sourceright",
+      "url": "https://github.com/edithatogo/sourceright",
+      "note": "Citation verification home. Citeweft is not a published standalone skill."
+    },
+    {
+      "id": "authentext",
+      "title": "edithatogo/authentext",
+      "url": "https://github.com/edithatogo/authentext",
+      "license": "MIT",
+      "version_verified": "3.2.0",
+      "last_push_utc": "2026-08-11T15:17:38Z"
+    }
+  ],
+  "tools": [
+    {
+      "id": "authentext",
+      "name": "Authentext",
+      "kind": "agent-skill",
+      "home": "https://github.com/edithatogo/authentext",
+      "license": "MIT",
+      "version_verified": "3.2.0",
+      "last_update_verified": "2026-08-11",
+      "pattern_count_verified": 40,
+      "scoring": "none-in-skill",
+      "verification": "verified"
+    },
+    {
+      "id": "blader-humanizer",
+      "name": "blader/humanizer",
+      "kind": "agent-skill",
+      "home": "https://github.com/blader/humanizer",
+      "license": "MIT",
+      "version_verified": "2.9.1",
+      "last_update_verified": "2026-07-22",
+      "pattern_count_verified": 33,
+      "scoring": "none-in-skill",
+      "verification": "verified"
+    },
+    {
+      "id": "aboudjem-humanizer-skill",
+      "name": "Aboudjem/humanizer-skill",
+      "kind": "agent-skill",
+      "home": "https://github.com/Aboudjem/humanizer-skill",
+      "license": "MIT",
+      "version_verified": null,
+      "last_update_verified": "2026-07-15",
+      "pattern_count_verified": 53,
+      "scoring": "0-100-ai-tell",
+      "verification": "verified"
+    },
+    {
+      "id": "matt-payne-content-humanizer",
+      "name": "Matt-Payne/content-humanizer",
+      "kind": "agent-skill",
+      "home": "https://github.com/Matt-Payne/content-humanizer",
+      "license": "MIT",
+      "version_verified": "2.10.0",
+      "last_update_verified": "2026-08-04",
+      "pattern_count_verified": 33,
+      "scoring": "none-in-skill",
+      "verification": "verified",
+      "alias_of": null,
+      "notes": "Width.ai article publishes this repo as its skill."
+    },
+    {
+      "id": "width-ai-skill",
+      "name": "Width.ai humanizer skill",
+      "kind": "agent-skill-article",
+      "home": "https://www.width.ai/post/the-claude-humanizer-skill-we-built-for-content-that-has-to-keep-ranking",
+      "license": "MIT",
+      "version_verified": "2.10.0",
+      "last_update_verified": "2026-08-10",
+      "pattern_count_verified": 33,
+      "scoring": "none-in-skill",
+      "verification": "verified",
+      "alias_of": "matt-payne-content-humanizer"
+    },
+    {
+      "id": "softaworks-agent-toolkit-humanizer",
+      "name": "softaworks/agent-toolkit humanizer",
+      "kind": "agent-skill",
+      "home": "https://github.com/softaworks/agent-toolkit/blob/main/skills/humanizer/README.md",
+      "license": "MIT",
+      "version_verified": "2.1.1",
+      "last_update_verified": "2026-03-05",
+      "pattern_count_verified": 24,
+      "scoring": "none-in-skill",
+      "verification": "verified",
+      "notes": "README still clones blader/humanizer for the recommended install."
+    }
+  ],
+  "damage_tools": [
+    {
+      "name": "DIPPER",
+      "category": "paraphraser",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Grammarly",
+      "category": "paraphraser",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Quillbot",
+      "category": "paraphraser",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Bypass GPT",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Ghost AI",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "HIX Bypass",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Humbot AI",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "HumanizeAI.io",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "HumanizeAI.pro",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "GPTInf",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused",
+      "notes": "Appears in DAMAGE Appendix Table 9, not in Table 1. This is the 19th named tool."
+    },
+    {
+      "name": "Humanizer.com",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused",
+      "notes": "Table 1 says Humanizer.com. Appendix Table 9 says AIHumanizer.com. Treated as one row."
+    },
+    {
+      "name": "Phrasly.ai",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Semihuman AI",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "StealthGPT",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "StealthWriter.AI",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Surfer SEO",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Undetectable AI",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "Twixify",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    },
+    {
+      "name": "WriteHuman.ai",
+      "category": "humanizer",
+      "verification": "named-in-damage",
+      "authentext_coverage": "refused"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "wikipedia-pattern-catalog",
+      "label": "Wikipedia AI-writing pattern catalog",
+      "authentext": "in-skill",
+      "competitors": {
+        "blader-humanizer": "present",
+        "aboudjem-humanizer-skill": "present",
+        "matt-payne-content-humanizer": "present",
+        "width-ai-skill": "present",
+        "softaworks-agent-toolkit-humanizer": "present"
+      }
+    },
+    {
+      "id": "voice-calibration",
+      "label": "Voice matching from a writing sample",
+      "authentext": "in-skill",
+      "competitors": {
+        "blader-humanizer": "present",
+        "aboudjem-humanizer-skill": "present",
+        "matt-payne-content-humanizer": "present",
+        "width-ai-skill": "present",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      }
+    },
+    {
+      "id": "claim-preservation",
+      "label": "Claim preservation and no invented facts",
+      "authentext": "in-skill",
+      "competitors": {
+        "blader-humanizer": "present",
+        "aboudjem-humanizer-skill": "unverified",
+        "matt-payne-content-humanizer": "present",
+        "width-ai-skill": "present",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      }
+    },
+    {
+      "id": "literal-preservation",
+      "label": "Technical literal, URL, path, and identifier preservation",
+      "authentext": "in-skill",
+      "competitors": {
+        "blader-humanizer": "present",
+        "aboudjem-humanizer-skill": "unverified",
+        "matt-payne-content-humanizer": "present",
+        "width-ai-skill": "present",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      }
+    },
+    {
+      "id": "domain-modules",
+      "label": "Academic, technical, governance, reasoning, and FOI-O modules",
+      "authentext": "in-skill",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "absent",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      }
+    },
+    {
+      "id": "density-aware-restraint",
+      "label": "Density-aware restraint on low-tell prose",
+      "authentext": "in-skill",
+      "competitors": {
+        "blader-humanizer": "unverified",
+        "aboudjem-humanizer-skill": "present",
+        "matt-payne-content-humanizer": "unverified",
+        "width-ai-skill": "unverified",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      }
+    },
+    {
+      "id": "citation-verification",
+      "label": "Citation verification and bibliography management",
+      "authentext": "integrated",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "absent",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      },
+      "handoff": "edithatogo/sourceright"
+    },
+    {
+      "id": "citeweft-weaving",
+      "label": "Citeweft citation weaving",
+      "authentext": "integrated",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "absent",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      },
+      "notes": "Citeweft is not a published standalone skill. Sourceright still owns that extraction."
+    },
+    {
+      "id": "clinical-legal-creative",
+      "label": "Clinical, legal, and creative domain references",
+      "authentext": "planned",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "absent",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      },
+      "track": "domain-and-citation_20260811"
+    },
+    {
+      "id": "scored-golden-harness",
+      "label": "Scored golden before/after harness in CI",
+      "authentext": "planned",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "present",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      },
+      "track": "quality-harness-and-matrix_20260811"
+    },
+    {
+      "id": "marketing-seo-mode",
+      "label": "Marketing mode with SEO structure locks",
+      "authentext": "out-of-scope",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "absent",
+        "matt-payne-content-humanizer": "present",
+        "width-ai-skill": "present",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      },
+      "notes": "Width.ai / Matt-Payne specialty. Authentext preserves structure and literals. It does not ship a marketing-SEO mode."
+    },
+    {
+      "id": "numeric-ai-smell-score",
+      "label": "0-100 Pure AI smell score",
+      "authentext": "refused",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "present",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      }
+    },
+    {
+      "id": "detector-evasion",
+      "label": "Detector evasion or undetectable claims",
+      "authentext": "refused",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "absent",
+        "matt-payne-content-humanizer": "present",
+        "width-ai-skill": "present",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      },
+      "notes": "Width.ai FAQ says the skill beats detectors. Authentext will not take that job. DAMAGE's 19 tools exist for that job."
+    },
+    {
+      "id": "typo-injection",
+      "label": "Typo injection or artificial disfluency",
+      "authentext": "refused",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "absent",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      }
+    },
+    {
+      "id": "burstiness-injection",
+      "label": "Burstiness injection to game detectors",
+      "authentext": "refused",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "present",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      },
+      "notes": "Aboudjem advertises burstiness injection. Authentext may measure sentence-length variance later. It will not inject variance to beat a detector."
+    },
+    {
+      "id": "anecdote-fabrication",
+      "label": "Anecdote or biography fabrication",
+      "authentext": "refused",
+      "competitors": {
+        "blader-humanizer": "absent",
+        "aboudjem-humanizer-skill": "unverified",
+        "matt-payne-content-humanizer": "absent",
+        "width-ai-skill": "absent",
+        "softaworks-agent-toolkit-humanizer": "absent"
+      }
+    }
+  ]
+}
