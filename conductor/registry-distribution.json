@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-08",
+  "as_of": "2026-08-11",
   "canonical_source": {
     "repository": "https://github.com/edithatogo/authentext",
     "paths": ["src/", "SKILL.md", "SKILL_PROFESSIONAL.md", "references/"],
@@ -18,7 +18,7 @@
       "status": "researched",
       "source": { "mode": "canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-08",
+        "checked_on": "2026-08-11",
         "spec_url": "https://www.skills.sh/docs/faq"
       },
       "publication_requires_approval": true
@@ -88,11 +88,15 @@
       "capabilities": [
         "Agent Skills are supported for Copilot coding agent and can be previewed and published with gh skill"
       ],
-      "status": "prepared",
+      "status": "verified",
       "source": { "mode": "canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-08",
-        "spec_url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills"
+        "checked_on": "2026-08-11",
+        "spec_url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills",
+        "receipt_url": "https://github.com/edithatogo/authentext-distribution/releases/tag/v3.2.0",
+        "repository_url": "https://github.com/edithatogo/authentext-distribution",
+        "release_version": "3.2.0",
+        "verification": "Published with gh skill; repository preview and pinned hosted installation succeeded."
       },
       "publication_requires_approval": true
     },
@@ -103,11 +107,15 @@
       "capabilities": [
         "Gemini CLI extensions may bundle a skills directory and can be distributed through extension repositories and the gallery"
       ],
-      "status": "prepared",
+      "status": "submitted",
       "source": { "mode": "generated_from_canonical", "path": "SKILL.md" },
       "evidence": {
-        "checked_on": "2026-08-08",
-        "spec_url": "https://geminicli.com/docs/extensions/"
+        "checked_on": "2026-08-11",
+        "spec_url": "https://geminicli.com/docs/extensions/releasing/",
+        "receipt_url": "https://github.com/edithatogo/authentext-distribution/releases/tag/v3.2.0",
+        "repository_url": "https://github.com/edithatogo/authentext-distribution",
+        "release_version": "3.2.0",
+        "verification": "Public repository, gallery topic, root manifest, and release tag are present; pinned hosted install and uninstall succeeded. Gallery indexing remains pending."
       },
       "publication_requires_approval": true
     },
