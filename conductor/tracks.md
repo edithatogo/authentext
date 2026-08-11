@@ -15,8 +15,8 @@ This file tracks all major tracks for the project. Each track has its own detail
   is [PR #282](https://github.com/edithatogo/authentext/pull/282). Phase 3
   PR A is [PR #284](https://github.com/edithatogo/authentext/pull/284).
   Phase 3 PR B is [PR #285](https://github.com/edithatogo/authentext/pull/285).
-  Phase 3 PR C folds shadowboxing and editorial scar tissue into
-  Pattern 38 and extends Pattern 23 hedging.
+  Phase 3 PR C is [PR #286](https://github.com/edithatogo/authentext/pull/286).
+  Phase 3 PR D is [PR #287](https://github.com/edithatogo/authentext/pull/287).
   _Link: [tracks/editorial-safety-invariants_20260811/index.md](./tracks/editorial-safety-invariants_20260811/index.md)_
 
 - [ ] **domain-and-citation_20260811** (P0) - Clinical, legal, and creative
