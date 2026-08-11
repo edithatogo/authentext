@@ -31,10 +31,14 @@ This file tracks all major tracks for the project. Each track has its own detail
       [#278](https://github.com/edithatogo/authentext/issues/278).
       _Link: [tracks/pattern-registry-contracts_20260811/index.md](./tracks/pattern-registry-contracts_20260811/index.md)_
 
-- [~] **voice-corpus-calibration_20260811** (P1) - Point Authentext at
+- [x] **voice-corpus-calibration_20260811** (P1) - Point Authentext at
       local or published prior work for voice matching without inventing
       biography.
       [#279](https://github.com/edithatogo/authentext/issues/279).
+      Phase 1 [PR #291](https://github.com/edithatogo/authentext/pull/291).
+      Phase 2 [PR #292](https://github.com/edithatogo/authentext/pull/292).
+      Phase 3 [PR #295](https://github.com/edithatogo/authentext/pull/295).
+      Phase 4 [PR #298](https://github.com/edithatogo/authentext/pull/298).
       _Link: [tracks/voice-corpus-calibration_20260811/index.md](./tracks/voice-corpus-calibration_20260811/index.md)_
 
 - [ ] **quality-harness-and-matrix_20260811** (P2) - Feature matrix, Vale
