@@ -33,3 +33,21 @@ test('voice calibration keeps host plugins off until named and granted', () => {
     assert.match(source, /Default is off/);
   }
 });
+
+test('skill prose says corpus facts do not license fabrication', () => {
+  for (const source of [canonicalSource, generated, coreReference]) {
+    assert.match(source, /does not license fabrication/);
+    assert.match(source, /you have written this before/);
+    assert.match(source, /current source already supports/);
+  }
+});
+
+test('personality skip covers clinical legal regulatory and submitted academic even with a corpus', () => {
+  for (const source of [canonicalSource, generated, coreReference]) {
+    assert.match(
+      source,
+      /Skip this section entirely for clinical, legal, regulatory, and submitted academic/
+    );
+    assert.match(source, /even when a first-person corpus is available/);
+  }
+});
