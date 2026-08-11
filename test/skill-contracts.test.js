@@ -286,13 +286,14 @@ test('severity tables compile from the registry without duplicate IDs', () => {
   assert.equal(ids.length, 40);
   assert.equal(new Set(ids).size, 40);
   assert.match(rendered, /### Critical \(immediate AI detection\)/);
-  assert.match(rendered, /Pattern 27: Technical Literal Preservation \(must preserve\)/);
+  assert.match(rendered, /Pattern 27: Technical literal preservation \(must preserve\)/);
+  assert.match(rendered, /Pattern 13: Em dash overuse/);
   assert.throws(() => renderSeverityClassification({}), /must be an array/);
 
   const source = fs.readFileSync(path.join(ROOT, CORE_PATTERNS_MODULE), 'utf8');
   const replaced = replaceSeveritySection(source, rendered);
-  assert.match(replaced, /Pattern 13: Em\/En Dash Hard Cut/);
-  assert.doesNotMatch(replaced, /Pattern 13: Em dash overuse/);
+  assert.match(replaced, /Pattern 13: Em dash overuse/);
+  assert.match(replaced, /### Pattern 13: Em\/En Dash Hard Cut/);
   assert.throws(() => replaceSeveritySection('# no table\n', rendered), /missing ## SEVERITY/);
 });
 

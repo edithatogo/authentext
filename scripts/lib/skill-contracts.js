@@ -411,8 +411,10 @@ export function renderSeverityClassification(records) {
   }
   const buckets = { critical: [], high: [], medium: [], low: [] };
   for (const record of [...records].sort((left, right) => left.number - right.number)) {
-    const suffix = record.must_preserve ? ' (must preserve)' : '';
-    buckets[record.severity].push(`- Pattern ${record.number}: ${record.title}${suffix}`);
+    const label = record.table_label || record.title;
+    const suffix =
+      record.must_preserve && !/\(must preserve\)/i.test(label) ? ' (must preserve)' : '';
+    buckets[record.severity].push(`- Pattern ${record.number}: ${label}${suffix}`);
   }
   const parts = ['## SEVERITY CLASSIFICATION', ''];
   for (const severity of Object.keys(SEVERITY_TABLE_HEADINGS)) {
@@ -437,7 +439,7 @@ export function replaceSeveritySection(content, rendered) {
   const end = content.indexOf(endMarker, start + 1);
   const prefix = content.slice(0, start + 1);
   const suffix = end === -1 ? '\n' : content.slice(end);
-  return `${prefix}${rendered}${suffix}`;
+  return `${prefix}${rendered}\n${suffix}`;
 }
 
 /**
