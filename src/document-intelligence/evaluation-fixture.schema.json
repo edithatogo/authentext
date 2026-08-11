@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/authentext/blob/main/src/document-intelligence/evaluation-fixture.schema.json",
+  "title": "Authentext evaluation fixture",
+  "oneOf": [
+    { "$ref": "#/$defs/triggerCorpus" },
+    { "$ref": "#/$defs/outputCorpus" },
+    { "$ref": "#/$defs/adaptiveCorpus" }
+  ],
+  "$defs": {
+    "triggerCorpus": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/triggerCase" }
+    },
+    "outputCorpus": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/outputCase" }
+    },
+    "adaptiveCorpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "cases"],
+      "properties": {
+        "schema_version": { "const": 1 },
+        "cases": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/adaptiveCase" }
+        }
+      }
+    },
+    "triggerCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "prompt", "expected"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "category": {
+          "enum": ["positive", "paraphrased", "near_miss", "negative"]
+        },
+        "prompt": { "type": "string", "minLength": 1 },
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["activate", "operation", "material"],
+          "properties": {
+            "activate": { "type": "boolean" },
+            "operation": { "enum": ["rewrite", "review", "none"] },
+            "material": {
+              "enum": ["general", "technical", "academic", "governance"]
+            }
+          }
+        }
+      }
+    },
+    "outputCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "input", "output", "constraints"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "category": {
+          "enum": ["rewrite", "restraint", "voice", "stance", "invariant"]
+        },
+        "input": { "type": "string", "minLength": 1 },
+        "output": { "type": "string", "minLength": 1 },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "unchanged": { "type": "boolean" },
+            "require": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "forbid": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "exact_literals": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    "adaptiveCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "class", "subtype"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "class": {
+          "enum": ["positive", "near-miss", "negative", "ambiguous", "composite", "adversarial"]
+        },
+        "subtype": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

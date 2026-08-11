@@ -6,7 +6,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const REPO_ROOT = path.resolve(__dirname, '..');
 
-const REQUIRED_DOCS = ['README.md', 'AGENTS.md', 'docs/skill-distribution.md'];
+const REQUIRED_DOCS = [
+  'README.md',
+  'AGENTS.md',
+  'docs/skill-distribution.md',
+  'docs/agent-skills-contract.md',
+];
 const REQUIRED_REFERENCE_DOCS = ['docs/skill-distribution.md'];
 
 let failed = false;

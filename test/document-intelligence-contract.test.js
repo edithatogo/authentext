@@ -51,6 +51,11 @@ test('document profile contract files are checked in and parseable', () => {
     'guidance-source.schema.json',
     'diagnostic-receipt.schema.json',
     'guidance-precedence.json',
+    'pattern.schema.json',
+    'protected-span.schema.json',
+    'evaluation-fixture.schema.json',
+    'agent-skills-portable.schema.json',
+    'protected-span-classes.json',
   ]) {
     assert.doesNotThrow(() =>
       JSON.parse(fs.readFileSync(path.join(CONTRACT_ROOT, filename), 'utf8'))
