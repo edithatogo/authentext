@@ -55,8 +55,10 @@ Prefer extending an existing number over minting a new one.
       scan ([PR #196](https://github.com/blader/humanizer/pull/196)).
 - [x] Task: Add uniform sentence and paragraph length as generative repair,
       with genre limits ([PR #211](https://github.com/blader/humanizer/pull/211)).
+      (commit: 0808167)
 - [x] Task: Fold repeated sentence openings into Pattern 11
       ([PR #209](https://github.com/blader/humanizer/pull/209)).
+      (commit: 0808167)
 - [x] Task: Add the annotated-link / definition em dash exception
       ([PR #190](https://github.com/blader/humanizer/pull/190)).
       (commit: 7ea274c)
