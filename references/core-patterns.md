@@ -7,6 +7,7 @@
 - [Document intake and safety](#document-intake-and-safety)
 - [Voice Calibration](#voice-calibration)
 - [Invocation Modes](#invocation-modes)
+- [Mechanical pre-return scan](#mechanical-pre-return-scan)
 - [PERSONALITY AND SOUL](#personality-and-soul)
 - [CONTENT PATTERNS](#content-patterns)
 - [STYLE PATTERNS](#style-patterns)
@@ -38,6 +39,7 @@ When given text to humanize:
 Rules 2 and 3 are invariants, not preferences. They outrank every pattern below. If removing a pattern would require inventing a fact or dropping a claim, leave the pattern in place and report it instead.
 
 How you are invoked changes what you deliver (see Invocation Modes).
+Scan the result before you return it (see Mechanical pre-return scan).
 
 ---
 
@@ -116,6 +118,17 @@ A sample outranks Authentext style rules, including the Pattern 13 dash ban: if 
 **File mode.** The user points at a file. Read it and rewrite the file in place only when the caller has granted write access. Never try to bypass the host application's approval, logging, verification, provenance, permission, or safety controls. Humanize the prose only: leave code blocks, frontmatter, data, and link targets untouched. In the conversation, report a short summary of what changed rather than pasting the whole rewrite back.
 
 **Embedded mode.** Another task or agent is using this skill as one step of a larger job. Return only the final prose. No draft, no audit bullets, no summary, unless the caller asks for them. The caller wants prose, not ceremony.
+
+## Mechanical pre-return scan
+
+Before returning output, run one mechanical scan over the result. A leftover hit means the draft is not done:
+
+- Em dashes or en dashes (`—`, `–`, spaced `—`, `--`), except a writing-sample match and kept annotated-link or definition separators (Pattern 13)
+- Curly quotes (`“` `”` `‘` `’`) when they function as a tell: stacked with other AI signals, not Word or macOS auto-curl on otherwise human prose (Pattern 18)
+- Emoji (Pattern 17)
+- Leftover chatbot correspondence: collaborative artifacts, knowledge-cutoff disclaimers, and sycophancy (Patterns 19, 20, 21)
+
+The scan is a leftover-artifact check, not a detector. Isolated curly quotes and a lone journalistic em dash are not enough to reopen a clean draft.
 
 ---
 
@@ -228,21 +241,33 @@ Skip this section entirely for clinical, legal, regulatory, and submitted academ
 
 ---
 
-### Pattern 5: Vague Attributions
+### Pattern 5: Vague Attributions and Back-References
 
 **Words to watch:** Industry reports, Observers have cited, Experts argue, Some critics argue, several sources/publications (when few cited)
 
-**Problem:** AI chatbots attribute opinions to vague authorities without specific sources.
+**Phrases to watch:** This ensures, This means, This allows, This makes it, This creates, This is why, This is, when the "this" points at a whole preceding clause rather than a named thing.
+
+**Problem:** Two related tells. (a) AI chatbots attribute opinions to vague authorities without specific sources. (b) They also chain sentences by pointing back at everything just said with a bare demonstrative, then restating the consequence. The referent is unrecoverable and the second sentence usually adds nothing. Name the subject, or fold the consequence into the first sentence.
 
 **Severity:** Medium
 
-**Before:**
+**Before (attribution):**
 
 > Due to its unique characteristics, the Haolai River is of interest to researchers and conservationists. Experts believe it plays a crucial role in the regional ecosystem.
 
 **After:**
 
 > The Haolai River supports several endemic fish species, according to a 2019 survey by the Chinese Academy of Sciences.
+
+**Before (back-reference):**
+
+> The scheduler batches writes every 200ms. This ensures the database is not overwhelmed. This means users see updates slightly later.
+
+**After:**
+
+> The scheduler batches writes every 200ms, which keeps the database from being overwhelmed. Users see updates slightly later.
+
+**Not a problem when:** A single "This" or "This means" has a clear antecedent you can point to. Demonstratives are ordinary English. The tell is a run of them, or one whose antecedent you cannot name.
 
 ---
 
@@ -380,7 +405,7 @@ The fix is not banning the repeated word. A run of three sentences becoming one 
 
 **Problem:** LLMs overuse em dashes (—) and en dashes (–), mimicking punchy sales writing. The em/en dash is one of the most reliable AI tells; treat as a hard constraint in final output, not "use sparingly".
 
-**Rule (final rewrite):** Contains no em dashes (—) or en dashes (–), except a user writing sample (see Voice Calibration) and kept annotated-link or definition separators (below). Also catch spaced (`—`) and double-hyphen (`--`) aliases. Replace in preference order: period (new sentence), comma (tight aside), colon (explanation), parentheses (true aside), or restructure. Before returning, scan for `—` and `–`. Any remaining hit means the draft is not done unless it is one of those exceptions.
+**Rule (final rewrite):** Contains no em dashes (—) or en dashes (–), except a user writing sample (see Voice Calibration) and kept annotated-link or definition separators (below). Also catch spaced (`—`) and double-hyphen (`--`) aliases. Replace in preference order: period (new sentence), comma (tight aside), colon (explanation), parentheses (true aside), or restructure. The mechanical pre-return scan includes these dash checks along with curly-quote tells, emoji, and leftover chatbot correspondence.
 
 **Severity:** Low
 
@@ -762,7 +787,7 @@ The system processes requests in under 100ms.
 ### Medium (moderate AI signals)
 
 - Pattern 2: Undue emphasis on notability
-- Pattern 5: Vague attributions
+- Pattern 5: Vague attributions and back-references
 - Pattern 6: Formulaic "Challenges" sections
 - Pattern 7: Overused AI vocabulary
 - Pattern 8: Copula avoidance
@@ -1044,6 +1069,7 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **Formal or academic vocabulary.** AI overuses _specific_ fancy words (see Pattern 7), not all fancy words. Don't flatten "ostensibly" or "constituent" just because they sound brainy.
 - **Letter-style opening or closing on a comment.** Salutations and sign-offs predate ChatGPT by centuries.
 - **Common transition words in isolation.** _Additionally_, _moreover_, _consequently_ are AI-coded only when piled up. One _however_ is not a tell.
+- **A single well-anchored "This" or "This means."** Demonstratives are normal English. Flag the phrase only when the antecedent is unrecoverable, or when several such sentences run in a row.
 - **Curly quotes alone.** macOS, Word, Google Docs, and most CMSes auto-curl by default. Curly quotes only count when stacked with other tells.
 - **Em dashes alone.** Many editors and journalists use them often. Em dashes are evidence only when paired with formulaic sales-y rhythm.
 - **Annotated-link or definition separators.** `[Title](url)` or `**Term**` followed by an em dash and a description is list formatting, not a tell. Ask once whether to keep those separators; in embedded mode, keep them. Other em dashes still follow Pattern 13.
