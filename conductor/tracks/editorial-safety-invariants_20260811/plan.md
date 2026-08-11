@@ -64,7 +64,8 @@ Prefer extending an existing number over minting a new one.
 - [x] Task: Add the annotated-link / definition em dash exception
       ([PR #190](https://github.com/blader/humanizer/pull/190)).
       (commit: 7ea274c)
-- [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+- [x] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
+      [checkpoint: 683036c]
 
 ## Phase 4: Upstream decision-log refresh
 
