@@ -52,6 +52,16 @@ jobs:
       - name: Validate the portable skill package
         run: agentskills validate "$GITHUB_WORKSPACE"
 
+      - name: Set up Node for the local Agent Skills contract
+        uses: ./.github/actions/setup-maintainer-env
+        with:
+          node-version: '24'
+          install-vale: 'false'
+          npm-ci: 'false'
+
+      - name: Enforce the local Agent Skills contract
+        run: node scripts/validate-skill-contracts.js
+
   github-publish-preview:
     runs-on: ubuntu-latest
     steps:

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/authentext/blob/main/src/document-intelligence/protected-span.schema.json",
+  "title": "Authentext protected-span class catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "classes"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "classes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/spanClass" }
+    }
+  },
+  "$defs": {
+    "classId": {
+      "enum": [
+        "quantity",
+        "citation",
+        "negation",
+        "epistemic",
+        "scope",
+        "proper-name"
+      ]
+    },
+    "spanClass": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "lock", "examples"],
+      "properties": {
+        "id": { "$ref": "#/$defs/classId" },
+        "title": { "type": "string", "minLength": 1 },
+        "lock": { "enum": ["may-move-not-reword"] },
+        "examples": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "violation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class_id", "type"],
+      "properties": {
+        "class_id": { "$ref": "#/$defs/classId" },
+        "type": {
+          "enum": ["literal", "number", "required-section", "sourced-rule"]
+        },
+        "values": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

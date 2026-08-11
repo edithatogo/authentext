@@ -19,7 +19,7 @@ npm test
 
 ## skills.sh-style installation
 
-Authentext ships as a single Agent Skill package at the repository root. Install it into a host that supports the [Agent Skills](https://agentskills.io) layout:
+Authentext ships as a single Agent Skill package at the repository root. Install it into a host that supports the [Agent Skills](https://agentskills.io) layout. Local MUST/MUST-NOT packaging rules are in [Agent Skills contract](agent-skills-contract.md):
 
 1. Clone or copy this repository (or download a release tarball).
 2. Point your agent at the repo root, or copy these paths into your skills directory:

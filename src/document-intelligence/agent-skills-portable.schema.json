@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/edithatogo/authentext/blob/main/src/document-intelligence/agent-skills-portable.schema.json",
+  "title": "Authentext portable Agent Skills frontmatter",
+  "description": "Stricter than the official Agent Skills spec: portable SKILL.md may use only name, description, license, and metadata. allowed-tools and compatibility are host-only and MUST NOT appear.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "description"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "description": { "type": "string", "minLength": 1, "maxLength": 1024 },
+    "license": { "type": "string", "minLength": 1 },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}
