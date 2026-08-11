@@ -3,19 +3,30 @@ import path from 'node:path';
 
 export const CONTRACT_DIR = 'src/document-intelligence';
 export const PATTERN_SCHEMA = 'pattern.schema.json';
+export const PATTERNS_REGISTRY = 'patterns.json';
+export const PATTERNS_REGISTRY_SCHEMA = 'patterns-registry.schema.json';
 export const PROTECTED_SPAN_SCHEMA = 'protected-span.schema.json';
 export const EVALUATION_FIXTURE_SCHEMA = 'evaluation-fixture.schema.json';
 export const AGENT_SKILLS_PORTABLE_SCHEMA = 'agent-skills-portable.schema.json';
 export const PROTECTED_SPAN_CATALOG = 'protected-span-classes.json';
+export const CORE_PATTERNS_MODULE = 'src/modules/SKILL_CORE_PATTERNS.md';
 export const FORBIDDEN_PORTABLE_FIELDS = Object.freeze(['allowed-tools', 'compatibility']);
 export const PORTABLE_FIELDS = Object.freeze(['name', 'description', 'license', 'metadata']);
 
 const SCHEMA_FILES = [
   PATTERN_SCHEMA,
+  PATTERNS_REGISTRY_SCHEMA,
   PROTECTED_SPAN_SCHEMA,
   EVALUATION_FIXTURE_SCHEMA,
   AGENT_SKILLS_PORTABLE_SCHEMA,
 ];
+
+const SEVERITY_ALIASES = Object.freeze({
+  critical: 'critical',
+  high: 'high',
+  medium: 'medium',
+  low: 'low',
+});
 
 /**
  * @param {string} root
@@ -209,6 +220,185 @@ export function validatePatternRecord(record, schema) {
  * @param {Record<string, unknown>} schema
  * @returns {string[]}
  */
+export function parseCorePatternHeadings(source) {
+  const headings = [];
+  const text = source.replace(/\r\n?/g, '\n');
+  const headingRe = /^### Pattern (\d+):\s*(.+)$/gm;
+  let match;
+  while ((match = headingRe.exec(text))) {
+    headings.push({ number: Number(match[1]), title: match[2].trim() });
+  }
+  return headings;
+}
+
+/**
+ * @param {string} source
+ * @returns {{ number: number, severity: string, must_preserve: boolean }[]}
+ */
+export function parsePatternBodySeverities(source) {
+  const text = source.replace(/\r\n?/g, '\n');
+  const headingRe = /^### Pattern (\d+):\s*(.+)$/gm;
+  const headings = [];
+  let match;
+  while ((match = headingRe.exec(text))) {
+    headings.push({ number: Number(match[1]), index: match.index });
+  }
+  return headings.map((heading, index) => {
+    const block = text.slice(heading.index, headings[index + 1]?.index ?? text.length);
+    const severityLine = block.match(/\*\*Severity:\*\*\s*(.+)/);
+    const raw = severityLine ? severityLine[1].trim() : '';
+    return {
+      number: heading.number,
+      severity: normalizeSeverity(raw),
+      must_preserve: /must preserve/i.test(raw),
+    };
+  });
+}
+
+/**
+ * @param {string} source
+ * @returns {{ number: number, title: string, severity: string }[]}
+ */
+export function parseSeverityTable(source) {
+  const text = source.replace(/\r\n?/g, '\n');
+  const section = text.match(/^## SEVERITY CLASSIFICATION\n([\s\S]*?)(?=\n---\n|\n## )/m);
+  if (!section) return [];
+  const rows = [];
+  let severity = null;
+  for (const line of section[1].split('\n')) {
+    const tier = line.match(/^### (Critical|High|Medium|Low)\b/);
+    if (tier) {
+      severity = normalizeSeverity(tier[1]);
+      continue;
+    }
+    const row = line.match(/^- Pattern (\d+):\s*(.+)$/);
+    if (row && severity) {
+      rows.push({ number: Number(row[1]), title: row[2].trim(), severity });
+    }
+  }
+  return rows;
+}
+
+/**
+ * @param {string} source
+ * @returns {number|null}
+ */
+export function parseFrontmatterPatternCount(source) {
+  const yaml = extractFrontmatterSource(source);
+  if (!yaml) return null;
+  const match = yaml.match(/^patterns:\s*(\d+)\s*$/m);
+  return match ? Number(match[1]) : null;
+}
+
+/**
+ * @param {string} raw
+ * @returns {string}
+ */
+function normalizeSeverity(raw) {
+  const token = raw
+    .trim()
+    .toLowerCase()
+    .split(/[\s(/]/, 1)[0];
+  return SEVERITY_ALIASES[token] ?? token;
+}
+
+/**
+ * @param {unknown} registry
+ * @param {string} source
+ * @returns {string[]}
+ */
+export function validatePatternRegistryConcordance(registry, source) {
+  const errors = [];
+  const records = Array.isArray(registry) ? registry : registry?.patterns;
+  if (!Array.isArray(records)) return ['pattern registry must contain a patterns array'];
+
+  const headings = parseCorePatternHeadings(source);
+  const bodies = parsePatternBodySeverities(source);
+  const table = parseSeverityTable(source);
+  const frontmatterCount = parseFrontmatterPatternCount(source);
+
+  if (frontmatterCount !== records.length) {
+    errors.push(
+      `pattern count mismatch: registry=${records.length} frontmatter=${frontmatterCount ?? 'missing'}`
+    );
+  }
+  if (headings.length !== records.length) {
+    errors.push(`pattern count mismatch: registry=${records.length} headings=${headings.length}`);
+  }
+
+  const byNumber = new Map();
+  for (const record of records) {
+    if (record && typeof record === 'object' && typeof record.number === 'number') {
+      byNumber.set(record.number, record);
+    }
+  }
+
+  const headingNumbers = new Set();
+  for (const heading of headings) {
+    headingNumbers.add(heading.number);
+    const record = byNumber.get(heading.number);
+    if (!record) {
+      errors.push(`registry is missing heading Pattern ${heading.number}: ${heading.title}`);
+      continue;
+    }
+    if (record.title !== heading.title) {
+      errors.push(
+        `pattern-${heading.number} title does not match heading: registry=${JSON.stringify(record.title)} heading=${JSON.stringify(heading.title)}`
+      );
+    }
+  }
+  for (const record of records) {
+    if (record && typeof record.number === 'number' && !headingNumbers.has(record.number)) {
+      errors.push(`heading is missing registry ${record.id ?? `pattern-${record.number}`}`);
+    }
+  }
+
+  for (const body of bodies) {
+    const record = byNumber.get(body.number);
+    if (!record) continue;
+    if (record.severity !== body.severity) {
+      errors.push(
+        `pattern-${body.number} severity does not match body: registry=${record.severity} body=${body.severity}`
+      );
+    }
+    if (Boolean(record.must_preserve) !== body.must_preserve) {
+      errors.push(
+        `pattern-${body.number} must_preserve does not match body: registry=${Boolean(record.must_preserve)} body=${body.must_preserve}`
+      );
+    }
+  }
+
+  const tableNumbers = new Set();
+  for (const row of table) {
+    if (tableNumbers.has(row.number)) {
+      errors.push(`severity table has duplicate Pattern ${row.number}`);
+    }
+    tableNumbers.add(row.number);
+    const record = byNumber.get(row.number);
+    if (!record) {
+      errors.push(`severity table lists unknown Pattern ${row.number}`);
+      continue;
+    }
+    if (record.severity !== row.severity) {
+      errors.push(
+        `pattern-${row.number} severity does not match table: registry=${record.severity} table=${row.severity}`
+      );
+    }
+  }
+  for (const record of records) {
+    if (record && typeof record.number === 'number' && !tableNumbers.has(record.number)) {
+      errors.push(`severity table is missing ${record.id ?? `pattern-${record.number}`}`);
+    }
+  }
+
+  return errors;
+}
+
+/**
+ * @param {unknown[]} records
+ * @param {Record<string, unknown>} schema
+ * @returns {string[]}
+ */
 export function validatePatternRecords(records, schema) {
   if (!Array.isArray(records)) return ['pattern records must be an array'];
   const errors = [];
@@ -388,11 +578,24 @@ export function collectContractErrors(root) {
     }
   }
 
-  const registryPath = path.join(root, CONTRACT_DIR, 'patterns.json');
-  if (fs.existsSync(registryPath)) {
+  const registryPath = path.join(root, CONTRACT_DIR, PATTERNS_REGISTRY);
+  if (!fs.existsSync(registryPath)) {
+    errors.push(`missing pattern registry: ${CONTRACT_DIR}/${PATTERNS_REGISTRY}`);
+  } else {
     const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+    const registrySchema = /** @type {Record<string, unknown>} */ (
+      loadContractJson(root, PATTERNS_REGISTRY_SCHEMA)
+    );
+    errors.push(...validateAgainstSchema(registry, registrySchema, 'patterns-registry'));
     const records = Array.isArray(registry) ? registry : registry.patterns;
     errors.push(...validatePatternRecords(records, patternSchema));
+
+    const modulePath = path.join(root, CORE_PATTERNS_MODULE);
+    if (fs.existsSync(modulePath)) {
+      errors.push(
+        ...validatePatternRegistryConcordance(registry, fs.readFileSync(modulePath, 'utf8'))
+      );
+    }
   }
 
   return errors;

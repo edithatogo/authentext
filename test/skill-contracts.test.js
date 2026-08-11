@@ -8,19 +8,25 @@ import { spawnSync } from 'node:child_process';
 import {
   AGENT_SKILLS_PORTABLE_SCHEMA,
   CONTRACT_DIR,
+  CORE_PATTERNS_MODULE,
   EVALUATION_FIXTURE_SCHEMA,
   FORBIDDEN_PORTABLE_FIELDS,
   PATTERN_SCHEMA,
+  PATTERNS_REGISTRY,
+  PATTERNS_REGISTRY_SCHEMA,
   PORTABLE_FIELDS,
   PROTECTED_SPAN_CATALOG,
   PROTECTED_SPAN_SCHEMA,
   collectContractErrors,
   loadContractJson,
+  parseFrontmatterPatternCount,
   parsePortableFrontmatter,
+  parseSeverityTable,
   validateAgainstSchema,
   validatePackagedSkillLayout,
   validatePatternRecord,
   validatePatternRecords,
+  validatePatternRegistryConcordance,
   validatePortableFrontmatter,
 } from '../scripts/lib/skill-contracts.js';
 
@@ -51,11 +57,12 @@ function runValidator(root) {
 
 test('contract schemas are checked in, closed, and name required fields', () => {
   const pattern = loadContractJson(ROOT, PATTERN_SCHEMA);
+  const registrySchema = loadContractJson(ROOT, PATTERNS_REGISTRY_SCHEMA);
   const span = loadContractJson(ROOT, PROTECTED_SPAN_SCHEMA);
   const fixtures = loadContractJson(ROOT, EVALUATION_FIXTURE_SCHEMA);
   const portable = loadContractJson(ROOT, AGENT_SKILLS_PORTABLE_SCHEMA);
 
-  for (const schema of [pattern, span, fixtures, portable]) {
+  for (const schema of [pattern, registrySchema, span, fixtures, portable]) {
     assert.equal(schema.$schema, 'https://json-schema.org/draft/2020-12/schema');
     assert.ok(schema.$id.includes('src/document-intelligence/'));
   }
@@ -180,6 +187,108 @@ test('repo contracts validate and the CLI names the Agent Skills spec', () => {
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, /Skill contract validation passed/);
   assert.match(result.stdout, /https:\/\/agentskills\.io\/specification/);
+});
+
+test('checked-in registry matches core-pattern headings and counts', () => {
+  const registry = loadContractJson(ROOT, PATTERNS_REGISTRY);
+  const source = fs.readFileSync(path.join(ROOT, CORE_PATTERNS_MODULE), 'utf8');
+  assert.deepEqual(
+    validateAgainstSchema(registry, loadContractJson(ROOT, PATTERNS_REGISTRY_SCHEMA)),
+    []
+  );
+  assert.deepEqual(validatePatternRegistryConcordance(registry, source), []);
+  assert.equal(registry.patterns.length, 40);
+  const preserved = registry.patterns.find((pattern) => pattern.number === 27);
+  assert.equal(preserved?.severity, 'critical');
+  assert.equal(preserved?.must_preserve, true);
+});
+
+test('a heading mismatch, duplicate severity-table ID, or count drift fails', () => {
+  const registry = structuredClone(loadContractJson(ROOT, PATTERNS_REGISTRY));
+  const source = fs.readFileSync(path.join(ROOT, CORE_PATTERNS_MODULE), 'utf8');
+
+  const retitled = structuredClone(registry);
+  retitled.patterns[0].title = 'Wrong Title';
+  assert.match(
+    validatePatternRegistryConcordance(retitled, source).join('\n'),
+    /does not match heading/
+  );
+
+  const duplicated = source.replace(
+    '- Pattern 39: Hyphenated word pair overuse (narrowed, upstream)',
+    '- Pattern 9: Negative parallelisms\n- Pattern 39: Hyphenated word pair overuse (narrowed, upstream)'
+  );
+  assert.match(
+    validatePatternRegistryConcordance(registry, duplicated).join('\n'),
+    /duplicate Pattern 9/
+  );
+
+  const recount = source.replace(/^patterns: 40$/m, 'patterns: 39');
+  assert.match(validatePatternRegistryConcordance(registry, recount).join('\n'), /frontmatter=39/);
+});
+
+test('concordance reports missing headings, table gaps, and severity drift', () => {
+  const registry = structuredClone(loadContractJson(ROOT, PATTERNS_REGISTRY));
+  const source = fs.readFileSync(path.join(ROOT, CORE_PATTERNS_MODULE), 'utf8');
+
+  assert.deepEqual(validatePatternRegistryConcordance({}), [
+    'pattern registry must contain a patterns array',
+  ]);
+  assert.deepEqual(parseSeverityTable('# No table\n'), []);
+  assert.equal(parseFrontmatterPatternCount('# no yaml\n'), null);
+  assert.equal(parseFrontmatterPatternCount('---\nmodule_id: x\n---\n'), null);
+
+  const missingHeading = structuredClone(registry);
+  missingHeading.patterns = missingHeading.patterns.filter((pattern) => pattern.number !== 1);
+  const missingHeadingErrors = validatePatternRegistryConcordance(missingHeading, source).join(
+    '\n'
+  );
+  assert.match(missingHeadingErrors, /missing heading Pattern 1/);
+
+  const orphan = structuredClone(registry);
+  orphan.patterns.push({
+    schema_version: 1,
+    number: 99,
+    title: 'Ghost',
+    severity: 'low',
+  });
+  const orphanErrors = validatePatternRegistryConcordance(orphan, source).join('\n');
+  assert.match(orphanErrors, /heading is missing registry pattern-99/);
+  assert.match(orphanErrors, /severity table is missing pattern-99/);
+
+  const drifted = structuredClone(registry);
+  drifted.patterns[0].severity = 'low';
+  const driftedErrors = validatePatternRegistryConcordance(drifted, source).join('\n');
+  assert.match(driftedErrors, /severity does not match body/);
+  assert.match(driftedErrors, /severity does not match table/);
+
+  const unmarked = structuredClone(registry);
+  unmarked.patterns.find((pattern) => pattern.number === 27).must_preserve = false;
+  assert.match(
+    validatePatternRegistryConcordance(unmarked, source).join('\n'),
+    /must_preserve does not match body/
+  );
+
+  const unknownTable = source.replace('- Pattern 39:', '- Pattern 98:');
+  const tableErrors = validatePatternRegistryConcordance(registry, unknownTable).join('\n');
+  assert.match(tableErrors, /unknown Pattern 98/);
+  assert.match(tableErrors, /severity table is missing pattern-39/);
+
+  assert.deepEqual(validatePatternRegistryConcordance(registry.patterns, source), []);
+});
+
+test('collectContractErrors fails when the registry file is missing', () => {
+  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'authentext-no-registry-'));
+  fs.cpSync(path.join(ROOT, CONTRACT_DIR), path.join(fixture, CONTRACT_DIR), { recursive: true });
+  fs.cpSync(path.join(ROOT, 'test', 'fixtures'), path.join(fixture, 'test', 'fixtures'), {
+    recursive: true,
+  });
+  fs.writeFileSync(
+    path.join(fixture, 'SKILL.md'),
+    '---\nname: authentext\ndescription: Rewrite prose.\n---\n'
+  );
+  fs.rmSync(path.join(fixture, CONTRACT_DIR, PATTERNS_REGISTRY));
+  assert.match(collectContractErrors(fixture).join('\n'), /missing pattern registry/);
 });
 
 test('CLI fails on a known-bad portable field', () => {

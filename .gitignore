@@ -39,6 +39,7 @@ test-*.json
 pr*.diff
 pr*.json
 !src/document-intelligence/profile-registry.json
+!src/document-intelligence/patterns.json
 !src/document-intelligence/protected-span.schema.json
 !src/document-intelligence/protected-span-classes.json
 issues*.json

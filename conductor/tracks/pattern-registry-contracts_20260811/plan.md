@@ -4,15 +4,17 @@
 
 - [x] Task: Write failing schema tests for required pattern fields, unique
       IDs, and severity enums.
-- [~] Task: Add `pattern.schema.json` under `src/document-intelligence/` and
+- [x] Task: Add `pattern.schema.json` under `src/document-intelligence/` and
       a first `patterns.json` covering the compiled severity list. Schema
       landed in PR 1; `patterns.json` seed is PR 2.
 - [ ] Task: Phase Verification & Checkpoint (Refer to `workflow.md`).
 
 ## Phase 2: Compile prose from the registry
 
-- [ ] Task: Write failing tests that a duplicated Low-tier ID or a missing
+- [x] Task: Write failing tests that a duplicated Low-tier ID or a missing
       registry entry fails `npm run sync` / validate.
+      Concordance is enforced by `validate-skill-contracts.js` against
+      Markdown headings rather than by rewriting `compile-skill.js`.
 - [ ] Task: Teach `compile-skill.js` to emit the severity tables from
       `patterns.json`. Keep pattern bodies in modules until a later slice
       migrates them.
@@ -39,6 +41,8 @@
 ## Handoff artifacts
 
 - `src/document-intelligence/pattern.schema.json`
-- `src/document-intelligence/patterns.json` (or equivalent)
-- Compiler path that emits severity tables
+- `src/document-intelligence/patterns-registry.schema.json`
+- `src/document-intelligence/patterns.json`
+- Concordance check: Markdown headings, severity-table IDs, frontmatter count
+- Compiler path that emits severity tables (deferred if `compile-skill.js` is busy)
 - Documented Agent Skills contract
