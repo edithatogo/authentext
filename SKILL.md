@@ -204,8 +204,13 @@ the material:
   [technical.md](references/technical.md).
 - Papers, manuscripts, citations, or research prose: read
   [academic.md](references/academic.md).
-- Policy, governance, legal, risk, or compliance prose: read
+- Health-research or clinical-safety prose: read
+  [clinical.md](references/clinical.md), plus academic or governance
+  references the material also requires.
+- Policy, governance, risk, or compliance prose: read
   [governance.md](references/governance.md).
+- Legal-regulatory prose (contracts, advice, affidavits, notices): read
+  [legal.md](references/legal.md) with governance.
 - Claims with contradictions or reasoning failures: read
   [reasoning-failures.md](references/reasoning-failures.md).
 - FOI-O final manuscript editing after semantic and citation review: read
@@ -214,7 +219,7 @@ the material:
 
 Load more than one content reference only when the material genuinely crosses
 domains. Reasoning guidance supplements a content reference; it does not replace
-technical, academic, or governance rules.
+technical, academic, clinical, legal, or governance rules.
 
 For low-density or clearly human-authored prose, make only the smallest
 defensible edits.
@@ -226,7 +231,9 @@ Read these files for the full pattern catalog, examples, and remediation guidanc
 - [Core patterns (40 patterns, before/after examples)](references/core-patterns.md)
 - [Technical writing and literal preservation](references/technical.md)
 - [Academic and research prose](references/academic.md)
+- [Clinical and patient-safety prose](references/clinical.md)
 - [Policy, governance, and compliance prose](references/governance.md)
+- [Legal and regulatory prose](references/legal.md)
 - [Reasoning failures and self-contradictions](references/reasoning-failures.md)
 - [FOI-O final editorial workflow and evidence receipt](references/foio-editorial.md)
 

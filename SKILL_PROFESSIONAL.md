@@ -15,7 +15,9 @@ Use this variant for technical, policy, academic, and client-facing prose. Keep 
 - [Core patterns](references/core-patterns.md) — always apply
 - [Technical module](references/technical.md) — code and technical docs
 - [Academic module](references/academic.md) — papers and formal research
+- [Clinical module](references/clinical.md) — health research and patient-safety prose
 - [Governance module](references/governance.md) — policy and compliance
+- [Legal module](references/legal.md) — contracts, advice, and regulatory filings
 - [Reasoning module](references/reasoning-failures.md) — reasoning failures and contradictions
 - [FOI-O editorial workflow](references/foio-editorial.md) — final manuscript pass and receipt
 
@@ -24,7 +26,9 @@ Use this variant for technical, policy, academic, and client-facing prose. Keep 
 1. Analyze input context:
    * Code or technical docs -> Core + Technical
    * Papers, essays, or formal research -> Core + Academic
+   * Health research or clinical-safety prose -> Core + Clinical, plus Academic or Governance as required
    * Policy, risk, or compliance writing -> Core + Governance
+   * Legal-regulatory prose -> Core + Governance + Legal
     * Reasoning failures or self-contradictions -> Core + Reasoning
     * FOI-O final manuscript editing -> Core + Academic + Governance + FOI-O
    * Otherwise -> Core only
@@ -81,4 +85,4 @@ Vary sentence rhythm with short and long lines. Use specific details instead of 
 
 For severity tiers and false-positive guidance, read [Core patterns](references/core-patterns.md) (sections **SEVERITY CLASSIFICATION** and **DETECTION GUIDANCE**).
 
-Available reference files: core-patterns.md, technical.md, academic.md, governance.md, reasoning-failures.md, foio-editorial.md.
+Available reference files: core-patterns.md, technical.md, academic.md, clinical.md, governance.md, legal.md, reasoning-failures.md, foio-editorial.md.
