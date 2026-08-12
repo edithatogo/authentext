@@ -69,7 +69,8 @@
       "references": [
         "references/core-patterns.md",
         "references/academic.md",
-        "references/governance.md"
+        "references/governance.md",
+        "references/clinical.md"
       ],
       "checks": ["study-type", "minimum-reporting", "claim-strength", "ethics-boundary"],
       "false_positive_risks": ["required reporting language and cautious clinical claims"],
@@ -90,7 +91,11 @@
     {
       "id": "legal-regulatory",
       "subtypes": ["advice", "submission", "affidavit", "contract", "notice"],
-      "references": ["references/core-patterns.md", "references/governance.md"],
+      "references": [
+        "references/core-patterns.md",
+        "references/governance.md",
+        "references/legal.md"
+      ],
       "checks": ["legal-meaning", "authority", "defined-terms", "evidentiary-boundary"],
       "false_positive_risks": ["formulaic language required by law, court, or contract"],
       "source_resolvers": ["named-jurisdiction", "publisher-requirements"],
@@ -104,7 +109,8 @@
       "references": [
         "references/core-patterns.md",
         "references/academic.md",
-        "references/governance.md"
+        "references/governance.md",
+        "references/clinical.md"
       ],
       "checks": ["clinical-meaning", "safety-actions", "audience", "evidence-boundary"],
       "false_positive_risks": [

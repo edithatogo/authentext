@@ -30,7 +30,9 @@ const MODULES = {
   core: 'src/modules/SKILL_CORE_PATTERNS.md',
   technical: 'src/modules/SKILL_TECHNICAL.md',
   academic: 'src/modules/SKILL_ACADEMIC.md',
+  clinical: 'src/modules/SKILL_CLINICAL.md',
   governance: 'src/modules/SKILL_GOVERNANCE.md',
+  legal: 'src/modules/SKILL_LEGAL.md',
   reasoning: 'src/modules/SKILL_REASONING.md',
   foio: 'src/modules/SKILL_FOIO.md',
 };
@@ -46,7 +48,9 @@ const REFERENCE_FILES = {
   core: 'core-patterns.md',
   technical: 'technical.md',
   academic: 'academic.md',
+  clinical: 'clinical.md',
   governance: 'governance.md',
+  legal: 'legal.md',
   reasoning: 'reasoning-failures.md',
   foio: 'foio-editorial.md',
 };
@@ -328,7 +332,9 @@ function compileStandardSkill(modules) {
     `- [Core patterns (${patternCount} patterns, before/after examples)](references/core-patterns.md)`,
     modules.technical && '- [Technical writing and literal preservation](references/technical.md)',
     modules.academic && '- [Academic and research prose](references/academic.md)',
+    modules.clinical && '- [Clinical and patient-safety prose](references/clinical.md)',
     modules.governance && '- [Policy, governance, and compliance prose](references/governance.md)',
+    modules.legal && '- [Legal and regulatory prose](references/legal.md)',
     modules.reasoning &&
       '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)',
     modules.foio &&
@@ -366,8 +372,13 @@ the material:
   [technical.md](references/technical.md).
 - Papers, manuscripts, citations, or research prose: read
   [academic.md](references/academic.md).
-- Policy, governance, legal, risk, or compliance prose: read
+- Health-research or clinical-safety prose: read
+  [clinical.md](references/clinical.md), plus academic or governance
+  references the material also requires.
+- Policy, governance, risk, or compliance prose: read
   [governance.md](references/governance.md).
+- Legal-regulatory prose (contracts, advice, affidavits, notices): read
+  [legal.md](references/legal.md) with governance.
 - Claims with contradictions or reasoning failures: read
   [reasoning-failures.md](references/reasoning-failures.md).
 - FOI-O final manuscript editing after semantic and citation review: read
@@ -376,7 +387,7 @@ the material:
 
 Load more than one content reference only when the material genuinely crosses
 domains. Reasoning guidance supplements a content reference; it does not replace
-technical, academic, or governance rules.
+technical, academic, clinical, legal, or governance rules.
 
 For low-density or clearly human-authored prose, make only the smallest
 defensible edits.
@@ -421,7 +432,11 @@ function compileProfessionalSkill(modules) {
     '- [Core patterns](references/core-patterns.md) — always apply',
     modules.technical && '- [Technical module](references/technical.md) — code and technical docs',
     modules.academic && '- [Academic module](references/academic.md) — papers and formal research',
+    modules.clinical &&
+      '- [Clinical module](references/clinical.md) — health research and patient-safety prose',
     modules.governance && '- [Governance module](references/governance.md) — policy and compliance',
+    modules.legal &&
+      '- [Legal module](references/legal.md) — contracts, advice, and regulatory filings',
     modules.reasoning &&
       '- [Reasoning module](references/reasoning-failures.md) — reasoning failures and contradictions',
     modules.foio &&
@@ -451,7 +466,9 @@ ${moduleLinks}
 1. Analyze input context:
    * Code or technical docs -> Core + Technical
    * Papers, essays, or formal research -> Core + Academic
+   * Health research or clinical-safety prose -> Core + Clinical, plus Academic or Governance as required
    * Policy, risk, or compliance writing -> Core + Governance
+   * Legal-regulatory prose -> Core + Governance + Legal
     * Reasoning failures or self-contradictions -> Core + Reasoning
     * FOI-O final manuscript editing -> Core + Academic + Governance + FOI-O
    * Otherwise -> Core only
@@ -528,7 +545,9 @@ function compile() {
       core: readModule(MODULES.core, true),
       technical: readModule(MODULES.technical),
       academic: readModule(MODULES.academic),
+      clinical: readModule(MODULES.clinical),
       governance: readModule(MODULES.governance),
+      legal: readModule(MODULES.legal),
       reasoning: readModule(MODULES.reasoning),
       foio: readModule(MODULES.foio),
     };

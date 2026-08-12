@@ -31,6 +31,10 @@ This module applies to governance writing: policies, risk assessments, complianc
 - Marketing materials
 - Informal communications
 
+Legal-regulatory instruments (contracts, advice, affidavits, notices) still
+load this module, then also load [legal.md](legal.md) for modal, defined-term,
+carve-out, and temporal locks. Do not rewrite `shall` as `must` from Pattern G1.
+
 ---
 
 ## GOVERNANCE VOICE
