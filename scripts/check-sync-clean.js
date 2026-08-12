@@ -16,6 +16,7 @@ const TARGET_FILES = [
   'references/clinical.md',
   'references/governance.md',
   'references/legal.md',
+  'references/creative.md',
   'references/reasoning-failures.md',
 ];
 

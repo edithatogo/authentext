@@ -33,6 +33,7 @@ const MODULES = {
   clinical: 'src/modules/SKILL_CLINICAL.md',
   governance: 'src/modules/SKILL_GOVERNANCE.md',
   legal: 'src/modules/SKILL_LEGAL.md',
+  creative: 'src/modules/SKILL_CREATIVE.md',
   reasoning: 'src/modules/SKILL_REASONING.md',
   foio: 'src/modules/SKILL_FOIO.md',
 };
@@ -51,6 +52,7 @@ const REFERENCE_FILES = {
   clinical: 'clinical.md',
   governance: 'governance.md',
   legal: 'legal.md',
+  creative: 'creative.md',
   reasoning: 'reasoning-failures.md',
   foio: 'foio-editorial.md',
 };
@@ -335,6 +337,7 @@ function compileStandardSkill(modules) {
     modules.clinical && '- [Clinical and patient-safety prose](references/clinical.md)',
     modules.governance && '- [Policy, governance, and compliance prose](references/governance.md)',
     modules.legal && '- [Legal and regulatory prose](references/legal.md)',
+    modules.creative && '- [Creative and narrative prose](references/creative.md)',
     modules.reasoning &&
       '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)',
     modules.foio &&
@@ -379,6 +382,8 @@ the material:
   [governance.md](references/governance.md).
 - Legal-regulatory prose (contracts, advice, affidavits, notices): read
   [legal.md](references/legal.md) with governance.
+- Creative or narrative prose: read
+  [creative.md](references/creative.md).
 - Claims with contradictions or reasoning failures: read
   [reasoning-failures.md](references/reasoning-failures.md).
 - FOI-O final manuscript editing after semantic and citation review: read
@@ -387,7 +392,7 @@ the material:
 
 Load more than one content reference only when the material genuinely crosses
 domains. Reasoning guidance supplements a content reference; it does not replace
-technical, academic, clinical, legal, or governance rules.
+technical, academic, clinical, legal, creative, or governance rules.
 
 For low-density or clearly human-authored prose, make only the smallest
 defensible edits.
@@ -437,6 +442,8 @@ function compileProfessionalSkill(modules) {
     modules.governance && '- [Governance module](references/governance.md) — policy and compliance',
     modules.legal &&
       '- [Legal module](references/legal.md) — contracts, advice, and regulatory filings',
+    modules.creative &&
+      '- [Creative module](references/creative.md) — fiction and narrative prose',
     modules.reasoning &&
       '- [Reasoning module](references/reasoning-failures.md) — reasoning failures and contradictions',
     modules.foio &&
@@ -469,6 +476,7 @@ ${moduleLinks}
    * Health research or clinical-safety prose -> Core + Clinical, plus Academic or Governance as required
    * Policy, risk, or compliance writing -> Core + Governance
    * Legal-regulatory prose -> Core + Governance + Legal
+   * Creative or narrative prose -> Core + Creative
     * Reasoning failures or self-contradictions -> Core + Reasoning
     * FOI-O final manuscript editing -> Core + Academic + Governance + FOI-O
    * Otherwise -> Core only
@@ -548,6 +556,7 @@ function compile() {
       clinical: readModule(MODULES.clinical),
       governance: readModule(MODULES.governance),
       legal: readModule(MODULES.legal),
+      creative: readModule(MODULES.creative),
       reasoning: readModule(MODULES.reasoning),
       foio: readModule(MODULES.foio),
     };
