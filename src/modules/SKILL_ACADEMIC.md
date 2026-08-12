@@ -253,7 +253,7 @@ Keep "ANOVA" only if the source already names it.
 
 ## CITATION AND REFERENCING
 
-Reference lists are **out of scope**. Do not generate, complete, reformat, or "fix" a bibliography. Do not invent missing references, DOIs, PMIDs, page ranges, or author lists. Leave the reference list untouched and report the gap.
+Reference lists are **out of scope**. Do not generate, complete, reformat, or "fix" a bibliography. Do not invent missing references, DOIs, PMIDs, page ranges, or author lists. Leave the reference list untouched and report the gap. Hand bibliography work to sourceright / citeweft when present (sibling clone, AUTHENTXT_SOURCERIGHT_PATH / AUTHENTXT_CITEWEFT_PATH, or configured skill); when absent, refuse locally and point to https://github.com/edithatogo/sourceright and https://github.com/edithatogo/citeweft.
 
 In-text citation tokens that already exist in the source are protected spans. You may flag a vague attribution (Pattern A1) or a padded span (Pattern A10). You may not rewrite the reference list to match.
 

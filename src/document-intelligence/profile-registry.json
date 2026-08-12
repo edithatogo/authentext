@@ -144,7 +144,7 @@
     {
       "id": "creative-narrative",
       "subtypes": ["profile", "speech", "personal-essay", "narrative-non-fiction"],
-      "references": ["references/core-patterns.md"],
+      "references": ["references/core-patterns.md", "references/creative.md"],
       "checks": ["voice", "rhythm", "narrative-purpose", "factual-boundary"],
       "false_positive_risks": ["intentional fragments, repetition, punctuation, and tonal shifts"],
       "source_resolvers": ["project-style", "voice-sample"],

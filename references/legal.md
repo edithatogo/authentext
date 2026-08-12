@@ -143,7 +143,7 @@ Prefer the smaller edit. If either risk is present, leave the span and report it
 
 - Report omission-versus-invention for the edit set
 - Keep quotations and pinpoints exactly
-- Point citation verification at sourceright or citeweft when those tools are in scope; otherwise refuse bibliography work locally
+- Point citation verification at sourceright or citeweft (https://github.com/edithatogo/sourceright, https://github.com/edithatogo/citeweft) when those tools are in scope; otherwise refuse bibliography work locally
 
 ### Don't
 

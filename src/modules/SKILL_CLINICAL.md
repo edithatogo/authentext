@@ -163,7 +163,7 @@ Keep the effect size, interval, and limitation already in the source. Do not upg
 
 - Invent a dose, interval, or contraindication
 - Swap `serious` and `severe`
-- Generate, complete, or reformat a reference list
+- Generate, complete, or reformat a reference list (hand off to sourceright / citeweft when present; refuse locally either way)
 - Claim the pass makes the document clinically safe
 
 ---

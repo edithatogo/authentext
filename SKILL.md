@@ -211,6 +211,8 @@ the material:
   [governance.md](references/governance.md).
 - Legal-regulatory prose (contracts, advice, affidavits, notices): read
   [legal.md](references/legal.md) with governance.
+- Creative or narrative prose: read
+  [creative.md](references/creative.md).
 - Claims with contradictions or reasoning failures: read
   [reasoning-failures.md](references/reasoning-failures.md).
 - FOI-O final manuscript editing after semantic and citation review: read
@@ -219,7 +221,7 @@ the material:
 
 Load more than one content reference only when the material genuinely crosses
 domains. Reasoning guidance supplements a content reference; it does not replace
-technical, academic, clinical, legal, or governance rules.
+technical, academic, clinical, legal, creative, or governance rules.
 
 For low-density or clearly human-authored prose, make only the smallest
 defensible edits.
@@ -234,6 +236,7 @@ Read these files for the full pattern catalog, examples, and remediation guidanc
 - [Clinical and patient-safety prose](references/clinical.md)
 - [Policy, governance, and compliance prose](references/governance.md)
 - [Legal and regulatory prose](references/legal.md)
+- [Creative and narrative prose](references/creative.md)
 - [Reasoning failures and self-contradictions](references/reasoning-failures.md)
 - [FOI-O final editorial workflow and evidence receipt](references/foio-editorial.md)
 

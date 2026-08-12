@@ -24,7 +24,7 @@ This module applies to governance writing: policies, risk assessments, complianc
 
 **When NOT to Apply:**
 
-- Creative writing
+- Creative writing (load [creative.md](creative.md) when that module is present)
 - Marketing materials
 - Informal communications
 
