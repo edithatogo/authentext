@@ -53,13 +53,13 @@ Lock polarity. `no evidence of infection` is not `evidence of no infection`. `sh
 
 `serious` is not `severe`. CIOMS frequency words have defined meanings and are locked:
 
-| Word | Meaning in CIOMS frequency language |
-| --- | --- |
-| very common | ≥ 1/10 |
-| common | ≥ 1/100 to < 1/10 |
-| uncommon | ≥ 1/1,000 to < 1/100 |
-| rare | ≥ 1/10,000 to < 1/1,000 |
-| very rare | < 1/10,000 |
+| Word        | Meaning in CIOMS frequency language |
+| ----------- | ----------------------------------- |
+| very common | ≥ 1/10                              |
+| common      | ≥ 1/100 to < 1/10                   |
+| uncommon    | ≥ 1/1,000 to < 1/100                |
+| rare        | ≥ 1/10,000 to < 1/1,000             |
+| very rare   | < 1/10,000                          |
 
 Do not replace `uncommon` with `rare`, or `serious` with `severe`, to sound more natural.
 
