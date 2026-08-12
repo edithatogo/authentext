@@ -1,0 +1,6 @@
+extends: existence
+message: "Do not use an em dash or en dash in maintained prose. Use a comma, period, colon, or parentheses."
+level: error
+nonword: true
+tokens:
+  - '[—–]'
