@@ -43,7 +43,9 @@ test('canonical modules use the package version and Authentext identity', () => 
     'SKILL_CORE_PATTERNS.md',
     'SKILL_TECHNICAL.md',
     'SKILL_ACADEMIC.md',
+    'SKILL_CLINICAL.md',
     'SKILL_GOVERNANCE.md',
+    'SKILL_LEGAL.md',
     'SKILL_REASONING.md',
   ]) {
     const source = fs.readFileSync(`src/modules/${filename}`, 'utf8');

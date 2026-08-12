@@ -13,7 +13,9 @@ const TARGET_FILES = [
   'references/core-patterns.md',
   'references/technical.md',
   'references/academic.md',
+  'references/clinical.md',
   'references/governance.md',
+  'references/legal.md',
   'references/reasoning-failures.md',
 ];
 
