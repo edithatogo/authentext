@@ -5,8 +5,10 @@
 - **Priority:** P0
 - **Status:** In progress
 - **Depends on:** `editorial-safety-invariants_20260811`
-- **Current phase:** Phase 1 — Positioning and academic upgrade
+- **Current phase:** Phase 4 — Creative reference
 - **GitHub track:** [#277](https://github.com/edithatogo/authentext/issues/277)
+- **Merged:** academic upgrade [PR #297](https://github.com/edithatogo/authentext/pull/297)
+- **In flight:** clinical + legal modules (this branch)
 
 ## Artifacts
 
