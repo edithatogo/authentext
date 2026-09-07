@@ -13,6 +13,8 @@ Expose redacted, span-grounded Authentext findings as advisory StandardFlow evid
 
 `ca39b86eb604a6fe4cfa9a0918638195af82c1af` identifies the producer-logic baseline, not a false claim that it contains the new handoff artifacts. Pull request 307 and the explicit Conductor paths provide their current location.
 
+The exact consumer revision is `f1e7b6c6e283865c1b7dbb34dbe33d8bf6f6c799`; its contract, Rust and legacy document-build gates passed, while merge and downstream adoption remain unclaimed.
+
 ## Required finding fields
 
 - document-local subject identifier;

@@ -14,7 +14,7 @@
     ]
   },
   "consumer_repository": "edithatogo/standards_check",
-  "consumer_revision": "f248d7c4dd40dd34cb45b5b6150b4750a5b28864",
+  "consumer_revision": "f1e7b6c6e283865c1b7dbb34dbe33d8bf6f6c799",
   "consumer_pull_request": 59,
   "automatic_revision_updates": false,
   "default_network": false,
@@ -65,5 +65,5 @@
     "Restore the prior exact consumer revision and retain the failed receipt.",
     "Do not alter source text, compiled skills or existing findings as part of rollback."
   ],
-  "claim_boundary": "The producer_baseline_revision identifies existing Authentext logic rather than falsely claiming that it contains these new artifacts. Pull request 307 and the listed Conductor paths are the current, explicitly mutable artifact location. The exchange remains advisory and cannot establish authorship, misconduct, plagiarism, detector evasion, claim truth or standards compliance."
+  "claim_boundary": "The producer_baseline_revision identifies existing Authentext logic rather than falsely claiming that it contains these new artifacts. Pull request 307 and the listed Conductor paths are the current, explicitly mutable artifact location. The pinned consumer revision passed its contract, Rust and legacy document-build gates. The exchange remains advisory and cannot establish authorship, misconduct, plagiarism, detector evasion, claim truth or standards compliance."
 }
