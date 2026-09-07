@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import { readFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 
 const contractPath = new URL("../integration/standardflow/contract.json", import.meta.url);
 const fixturePath = new URL(
   "../integration/standardflow/fixtures/text-pattern-evidence.json",
   import.meta.url,
 );
-const contract = JSON.parse(await readFile(contractPath, "utf8"));
-const fixture = JSON.parse(await readFile(fixturePath, "utf8"));
+const contract = JSON.parse(readFileSync(contractPath, "utf8"));
+const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
 const hex40 = /^[a-f0-9]{40}$/u;
 
 function assert(condition, message) {
