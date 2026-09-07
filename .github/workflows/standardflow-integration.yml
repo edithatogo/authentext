@@ -3,14 +3,12 @@ name: StandardFlow integration contract
 on:
   pull_request:
     paths:
-      - "integration/standardflow/**"
       - "conductor/tracks/domain-and-citation_20260811/**"
       - "scripts/check-standardflow-integration.mjs"
       - ".github/workflows/standardflow-integration.yml"
   push:
     branches: [main]
     paths:
-      - "integration/standardflow/**"
       - "conductor/tracks/domain-and-citation_20260811/**"
       - "scripts/check-standardflow-integration.mjs"
       - ".github/workflows/standardflow-integration.yml"

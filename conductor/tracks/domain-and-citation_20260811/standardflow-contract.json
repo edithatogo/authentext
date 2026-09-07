@@ -2,7 +2,17 @@
   "schema_version": "io.authentext.standardflow-integration.v1",
   "integration_id": "authentext-standardflow-text-evidence",
   "producer_repository": "edithatogo/authentext",
-  "producer_revision": "ca39b86eb604a6fe4cfa9a0918638195af82c1af",
+  "producer_baseline_revision": "ca39b86eb604a6fe4cfa9a0918638195af82c1af",
+  "artifact_provenance": {
+    "kind": "pull_request_head",
+    "repository": "edithatogo/authentext",
+    "pull_request": 307,
+    "immutable": false,
+    "paths": [
+      "conductor/tracks/domain-and-citation_20260811/standardflow-contract.json",
+      "conductor/tracks/domain-and-citation_20260811/standardflow-fixture.json"
+    ]
+  },
   "consumer_repository": "edithatogo/standards_check",
   "consumer_revision": "f248d7c4dd40dd34cb45b5b6150b4750a5b28864",
   "consumer_pull_request": 59,
@@ -17,7 +27,7 @@
       "name": "StandardFlow ecosystem evidence envelope",
       "version": "dev.standardflow.ecosystem-evidence.v1",
       "consumer_path": "schemas/ecosystem-evidence.v1.schema.json",
-      "fixture": "integration/standardflow/fixtures/text-pattern-evidence.json"
+      "fixture": "conductor/tracks/domain-and-citation_20260811/standardflow-fixture.json"
     }
   ],
   "authority": {
@@ -55,5 +65,5 @@
     "Restore the prior exact consumer revision and retain the failed receipt.",
     "Do not alter source text, compiled skills or existing findings as part of rollback."
   ],
-  "claim_boundary": "The pinned StandardFlow foundation passed its contract and Rust gates. This remains a source-level advisory exchange and does not prove merge, runtime interoperability, authorship, misconduct, plagiarism, claim truth or standards compliance."
+  "claim_boundary": "The producer_baseline_revision identifies existing Authentext logic rather than falsely claiming that it contains these new artifacts. Pull request 307 and the listed Conductor paths are the current, explicitly mutable artifact location. The exchange remains advisory and cannot establish authorship, misconduct, plagiarism, detector evasion, claim truth or standards compliance."
 }

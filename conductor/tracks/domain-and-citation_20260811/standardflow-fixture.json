@@ -2,6 +2,13 @@
   "schema_version": "dev.standardflow.ecosystem-evidence.v1",
   "producer": "authentext",
   "producer_revision": "ca39b86eb604a6fe4cfa9a0918638195af82c1af",
+  "artifact_provenance": {
+    "kind": "pull_request_head",
+    "repository": "edithatogo/authentext",
+    "pull_request": 307,
+    "path": "conductor/tracks/domain-and-citation_20260811/standardflow-fixture.json",
+    "immutable": false
+  },
   "evidence_type": "text_pattern_finding",
   "subject": "fixture:document:example-001",
   "payload": {
@@ -24,6 +31,7 @@
   "limitations": [
     "Synthetic, network-free fixture only.",
     "The finding is an editorial signal, not an authorship, misconduct, plagiarism, detector-evasion or compliance determination.",
+    "The artifact location is a mutable pull-request head until an immutable post-merge receipt is issued.",
     "StandardFlow may associate the finding with a requirement but may not silently edit the document or promote the finding to verified evidence."
   ]
 }
