@@ -1,0 +1,37 @@
+name: StandardFlow integration contract
+
+on:
+  pull_request:
+    paths:
+      - "integration/standardflow/**"
+      - "conductor/tracks/domain-and-citation_20260811/**"
+      - "scripts/check-standardflow-integration.mjs"
+      - ".github/workflows/standardflow-integration.yml"
+  push:
+    branches: [main]
+    paths:
+      - "integration/standardflow/**"
+      - "conductor/tracks/domain-and-citation_20260811/**"
+      - "scripts/check-standardflow-integration.mjs"
+      - ".github/workflows/standardflow-integration.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: authentext-standardflow-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+      - run: node scripts/check-standardflow-integration.mjs

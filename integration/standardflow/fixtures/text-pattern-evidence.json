@@ -1,0 +1,29 @@
+{
+  "schema_version": "dev.standardflow.ecosystem-evidence.v1",
+  "producer": "authentext",
+  "producer_revision": "ca39b86eb604a6fe4cfa9a0918638195af82c1af",
+  "evidence_type": "text_pattern_finding",
+  "subject": "fixture:document:example-001",
+  "payload": {
+    "document_id": "example-001",
+    "pattern_id": "fixture.editorial-pattern-001",
+    "pattern_version": "1.0.0",
+    "span": {
+      "start_utf8": 12,
+      "end_utf8": 37,
+      "locator": "paragraph:2"
+    },
+    "finding": "A synthetic editorial pattern was detected for review.",
+    "suggestion": "Review the sentence for specificity and preserve the author's intended claim.",
+    "confidence": 0.7,
+    "raw_text_included": false,
+    "canonical_write_performed": false
+  },
+  "authority": "advisory",
+  "created_at": "2026-09-08T00:00:00Z",
+  "limitations": [
+    "Synthetic, network-free fixture only.",
+    "The finding is an editorial signal, not an authorship, misconduct, plagiarism, detector-evasion or compliance determination.",
+    "StandardFlow may associate the finding with a requirement but may not silently edit the document or promote the finding to verified evidence."
+  ]
+}
