@@ -8,7 +8,7 @@
 
 ## Scope
 
-Expose redacted, span-grounded Authentext findings as advisory StandardFlow evidence while preserving claim meaning, human editorial authority and the existing skill build. The exact proposed consumer revision is `820898e7ae21784145f98e04d8fc482367a6f015`.
+Expose redacted, span-grounded Authentext findings as advisory StandardFlow evidence while preserving claim meaning, human editorial authority and the existing skill build. The exact verified consumer revision is `f248d7c4dd40dd34cb45b5b6150b4750a5b28864`; its foundation contract and Rust gates passed, while merge and downstream adoption remain unclaimed.
 
 ## Required finding fields
 

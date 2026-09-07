@@ -4,7 +4,7 @@
   "producer_repository": "edithatogo/authentext",
   "producer_revision": "ca39b86eb604a6fe4cfa9a0918638195af82c1af",
   "consumer_repository": "edithatogo/standards_check",
-  "consumer_revision": "820898e7ae21784145f98e04d8fc482367a6f015",
+  "consumer_revision": "f248d7c4dd40dd34cb45b5b6150b4750a5b28864",
   "consumer_pull_request": 59,
   "automatic_revision_updates": false,
   "default_network": false,
@@ -55,5 +55,5 @@
     "Restore the prior exact consumer revision and retain the failed receipt.",
     "Do not alter source text, compiled skills or existing findings as part of rollback."
   ],
-  "claim_boundary": "This contract prepares a source-level advisory evidence exchange. It does not prove that standards_check PR 59 is merged, that the consumer compiles, that a pattern identifies authorship, or that a document satisfies a standard."
+  "claim_boundary": "The pinned StandardFlow foundation passed its contract and Rust gates. This remains a source-level advisory exchange and does not prove merge, runtime interoperability, authorship, misconduct, plagiarism, claim truth or standards compliance."
 }
