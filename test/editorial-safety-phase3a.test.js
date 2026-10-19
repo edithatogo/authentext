@@ -7,8 +7,8 @@ const generated = fs.readFileSync('SKILL.md', 'utf8');
 const coreReference = fs.readFileSync('references/core-patterns.md', 'utf8');
 
 test('Pattern 13 remains the em dash rule and is not reused for passive voice', () => {
-  assert.match(canonicalSource, /### Pattern 13: Em\/En Dash Hard Cut/);
-  assert.match(coreReference, /### Pattern 13: Em\/En Dash Hard Cut/);
+  assert.match(canonicalSource, /### Pattern 13: Rhetorical Dash Review/);
+  assert.match(coreReference, /### Pattern 13: Rhetorical Dash Review/);
   assert.doesNotMatch(canonicalSource, /### Pattern 13:.*Passive Voice/);
   assert.match(generated, /Pattern 13: Em dash overuse/);
 });

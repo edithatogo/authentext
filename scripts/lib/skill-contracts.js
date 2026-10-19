@@ -395,10 +395,10 @@ export function validatePatternRegistryConcordance(registry, source) {
 }
 
 const SEVERITY_TABLE_HEADINGS = Object.freeze({
-  critical: '### Critical (immediate AI detection)',
-  high: '### High (strong AI signals)',
-  medium: '### Medium (moderate AI signals)',
-  low: '### Low (weak AI signals)',
+  critical: '### Critical (urgent editorial review)',
+  high: '### High (substantial editorial concerns)',
+  medium: '### Medium (contextual editorial concerns)',
+  low: '### Low (minor style concerns)',
 });
 
 /**

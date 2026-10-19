@@ -242,7 +242,7 @@
       "schema_version": 1,
       "id": "pattern-13",
       "number": 13,
-      "title": "Em/En Dash Hard Cut",
+      "title": "Rhetorical Dash Review",
       "severity": "low",
       "domain_applicability": ["all"],
       "mode_carve_outs": [],
