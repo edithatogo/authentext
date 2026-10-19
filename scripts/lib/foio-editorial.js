@@ -1,11 +1,15 @@
 import { createHash } from 'node:crypto';
 
 const PROTECTED_PATTERNS = {
-  citation: /\([^()\n]*\b(?:19|20)\d{2}[a-z]?[^()\n]*\)|\[[0-9,;\-\s]+\]/g,
+  citation: /\([^()\n]*\b(?:19|20)\d{2}[a-z]?[^()\n]*\)|\[[0-9,;\-–—\s]+\]/g,
+  technical_punctuation:
+    /(?<![\p{L}\p{N}_])(?:[−–+\-]?\d+(?:\.\d+)?\s*[–—−-]\s*[−+\-]?\d+(?:\.\d+)?|\d{4}-\d{2}-\d{2})|\b(?:[A-Z]|\d+(?:,\d+)*)[-–][\p{L}\p{N}]+(?:[-–][\p{L}\p{N}]+)*/gu,
+  named_technical_span:
+    /\b(?:January|February|March|April|May|June|July|August|September|October|November|December)[–-](?:January|February|March|April|May|June|July|August|September|October|November|December)\b|\b(?:cis|trans)-\d+(?:['′])?-[\p{L}\p{N}-]+/gu,
   url: /https?:\/\/[^\s)>\]]+/g,
-  number: /(?<![\p{L}\p{N}_])[-+]?\d+(?:[.,]\d+)*(?:\s?(?:%|[A-Za-z]{1,8}))?/gu,
+  number: /(?<![\p{L}\p{N}_])[−–+\-]?\d+(?:[.,]\d+)*(?:\s?(?:%|[A-Za-z]{1,8}))?/gu,
   qualifier:
-    /\b(?:may|might|could|suggests?|estimated|approximately|reported|alleged|subject to|not established|uncertain)\b/gi,
+    /\b(?:may|might|could|suggests?|estimated|approximately|reported|alleged|subject to|not established|uncertain|is associated with|cannot exclude|not necessarily)\b/gi,
   legal_boundary:
     /\b(?:confidential|privileged|under embargo|without consent|not for publication|subject to [^.;\n]+)\b/gi,
 };

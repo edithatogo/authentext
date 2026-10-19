@@ -20,7 +20,7 @@
 
 ## Description
 
-Always-applied patterns for general writing. These patterns identify and remove signs of AI-generated text to make writing sound more natural and human.
+Always-applied patterns for general writing. These patterns flag possible editorial defects for contextual review. They cannot establish authorship or whether AI was used.
 
 Based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup.
 
@@ -87,7 +87,7 @@ the paragraph from that.
 Some spans cannot be edited as prose, because changing them changes what the
 document asserts. Treat the following as locked in every document type:
 
-- Numerals, quantities, units, dates, currencies, and periodicity.
+- Numerals, quantities, units, dates, currencies, and periodicity, including citation ranges, confidence intervals, date ranges, minus signs, and chemical nomenclature.
 - Citations, references, quotations, and pinpoints.
 - Negation and polarity, including "not", "no evidence of", and "should not".
 - Epistemic qualifiers and their strength, including "may", "suggests", and
@@ -114,7 +114,7 @@ If the user supplies a writing sample of their own previous prose, analyse it be
 2. Match those habits instead of only deleting AI patterns. Do not upgrade casual words or regularise deliberate quirks.
 3. Without a sample, or if the corpus is too small or unreadable, say so and use the default behaviour below. Do not invent a voice.
 
-A sample outranks Authentext style rules, including the Pattern 13 dash ban: if the sample uses em dashes, keep them at roughly the sample's frequency. Matching the author beats scrubbing the tell. The sample does not outrank Never add, Never lose, or protected spans.
+A sample outranks Authentext style rules, including the Pattern 13 punctuation guidance: if the sample uses em dashes, keep them at roughly the sample's frequency. Matching the author takes precedence over optional style changes. The sample does not outrank Never add, Never lose, or protected spans.
 
 Facts found in the corpus may inform voice. They may be cited back as "you have written this before." They must not be inserted into the current document unless the user asks and the current source already supports the claim. A corpus does not license fabrication or invented biography.
 
@@ -139,9 +139,9 @@ Published-work research is metadata-only unless the user also grants a public fu
 
 ## Mechanical pre-return scan
 
-Before returning output, run one mechanical scan over the result. A leftover hit means the draft is not done:
+Before returning output, run one mechanical scan over the result. Review each hit in context; protected spans and governing requirements take precedence. A hit is not an instruction to delete:
 
-- Em dashes or en dashes (`—`, `–`, spaced `—`, `--`), except a writing-sample match and kept annotated-link or definition separators (Pattern 13)
+- Em dashes or en dashes (`—`, `–`, spaced `—`, `--`), except protected technical spans, a writing-sample match, and kept annotated-link or definition separators (Pattern 13)
 - Curly quotes (`“` `”` `‘` `’`) when they function as a tell: stacked with other AI signals, not Word or macOS auto-curl on otherwise human prose (Pattern 18)
 - Emoji (Pattern 17)
 - Leftover chatbot correspondence: collaborative artifacts, knowledge-cutoff disclaimers, and sycophancy (Patterns 19, 20, 21)
@@ -419,11 +419,11 @@ The fix is not banning the repeated word. A run of three sentences becoming one 
 
 ## STYLE PATTERNS
 
-### Pattern 13: Em/En Dash Hard Cut
+### Pattern 13: Rhetorical Dash Review
 
-**Problem:** LLMs overuse em dashes (—) and en dashes (–), mimicking punchy sales writing. The em/en dash is one of the most reliable AI tells; treat as a hard constraint in final output, not "use sparingly".
+**Problem:** Repeated rhetorical dashes can interrupt the argument or create formulaic rhythm. Punctuation does not identify authorship. Numeric ranges and technical notation are not rhetorical dashes.
 
-**Rule (final rewrite):** Contains no em dashes (—) or en dashes (–), except a user writing sample (see Voice Calibration) and kept annotated-link or definition separators (below). Also catch spaced (`—`) and double-hyphen (`--`) aliases. Replace in preference order: period (new sentence), comma (tight aside), colon (explanation), parentheses (true aside), or restructure. The mechanical pre-return scan includes these dash checks along with curly-quote tells, emoji, and leftover chatbot correspondence.
+**Rule (final rewrite):** Review rhetorical em dashes (—) and en dashes (–) for clarity, preserving protected technical spans first. Never alter citation ranges, confidence intervals, date ranges, minus signs, or chemical nomenclature to satisfy a style rule. For optional rhetorical replacements, respect a user writing sample (see Voice Calibration) and kept annotated-link or definition separators (below). Also catch spaced (`—`) and double-hyphen (`--`) aliases. Replace in preference order: period (new sentence), comma (tight aside), colon (explanation), parentheses (true aside), or restructure. The mechanical pre-return scan includes these dash checks along with curly-quote tells, emoji, and leftover chatbot correspondence.
 
 **Severity:** Low
 
@@ -440,7 +440,7 @@ The fix is not banning the repeated word. A run of three sentences becoming one 
 > [Title](url) — description
 > **Term** — definition
 
-**Not a problem when:** Used sparingly by a human editor/journalist and not clustered with other sales-y tells (see Detection Guidance). A user-provided writing sample uses em dashes (see Voice Calibration); match the sample's frequency instead of banning them. An em dash that only separates a Markdown link or a bold leading term from its description is formatting, not a tell: `[Title](url) — description` and `**Term** — definition`. On the first such separator, ask once whether to keep these separators or convert them like any other em dash, then apply that choice to every matching separator. Embedded mode cannot ask, so keep them. Em dashes anywhere else in the prose still follow the hard cut.
+**Not a problem when:** Used sparingly by a human editor/journalist and not clustered with other sales-y tells (see Detection Guidance). A user-provided writing sample uses em dashes (see Voice Calibration); match the sample's frequency instead of banning them. An em dash that only separates a Markdown link or a bold leading term from its description is formatting, not a tell: `[Title](url) — description` and `**Term** — definition`. On the first such separator, ask once whether to keep these separators or convert them like any other em dash, then apply that choice to every matching separator. Embedded mode cannot ask, so keep them. Other rhetorical dashes receive contextual review under the rule above.
 
 ---
 
@@ -787,7 +787,7 @@ The system processes requests in under 100ms.
 
 ## SEVERITY CLASSIFICATION
 
-### Critical (immediate AI detection)
+### Critical (urgent editorial review)
 
 - Pattern 19: Collaborative communication artifacts
 - Pattern 20: Knowledge-cutoff disclaimers
@@ -795,14 +795,14 @@ The system processes requests in under 100ms.
 - Pattern 25: AI signatures in code
 - Pattern 27: Technical literal preservation (must preserve)
 
-### High (strong AI signals)
+### High (substantial editorial concerns)
 
 - Pattern 1: Undue emphasis on significance
 - Pattern 3: Superficial -ing analyses
 - Pattern 4: Promotional language
 - Pattern 31: Extended thinking tags
 
-### Medium (moderate AI signals)
+### Medium (contextual editorial concerns)
 
 - Pattern 2: Undue emphasis on notability
 - Pattern 5: Vague attributions and back-references
@@ -814,7 +814,7 @@ The system processes requests in under 100ms.
 - Pattern 33: Tool use documentation
 - Pattern 40: Passive voice and subjectless fragments (Upstream §13)
 
-### Low (weak AI signals)
+### Low (minor style concerns)
 
 - Pattern 9: Negative parallelisms
 - Pattern 10: Rule of three overuse
@@ -1025,7 +1025,7 @@ The tell is a negation about the piece's own aims or the author's intent that is
 
 > Session tokens are rotated every 24 hours, in place, and clients refresh transparently.
 
-The alternative is attributed to no one, appears nowhere else in the piece, and is dismissed in a clause or two. One phantom rebuttal is ambiguous; several on unrelated tangents is the confession.
+The alternative is attributed to no one, appears nowhere else in the piece, and is dismissed in a clause or two. Repeated unsupported rebuttals warrant checking the argument and its sources; they do not establish authorship.
 
 Cut only the defensive clause or the phantom digression. A defense or rebuttal can smuggle in a real claim: if the piece uses that position, restate it affirmatively instead of deleting it, and delete only pure not-X clauses. An objection the text attributes to someone or genuinely engages stays; Pattern 9 governs its phrasing.
 
@@ -1089,7 +1089,7 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **Common transition words in isolation.** _Additionally_, _moreover_, _consequently_ are AI-coded only when piled up. One _however_ is not a tell.
 - **A single well-anchored "This" or "This means."** Demonstratives are normal English. Flag the phrase only when the antecedent is unrecoverable, or when several such sentences run in a row.
 - **Curly quotes alone.** macOS, Word, Google Docs, and most CMSes auto-curl by default. Curly quotes only count when stacked with other tells.
-- **Em dashes alone.** Many editors and journalists use them often. Em dashes are evidence only when paired with formulaic sales-y rhythm.
+- **Em dashes alone.** Many editors and journalists use them often. Even when paired with formulaic sales-y rhythm, em dashes are only an editorial review cue.
 - **Annotated-link or definition separators.** `[Title](url)` or `**Term**` followed by an em dash and a description is list formatting, not a tell. Ask once whether to keep those separators; in embedded mode, keep them. Other em dashes still follow Pattern 13.
 - **One short emphatic sentence.** Humans use clipped sentences to land a point. Flag staccato drama only when several short fragments appear in a row and inflate the tone.
 - **Deliberate anaphora.** Repeating a sentence opening on purpose is an old device, and good prose uses it to build cadence or pressure ("She came. She saw. She conquered."). Flag a repeated opening only when the run does no rhetorical work and reads as the model failing to vary rather than a writer choosing.
@@ -1101,7 +1101,7 @@ A clean human writer can hit several of the patterns above without any AI involv
 - **Alternatives a reader would actually reach for.** Design docs weighing real options, tutorials warning against genuinely tempting mistakes, and essays that steelman before disagreeing are content, not scar tissue. The tell is the implausible alternative dispatched mid-flow and never revisited.
 - **Secondhand text.** Do not rewrite watched phrases inside quotations, titles, proper names, or examples where the phrase is being discussed rather than used.
 
-When in doubt, look for **clusters** of tells, not isolated ones. A single em dash means nothing; em dashes plus rule-of-three plus _vibrant tapestry_ plus a "Conclusion" section is a confession.
+When in doubt, look for **clusters** of tells, not isolated ones. Clusters can justify closer editorial review, but neither a single pattern nor a cluster proves AI use or authorship. Preserve required headings and scientific qualifiers.
 
 ### Signs of human writing (preserve these)
 

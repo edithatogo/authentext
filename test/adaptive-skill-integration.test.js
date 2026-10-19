@@ -38,7 +38,7 @@ test('editorial safety invariants replace paragraph-count parity', () => {
 });
 
 test('compiled severity list does not repeat Low-tier pattern entries', () => {
-  const low = generated.match(/### Low \(weak AI signals\)\n\n([\s\S]*?)\n## /);
+  const low = generated.match(/### Low \(minor style concerns\)\n\n([\s\S]*?)\n## /);
   assert.ok(low, 'Low-tier severity section missing');
   const ids = [...low[1].matchAll(/^- Pattern (\d+):/gm)].map(([, id]) => id);
   assert.deepEqual(ids, [...new Set(ids)]);
