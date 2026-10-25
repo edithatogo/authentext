@@ -63,9 +63,9 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-node": "^11.1.0",
     "husky": "^9.1.7",
-    "js-yaml": "^5.2.3",
+    "js-yaml": "^5.5.0",
     "lint-staged": "^17.3.0",
-    "markdownlint-cli": "^0.49.1",
+    "markdownlint-cli": "^0.50.0",
     "prettier": "^3.9.6",
     "typescript": "^7.0.2",
     "yaml": "^2.9.0"
