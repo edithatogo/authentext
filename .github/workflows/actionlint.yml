@@ -25,4 +25,4 @@ jobs:
           persist-credentials: false
 
       - name: Lint workflows
-        uses: reviewdog/action-actionlint@50842263c20a7c46bd0065b9e624d3c569db061e # v1
+        uses: reviewdog/action-actionlint@619a81ec64ff8c0211cd6146eb2b21e8f1d7f440 # v1
