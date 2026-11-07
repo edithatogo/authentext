@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inspectReaderContract } from './lib/reader-contract.js';
 import { readUtf8 } from './lib/runtime-io.js';
 import { inspectDiscourse } from './lib/epistemic-discourse.js';
-import { metrics, invariants, multisetDiff, parseArgs, readText } from './lib/frontier-text.js';
+import { metrics, invariants, multisetDiff, parseArgs } from './lib/frontier-text.js';
 
 const categories = {
   codeBlocks: 'modifiedCodeBlocks',
@@ -117,15 +116,23 @@ export function inspectRewrite(
     warnings,
   };
 }
+function readMetadata(file) {
+  const text = readUtf8(file);
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new TypeError('Metadata must be valid JSON');
+  }
+}
 function main() {
   try {
     const a = parseArgs(process.argv.slice(2));
     if (!a.original || !a.rewrite) throw new Error('Requires --original and --rewrite');
-    const profile = a.profile ? JSON.parse(fs.readFileSync(a.profile, 'utf8')) : null;
-    const result = inspectRewrite(readText(a.original), readText(a.rewrite), {
+    const profile = a.profile ? readMetadata(a.profile) : null;
+    const result = inspectRewrite(readUtf8(a.original), readUtf8(a.rewrite), {
       mode: a.mode || 'standard',
       profile,
-      readerContract: a['reader-contract'] ? JSON.parse(readUtf8(a['reader-contract'])) : null,
+      readerContract: a['reader-contract'] ? readMetadata(a['reader-contract']) : null,
       allowCodeEdits: a['allow-code-edits'] === true,
       allowModalityShift: a['allow-modality-shift'] === true,
       format:

@@ -286,10 +286,10 @@
     },
     {
       "path": "scripts/lib/reader-contract.js",
-      "sha256": "94b577ecdf1c8e171e38b012946309c744b06a8248624387c3f77e23a670ef51",
-      "bytes": 7744,
-      "words": 778,
-      "estimatedTokens": 1936
+      "sha256": "94411d5c0307a2a1bb9796e2c33e6327305282e964f86679ec78eb6340805782",
+      "bytes": 7779,
+      "words": 782,
+      "estimatedTokens": 1945
     },
     {
       "path": "scripts/lib/registry-distribution.js",
@@ -496,10 +496,10 @@
     },
     {
       "path": "scripts/verify-rewrite.js",
-      "sha256": "6e6238314b5b6883e82a90ac885b5124047718deacb5bb20dc8f2ffbb4c61d25",
-      "bytes": 5264,
-      "words": 532,
-      "estimatedTokens": 1316
+      "sha256": "fafe26131c94b6f2de14c4d32b6955a1658a330a6e912dd9c48f0dc7d6062843",
+      "bytes": 5369,
+      "words": 541,
+      "estimatedTokens": 1343
     }
   ]
 }

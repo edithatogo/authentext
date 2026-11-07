@@ -75,7 +75,7 @@ export function validateReaderContract(contract) {
     target: ['targetWords', 'toleranceWords'],
     unconstrained: [],
   };
-  if (!object(length) || !Object.hasOwn(keys, length.mode))
+  if (!object(length) || typeof length.mode !== 'string' || !Object.hasOwn(keys, length.mode))
     throw new TypeError('Invalid length mode');
   closed(length, ['mode', 'severity', ...keys[length.mode]], 'length');
   if (length.severity !== undefined && !['warning', 'error'].includes(length.severity))
