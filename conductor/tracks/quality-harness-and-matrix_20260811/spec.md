@@ -45,8 +45,8 @@ harness that can ratchet.
 
 ### Hygiene
 
- 1. Point `gather-repo-data.js` at `edithatogo/authentext`.
- 2. Later small PRs: stale roadmap leftovers after this track's registry
+1.  Point `gather-repo-data.js` at `edithatogo/authentext`.
+2.  Later small PRs: stale roadmap leftovers after this track's registry
     update, rename drift in leftover docs, orphan
     `.changeset/humanizer-next-docs.md`, duplicated self-improvement docs.
 
@@ -70,3 +70,13 @@ harness that can ratchet.
 | ------------------------------------------------------- | ---------- | ------ | --------------------------------------------------------------- |
 | Vale on example files is noise                          | High       | Medium | Explicit ignore for example blocks                              |
 | Scored harness without a model is only a contract check | Medium     | Medium | Start with deterministic oracles; add optional model lane later |
+
+## Evidence programme extension (2026-11-08)
+
+The [expanded plan](implementation-20261108.md) and
+[evaluation protocol](../../../evaluation/README.md) refine this track.
+Synthetic fixtures, generated variants and metadata completeness are not
+independent editorial evidence. Reuse established libraries and first-party
+contracts while keeping the portable runtime offline and dependency-free.
+Actual model, native-build, human-reader and downstream integration results
+remain separate evidence gates.

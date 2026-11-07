@@ -1,0 +1,60 @@
+schemaVersion: 1.0.0
+integrationState: planned-consumer-contracts-not-executed
+conductor:
+  repository: gemini-cli-extensions/conductor
+  existingSubmodule: .agents/plugins/conductor
+  observedRevision: 6e8f9a860bcdd6a2c423473c12e745200688c633
+  policy:
+    Extend the existing quality-harness track and related domain/voice tracks; add no parallel planning
+    hierarchy or new submodules
+repositories:
+  - repository: edithatogo/pelican-bench
+    observedRevision: 76cb3da7ad09108dcc525f0deebe17c12027bbbb
+    evidencePath: benchmark/contracts/human-rating-exchange.json
+    consume: Run manifests, rights ledger, evidence tiers and blinded human-rating exchange design
+    doNotDuplicate: Visual tasks, visual scorers and rankings cannot establish prose quality
+    gate:
+      Consumer fixture and privacy review; propose neutral extraction upstream only after two actual
+      consumers
+    compatibilityProven: false
+  - repository: edithatogo/models_lang
+    observedRevision: 0f53964636f76719d6bb8fb94a59d81eb3b7ebf8
+    evidencePath: README.md
+    consume: Qualified model/checkpoint, runtime and hardware metadata for locally executed editorial tasks
+    doNotDuplicate: Do not call synthetic LoRA/export smoke tests a validated editorial benchmark
+    gate:
+      Exact checkpoint/runtime/quantization licence, canary and hardware receipt; baseline versus fine-tune
+      held-out comparison
+    compatibilityProven: false
+  - repository: edithatogo/citeweft
+    observedRevision: fb48944c89c00d365745a3610225d3a0ebcb0103
+    evidencePath: README.md
+    consume: Extraction evidence, citation-callout source spans and ambiguity diagnostics
+    doNotDuplicate: Do not reimplement scholarly extraction or claim that CiteWeft resolves reference identity
+    gate: One-way JSON leaf adapter, exact revision, UTF-8 span parity and golden producer-consumer fixtures
+    compatibilityProven: false
+  - repository: edithatogo/sourceright
+    observedRevision: 3a603ec8344e9865c68998d48eca573499d3fb5d
+    evidencePath: conductor/tracks/14-claim-source-provenance/plan.md
+    consume: Canonical CSL, verification sidecars and existing EvidenceGraph/ClaimNode/SourceNode identities
+    doNotDuplicate: Do not build another citation verifier; citation support links are not claim truth
+    gate:
+      Add editorial operation/claim-retention annotations through a versioned sidecar; consumer contract
+      and failure fixtures
+    compatibilityProven: false
+  - repository: edithatogo/searchright
+    observedRevision: af8c9ee6fcc2f1e97c9e01ed56daa9c9e3fcea32
+    evidencePath: README.md
+    consume: Approved retrieval receipts, source packs, provenance and integration-passport conventions
+    doNotDuplicate: Do not copy retrieval, deduplication or screening into the editing runtime
+    gate:
+      Matched frozen evidence packs by default; retrieval-enabled arm separately consented and costed;
+      no network fallback
+    compatibilityProven: false
+  - repository: edithatogo/standardflow
+    observedRevision: null
+    evidencePath: README.md
+    consume: Potential reporting-profile and research-artifact handoff
+    doNotDuplicate: Do not treat a generic or stale README as proof of a compatible reporting API
+    gate: Watch only until an exact current schema, implementation symbol and consumer test are identified
+    compatibilityProven: false

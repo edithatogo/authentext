@@ -1,0 +1,187 @@
+schemaVersion: 1.0.0
+reviewedOn: '2026-11-08'
+evidenceState: sources-reviewed-not-imported
+benchmarks:
+  - id: editeval
+    status: candidate
+    family: editing
+    source: https://aclanthology.org/2024.conll-1.7/
+    purpose: Primary broad instruction-based editing comparator
+    limits:
+      Short-form, English and mixed underlying datasets; review each component licence and source
+      overlap.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: xatu
+    status: candidate
+    family: editing
+    source: https://aclanthology.org/2024.lrec-main.1543/
+    purpose: Fine-grained explainable text-editing instructions
+    limits: Does not establish clinical safety or reader comprehension.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: asset
+    status: candidate
+    family: simplification
+    source: https://aclanthology.org/2020.acl-main.424/
+    purpose: Multiple-reference sentence simplification with lexical and structural transformations
+    limits:
+      Sentence-level Wikipedia domain; overlaps with component corpora used elsewhere. SARI is secondary,
+      not a fidelity proof.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: salsa
+    status: candidate
+    family: metric-validation
+    source: https://aclanthology.org/2023.emnlp-main.211/
+    purpose: Edit-level simplification quality and error annotation; calibrate automatic scorers
+    limits: Human-annotated success/error distinctions do not transfer automatically to long clinical documents.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: iterater
+    status: candidate
+    family: revision
+    source: https://aclanthology.org/2022.acl-long.250/
+    purpose: Revision intentions and iterative editing trajectories
+    limits: Observed human revisions are not automatically preferred target edits for every audience.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: 'true'
+    status: candidate
+    family: factuality
+    source: https://aclanthology.org/2022.naacl-main.287/
+    purpose: Validate fidelity scorers against factual-consistency labels
+    limits:
+      Aggregate components overlap with other benchmark families; short-form performance does not
+      validate long documents.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: frank
+    status: candidate
+    family: factuality
+    source: https://aclanthology.org/2021.naacl-main.383/
+    purpose: Typed factual errors for evaluating source-output consistency detectors
+    limits:
+      Summarisation domain, not a replacement for rewrite-specific retention tests. Do not double-count
+      shared examples.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: aggrefact
+    status: candidate
+    family: factuality
+    source: https://aclanthology.org/2023.acl-long.650/
+    purpose: Stratified factuality evaluation across generation systems
+    limits: Keep source-component identities and generation-model strata; deduplicate against TRUE and FRANK.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: biolaysumm
+    status: candidate
+    family: reader-fit
+    source: https://aclanthology.org/2025.bionlp-1.31/
+    purpose: Biomedical specialist-to-lay summaries with background and terminology needs
+    limits:
+      Use an explicitly frozen edition and source-specific rights; summary omissions are not lossless-rewrite
+      failures. No patient comprehension claim from automatic scores.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: ifeval
+    status: candidate
+    family: constraints
+    source: https://arxiv.org/abs/2311.07911
+    purpose: Deterministically verifiable instruction and length constraints
+    limits: Passing formatting or counts says nothing about meaningful, source-faithful prose.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: lifebench
+    status: candidate
+    family: length
+    source: https://arxiv.org/abs/2505.16234
+    purpose: Length instruction following across tasks and English/Chinese budgets
+    limits: Use native language/count conventions; register edits separately from creative long generation.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: liftbench
+    status: watch
+    family: scoped-constraints
+    source: https://arxiv.org/abs/2610.28819
+    purpose: Section-scoped content and formatting constraints in structured documents
+    limits:
+      Recent preprint; reproduce source checkers and human-calibrate judged constraints before relying
+      on results.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null
+  - id: newsagent
+    status: candidate
+    family: agentic-process
+    source: https://aclanthology.org/2026.findings-acl.1816/
+    purpose: Missing-context discovery, retrieval and narrative integration in agentic writing
+    limits:
+      Journalism is an adjacent process comparator, not a clinical benchmark; external retrieval is
+      a separate consented experimental arm.
+    admission:
+      revision: null
+      sha256: null
+      licence: null
+      rightsReceipt: null
+      splitManifest: null
+      adapterReceipt: null

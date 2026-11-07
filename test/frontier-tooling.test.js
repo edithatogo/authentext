@@ -123,12 +123,12 @@ test('voice CLI accepts matched filenames and writes governed JSON', () => {
     fs.rmSync(temp, { recursive: true, force: true });
   }
 });
-test('all 40 numbered patterns yield 87 distinct ablation variants', () => {
+test('all 40 numbered patterns yield 88 distinct ablation variants', () => {
   const source = fs.readFileSync(path.join(root, 'src/modules/SKILL_CORE_PATTERNS.md'), 'utf8');
   const p = parsePatterns(source);
   assert.equal(p.length, 40);
   const v = variants(p);
-  assert.equal(v.length, 87);
+  assert.equal(v.length, 88);
   assert.equal(new Set(v.map((x) => x.id)).size, v.length);
   assert.equal(
     evaluate({ source }).rows.every((x) => x.netMarginalLift === null),
@@ -140,7 +140,7 @@ test('ablation dry-run writes machine-readable report without external calls', (
   try {
     const out = path.join(temp, 'report.json');
     assert.equal(node('experiments/ablation-harness.js', ['--dry-run', '--output', out]).status, 0);
-    assert.equal(JSON.parse(fs.readFileSync(out, 'utf8')).variantCount, 87);
+    assert.equal(JSON.parse(fs.readFileSync(out, 'utf8')).variantCount, 88);
   } finally {
     fs.rmSync(temp, { recursive: true, force: true });
   }

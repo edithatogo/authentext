@@ -57,7 +57,8 @@ node experiments/ablation-harness.js --dry-run --output experiments/reports/abla
 ~~~
 
 The harness parses exactly 40 source pattern blocks and enumerates a baseline,
-40 leave-one-out variants, 40 single-pattern variants and 6 category ablations.
+a no-style control, 40 leave-one-out variants, 40 single-pattern variants and
+six category ablations. All 88 variants retain a fixed preservation contract.
 Live execution requires an explicitly selected local Node provider adapter and
 an input file. The adapter receives a JSON object on standard input and returns
 text or a JSON object with an output field. Adapters are separately trusted
@@ -65,9 +66,11 @@ software; they must not be treated as non-egress merely because the harness
 does not use network APIs. Do not use confidential material with a remote
 adapter without the relevant authorisation.
 
-A JSON ablation report records prompt-token estimates, verified invariant
-outcomes, CV and punctuation changes. It deliberately leaves quality lift as
-null until independent paired blind judgements and semantic evaluation exist.
+The v1.1 report records prompt-token estimates, separate verification statuses,
+CV and punctuation changes. Failed and inconclusive attempts remain in the
+planned denominator. Quality lift and invariant-preservation rates remain null
+without independently labelled outcomes. The [evaluation programme](../evaluation/README.md)
+defines comparisons, admission checks, library reuse and ecosystem boundaries.
 Pattern counts, mechanical checks and token savings cannot prove editorial gain.
 
 ## Govern: skill card and integrity
