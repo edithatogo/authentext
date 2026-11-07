@@ -51,3 +51,13 @@ router_out.txt
 # OS
 .DS_Store
 Thumbs.db
+
+# Private editing inputs and generated analysis (never release)
+*.ast-lock.json
+voice-profile.json
+*.voice-profile.json
+.authentext-private/
+distribution-staging/
+release-artifacts/
+experiments/reports/*.json
+!experiments/reports/*.schema.json

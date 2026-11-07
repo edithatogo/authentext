@@ -36,6 +36,7 @@ const MODULES = {
   legal: 'src/modules/SKILL_LEGAL.md',
   reasoning: 'src/modules/SKILL_REASONING.md',
   foio: 'src/modules/SKILL_FOIO.md',
+  protection: 'src/modules/SKILL_PROTECTION.md',
 };
 
 const OUTPUT = {
@@ -54,6 +55,7 @@ const REFERENCE_FILES = {
   legal: 'legal.md',
   reasoning: 'reasoning-failures.md',
   foio: 'foio-editorial.md',
+  protection: 'protection.md',
 };
 
 const STANDARD_DESCRIPTION = `Repair editorial defects in prose with verified diffs. Remove recurring AI-writing patterns while preserving meaning, voice, citations, and technical literals. Do not optimise against detector scores or claim undetectability. Based on Wikipedia's "Signs of AI writing" guide. Detects inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts.`;
@@ -340,6 +342,8 @@ function compileStandardSkill(modules) {
   const detection = extractSection(strippedCore, 'DETECTION GUIDANCE');
 
   const referenceLinks = [
+    modules.protection &&
+      '- [Scientific syntax protection and discourse checks](references/protection.md)',
     `- [Core patterns (${patternCount} patterns, before/after examples)](references/core-patterns.md)`,
     modules.technical && '- [Technical writing and literal preservation](references/technical.md)',
     modules.academic && '- [Academic and research prose](references/academic.md)',
@@ -440,6 +444,8 @@ function compileProfessionalSkill(modules) {
     .map(([, filename]) => filename);
 
   const moduleLinks = [
+    modules.protection &&
+      '- [Protection workflow](references/protection.md): local syntax shielding and discourse checks',
     '- [Core patterns](references/core-patterns.md) — always apply',
     modules.technical && '- [Technical module](references/technical.md) — code and technical docs',
     modules.academic && '- [Academic module](references/academic.md) — papers and formal research',
@@ -564,6 +570,7 @@ function compile() {
       legal: readModule(MODULES.legal),
       reasoning: readModule(MODULES.reasoning),
       foio: readModule(MODULES.foio),
+      protection: readModule(MODULES.protection),
     };
 
     const skillVersion = extractFrontmatter(modules.core)?.version ?? '3.0.0';

@@ -344,6 +344,6 @@ In-text citation tokens that already exist in the source are protected spans. Yo
 
 ---
 
-_Module Version: 3.2.0_
+_Module Version: 3.3.0_
 _Last Updated: 2026-08-12_
 _Applies to: Research papers, essays, dissertations, grant proposals, literature reviews_

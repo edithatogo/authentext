@@ -276,6 +276,6 @@ carve-out, and temporal locks. Do not rewrite `shall` as `must` from Pattern G1.
 
 ---
 
-_Module Version: 3.2.0_
+_Module Version: 3.3.0_
 _Last Updated: 2026-03-03_
 _Applies to: Policies, risk assessments, compliance docs, legal writing, regulatory submissions_

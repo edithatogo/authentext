@@ -1,0 +1,27 @@
+---
+title: "Café: results"
+bibliography: references.bib
+---
+
+The intervention may improve outcomes [@author2025, p. 4].
+As @mordaunt2025 [pp. 12-14] notes, see @fig-1 and @sec-methods.
+
+```{r}
+#| label: fig-1
+plot(c(1, 2, 3))
+```
+
+```{python}
+#| echo: false
+print("[@not-a-prose-citation]")
+```
+
+The estimate is `{python} value` and $x_i$ is measured.
+
+::: {.callout-note}
+The [labelled term]{.special #term} remains important.
+:::
+
+$$
+y = x^2
+$$

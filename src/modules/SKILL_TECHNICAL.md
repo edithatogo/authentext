@@ -454,6 +454,15 @@ def calculate_total(items):
 
 ---
 
-_Module Version: 3.2.0_
+_Module Version: 3.3.0_
 _Last Updated: 2026-03-03_
 _Applies to: Code, technical docs, API docs, READMEs, commit messages, code reviews_
+
+## Format-native protection workflow
+
+For Quarto, RMarkdown, Typst, TeX and mathematical or citation-rich Markdown,
+load the protection reference. Use local mask, restore and verification tools
+when installed and authorised; never execute embedded code during editing.
+Inspect epistemicDrift, polarityInversion and alignmentUncertain before accepting
+a revision. flatEntropySpans is advisory lexical-density telemetry, not a
+perplexity or semantic-equivalence measurement.

@@ -1,0 +1,11 @@
+---
+title: "R report"
+---
+
+The sample contained `r length(x)` observations [@study2025].
+
+```{r summary, echo=FALSE}
+summary(x)
+```
+
+This statement may suggest an association.
