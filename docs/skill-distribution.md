@@ -74,11 +74,11 @@ As of v3.3.0, this repository is the sole maintained source and build pipeline.
 The separate distribution repository remains a frozen compatibility path for
 existing v3.2.0 installations. New packages are built from the canonical
 repository by `npm run build:distribution` and published as independently
-verified release assets. Do not delete historic installations or imply that
+verified release assets. Avoid deleting historic installations or implying that
 an old manifest automatically upgrades.
 
 The portable package contains the optional offline verifier and voice calibration
 scripts, packaged with a minimal ES-module manifest. The scripts use Node.js
 built-ins, never install dependencies and never make outbound network requests.
-If a platform does not permit shell access, the skill still operates without
+If a platform cannot grant shell access, the skill still operates without
 these tools and requires contextual preservation review.
