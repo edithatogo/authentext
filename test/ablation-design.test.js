@@ -16,6 +16,7 @@ test('every ablation retains a fixed preservation contract and adds zero-style c
   assert.equal(new Set(variants.map((row) => row.id)).size, 88);
   assert.ok(variants.every((row) => row.prompt.startsWith(SAFETY_CONTRACT)));
   assert.deepEqual(variants.find((row) => row.id === 'no-style').activePatterns, []);
+  assert.equal(variants.find((row) => row.id === 'no-style').prompt, SAFETY_CONTRACT);
   assert.equal(variants.find((row) => row.id === 'without-27').activePatterns.includes(27), false);
   assert.match(
     variants.find((row) => row.id === 'without-27').prompt,
@@ -106,4 +107,21 @@ test('planning-only rows never become observations', async () => {
   assert.equal(report.summary.attempted, 0);
   assert.equal(report.rows[0].executionStatus, 'not-run');
   assert.equal(report.rows[0].verified, false);
+});
+
+test('missing local provider files become redacted failed attempts, not uncaught errors', async () => {
+  const { scoreAttempts } = await subject();
+  const missing = new URL('../evaluation/absent-provider-for-regression.js', import.meta.url);
+  assert.equal(fs.existsSync(missing), false);
+  const report = scoreAttempts([{ id: 'missing', prompt: 'fixed', activePatterns: [] }], {
+    execute: () => fs.statSync(missing),
+    inspect: () => {
+      throw new Error('The verifier must not run');
+    },
+  });
+  assert.equal(report.summary.providerFailures, 1);
+  assert.equal(report.summary.attempted, 1);
+  assert.equal(report.summary.verifierFailures, 0);
+  assert.equal(report.rows[0].executionStatus, 'provider-failed');
+  assert.doesNotMatch(JSON.stringify(report), /ENOENT|absent-provider|statSync/u);
 });

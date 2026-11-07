@@ -27,8 +27,9 @@ export function buildVariants(patterns) {
     activePatterns: active.map((p) => p.id),
     prompt:
       SAFETY_CONTRACT +
-      '\n\nOptional style guidance:\n' +
-      active.map((p) => p.content).join('\n\n'),
+      (active.length
+        ? '\n\nOptional style guidance:\n' + active.map((p) => p.content).join('\n\n')
+        : ''),
   });
   const rows = [make('full', 'baseline', patterns), make('no-style', 'zero-style', [])];
   for (const p of patterns) {
