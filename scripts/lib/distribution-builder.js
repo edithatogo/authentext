@@ -22,7 +22,6 @@ const FORBIDDEN_SEGMENTS = new Set([
   'coverage',
   'experiments',
   'node_modules',
-  'scripts',
   'src',
   'test',
 ]);
@@ -54,6 +53,13 @@ function copyPortableSurface(root, packageRoot) {
   fs.cpSync(path.join(root, 'references'), path.join(skillRoot, 'references'), {
     recursive: true,
   });
+  const runtime = ['scripts/verify-rewrite.js', 'scripts/calibrate-voice.js', 'scripts/lib/frontier-text.js'];
+  for (const relative of runtime) {
+    const target = path.join(skillRoot, relative);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.copyFileSync(path.join(root, relative), target);
+  }
+  fs.writeFileSync(path.join(skillRoot, 'package.json'), '{"type":"module"}\n');
 }
 
 function writeClaudeManifests(root, packageRoot) {
@@ -329,6 +335,10 @@ export function validatePortablePackage(packageRoot) {
       errors.push(`forbidden package path: ${relativePath}`);
     }
     if (/humanizer|blader/i.test(relativePath)) errors.push(`legacy identity: ${relativePath}`);
+    if (relativePath.startsWith('skills/authentext/scripts/') &&
+      !['skills/authentext/scripts/verify-rewrite.js', 'skills/authentext/scripts/calibrate-voice.js', 'skills/authentext/scripts/lib/frontier-text.js'].includes(relativePath)) {
+      errors.push(`unapproved runtime script: ${relativePath}`);
+    }
     if (relativePath !== 'authentext-package.json' && !declared.has(relativePath)) {
       errors.push(`undeclared package file: ${relativePath}`);
     }

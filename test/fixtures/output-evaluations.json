@@ -2,11 +2,11 @@
   {
     "id": "rewrite-inflation",
     "category": "rewrite",
-    "input": "The launch represents a pivotal moment that underscores our unwavering commitment to excellence.",
-    "output": "The launch starts the service described in the implementation plan.",
+    "input": "The service launches on 1 June 2026. This pivotal launch underscores our unwavering commitment to excellence.",
+    "output": "The service launches on 1 June 2026. The launch is an important milestone in our commitment to high standards.",
     "constraints": {
       "forbid": ["pivotal", "underscores", "unwavering", "excellence"],
-      "require": ["launch", "service", "implementation plan"]
+      "require": ["launch", "service", "1 June 2026", "commitment"]
     }
   },
   {

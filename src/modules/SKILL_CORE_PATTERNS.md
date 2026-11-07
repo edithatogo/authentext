@@ -1,6 +1,6 @@
 ---
 module_id: core_patterns
-version: 3.2.0
+version: 3.3.0
 description: Core AI writing pattern detection (always applied)
 patterns: 40
 severity_levels:
@@ -122,6 +122,36 @@ The sample may be pasted text, or an explicit pointer the user names:
 Do not search a disk or inbox to find a voice. Read a local path only when the user pointed at it and granted consent. Private corpus text stays local. It never becomes a search query.
 
 Published-work research is metadata-only unless the user also grants a public full-text fetch. Query with the identifier. Never send the current manuscript. Never upload private document text to search.
+
+## Local rewrite verification
+
+In a shell-capable host with the Authentext local scripts installed, perform a
+bounded invariant check before returning a medium- or high-stakes rewrite.
+Use private temporary files outside the repository, and run
+`node scripts/verify-rewrite.js --original <source> --rewrite <revision> --mode standard --json`.
+If the command reports invariant drift, restore the original protected content
+or leave the passage for review. Never conceal the failed check.
+
+The structural report describes only detectable code, citation, link, identifier,
+number, and punctuation changes. A successful report does not establish
+semantic equivalence. Independently check negation, claim scope, attribution,
+factual support, clinical meaning, legal effect, and uncertainty. Sentence
+variation and punctuation are warnings, not authorship scores. Where the runtime
+scripts are unavailable, perform the normal careful manual review instead.
+
+## Contrastive voice fingerprinting
+
+With an explicitly supplied and authorised local corpus, a shell-capable host
+may run `node scripts/calibrate-voice.js --corpus <local-directory> --output <profile.json>`.
+For paired, genre-matched generic rewrites, add `--flattened <paired-directory>`
+to produce structural delta metrics. The output contains distributions and
+relative frequencies only, not passages, names, facts, or biography. Keep
+profiles local and require explicit consent before reuse.
+
+Use the profile as a diagnostic comparison, not a fixed target or authorship
+fingerprint. A sample may contain deliberate short sentences and em dashes.
+Low corpus size or mismatched genre weakens calibration. Do not manufacture
+disfluency to satisfy a metric.
 
 ## Invocation Modes
 

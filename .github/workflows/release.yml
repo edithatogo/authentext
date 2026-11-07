@@ -41,7 +41,7 @@ jobs:
         run: |
           npm run validate:distribution
           npm run build:distribution -- --output distribution-staging
-          test -f distribution-staging/portable/distribution-receipt.json
+          test -f distribution-staging/distribution-receipt.json
 
       - name: Upload distribution packages
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7

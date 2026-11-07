@@ -1,6 +1,6 @@
 {
   "name": "authentext",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Remove signs of AI-generated writing from text.",
   "private": true,
   "type": "module",
@@ -14,7 +14,7 @@
     "sync": "node scripts/compile-skill.js",
     "check:sync": "node scripts/check-sync-clean.js",
     "check:upstream": "node scripts/check-upstream.js",
-    "validate": "node scripts/validate-docs.js && node scripts/validate-skill-contracts.js",
+    "validate": "node scripts/validate-docs.js && node scripts/validate-skill-contracts.js && node scripts/build-skill-card.js --check",
     "validate:contracts": "node scripts/validate-skill-contracts.js",
     "validate:hosts": "node scripts/validate-host-overlays.js",
     "validate:conductor": "node scripts/validate-conductor.js",

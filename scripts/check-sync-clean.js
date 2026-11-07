@@ -5,6 +5,8 @@ import { fileURLToPath } from 'url';
 
 const TARGET_FILES = [
   'SKILL.md',
+  'SKILL_CARD.json',
+  'references/foio-editorial.md',
   'SKILL_PROFESSIONAL.md',
   'AGENTS.md',
   'README.md',
