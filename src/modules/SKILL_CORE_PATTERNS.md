@@ -125,6 +125,12 @@ Published-work research is metadata-only unless the user also grants a public fu
 
 ## Local rewrite verification
 
+Before editing Quarto, RMarkdown, Typst or TeX, or Markdown with citations or
+maths, read the protection reference. When the host permits local tools, run
+mask-ast.js, edit only unlocked prose, restore with unmask-ast.js, then run
+verify-rewrite.js. Keep lockfiles private. These conservative lexical checks
+are not a full parser, compiler or proof of semantic equivalence.
+
 In a shell-capable host with the Authentext local scripts installed, perform a
 bounded invariant check before returning a medium- or high-stakes rewrite.
 Use private temporary files outside the repository, and run
@@ -865,7 +871,7 @@ The system processes requests in under 100ms.
 
 ---
 
-_Module Version: 3.2.0_
+_Module Version: 3.3.0_
 _Last Updated: 2026-04-04_
 _Patterns: 40 (30 core + 4 local LLM variants + 3 upstream style 35-37 + 2 upstream refinements 38-39 + 1 grammar/register 40)_
 _Source: Wikipedia "Signs of AI writing" + Authentext community contributions + 2025-2026 LLM analysis_

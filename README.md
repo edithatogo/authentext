@@ -48,9 +48,14 @@ no package installation, and perform no network requests:
 - `node scripts/verify-rewrite.js --original input.md --rewrite output.md --json`
 - `node scripts/calibrate-voice.js --corpus prior-writing --output voice-profile.json`
 - `node experiments/ablation-harness.js --dry-run`
+- `node scripts/mask-ast.js --input original.qmd --output masked.md --lockfile private.ast-lock.json`
+- `node scripts/unmask-ast.js --input revised-masked.md --lockfile private.ast-lock.json --original original.qmd --output revised.qmd --json`
 
 A passing literal check is not proof of semantic or clinical correctness.
-See [frontier architecture](docs/frontier-architecture.md) for safeguards.
+See [frontier architecture](docs/frontier-architecture.md) and
+[scientific protection](references/protection.md) for safeguards. Masking is
+conservative lexical shielding, not a complete AST parser. Discourse checks
+are review heuristics, not a guarantee of clinical, legal or semantic fidelity.
 
 ## Scope
 

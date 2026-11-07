@@ -121,6 +121,12 @@ Published-work research is metadata-only unless the user also grants a public fu
 
 ## Local rewrite verification
 
+Before editing Quarto, RMarkdown, Typst or TeX, or Markdown with citations or
+maths, read the protection reference. When the host permits local tools, run
+mask-ast.js, edit only unlocked prose, restore with unmask-ast.js, then run
+verify-rewrite.js. Keep lockfiles private. These conservative lexical checks
+are not a full parser, compiler or proof of semantic equivalence.
+
 In a shell-capable host with the Authentext local scripts installed, perform a
 bounded invariant check before returning a medium- or high-stakes rewrite.
 Use private temporary files outside the repository, and run
@@ -258,6 +264,7 @@ defensible edits.
 
 Read these files for the full pattern catalog, examples, and remediation guidance:
 
+- [Scientific syntax protection and discourse checks](references/protection.md)
 - [Core patterns (40 patterns, before/after examples)](references/core-patterns.md)
 - [Technical writing and literal preservation](references/technical.md)
 - [Academic and research prose](references/academic.md)

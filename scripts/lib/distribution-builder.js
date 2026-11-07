@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { EDITORIAL_RUNTIME } from './runtime-surface.js';
 
 const HOSTS = new Set([
   'claude-code',
@@ -53,11 +54,7 @@ function copyPortableSurface(root, packageRoot) {
   fs.cpSync(path.join(root, 'references'), path.join(skillRoot, 'references'), {
     recursive: true,
   });
-  const runtime = [
-    'scripts/verify-rewrite.js',
-    'scripts/calibrate-voice.js',
-    'scripts/lib/frontier-text.js',
-  ];
+  const runtime = EDITORIAL_RUNTIME;
   for (const relative of runtime) {
     const target = path.join(skillRoot, relative);
     fs.mkdirSync(path.dirname(target), { recursive: true });
@@ -329,8 +326,24 @@ export function validatePortablePackage(packageRoot) {
   const manifestPath = path.join(packageRoot, 'authentext-package.json');
   if (!fs.existsSync(manifestPath)) return ['package manifest is missing'];
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-  const declared = new Set(manifest.files.map((entry) => entry.path));
+  if (!Array.isArray(manifest.files)) return ['invalid package file manifest'];
+  const declared = new Set();
   const errors = [];
+  for (const entry of manifest.files) {
+    if (
+      typeof entry.path !== 'string' ||
+      entry.path.includes('\\') ||
+      path.posix.isAbsolute(entry.path) ||
+      entry.path.split('/').some((p) => !p || p === '.' || p === '..') ||
+      !/^[a-f0-9]{64}$/.test(entry.sha256)
+    ) {
+      errors.push('invalid package path or digest');
+      continue;
+    }
+    if (declared.has(entry.path)) errors.push(`duplicate package path: ${entry.path}`);
+    declared.add(entry.path);
+  }
+  if (errors.length) return errors;
 
   for (const filePath of walk(packageRoot)) {
     const relativePath = normalize(path.relative(packageRoot, filePath));
@@ -341,11 +354,7 @@ export function validatePortablePackage(packageRoot) {
     if (/humanizer|blader/i.test(relativePath)) errors.push(`legacy identity: ${relativePath}`);
     if (
       relativePath.startsWith('skills/authentext/scripts/') &&
-      ![
-        'skills/authentext/scripts/verify-rewrite.js',
-        'skills/authentext/scripts/calibrate-voice.js',
-        'skills/authentext/scripts/lib/frontier-text.js',
-      ].includes(relativePath)
+      !EDITORIAL_RUNTIME.map((file) => `skills/authentext/${file}`).includes(relativePath)
     ) {
       errors.push(`unapproved runtime script: ${relativePath}`);
     }

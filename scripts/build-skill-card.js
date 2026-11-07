@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { EDITORIAL_RUNTIME, OFFLINE_BUILTINS } from './lib/runtime-surface.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT = path.join(ROOT, 'SKILL_CARD.json');
@@ -13,6 +14,9 @@ const IGNORE = new Set([
   'distribution-staging',
   'release-artifacts',
   '.cache',
+  '.review-toolchain',
+  '.local-review',
+  '.superpowers',
 ]);
 export const SHA = (text) => crypto.createHash('sha256').update(text).digest('hex');
 export function walk(dir) {
@@ -45,6 +49,14 @@ export function securityFindings(source, { runtime = false, promptSurface = fals
   ) {
     findings.push('network-module-import');
   }
+  if (runtime) {
+    if (/\b(?:eval|import)\s*\(|\bnew\s+Function\s*\(|\brequire\s*\(/u.test(source))
+      findings.push('dynamic-code-or-import');
+    for (const match of source.matchAll(/\b(?:from\s*|import\s*)['"]([^'"]+)['"]/gu)) {
+      if (!match[1].startsWith('.') && !OFFLINE_BUILTINS.includes(match[1]))
+        findings.push('unapproved-runtime-import');
+    }
+  }
   if (
     promptSurface &&
     /\b(?:ignore all previous instructions|reveal your system prompt)\b/iu.test(source)
@@ -76,13 +88,17 @@ export function card(root = ROOT) {
     const data = fs.readFileSync(path.join(root, file));
     const text = data.toString('utf8');
     if (text.includes('\r')) throw new Error('Non-LF line ending in ' + file);
-    const problems = securityFindings(text, {
-      runtime: [
-        'scripts/verify-rewrite.js',
-        'scripts/calibrate-voice.js',
-        'scripts/lib/frontier-text.js',
-      ].includes(file),
-    });
+    const problems = securityFindings(text, { runtime: EDITORIAL_RUNTIME.includes(file) });
+    if (EDITORIAL_RUNTIME.includes(file)) {
+      for (const match of text.matchAll(/\bfrom\s*['"]([^'"]+)['"]/gu)) {
+        if (match[1].startsWith('.')) {
+          const dependency = path.posix.normalize(
+            path.posix.join(path.posix.dirname(file), match[1])
+          );
+          if (!EDITORIAL_RUNTIME.includes(dependency)) problems.push('unlisted-runtime-dependency');
+        }
+      }
+    }
     if (problems.length) throw new Error('Security scan ' + file + ': ' + problems.join(','));
     return { path: file, sha256: SHA(data), ...counts(text) };
   });
@@ -107,7 +123,9 @@ export function card(root = ROOT) {
     rootSkillEstimatedTokens: rootTokens,
     security: {
       hiddenUnicodeControls: 'rejected',
-      runtimeNetworkPrimitives: 'rejected',
+      runtimeNetworkPrimitives: 'static screening of explicitly allow-listed runtime closure',
+      runtimeFiles: [...EDITORIAL_RUNTIME],
+      limitation: 'Static heuristics and hashes are not a sandbox or signed provenance',
       nonEgress: 'local scripts only; provider adapters are independent trust boundary',
     },
     artifacts,

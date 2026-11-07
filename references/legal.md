@@ -154,6 +154,6 @@ Prefer the smaller edit. If either risk is present, leave the span and report it
 
 ---
 
-_Module Version: 3.2.0_
+_Module Version: 3.3.0_
 _Last Updated: 2026-08-12_
 _Applies to: Contracts, advice, affidavits, notices, regulatory submissions_

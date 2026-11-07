@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inputFiles, readText, metrics, parseArgs } from './lib/frontier-text.js';
+import { assertDistinctPaths, writePrivate } from './lib/local-file-io.js';
 
 function numericDelta(author, comparison) {
   if (typeof author === 'number' && typeof comparison === 'number') return author - comparison;
@@ -48,7 +49,7 @@ export function calibrate(corpus, { flattened = null } = {}) {
 }
 function main() {
   try {
-    const a = parseArgs(process.argv.slice(2));
+    const a = parseArgs(process.argv.slice(2), ['corpus', 'flattened', 'output']);
     if (!a.corpus || !a.output) throw new Error('Requires --corpus and --output');
     const corpusPaths = inputFiles(a.corpus);
     const otherPaths = a.flattened ? inputFiles(a.flattened) : null;
@@ -68,7 +69,8 @@ function main() {
       flattened: otherPaths?.map(readText) ?? null,
     });
     fs.mkdirSync(path.dirname(path.resolve(a.output)), { recursive: true });
-    fs.writeFileSync(a.output, JSON.stringify(profile, null, 2) + '\n', 'utf8');
+    assertDistinctPaths([...new Set([...corpusPaths, ...(otherPaths ?? [])])], [a.output]);
+    writePrivate(a.output, JSON.stringify(profile, null, 2) + '\n');
     process.stdout.write(
       JSON.stringify({
         output: path.resolve(a.output),

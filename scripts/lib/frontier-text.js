@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export const normalize = (s) => s.replace(/\r\n?/gu, '\n').normalize('NFC');
-export const readText = (p) => normalize(fs.readFileSync(p, 'utf8'));
+// Document bytes are not normalised: code and lock spans require exact fidelity.
+export const readText = (p) => fs.readFileSync(p, 'utf8');
 export function inputFiles(location) {
   const target = path.resolve(location);
   const stat = fs.lstatSync(target);
@@ -43,6 +44,10 @@ export function proseOnly(source) {
       fence = marker[1];
       continue;
     }
+    if (/^\s*\$\$[^\n]*\$\$\s*$/u.test(line)) {
+      out.push('');
+      continue;
+    }
     if (/^\s*\$\$\s*$/u.test(line)) {
       math = !math;
       continue;
@@ -52,6 +57,9 @@ export function proseOnly(source) {
   }
   return out
     .join('\n')
+    .replace(/\\\[[\s\S]*?\\\]/gu, ' ')
+    .replace(/\\\([\s\S]*?\\\)/gu, ' ')
+    .replace(/(?<!\\)\$[^$\n]+(?<!\\)\$/gu, ' ')
     .replace(/\x60+[^\x60\n]*\x60+/gu, ' ')
     .replace(/!?\[[^\]]+\]\([^)]+\)/gu, ' ')
     .replace(/^\s*#{1,6}\s+/gmu, '')
@@ -129,9 +137,7 @@ export function metrics(source) {
   };
 }
 export function invariants(source) {
-  const lines = normalize(source)
-    .replace(/^---\n[\s\S]*?\n---(?:\n|$)/u, '')
-    .split('\n');
+  const lines = source.replace(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/u, '').split('\n');
   let fence = null,
     buf = [];
   const codeBlocks = [],
@@ -180,7 +186,32 @@ export function invariants(source) {
   const pValues = [...s.matchAll(/\bp\s*(?:=|<|>|≤|≥)\s*[-+\u2212]?\d+(?:\.\d+)?/giu)].map(
     (m) => m[0]
   );
-  return { codeBlocks, inlineCode, markdownLinks, urls, dois, citations, numbers, pValues };
+  const currencies = [
+    ...s.matchAll(/(?:[$€£¥]|\b(?:USD|AUD|NZD|EUR|GBP))\s*[-+]?\d+(?:[.,]\d+)*/gu),
+  ].map((m) => m[0]);
+  const units = [
+    ...s.matchAll(
+      /(?<![\p{L}\p{N}])[-+\u2212]?\d+(?:\.\d+)?\s*(?:mg|mcg|µg|μg|kg|g|mL|ml|L|mmol|mol|mmHg|cm|mm|km|m|IU|units?|hours?|days?|weeks?|months?|years?)\b/gu
+    ),
+  ].map((m) => m[0]);
+  const dates = [
+    ...s.matchAll(
+      /\b(?:\d{1,2}\s+)?(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,4}(?:,?\s+\d{4})?\b/gu
+    ),
+  ].map((m) => m[0]);
+  return {
+    codeBlocks,
+    inlineCode,
+    markdownLinks,
+    urls,
+    dois,
+    citations,
+    numbers,
+    pValues,
+    currencies,
+    units,
+    dates,
+  };
 }
 export function multisetDiff(want, got) {
   const map = new Map();
@@ -195,13 +226,24 @@ export function multisetDiff(want, got) {
   for (const [s, n] of map) for (let j = 0; j < n; j++) added.push(s);
   return { missing, added };
 }
-export function parseArgs(args) {
+export function parseArgs(args, allowed = null) {
   const output = {};
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
     if (!arg.startsWith('--')) throw new Error('Unexpected positional argument');
     const name = arg.slice(2);
-    if (['json', 'allow-code-edits', 'dry-run'].includes(name)) output[name] = true;
+    if (allowed && !allowed.includes(name)) throw new Error('Unknown option ' + arg);
+    if (Object.hasOwn(output, name)) throw new Error('Duplicate option ' + arg);
+    if (
+      [
+        'json',
+        'allow-code-edits',
+        'dry-run',
+        'allow-duplicate-cites',
+        'allow-modality-shift',
+      ].includes(name)
+    )
+      output[name] = true;
     else {
       if (!args[i + 1] || args[i + 1].startsWith('--')) throw new Error('Missing ' + arg);
       output[name] = args[++i];

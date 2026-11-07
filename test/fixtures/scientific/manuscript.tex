@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{luacode}
+\newcommand{\sample}[1]{\textbf{#1}}
+\begin{document}
+
+The intervention may improve outcomes \parencite[pp. 4-6]{author2025}.
+\textcite{mordaunt2025} reports the observation.
+See \cref{fig:result}; $x_i$ is positive.
+
+\begin{align}
+y &= x^2 \\
+z &= y + 1
+\end{align}
+
+\begin{luacode}
+local example = "not prose { }"
+tex.print(example)
+\end{luacode}
+
+\begin{figure}
+\includegraphics{figure.png}
+\caption{Exact caption.}\label{fig:result}
+\end{figure}
+
+The result remains conditional on the assumptions.
+\end{document}
