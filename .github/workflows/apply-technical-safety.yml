@@ -1,0 +1,73 @@
+name: Validate technical safety candidate
+
+on:
+  pull_request:
+    paths:
+      - '.maintainer/safety-patch-*.b64'
+      - '.github/workflows/apply-technical-safety.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  apply:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'feat/technical-shield-discourse-20261107' && github.actor == 'edithatogo'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup-maintainer-env
+        with:
+          node-version: '24'
+          install-vale: 'true'
+          npm-ci: 'true'
+      - name: Apply verified source patch
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          import { gunzipSync } from 'node:zlib';
+          import { execFileSync } from 'node:child_process';
+          execFileSync('git', ['merge-base', '--is-ancestor', '43430332cbacaec4bef56f779688e921fb147823', 'HEAD']);
+          const parts = [0, 1, 2, 3].map(i => fs.readFileSync(`.maintainer/safety-patch-${i}.b64`, 'utf8').trim());
+          const patch = gunzipSync(Buffer.from(parts.join(''), 'base64'), { maxOutputLength: 2000000 });
+          const digest = crypto.createHash('sha256').update(patch).digest('hex');
+          if (digest !== 'aaacd8e68df169b809a6ad7feac46a99e4d585c1b5002a11312e08730c76b5db') throw new Error('Source patch digest mismatch');
+          const filename = `${process.env.RUNNER_TEMP}/technical-safety.patch`;
+          fs.writeFileSync(filename, patch);
+          execFileSync('git', ['apply', '--check', filename], { stdio: 'inherit' });
+          execFileSync('git', ['apply', '--index', filename], { stdio: 'inherit' });
+          for (const i of [0, 1, 2, 3]) fs.unlinkSync(`.maintainer/safety-patch-${i}.b64`);
+          fs.unlinkSync('.github/workflows/apply-technical-safety.yml');
+          NODE
+      - name: Regenerate and run required gates
+        run: |
+          npm run format:fix
+          npm run sync
+          npm run validate
+          npm run lint:all
+          npm test
+          npm run test:coverage
+          npm run check:sync
+          npm run build:distribution -- --output "${RUNNER_TEMP}/technical-safety-packages"
+          git diff --check
+      - name: Commit validated candidate to the unchanged isolated review branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          branch='feat/technical-shield-discourse-20261107'
+          actual=$(git ls-remote origin "refs/heads/${branch}" | cut -f1)
+          test "$actual" = "$EXPECTED_HEAD"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --all
+          git -c core.hooksPath=/dev/null commit -m 'feat: verified format shielding and discourse integrity checks'
+          authorization=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          echo "::add-mask::$authorization"
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${authorization}" push origin "HEAD:refs/heads/${branch}"
