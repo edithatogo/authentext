@@ -1,0 +1,116 @@
+schemaVersion: 1.0.0
+portableRuntimeNewDependencies: 0
+automaticInstallation: false
+policy:
+  Adopt established libraries after compatibility, licence, security and measured-value gates; no
+  duplicate evaluation framework
+libraries:
+  - id: yaml
+    status: existing-development
+    source: https://eemeli.org/yaml/
+    replaces: Parse benchmark and ecosystem manifests using the existing direct development dependency
+    admissionGate: Validated manifest and rejection tests; keep out of installed runtime
+  - id: inspect-ai
+    status: evaluation-candidate
+    source: https://inspect.aisi.org.uk/
+    replaces:
+      Model/provider adapters, retries, experiment logs and agent execution instead of a bespoke
+      second runner
+    admissionGate:
+      Pin version and transitive lock; local mock integration first; explicit model allowlist,
+      consent, limits and no remote fallback
+  - id: datasets
+    status: evaluation-candidate
+    source: https://huggingface.co/docs/datasets/loading
+    replaces: Versioned local dataset loading and offline snapshots instead of handwritten downloaders
+    admissionGate:
+      Pin dataset commits and per-file digests; rights review; prepare cache separately; disable
+      network during execution
+  - id: scipy-statsmodels
+    status: evaluation-candidate
+    source: https://docs.scipy.org/doc/scipy/reference/stats.html
+    replaces: Paired confidence intervals, permutation/bootstrap tests and multilevel statistical analysis
+    admissionGate:
+      Preregister estimands and clustering; verify simulated coverage and power; record actual
+      model failures
+  - id: easse
+    status: evaluation-candidate
+    source: https://github.com/feralvam/easse
+    replaces: SARI and standard simplification evaluation instead of custom metric formulas
+    admissionGate:
+      Freeze code and tokenizer; reproduce reference examples; SARI remains secondary; audit
+      old transitive dependencies
+  - id: lens-salsa
+    status: evaluation-candidate
+    source: https://github.com/davidheineman/salsa
+    replaces: Human-aligned edit-quality scorer as one optional diagnostic
+    admissionGate:
+      Checkpoint and code licences separately reviewed; author/document-held-out calibration;
+      no silent weights download or truth claim
+  - id: spacy
+    status: evaluation-candidate
+    source: https://spacy.io/usage/linguistic-features
+    replaces: Sentence/POS/dependency features instead of assuming suffixes measure information density
+    admissionGate:
+      Pin language model; measure domain and language error; label predictions as proxies;
+      local weights only
+  - id: remark-mdast
+    status: parser-candidate
+    source: https://unifiedjs.com/explore/package/remark-parse/
+    replaces:
+      Source-positioned Markdown parsing with frontmatter/math extensions instead of extending ad
+      hoc regex grammars
+    admissionGate:
+      Golden offsets in UTF-8 and UTF-16, CRLF and Unicode; unsupported Pandoc extensions fail
+      closed; never serialize canonical source just to preserve spans
+  - id: pandoc-quarto
+    status: parser-candidate
+    source: https://pandoc.org/filters.html
+    replaces: Native Pandoc/Quarto structure and independent build checks
+    admissionGate:
+      Pin native versions; parse versus execute separation; hermetic filesystem/network and
+      disabled shell escape; AST serialization is not byte preservation
+  - id: typst-syntax
+    status: parser-candidate
+    source: https://docs.rs/typst-syntax/latest/typst_syntax/
+    replaces: Official Typst parser and source byte ranges rather than a new grammar
+    admissionGate:
+      Pin crate, licence and offline build; byte-span parity tests; keep compiler execution
+      separately sandboxed
+  - id: unified-latex
+    status: parser-candidate
+    source: https://github.com/siefkenj/unified-latex
+    replaces: LaTeX macro/environment parsing rather than expanding the bounded scanner indefinitely
+    admissionGate:
+      Unknown macros and catcode changes require review; do not claim complete TeX semantics;
+      compare exact source-span fixtures
+  - id: fast-check
+    status: evaluation-candidate
+    source: https://fast-check.dev/
+    replaces: Property and metamorphic test generation with shrinking instead of a bespoke fuzzer
+    admissionGate:
+      Pin development dependency; replayable seeds; adversarial Unicode/nesting/alias fixtures;
+      no installed-runtime dependency
+  - id: strykerjs
+    status: evaluation-candidate
+    source: https://stryker-mutator.io/docs/stryker-js/introduction/
+    replaces: Mutation testing of preservation gates instead of counting code coverage alone
+    admissionGate:
+      Choose compatible Node test integration; bounded mutation budget; prohibit network and
+      private manuscript fixtures
+  - id: ajv
+    status: evaluation-candidate
+    source: https://ajv.js.org/
+    replaces:
+      JSON Schema validation for admitted cross-repository data rather than a new general schema
+      validator
+    admissionGate:
+      Declare direct dependency only in development/adapter layer; bundled local schemas, no
+      remote refs; validate source-owner schema version
+  - id: sigstore
+    status: evaluation-candidate
+    source: https://docs.sigstore.dev/
+    replaces: Signed release provenance instead of treating local SHA-256 inventory as attestation
+    admissionGate:
+      OIDC least privilege, offline verification evidence and transparency policy; separate
+      explicit release approval

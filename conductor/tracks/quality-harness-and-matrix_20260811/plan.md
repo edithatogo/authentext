@@ -1,5 +1,12 @@
 # Implementation Plan: Quality Harness and Feature Matrix
 
+## Evidence programme extension (2026-11-08)
+
+The [implementation plan](implementation-20261108.md) adds reader outcomes,
+operation-aware claim preservation, external benchmark admission, third-party
+library reuse and first-party integration contracts. Its bounded metadata and
+ablation slice is separate from unexecuted scientific comparisons.
+
 ## Phase 1: Humanizer feature matrix
 
 - [x] Task: Verify each named tool still exists and record licence, pattern
