@@ -3,7 +3,7 @@ name: Apply protection candidate
 on:
   pull_request:
     paths:
-      - '.maintainer/protection-bundle.json'
+      - '.maintainer/protection-*'
       - '.github/workflows/apply-protection-candidate.yml'
 
 permissions:
@@ -47,7 +47,13 @@ jobs:
             const exists = fs.existsSync(file);
             if (expected === null ? exists : !exists || hash(fs.readFileSync(file)) !== expected) throw new Error(`Source changed: ${file}`);
           }
-          const patch = brotliDecompressSync(Buffer.from(manifest.brotliBase64, 'base64'), { maxOutputLength: 2000000 });
+          if (!Array.isArray(manifest.brotliBase64Files) || manifest.brotliBase64Files.length !== 5) throw new Error('Expected five patch chunks');
+          const encoded = manifest.brotliBase64Files.map((file, index) => {
+            if (file !== `.maintainer/protection-part-${index}.b64`) throw new Error('Invalid chunk path');
+            return fs.readFileSync(file, 'utf8').trim();
+          }).join('');
+          if (encoded.length > 100000) throw new Error('Oversized patch');
+          const patch = brotliDecompressSync(Buffer.from(encoded, 'base64'), { maxOutputLength: 2000000 });
           if (hash(patch) !== manifest.patchSha256) throw new Error('Patch digest mismatch');
           const filename = `${process.env.RUNNER_TEMP}/protection.patch`;
           fs.writeFileSync(filename, patch);
