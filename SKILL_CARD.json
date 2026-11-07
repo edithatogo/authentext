@@ -1,0 +1,442 @@
+{
+  "schemaVersion": "1.0.0",
+  "product": "authentext",
+  "sourceRepository": "edithatogo/authentext",
+  "tokenEstimator": "UTF-8 byte length divided by four; conservative approximation, not model tokenisation",
+  "rootSkillTokenCeiling": 8500,
+  "rootSkillEstimatedTokens": 6787,
+  "security": {
+    "hiddenUnicodeControls": "rejected",
+    "runtimeNetworkPrimitives": "rejected",
+    "nonEgress": "local scripts only; provider adapters are independent trust boundary"
+  },
+  "artifacts": [
+    {
+      "path": "SKILL.md",
+      "sha256": "78e91718a0d42ccf16aa8e7c6e3224baa1acc5cab820274a004cdab8f7b3be05",
+      "bytes": 27147,
+      "words": 4042,
+      "estimatedTokens": 6787
+    },
+    {
+      "path": "SKILL_PROFESSIONAL.md",
+      "sha256": "47e06ce0f45446f3419cd3ef78b0d09542443f758ab5953daddbd8f3a4ef273d",
+      "bytes": 4809,
+      "words": 671,
+      "estimatedTokens": 1203
+    },
+    {
+      "path": "references/academic.md",
+      "sha256": "3888ae7542d7abbbe470ca465db7bb886e5db8ad935247a1017d12591cbe8c61",
+      "bytes": 13636,
+      "words": 1654,
+      "estimatedTokens": 3409
+    },
+    {
+      "path": "references/clinical.md",
+      "sha256": "0a503060b91dacfcae900632c25475384aefa574762b0feb51e960513e72fae1",
+      "bytes": 5602,
+      "words": 771,
+      "estimatedTokens": 1401
+    },
+    {
+      "path": "references/core-patterns.md",
+      "sha256": "1f916908a30b6ca1d41b104ce5cd51c054c5cdb862a986fe94ee2739c7e58695",
+      "bytes": 56022,
+      "words": 8198,
+      "estimatedTokens": 14006
+    },
+    {
+      "path": "references/foio-editorial.md",
+      "sha256": "0627d53fa627ea298650ba24c5c157d5888f3b8afbb97188466e38fc644071b1",
+      "bytes": 3845,
+      "words": 512,
+      "estimatedTokens": 962
+    },
+    {
+      "path": "references/governance.md",
+      "sha256": "639085a1d12f4b7747c02e48f04281a02cca569211467f7fbb2fe5f1e9af662f",
+      "bytes": 6655,
+      "words": 799,
+      "estimatedTokens": 1664
+    },
+    {
+      "path": "references/legal.md",
+      "sha256": "c0fc7d635281af144462d73bcba702a57eb7041f30b7247051a980f46f6e0a86",
+      "bytes": 4659,
+      "words": 659,
+      "estimatedTokens": 1165
+    },
+    {
+      "path": "references/reasoning-failures.md",
+      "sha256": "8e17b948d6cbc35faed005bec85fee08b3b7f3cfc9fb7a0cc55e9920c5b936cb",
+      "bytes": 2751,
+      "words": 321,
+      "estimatedTokens": 688
+    },
+    {
+      "path": "references/technical.md",
+      "sha256": "858305e85cd956de81a894bfce48ba50a40278fcc988d0971ec8c3fd97fa199b",
+      "bytes": 10566,
+      "words": 1359,
+      "estimatedTokens": 2642
+    },
+    {
+      "path": "scripts/archive_track.js",
+      "sha256": "dc6f5ff801149be0532d9c2079ce4af47f9e9fdc4e947a0be0eb2a170696862b",
+      "bytes": 3074,
+      "words": 345,
+      "estimatedTokens": 769
+    },
+    {
+      "path": "scripts/build-distribution-packages.js",
+      "sha256": "d26fd072d4a8a687eff4869ed9d456664be9ba9372e2d701f1646ade87c11470",
+      "bytes": 1405,
+      "words": 160,
+      "estimatedTokens": 352
+    },
+    {
+      "path": "scripts/build-skill-card.js",
+      "sha256": "99c9489e6c2c283cf329d229697432b6445386abab5a433e773926e8f89e65bf",
+      "bytes": 4447,
+      "words": 580,
+      "estimatedTokens": 1112
+    },
+    {
+      "path": "scripts/calibrate-voice.js",
+      "sha256": "7a501163d002fc6179004a57960dd11a8bdff53d6dec1ffedafdd0d234033356",
+      "bytes": 2934,
+      "words": 377,
+      "estimatedTokens": 734
+    },
+    {
+      "path": "scripts/check-renovate-hosted.js",
+      "sha256": "90bcb9cb410c8ee7930896a42550244cfec537e9b945f980dc37b0520d2cb571",
+      "bytes": 350,
+      "words": 40,
+      "estimatedTokens": 88
+    },
+    {
+      "path": "scripts/check-skill-self-compliance.js",
+      "sha256": "55eef5c0880d2e1f30d99bd50437c78b6c3968c4b263fa44ed3ea57394920c67",
+      "bytes": 1372,
+      "words": 171,
+      "estimatedTokens": 343
+    },
+    {
+      "path": "scripts/check-sync-clean.js",
+      "sha256": "8604e27945fb2478feeef6d28e6187edb72d4d600d1e075df2d2f3f799e9ccc1",
+      "bytes": 2923,
+      "words": 328,
+      "estimatedTokens": 731
+    },
+    {
+      "path": "scripts/check-upstream.js",
+      "sha256": "2d5b53e061d837a9ff127c41c6ac9aab9ecaea4559832100bda7b0aa42326fe8",
+      "bytes": 5694,
+      "words": 574,
+      "estimatedTokens": 1424
+    },
+    {
+      "path": "scripts/close-upstream-issues.js",
+      "sha256": "9d1d000385d884146af772c28fcb696530e43128d21192c190e4860c128b8f58",
+      "bytes": 924,
+      "words": 133,
+      "estimatedTokens": 231
+    },
+    {
+      "path": "scripts/compile-skill.js",
+      "sha256": "07faac7ffdb36e2dab47b8acc4ada5636207df53f31cff92ca46cc399c30147b",
+      "bytes": 21272,
+      "words": 2429,
+      "estimatedTokens": 5318
+    },
+    {
+      "path": "scripts/complete_workflow.js",
+      "sha256": "6a746c8bedd1fd545ea631f46fe2443cec67991e2f6dedac2e23233224f4e9cb",
+      "bytes": 1784,
+      "words": 228,
+      "estimatedTokens": 446
+    },
+    {
+      "path": "scripts/gather-repo-data.js",
+      "sha256": "23b834e3149a4c7d8a7384bf4afa225b9136477010e79d3edbfca8e0793fba8f",
+      "bytes": 13333,
+      "words": 1409,
+      "estimatedTokens": 3334
+    },
+    {
+      "path": "scripts/install-mcp-server.js",
+      "sha256": "394064063681bd296248f4131d35304c3992c2ecd182b54b64b295f6992ee8b2",
+      "bytes": 2980,
+      "words": 352,
+      "estimatedTokens": 745
+    },
+    {
+      "path": "scripts/lib/adaptive-evaluator.js",
+      "sha256": "6faac9e28793e163e1c552d5692e6d41abf2a1e088f4a689cf6f42bfcc853a59",
+      "bytes": 3604,
+      "words": 381,
+      "estimatedTokens": 901
+    },
+    {
+      "path": "scripts/lib/conductor-reconciliation.js",
+      "sha256": "424ccb8e3672a402fc720ddf8cc57ecf93b74f1ea11faaa3ad10390f023079c2",
+      "bytes": 2637,
+      "words": 266,
+      "estimatedTokens": 660
+    },
+    {
+      "path": "scripts/lib/diagnostic-engine.js",
+      "sha256": "670dfa66b9ae62106547ab25c85d2b28edc62c4d04b698ac05a052775b10f318",
+      "bytes": 6251,
+      "words": 643,
+      "estimatedTokens": 1563
+    },
+    {
+      "path": "scripts/lib/distribution-builder.js",
+      "sha256": "7bf07fefbaa856927600e25190b5e2f2c3d400a3443ffc11acfb0ea5d615f231",
+      "bytes": 14135,
+      "words": 1465,
+      "estimatedTokens": 3534
+    },
+    {
+      "path": "scripts/lib/document-intake-policy.js",
+      "sha256": "9e98830658ea5a30da6f93b44875cdaaeefadd16deab94cadf908fd9a593bf46",
+      "bytes": 18508,
+      "words": 1994,
+      "estimatedTokens": 4627
+    },
+    {
+      "path": "scripts/lib/document-intelligence.js",
+      "sha256": "c07f45365fe9423f8014aa257656ca991d1c47aa2a25933601776ce0e0b0e79a",
+      "bytes": 5892,
+      "words": 652,
+      "estimatedTokens": 1473
+    },
+    {
+      "path": "scripts/lib/document-profile-builder.js",
+      "sha256": "73472fc80d9896709782fc2f6bf8e39ea8c255ae6622fe4bcbdc0572cb9b8e02",
+      "bytes": 2767,
+      "words": 287,
+      "estimatedTokens": 692
+    },
+    {
+      "path": "scripts/lib/document-profile-registry.js",
+      "sha256": "6be9b628d42ed6ed7c575f4baee1e38a1def16a02e11975525f4df1c4aeb6211",
+      "bytes": 2063,
+      "words": 211,
+      "estimatedTokens": 516
+    },
+    {
+      "path": "scripts/lib/foio-editorial.js",
+      "sha256": "e20d09ebe2289e945fb14452f4094cb605950296b79b75555e53b0a8649680bc",
+      "bytes": 2503,
+      "words": 293,
+      "estimatedTokens": 626
+    },
+    {
+      "path": "scripts/lib/frontier-text.js",
+      "sha256": "65c3656d6230f1f5961d9442e656cfbc721850291e3386ffa9128fd3b7840cac",
+      "bytes": 6397,
+      "words": 933,
+      "estimatedTokens": 1600
+    },
+    {
+      "path": "scripts/lib/guidance-drift.js",
+      "sha256": "bef71c02723a295a77143de197b8970cdb16b9a4ce19270fd997c919727ae2b9",
+      "bytes": 3252,
+      "words": 357,
+      "estimatedTokens": 813
+    },
+    {
+      "path": "scripts/lib/guidance-source-record.js",
+      "sha256": "87558dc7c272bc3e9f389fbeb132bc6f7701d91a9ad794fd39a2e093a08ebd14",
+      "bytes": 4744,
+      "words": 576,
+      "estimatedTokens": 1186
+    },
+    {
+      "path": "scripts/lib/registry-distribution.js",
+      "sha256": "c53258f65c022e9e2bcdc2d2e467016b4b945531363fc95fee115bddfb601c5e",
+      "bytes": 3612,
+      "words": 438,
+      "estimatedTokens": 903
+    },
+    {
+      "path": "scripts/lib/registry-monitor.js",
+      "sha256": "c945900a4f7fc3681ee4dc5622bed6cb33c99dcdb8d3ffab962ff3fce65e6808",
+      "bytes": 4080,
+      "words": 403,
+      "estimatedTokens": 1020
+    },
+    {
+      "path": "scripts/lib/renovate-hosted.js",
+      "sha256": "f1155d019b3b7acb1a3b70953d97932862e30240b2d9e04bb6859048799f45ce",
+      "bytes": 2467,
+      "words": 259,
+      "estimatedTokens": 617
+    },
+    {
+      "path": "scripts/lib/repo-config.js",
+      "sha256": "33b63b98c72adde1d22986b4ecdb1fe18ac2b927721f967d37cf1265fbf3a515",
+      "bytes": 3763,
+      "words": 414,
+      "estimatedTokens": 941
+    },
+    {
+      "path": "scripts/lib/research-governance.js",
+      "sha256": "20d12d8877e3f1e37da16b4cafc5ca4830831064dd455d1e1e3daf8bf6947972",
+      "bytes": 5864,
+      "words": 660,
+      "estimatedTokens": 1466
+    },
+    {
+      "path": "scripts/lib/skill-contracts.js",
+      "sha256": "34a37e930f76c3b5bf90f0ee9e56d688867184810dc74e77716441fb77f5c620",
+      "bytes": 21711,
+      "words": 2318,
+      "estimatedTokens": 5428
+    },
+    {
+      "path": "scripts/lib/skill-evaluator.js",
+      "sha256": "c73225ac27fb6ba18714c489801d47e6940d2ce4c8dd02c6c660da418d22605a",
+      "bytes": 3454,
+      "words": 366,
+      "estimatedTokens": 864
+    },
+    {
+      "path": "scripts/lib/skill-self-compliance.js",
+      "sha256": "4904fde946decb17f2e14cd13da4973c37785c8e0c18a880899d531960d702d8",
+      "bytes": 3133,
+      "words": 369,
+      "estimatedTokens": 784
+    },
+    {
+      "path": "scripts/lib/source-resolver.js",
+      "sha256": "70e62d607ed4351338925dcf06314f0d4ea010c9a1a4b4084459a523ade2e607",
+      "bytes": 3388,
+      "words": 329,
+      "estimatedTokens": 847
+    },
+    {
+      "path": "scripts/lib/upstream-triage.js",
+      "sha256": "e90a67f8b4456ab5bb3aaa503e6758990537e7244820acad082858fc1b89aa13",
+      "bytes": 4012,
+      "words": 412,
+      "estimatedTokens": 1003
+    },
+    {
+      "path": "scripts/lint-markdown.js",
+      "sha256": "df13e8fd9b6dc66590b1f58e6601207793064717e881341403b0e6abf29b52e9",
+      "bytes": 3139,
+      "words": 318,
+      "estimatedTokens": 785
+    },
+    {
+      "path": "scripts/monitor-registry-distribution.js",
+      "sha256": "0c8f08fcf93aae31ae10efd355aba7a149b4bdc42c5a9eff39d94519492d72c6",
+      "bytes": 3279,
+      "words": 345,
+      "estimatedTokens": 820
+    },
+    {
+      "path": "scripts/progress_to_next_track.js",
+      "sha256": "62e0e5db94285a644e28a079229395b31c68b06ead7fe7ca3204bd1624a3a002",
+      "bytes": 2582,
+      "words": 307,
+      "estimatedTokens": 646
+    },
+    {
+      "path": "scripts/reconcile-conductor-github.js",
+      "sha256": "4dbd41f0e547052b700ecdeea8cbb4077642dd82e15e90e8d7707ddb1050e310",
+      "bytes": 2880,
+      "words": 341,
+      "estimatedTokens": 720
+    },
+    {
+      "path": "scripts/render-self-improvement-issue.js",
+      "sha256": "9b141d2a9588d6828c817d09f38eb2b20517a4680a7a8ad8af6a8a88e0cd2b07",
+      "bytes": 12171,
+      "words": 1326,
+      "estimatedTokens": 3043
+    },
+    {
+      "path": "scripts/run-coverage.js",
+      "sha256": "1664cdfc40f281cbd1885d32e1d7485f15c8697550b8bd44ac9d8782d42a188f",
+      "bytes": 2201,
+      "words": 278,
+      "estimatedTokens": 551
+    },
+    {
+      "path": "scripts/run-evaluations.js",
+      "sha256": "1378bca12f4918f05caf834c596a0f09a7292dad1a7a61cabe30f9c9bcf1e22f",
+      "bytes": 1513,
+      "words": 166,
+      "estimatedTokens": 379
+    },
+    {
+      "path": "scripts/run-node-tests.js",
+      "sha256": "97fb4163bedec2c984d2bc867603c8073a7544052cfbd6bd4b8b02bf16ab24e1",
+      "bytes": 1464,
+      "words": 171,
+      "estimatedTokens": 366
+    },
+    {
+      "path": "scripts/run-tests.js",
+      "sha256": "5d81b42c92bcae10b8c15ac0fffc65bfee704a4396b6c5fbdc90d018d5fd8f72",
+      "bytes": 946,
+      "words": 116,
+      "estimatedTokens": 237
+    },
+    {
+      "path": "scripts/validate-conductor.js",
+      "sha256": "21d690e38ef1381fea3bc9fe1ffa2399f0c888d6a068d01f62ca0546eb04eab7",
+      "bytes": 2181,
+      "words": 285,
+      "estimatedTokens": 546
+    },
+    {
+      "path": "scripts/validate-docs.js",
+      "sha256": "1c2f17b9522eaa0e04a33095bb2805fb2ab9ba4b221754409e20265a8ba0c58d",
+      "bytes": 2023,
+      "words": 228,
+      "estimatedTokens": 506
+    },
+    {
+      "path": "scripts/validate-host-overlays.js",
+      "sha256": "3dea21abd8e384be241946ab4d24147106637a59d452154c35b8b726ecb9166f",
+      "bytes": 2300,
+      "words": 273,
+      "estimatedTokens": 575
+    },
+    {
+      "path": "scripts/validate-manifest.js",
+      "sha256": "69e926afd8ad39e3e9c86484f7ae4da46039742734c2376cce95280b5a47e7d7",
+      "bytes": 1923,
+      "words": 208,
+      "estimatedTokens": 481
+    },
+    {
+      "path": "scripts/validate-registry-distribution.js",
+      "sha256": "9631f05c2ec6532732e2623d3640a08c3bad960a4f3ca19cc1af30e5404ca1e8",
+      "bytes": 998,
+      "words": 124,
+      "estimatedTokens": 250
+    },
+    {
+      "path": "scripts/validate-skill-contracts.js",
+      "sha256": "a362496cfa5f133c3c3d77cc064e37ca0ce4d55aa662317303122bf93c29db60",
+      "bytes": 579,
+      "words": 73,
+      "estimatedTokens": 145
+    },
+    {
+      "path": "scripts/verify-rewrite.js",
+      "sha256": "609611a6c16149f864eca565b79422e7a3f609321a66dd2b41bd3b94f6d4eae3",
+      "bytes": 2874,
+      "words": 352,
+      "estimatedTokens": 719
+    }
+  ]
+}
