@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { RUNTIME_FILES } from './lib/runtime-surface.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUTPUT = path.join(ROOT, 'SKILL_CARD.json');
@@ -77,11 +78,7 @@ export function card(root = ROOT) {
     const text = data.toString('utf8');
     if (text.includes('\r')) throw new Error('Non-LF line ending in ' + file);
     const problems = securityFindings(text, {
-      runtime: [
-        'scripts/verify-rewrite.js',
-        'scripts/calibrate-voice.js',
-        'scripts/lib/frontier-text.js',
-      ].includes(file),
+      runtime: RUNTIME_FILES.includes(file),
     });
     if (problems.length) throw new Error('Security scan ' + file + ': ' + problems.join(','));
     return { path: file, sha256: SHA(data), ...counts(text) };

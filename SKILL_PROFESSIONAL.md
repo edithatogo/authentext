@@ -85,7 +85,7 @@ Vary sentence rhythm with short and long lines. Use specific details instead of 
 
 For severity tiers and false-positive guidance, read [Core patterns](references/core-patterns.md) (sections **SEVERITY CLASSIFICATION** and **DETECTION GUIDANCE**).
 
-Available reference files: core-patterns.md, technical.md, academic.md, clinical.md, governance.md, legal.md, reasoning-failures.md, foio-editorial.md.
+Available reference files: core-patterns.md, technical.md, academic.md, clinical.md, governance.md, legal.md, reasoning-failures.md, foio-editorial.md, technical-protection.md.
 
 ## Optional local verification
 

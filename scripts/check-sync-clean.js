@@ -7,6 +7,7 @@ const TARGET_FILES = [
   'SKILL.md',
   'SKILL_CARD.json',
   'references/foio-editorial.md',
+  'references/technical-protection.md',
   'SKILL_PROFESSIONAL.md',
   'AGENTS.md',
   'README.md',

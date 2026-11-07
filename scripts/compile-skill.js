@@ -36,6 +36,7 @@ const MODULES = {
   legal: 'src/modules/SKILL_LEGAL.md',
   reasoning: 'src/modules/SKILL_REASONING.md',
   foio: 'src/modules/SKILL_FOIO.md',
+  protection: 'src/modules/SKILL_PROTECTION.md',
 };
 
 const OUTPUT = {
@@ -54,6 +55,7 @@ const REFERENCE_FILES = {
   legal: 'legal.md',
   reasoning: 'reasoning-failures.md',
   foio: 'foio-editorial.md',
+  protection: 'technical-protection.md',
 };
 
 const STANDARD_DESCRIPTION = `Repair editorial defects in prose with verified diffs. Remove recurring AI-writing patterns while preserving meaning, voice, citations, and technical literals. Do not optimise against detector scores or claim undetectability. Based on Wikipedia's "Signs of AI writing" guide. Detects inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts.`;
@@ -350,6 +352,8 @@ function compileStandardSkill(modules) {
       '- [Reasoning failures and self-contradictions](references/reasoning-failures.md)',
     modules.foio &&
       '- [FOI-O final editorial workflow and evidence receipt](references/foio-editorial.md)',
+    modules.protection &&
+      '- [Technical syntax and discourse protection](references/technical-protection.md)',
   ].filter(Boolean);
 
   const body = `${intro}
@@ -564,6 +568,7 @@ function compile() {
       legal: readModule(MODULES.legal),
       reasoning: readModule(MODULES.reasoning),
       foio: readModule(MODULES.foio),
+      protection: readModule(MODULES.protection),
     };
 
     const skillVersion = extractFrontmatter(modules.core)?.version ?? '3.0.0';
