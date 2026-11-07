@@ -1,6 +1,8 @@
 name: Reconciliation source
 on:
-  pull_request:
+  push:
+    branches:
+      - feat/protected-edit-pipeline-v3.3
     paths:
       - '.github/workflows/reconcile-source.yml'
 permissions:
