@@ -30,6 +30,12 @@ jobs:
       - name: Sync generated outputs
         run: npm run sync
 
+      - name: Emit integrity manifest for provenance
+        run: |
+          echo AUTHENTEXT_CARD_BEGIN
+          cat SKILL_CARD.json
+          echo AUTHENTEXT_CARD_END
+
       - name: Run maintainer validation
         run: npm run lint:all && npm run validate
 
