@@ -1,0 +1,79 @@
+name: Apply verified frontier patch
+
+on:
+  pull_request:
+    paths:
+      - '.maintainer/frontier-patch.json'
+      - '.github/workflows/apply-verified-frontier.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  apply:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'feat/v3.3-frontier-unified-distribution'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup-maintainer-env
+        with:
+          node-version: '24'
+          install-vale: 'true'
+          npm-ci: 'true'
+      - name: Apply hash-checked local patch
+        id: patch
+        run: |
+          if [ ! -f .maintainer/frontier-patch.json ]; then
+            echo 'available=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          import { gunzipSync } from 'node:zlib';
+          import { execFileSync } from 'node:child_process';
+          const manifest = JSON.parse(fs.readFileSync('.maintainer/frontier-patch.json', 'utf8'));
+          if (manifest.schemaVersion !== 1 || !/^[a-f0-9]{40}$/.test(manifest.baseCommit)) throw new Error('Invalid patch metadata');
+          execFileSync('git', ['merge-base', '--is-ancestor', manifest.baseCommit, 'HEAD']);
+          const patch = gunzipSync(Buffer.from(manifest.gzipBase64, 'base64'), { maxOutputLength: 2000000 });
+          if (crypto.createHash('sha256').update(patch).digest('hex') !== manifest.patchSha256) throw new Error('Patch digest mismatch');
+          const filename = `${process.env.RUNNER_TEMP}/verified-frontier.patch`;
+          fs.writeFileSync(filename, patch);
+          execFileSync('git', ['apply', '--check', filename]);
+          execFileSync('git', ['apply', '--index', filename]);
+          NODE
+          echo 'available=true' >> "$GITHUB_OUTPUT"
+      - name: Verify patched source before committing
+        if: steps.patch.outputs.available == 'true'
+        run: |
+          npm run format:fix
+          node node_modules/prettier/bin/prettier.cjs --write experiments/ablation-harness.js
+          npm run sync
+          npm run lint:all
+          npm run validate
+          npm test
+          npm run test:coverage
+          npm run check:sync
+          npm run build:distribution -- --output "${RUNNER_TEMP}/authentext-packages"
+      - name: Commit only to the unchanged review branch
+        if: steps.patch.outputs.available == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          test "${HEAD_BRANCH}" = 'feat/v3.3-frontier-unified-distribution'
+          actual=$(git ls-remote origin "refs/heads/${HEAD_BRANCH}" | cut -f1)
+          test "$actual" = "$EXPECTED_HEAD"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u
+          git -c core.hooksPath=/dev/null commit -m 'fix: verified v3.3 foundation, literal fidelity and metadata'
+          authorization=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${authorization}" push origin "HEAD:${HEAD_BRANCH}"
