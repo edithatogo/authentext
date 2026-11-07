@@ -45,3 +45,70 @@ export function writePrivate(file, text) {
     if (fs.existsSync(temp)) fs.unlinkSync(temp);
   }
 }
+
+// Stage every destination before publication. This handles ordinary I/O
+// failures with rollback; it is not a crash-atomic multi-file transaction.
+export function writePrivateBatch(entries) {
+  distinctPaths(entries.map(({ file }) => file));
+  const staged = [];
+  try {
+    for (const { file, text } of entries) {
+      const target = path.resolve(file);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      let existing = false;
+      try {
+        const stat = fs.lstatSync(target);
+        if (!stat.isFile() || stat.isSymbolicLink())
+          throw new TypeError('Output must not be a symlink or directory');
+        existing = true;
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+      }
+      const stem = path.join(
+        path.dirname(target),
+        '.' + path.basename(target) + '.' + crypto.randomUUID()
+      );
+      const item = {
+        target,
+        temp: stem + '.tmp',
+        backup: existing ? stem + '.bak' : null,
+        published: false,
+        retainBackup: false,
+      };
+      staged.push(item);
+      fs.writeFileSync(item.temp, text, { encoding: 'utf8', mode: 0o600, flag: 'wx' });
+      if (item.backup) {
+        fs.copyFileSync(target, item.backup, fs.constants.COPYFILE_EXCL);
+        fs.chmodSync(item.backup, 0o600);
+      }
+    }
+    for (const item of staged) {
+      fs.renameSync(item.temp, item.target);
+      item.published = true;
+    }
+  } catch (error) {
+    const failures = [];
+    for (const item of [...staged].reverse()) {
+      if (!item.published) continue;
+      try {
+        if (item.backup) fs.renameSync(item.backup, item.target);
+        else fs.unlinkSync(item.target);
+      } catch (rollbackError) {
+        item.retainBackup = true;
+        failures.push(rollbackError);
+      }
+    }
+    if (failures.length)
+      throw new AggregateError(
+        [error, ...failures],
+        'Publication failed; private recovery backups retained'
+      );
+    throw error;
+  } finally {
+    for (const item of staged) {
+      if (fs.existsSync(item.temp)) fs.unlinkSync(item.temp);
+      if (item.backup && !item.retainBackup && fs.existsSync(item.backup))
+        fs.unlinkSync(item.backup);
+    }
+  }
+}

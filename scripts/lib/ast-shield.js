@@ -202,6 +202,15 @@ function environmentEnd(s, start, name, openingEnd) {
   }
   fail('Unclosed TeX environment ' + name);
 }
+function texGapEnd(s, start) {
+  let i = start;
+  while (i < s.length) {
+    if (/\s/u.test(s[i])) i++;
+    else if (s[i] === '%' && !escaped(s, i)) i = nextLine(s, i);
+    else break;
+  }
+  return i;
+}
 function texCommand(s, start) {
   if (s.startsWith('\\[', start))
     return { end: untilDelimiter(s, start, '\\[', '\\]'), role: 'BLOCK' };
@@ -245,20 +254,23 @@ function texCommand(s, start) {
     fail('Unclosed TeX preamble: missing begin{document}');
   }
   if (name === 'begin' || name === 'end') {
-    const m = /^\s*\{([^{}]+)\}/u.exec(s.slice(i));
+    const argumentStart = texGapEnd(s, i);
+    const m = /^\{([^{}]+)\}/u.exec(s.slice(argumentStart));
     if (!m) fail('Unsupported TeX environment');
-    const end = i + m[0].length;
+    const end = argumentStart + m[0].length;
     if (name === 'end' || m[1] === 'document') return { end, role: 'BLOCK' };
     return { end: environmentEnd(s, start, m[1], end), role: 'BLOCK' };
   }
   // An unbraced macro name is permitted in newcommand/renewcommand.
   if (/^(?:newcommand|renewcommand|providecommand)$/u.test(name)) {
-    const macro = /^\s*\\[A-Za-z@]+/u.exec(s.slice(i));
-    if (macro) i += macro[0].length;
+    const argumentStart = texGapEnd(s, i);
+    const macro = /^\\[A-Za-z@]+/u.exec(s.slice(argumentStart));
+    if (macro) i = argumentStart + macro[0].length;
   }
   while (i < s.length) {
-    const gap = /^\s*/u.exec(s.slice(i))[0].length;
-    if (s[i + gap] === '[' || s[i + gap] === '{') i = balancedEnd(s, i + gap, 'tex');
+    const argumentStart = texGapEnd(s, i);
+    if (s[argumentStart] === '[' || s[argumentStart] === '{')
+      i = balancedEnd(s, argumentStart, 'tex');
     else break;
   }
   let role = /^(?:textcite|citet|citeauthor)$/u.test(name)
@@ -608,8 +620,31 @@ export function unmaskDocument(
   if (prose.includes('[[AST_')) fail('Malformed AST token');
   if (extractProtectedSpans(prose, lockfile.format).length)
     fail('Rewrite introduced unmasked raw protected syntax', 'UNMASKED_SYNTAX');
-  const text = masked.replace(TOKEN, (token) => byToken.get(token).raw);
-  extractProtectedSpans(text, lockfile.format);
+  const expectedSpans = [];
+  let text = '',
+    previous = 0;
+  for (const match of matches) {
+    const entry = byToken.get(match[0]);
+    text += masked.slice(previous, match.index);
+    const start = text.length;
+    text += entry.raw;
+    expectedSpans.push({ start, end: text.length, entry });
+    previous = match.index + match[0].length;
+  }
+  text += masked.slice(previous);
+  const restoredSpans = extractProtectedSpans(text, lockfile.format);
+  if (restoredSpans.length !== expectedSpans.length)
+    fail('Protected span boundaries merged or disappeared', 'SPAN_BOUNDARY_DRIFT');
+  for (const [index, expected] of expectedSpans.entries()) {
+    const actual = restoredSpans[index];
+    if (
+      actual.start !== expected.start ||
+      actual.end !== expected.end ||
+      actual.role !== expected.entry.role ||
+      sha256(text.slice(actual.start, actual.end)) !== expected.entry.sha256
+    )
+      fail('Protected span boundary changed for ' + expected.entry.token, 'SPAN_BOUNDARY_DRIFT');
+  }
   return {
     text,
     passed: true,

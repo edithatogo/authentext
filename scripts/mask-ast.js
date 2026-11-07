@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { maskDocument, ShieldError } from './lib/ast-shield.js';
-import { readUtf8, distinctPaths, writePrivate } from './lib/runtime-io.js';
+import { readUtf8, distinctPaths, writePrivateBatch } from './lib/runtime-io.js';
 
 function main() {
   try {
@@ -24,8 +24,10 @@ function main() {
         ? path.extname(values.input).slice(1).toLowerCase()
         : values.format.toLowerCase();
     const result = maskDocument(readUtf8(values.input), format);
-    writePrivate(values.lockfile, JSON.stringify(result.lockfile, null, 2) + '\n');
-    writePrivate(values.output, result.masked);
+    writePrivateBatch([
+      { file: values.output, text: result.masked },
+      { file: values.lockfile, text: JSON.stringify(result.lockfile, null, 2) + '\n' },
+    ]);
     process.stdout.write(
       JSON.stringify({
         passed: true,

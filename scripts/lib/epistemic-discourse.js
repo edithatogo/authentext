@@ -135,10 +135,15 @@ function windows(sentences) {
   }
   return output;
 }
-function align(source, candidates) {
+function align(source, candidates, used) {
+  const available = candidates.filter((candidate) => candidate.indices.every((i) => !used.has(i)));
+  // Exact occurrences outrank lexical ties; never compare an unchanged claim
+  // against an earlier claim that happens to use the same content words.
+  const exact = available.find((candidate) => candidate.text === source.text);
+  if (exact) return { ...exact, score: 1, recall: 1 };
   const a = anchors(source.text);
   if (a.size < 2) return null;
-  const ranked = candidates
+  const ranked = available
     .map((candidate) => ({
       ...candidate,
       score:
@@ -148,6 +153,12 @@ function align(source, candidates) {
     }))
     .sort((x, y) => y.score - x.score || x.indices[0] - y.indices[0]);
   if (!ranked[0] || ranked[0].score < 0.4 || ranked[0].recall < 0.5) return null;
+  if (
+    ranked[1] &&
+    Math.abs(ranked[0].score - ranked[1].score) < 1e-9 &&
+    ranked[0].text !== ranked[1].text
+  )
+    return null;
   return ranked[0];
 }
 function positiveMarkers(text, pattern) {
@@ -274,11 +285,12 @@ export function inspectDiscourse(original, rewrite, { format = 'md' } = {}) {
   const source = sentencesWithLines(original, format),
     output = sentencesWithLines(rewrite, format);
   const candidates = windows(output);
+  const used = new Set();
   const epistemicDrift = [],
     polarityInversion = [],
     alignmentIssues = [];
   for (const [index, sentence] of source.entries()) {
-    const target = align(sentence, candidates);
+    const target = align(sentence, candidates, used);
     if (!target) {
       alignmentIssues.push({
         sourceSentence: index,
@@ -288,6 +300,7 @@ export function inspectDiscourse(original, rewrite, { format = 'md' } = {}) {
       });
       continue;
     }
+    for (const i of target.indices) used.add(i);
     const before = profile(sentence.text),
       after = profile(target.text),
       reasons = [];
