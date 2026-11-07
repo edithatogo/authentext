@@ -53,19 +53,15 @@ jobs:
 
       - name: Package release artifacts
         run: |
-          mkdir -p release-artifacts/references
-          cp SKILL.md release-artifacts/
-          cp SKILL_PROFESSIONAL.md release-artifacts/
-          cp README.md release-artifacts/
-          cp LICENSE release-artifacts/
-          cp -R references/. release-artifacts/references/
+          mkdir -p release-artifacts
+          cp -R distribution-staging/portable/skills/authentext/. release-artifacts/
           tar -czf authentext-skill-artifacts.tar.gz \
             -C release-artifacts \
-            SKILL.md SKILL_PROFESSIONAL.md README.md LICENSE references
+            SKILL.md SKILL_PROFESSIONAL.md README.md LICENSE references scripts package.json SKILL_CARD.json
           (
             cd release-artifacts
             zip -r ../authentext-skill-artifacts.zip \
-              SKILL.md SKILL_PROFESSIONAL.md README.md LICENSE references
+              SKILL.md SKILL_PROFESSIONAL.md README.md LICENSE references scripts package.json SKILL_CARD.json
           )
 
       - name: Verify packaged artifact surface
@@ -82,6 +78,10 @@ jobs:
           grep -Fx 'references/academic.md' artifact-contents.txt
           grep -Fx 'references/governance.md' artifact-contents.txt
           grep -Fx 'references/reasoning-failures.md' artifact-contents.txt
+          grep -Fx 'scripts/mask-ast.js' artifact-contents.txt
+          grep -Fx 'scripts/unmask-ast.js' artifact-contents.txt
+          grep -Fx 'scripts/verify-rewrite.js' artifact-contents.txt
+          grep -Fx 'SKILL_CARD.json' artifact-contents.txt
 
       - name: Upload release artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
