@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { inspectDiscourse } from './lib/epistemic-discourse.js';
 import { metrics, invariants, multisetDiff, parseArgs, readText } from './lib/frontier-text.js';
 
 const categories = {
@@ -17,7 +18,13 @@ const categories = {
 export function inspectRewrite(
   original,
   rewrite,
-  { mode = 'standard', profile = null, allowCodeEdits = false } = {}
+  {
+    mode = 'standard',
+    profile = null,
+    allowCodeEdits = false,
+    allowModalityShift = false,
+    format = 'md',
+  } = {}
 ) {
   if (!['light', 'standard', 'deep'].includes(mode)) throw new Error('Invalid mode');
   if (profile !== null && profile.schemaVersion !== '1.0.0')
@@ -36,6 +43,12 @@ export function inspectRewrite(
       passed = false;
     }
   }
+  const discourse = inspectDiscourse(original, rewrite, { format });
+  const permitted = new Set(['hedge-lost', 'certainty-increased', 'causal-inflation']);
+  const blockedDrift = discourse.epistemicDrift.some(
+    (item) => !allowModalityShift || item.reasons.some((reason) => !permitted.has(reason))
+  );
+  if (mode !== 'light' && (blockedDrift || discourse.polarityInversion.length > 0)) passed = false;
   const warnings = [];
   if (
     mode !== 'light' &&
@@ -65,6 +78,8 @@ export function inspectRewrite(
   });
   return {
     schemaVersion: '1.0.0',
+    ...discourse,
+    overrides: { allowCodeEdits, allowModalityShift },
     passed,
     mode,
     stylometry: {
@@ -85,6 +100,14 @@ function main() {
       mode: a.mode || 'standard',
       profile,
       allowCodeEdits: a['allow-code-edits'] === true,
+      allowModalityShift: a['allow-modality-shift'] === true,
+      format:
+        a.format ||
+        (['md', 'qmd', 'rmd', 'typ', 'tex'].includes(
+          path.extname(a.original).slice(1).toLowerCase()
+        )
+          ? path.extname(a.original).slice(1).toLowerCase()
+          : 'md'),
     });
     process.stdout.write(JSON.stringify(result, null, a.json ? 0 : 2) + '\n');
     if (!result.passed) process.exitCode = 1;

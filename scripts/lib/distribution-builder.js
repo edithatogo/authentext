@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { RUNTIME_FILES } from './runtime-surface.js';
 
 const HOSTS = new Set([
   'claude-code',
@@ -53,17 +54,52 @@ function copyPortableSurface(root, packageRoot) {
   fs.cpSync(path.join(root, 'references'), path.join(skillRoot, 'references'), {
     recursive: true,
   });
-  const runtime = [
-    'scripts/verify-rewrite.js',
-    'scripts/calibrate-voice.js',
-    'scripts/lib/frontier-text.js',
-  ];
-  for (const relative of runtime) {
+  for (const relative of RUNTIME_FILES) {
     const target = path.join(skillRoot, relative);
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.copyFileSync(path.join(root, relative), target);
   }
-  fs.writeFileSync(path.join(skillRoot, 'package.json'), '{"type":"module"}\n');
+  const version = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
+  fs.writeFileSync(
+    path.join(skillRoot, 'package.json'),
+    JSON.stringify(
+      {
+        name: 'authentext-runtime',
+        private: true,
+        version,
+        type: 'module',
+        engines: { node: '>=24' },
+      },
+      null,
+      2
+    ) + '\n'
+  );
+  fs.copyFileSync(
+    path.join(root, 'SKILL_PROFESSIONAL.md'),
+    path.join(skillRoot, 'SKILL_PROFESSIONAL.md')
+  );
+  fs.writeFileSync(
+    path.join(skillRoot, 'README.md'),
+    '# Authentext portable skill\n\nSource: https://github.com/edithatogo/authentext\n\nInstall this complete directory. The optional scripts need Node.js 24, no\npackage installation and no network access. Run them only with host permission.\nKeep AST lockfiles and voice profiles private. A passing check is not proof\nof semantic equivalence or a successful native document build.\n'
+  );
+  const artifacts = walk(skillRoot).map((file) => ({
+    path: normalize(path.relative(skillRoot, file)),
+    sha256: sha256(fs.readFileSync(file)),
+  }));
+  fs.writeFileSync(
+    path.join(skillRoot, 'SKILL_CARD.json'),
+    JSON.stringify(
+      {
+        schemaVersion: '1.0.0',
+        scope: 'installed-skill',
+        version,
+        runtimeFiles: RUNTIME_FILES,
+        artifacts,
+      },
+      null,
+      2
+    ) + '\n'
+  );
 }
 
 function writeClaudeManifests(root, packageRoot) {
@@ -340,12 +376,8 @@ export function validatePortablePackage(packageRoot) {
     }
     if (/humanizer|blader/i.test(relativePath)) errors.push(`legacy identity: ${relativePath}`);
     if (
-      relativePath.startsWith('skills/authentext/scripts/') &&
-      ![
-        'skills/authentext/scripts/verify-rewrite.js',
-        'skills/authentext/scripts/calibrate-voice.js',
-        'skills/authentext/scripts/lib/frontier-text.js',
-      ].includes(relativePath)
+      segments.includes('scripts') &&
+      !RUNTIME_FILES.map((file) => 'skills/authentext/' + file).includes(relativePath)
     ) {
       errors.push(`unapproved runtime script: ${relativePath}`);
     }
@@ -354,6 +386,16 @@ export function validatePortablePackage(packageRoot) {
     }
   }
   for (const entry of manifest.files) {
+    if (
+      typeof entry.path !== 'string' ||
+      entry.path.includes('\\') ||
+      entry.path.startsWith('/') ||
+      entry.path.split('/').some((part) => !part || part === '.' || part === '..') ||
+      entry.path.includes('\0')
+    ) {
+      errors.push('unsafe declared package path');
+      continue;
+    }
     const filePath = path.join(packageRoot, ...entry.path.split('/'));
     if (!fs.existsSync(filePath)) errors.push(`declared file is missing: ${entry.path}`);
     else if (sha256(fs.readFileSync(filePath)) !== entry.sha256) {

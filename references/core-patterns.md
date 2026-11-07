@@ -133,6 +133,12 @@ Published-work research is metadata-only unless the user also grants a public fu
 
 ## Local rewrite verification
 
+Before editing technical formats (.qmd, .Rmd, .typ, .tex), or Markdown with
+citations or math, read the technical-protection.md reference.
+With authorised shell access, run mask-ast.js, edit only masked prose, then run
+unmask-ast.js before verify-rewrite.js. Keep tokens intact and lockfiles private.
+These scripts provide bounded lexical protection, not a complete native AST.
+
 In a shell-capable host with the Authentext local scripts installed, perform a
 bounded invariant check before returning a medium- or high-stakes rewrite.
 Use private temporary files outside the repository, and run
@@ -143,7 +149,9 @@ or leave the passage for review. Never conceal the failed check.
 The structural report describes only detectable code, citation, link, identifier,
 number, and punctuation changes. A successful report does not establish
 semantic equivalence. Independently check negation, claim scope, attribution,
-factual support, clinical meaning, legal effect, and uncertainty. Sentence
+factual support, clinical meaning, legal effect, and uncertainty. Review epistemicDrift,
+polarityInversion, flatEntropySpans and alignmentIssues. A passing report never
+proves semantic equivalence. Sentence
 variation and punctuation are warnings, not authorship scores. Where the runtime
 scripts are unavailable, perform the normal careful manual review instead.
 

@@ -201,7 +201,8 @@ export function parseArgs(args) {
     const arg = args[i];
     if (!arg.startsWith('--')) throw new Error('Unexpected positional argument');
     const name = arg.slice(2);
-    if (['json', 'allow-code-edits', 'dry-run'].includes(name)) output[name] = true;
+    if (['json', 'allow-code-edits', 'allow-modality-shift', 'dry-run'].includes(name))
+      output[name] = true;
     else {
       if (!args[i + 1] || args[i + 1].startsWith('--')) throw new Error('Missing ' + arg);
       output[name] = args[++i];

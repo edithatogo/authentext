@@ -4,7 +4,7 @@
   "sourceRepository": "edithatogo/authentext",
   "tokenEstimator": "UTF-8 byte length divided by four; conservative approximation, not model tokenisation",
   "rootSkillTokenCeiling": 8500,
-  "rootSkillEstimatedTokens": 6787,
+  "rootSkillEstimatedTokens": 6935,
   "security": {
     "hiddenUnicodeControls": "rejected",
     "runtimeNetworkPrimitives": "rejected",
@@ -13,17 +13,17 @@
   "artifacts": [
     {
       "path": "SKILL.md",
-      "sha256": "78e91718a0d42ccf16aa8e7c6e3224baa1acc5cab820274a004cdab8f7b3be05",
-      "bytes": 27147,
-      "words": 4042,
-      "estimatedTokens": 6787
+      "sha256": "d846c9435e379a2b637c9c3069deaefd69d32a306fd03130053a431d0896dedd",
+      "bytes": 27740,
+      "words": 4122,
+      "estimatedTokens": 6935
     },
     {
       "path": "SKILL_PROFESSIONAL.md",
-      "sha256": "47e06ce0f45446f3419cd3ef78b0d09542443f758ab5953daddbd8f3a4ef273d",
-      "bytes": 4809,
-      "words": 671,
-      "estimatedTokens": 1203
+      "sha256": "52549f778608f0d67d820c55f7109044ba90b615e93d6d3c1b6c79e643f80090",
+      "bytes": 4834,
+      "words": 674,
+      "estimatedTokens": 1209
     },
     {
       "path": "references/academic.md",
@@ -41,10 +41,10 @@
     },
     {
       "path": "references/core-patterns.md",
-      "sha256": "1f916908a30b6ca1d41b104ce5cd51c054c5cdb862a986fe94ee2739c7e58695",
-      "bytes": 56022,
-      "words": 8198,
-      "estimatedTokens": 14006
+      "sha256": "0be4e0b9734e9de4b9fa389ea68671cdf16e82ae7eae3fe18b22efb6176c5d4d",
+      "bytes": 56533,
+      "words": 8269,
+      "estimatedTokens": 14134
     },
     {
       "path": "references/foio-editorial.md",
@@ -75,6 +75,13 @@
       "estimatedTokens": 688
     },
     {
+      "path": "references/technical-protection.md",
+      "sha256": "2d1c3a4f5e815d4aad688bf5c219f8c06aa9ccd03148e92a5170c6cab027f855",
+      "bytes": 4564,
+      "words": 654,
+      "estimatedTokens": 1141
+    },
+    {
       "path": "references/technical.md",
       "sha256": "858305e85cd956de81a894bfce48ba50a40278fcc988d0971ec8c3fd97fa199b",
       "bytes": 10566,
@@ -97,10 +104,10 @@
     },
     {
       "path": "scripts/build-skill-card.js",
-      "sha256": "ffd3233cf33d572e5cb7e1ecb8a7331c4ec072e1b83e580aa7297c45088b5641",
-      "bytes": 4963,
-      "words": 580,
-      "estimatedTokens": 1241
+      "sha256": "0e2583bf0faac5543d46b38737e9184f9f6c1a803e1328d32b48bfa7547d88ec",
+      "bytes": 4910,
+      "words": 577,
+      "estimatedTokens": 1228
     },
     {
       "path": "scripts/calibrate-voice.js",
@@ -125,10 +132,10 @@
     },
     {
       "path": "scripts/check-sync-clean.js",
-      "sha256": "ab174bf774ec4e0fa9ff71e0d0234552c8b4ea11575174616c197aec1d24b9be",
-      "bytes": 2943,
-      "words": 330,
-      "estimatedTokens": 736
+      "sha256": "11c9632a5a63dd37bd6befb752432b38d110e90a25bf6b72640120d74dca82f7",
+      "bytes": 2983,
+      "words": 334,
+      "estimatedTokens": 746
     },
     {
       "path": "scripts/check-upstream.js",
@@ -146,10 +153,10 @@
     },
     {
       "path": "scripts/compile-skill.js",
-      "sha256": "070bf51b553ac00897923799afeac329f4b6bec9650a61519e42fb119ad616d0",
-      "bytes": 21574,
-      "words": 2457,
-      "estimatedTokens": 5394
+      "sha256": "fa833fbee32be9dae9f9798c5ca94031c408319e8c240c431bfd2dc218cecaee",
+      "bytes": 21831,
+      "words": 2482,
+      "estimatedTokens": 5458
     },
     {
       "path": "scripts/complete_workflow.js",
@@ -180,6 +187,13 @@
       "estimatedTokens": 901
     },
     {
+      "path": "scripts/lib/ast-shield.js",
+      "sha256": "18d5df7f26691db92ed86823615eed1be88f6e6454fbf418cfca97a65fdcdf25",
+      "bytes": 20656,
+      "words": 2479,
+      "estimatedTokens": 5164
+    },
+    {
       "path": "scripts/lib/conductor-reconciliation.js",
       "sha256": "424ccb8e3672a402fc720ddf8cc57ecf93b74f1ea11faaa3ad10390f023079c2",
       "bytes": 2637,
@@ -195,10 +209,10 @@
     },
     {
       "path": "scripts/lib/distribution-builder.js",
-      "sha256": "b992e392e19ea7fe7fbd3968b9adf66d62c2b7536a89edef79fc981447939b3f",
-      "bytes": 14197,
-      "words": 1465,
-      "estimatedTokens": 3550
+      "sha256": "95672e4ca41dfb6f4342fca46cd5456af473fcb115a299d1a872f8b2663ca180",
+      "bytes": 15594,
+      "words": 1621,
+      "estimatedTokens": 3899
     },
     {
       "path": "scripts/lib/document-intake-policy.js",
@@ -229,6 +243,13 @@
       "estimatedTokens": 516
     },
     {
+      "path": "scripts/lib/epistemic-discourse.js",
+      "sha256": "85426acb7aeb3050f464179d01702a36e919a48eaced7a9a8825eff3b940ee63",
+      "bytes": 13629,
+      "words": 1662,
+      "estimatedTokens": 3408
+    },
+    {
       "path": "scripts/lib/foio-editorial.js",
       "sha256": "e20d09ebe2289e945fb14452f4094cb605950296b79b75555e53b0a8649680bc",
       "bytes": 2503,
@@ -237,10 +258,10 @@
     },
     {
       "path": "scripts/lib/frontier-text.js",
-      "sha256": "39fd8a6ba9dfa4539b32a5fceaf3b80663364718f47a17d007b64d67639b36ae",
-      "bytes": 7046,
-      "words": 941,
-      "estimatedTokens": 1762
+      "sha256": "3a4eec346849fb5585601f977f80d66593e66095e5e6905d0aa851fdffe77419",
+      "bytes": 7076,
+      "words": 944,
+      "estimatedTokens": 1769
     },
     {
       "path": "scripts/lib/guidance-drift.js",
@@ -292,6 +313,20 @@
       "estimatedTokens": 1466
     },
     {
+      "path": "scripts/lib/runtime-io.js",
+      "sha256": "3baecdcb8e7cfda5349e59d722ee0323158851aa286768628f0e49ccbe671395",
+      "bytes": 1835,
+      "words": 230,
+      "estimatedTokens": 459
+    },
+    {
+      "path": "scripts/lib/runtime-surface.js",
+      "sha256": "a5d93941e79da58fd3cf01d746be1f4010ab3f4da0af30059b411aac5ae5f0a1",
+      "bytes": 451,
+      "words": 61,
+      "estimatedTokens": 113
+    },
+    {
       "path": "scripts/lib/skill-contracts.js",
       "sha256": "34a37e930f76c3b5bf90f0ee9e56d688867184810dc74e77716441fb77f5c620",
       "bytes": 21711,
@@ -332,6 +367,13 @@
       "bytes": 3139,
       "words": 318,
       "estimatedTokens": 785
+    },
+    {
+      "path": "scripts/mask-ast.js",
+      "sha256": "d5d2d1ddff877cefc211686e705050de6dfc25dfae37d03dd3afb1213c498c76",
+      "bytes": 1691,
+      "words": 178,
+      "estimatedTokens": 423
     },
     {
       "path": "scripts/monitor-registry-distribution.js",
@@ -390,6 +432,13 @@
       "estimatedTokens": 237
     },
     {
+      "path": "scripts/unmask-ast.js",
+      "sha256": "e664346a7d6011188fc78d8f24fd1f5d5cf5b838dde8641eb6dd86c6e023e8da",
+      "bytes": 1669,
+      "words": 183,
+      "estimatedTokens": 418
+    },
+    {
       "path": "scripts/validate-conductor.js",
       "sha256": "21d690e38ef1381fea3bc9fe1ffa2399f0c888d6a068d01f62ca0546eb04eab7",
       "bytes": 2181,
@@ -433,10 +482,10 @@
     },
     {
       "path": "scripts/verify-rewrite.js",
-      "sha256": "b31f9b8eed7b0dbf0fad4a9b4c1af738a37361e86e2cd1a0d79b2249401a188c",
-      "bytes": 3319,
-      "words": 352,
-      "estimatedTokens": 830
+      "sha256": "d348b06f9efbdfddf357dff94f528ab68dc1d36c5c3e3cd90222eec019ad79f0",
+      "bytes": 4227,
+      "words": 437,
+      "estimatedTokens": 1057
     }
   ]
 }

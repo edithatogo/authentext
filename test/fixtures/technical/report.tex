@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{luacode}
+\newcommand{\risk}[1]{\operatorname{risk}_{#1}}
+\begin{document}
+The first finding may suggest benefit \parencite[see][p. 4]{author2025}.
+The estimate $x^2$ is shown in \eqref{eq:test}.
+\begin{align}
+x &= 1 + 2 \\
+y &= \risk{x}
+\end{align}
+\begin{luacode}
+local x = "{literal}"
+tex.print(x)
+\end{luacode}
+\newcommand{\another}[1]{\textbf{#1}}
+\begin{figure}
+\includegraphics{example.png}
+\caption{Protected caption.}\label{fig:a}
+\end{figure}
+A final explanatory paragraph.
+\end{document}

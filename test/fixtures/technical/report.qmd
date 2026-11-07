@@ -1,0 +1,29 @@
+---
+title: Synthetic safety fixture
+format: html
+bibliography: refs.bib
+---
+
+The first finding may suggest benefit [@author2025, p. 4].
+@author2025 [p. 12] describes the comparison in @fig-1 and @sec-methods.
+
+```{r}
+#| label: fig-1
+#| fig-cap: "Do not change 10."
+x <- c(1, 2, 3)
+plot(x)
+```
+
+```{python}
+#| echo: false
+print("literal {braces} and $math$")
+```
+
+The computed result is `{r} mean(x)` and `{python} 1 + 2`.
+The equation $x_i^2$ remains exact.
+
+::: {.callout-note #note-one}
+A short explanatory paragraph.
+:::
+
+[Styled phrase]{.small #note-label}
