@@ -86,3 +86,12 @@ Vary sentence rhythm with short and long lines. Use specific details instead of 
 For severity tiers and false-positive guidance, read [Core patterns](references/core-patterns.md) (sections **SEVERITY CLASSIFICATION** and **DETECTION GUIDANCE**).
 
 Available reference files: core-patterns.md, technical.md, academic.md, clinical.md, governance.md, legal.md, reasoning-failures.md, foio-editorial.md.
+
+## Optional local verification
+
+For medium- and high-stakes rewrites in a shell-capable host, invoke the local
+verify-rewrite.js CLI if installed. Preserve protected literals and explicitly
+review claims, uncertainty, negation, and domain boundaries even when the
+structural check passes. Calibrate voice from a consented corpus using
+calibrate-voice.js, if available. Do not treat CV or punctuation as proof of
+authorship. Host approvals and document privacy always take precedence.

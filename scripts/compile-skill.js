@@ -13,6 +13,7 @@
  */
 
 import fs from 'fs';
+import { writeSkillCard } from './build-skill-card.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import {
@@ -159,6 +160,16 @@ function syncRepoVersion(version) {
       fs.writeFileSync(lockPath, `${JSON.stringify(lock, null, 2)}\n`, 'utf8');
       console.log(`✓ Synced package-lock.json version → ${version}`);
     }
+  }
+
+  const pythonPath = path.join(ROOT_DIR, 'pyproject.toml');
+  if (fs.existsSync(pythonPath)) {
+    const source = fs.readFileSync(pythonPath, 'utf8');
+    fs.writeFileSync(
+      pythonPath,
+      source.replace(/^version = "[^"]+"$/m, `version = "${version}"`),
+      'utf8'
+    );
   }
 
   const syncedDate = new Date().toISOString().slice(0, 10);
@@ -528,7 +539,10 @@ For severity tiers and false-positive guidance, read [Core patterns](references/
 Available reference files: ${availableReferences.join(', ')}.
 `;
 
-  return introduction;
+  return (
+    introduction +
+    '\n## Optional local verification\n\nFor medium- and high-stakes rewrites in a shell-capable host, invoke the local\nverify-rewrite.js CLI if installed. Preserve protected literals and explicitly\nreview claims, uncertainty, negation, and domain boundaries even when the\nstructural check passes. Calibrate voice from a consented corpus using\ncalibrate-voice.js, if available. Do not treat CV or punctuation as proof of\nauthorship. Host approvals and document privacy always take precedence.\n'
+  );
 }
 
 /**
@@ -571,6 +585,8 @@ function compile() {
     fs.mkdirSync(path.dirname(openaiMetadataPath), { recursive: true });
     fs.writeFileSync(openaiMetadataPath, buildOpenAiMetadata(), 'utf-8');
     console.log(`✓ Written: ${OUTPUT.openaiMetadata}`);
+    writeSkillCard();
+    console.log('✓ Written: SKILL_CARD.json');
 
     console.log('\n╔════════════════════════════════════════╗');
     console.log('║  ✓ Compilation Complete              ║');

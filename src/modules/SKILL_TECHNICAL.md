@@ -1,6 +1,6 @@
 ---
 module_id: technical
-version: 3.2.0
+version: 3.3.0
 description: Technical module for code and engineering documentation
 applies_to: code, technical docs, API docs, READMEs
 severity_levels:

@@ -1,6 +1,6 @@
 ---
 module_id: clinical
-version: 3.2.0
+version: 3.3.0
 description: Clinical module for health research and patient-safety prose
 applies_to: trial reports, guidelines, handovers, incident reviews, patient materials
 severity_levels:

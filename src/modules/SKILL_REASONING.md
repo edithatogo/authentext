@@ -1,6 +1,6 @@
 ---
 module_id: reasoning
-version: 3.2.0
+version: 3.3.0
 description: Module for detecting and addressing LLM reasoning failures
 severity_levels:
   - Critical

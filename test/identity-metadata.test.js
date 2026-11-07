@@ -16,7 +16,7 @@ test('canonical manifests share Authentext identity, version, and MIT license', 
   const distribution = fs.readFileSync('docs/skill-distribution.md', 'utf8');
 
   assert.equal(pkg.name, 'authentext');
-  assert.equal(pkg.version, '3.2.0');
+  assert.equal(pkg.version, '3.3.0');
   assert.equal(pkg.license, 'MIT');
   assert.equal(pkg.workspaces, undefined, 'legacy packages must not be active npm workspaces');
   assert.equal(
@@ -28,7 +28,7 @@ test('canonical manifests share Authentext identity, version, and MIT license', 
   assert.doesNotMatch(pkg.scripts.release, /humanizer/i);
 
   assert.match(python, /^name = "authentext"$/m);
-  assert.match(python, /^version = "3\.2\.0"$/m);
+  assert.equal(python.match(/^version = "([^"]+)"$/m)?.[1], pkg.version);
   assert.match(python, /^license = \{ text = "MIT" \}$/m);
   assert.doesNotMatch(python, /humanizer/i);
 
@@ -39,6 +39,7 @@ test('canonical manifests share Authentext identity, version, and MIT license', 
 });
 
 test('canonical modules use the package version and Authentext identity', () => {
+  const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
   for (const filename of [
     'SKILL_CORE_PATTERNS.md',
     'SKILL_TECHNICAL.md',
@@ -49,7 +50,7 @@ test('canonical modules use the package version and Authentext identity', () => 
     'SKILL_REASONING.md',
   ]) {
     const source = fs.readFileSync(`src/modules/${filename}`, 'utf8');
-    assert.match(source, /^version: 3\.2\.0$/m, filename);
+    assert.equal(source.match(/^version: (.+)$/m)?.[1], pkg.version, filename);
   }
   assert.doesNotMatch(
     fs.readFileSync('src/modules/SKILL_REASONING.md', 'utf8'),

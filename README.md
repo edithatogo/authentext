@@ -34,6 +34,24 @@ Historical workspace and MCP-era files are retained with an explicit
 [non-canonical role](docs/legacy-surfaces.md); they are not installed, built,
 validated, or released as part of the Authentext skill.
 
+## Distribution and local verification
+
+This is the single canonical source and build repository. The earlier
+[authentext-distribution](https://github.com/edithatogo/authentext-distribution)
+repository is a pinned v3.2.0 compatibility snapshot, not a development source.
+Future host-specific packages are generated from this repository and supplied
+as release artifacts. Do not edit or release the snapshot independently.
+
+The optional Node.js 24 runtime CLIs use standard-library modules only, require
+no package installation, and perform no network requests:
+
+- `node scripts/verify-rewrite.js --original input.md --rewrite output.md --json`
+- `node scripts/calibrate-voice.js --corpus prior-writing --output voice-profile.json`
+- `node experiments/ablation-harness.js --dry-run`
+
+A passing literal check is not proof of semantic or clinical correctness.
+See [frontier architecture](docs/frontier-architecture.md) for safeguards.
+
 ## Scope
 
 This repository does not maintain adapter bundles or consumer-specific

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "examples": [
+    {
+      "id": "factual",
+      "source": "The sample contained 36 participants [12].",
+      "constraints": [
+        "36",
+        "[12]"
+      ]
+    },
+    {
+      "id": "restraint",
+      "source": "The test failed twice.",
+      "constraints": []
+    }
+  ]
+}
