@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { maskDocument, ShieldError } from './lib/ast-shield.js';
 import { parseArgs } from './lib/frontier-text.js';
-import { readUtf8, assertDistinctPaths, writePrivate } from './lib/local-file-io.js';
+import {
+  readUtf8,
+  assertDistinctPaths,
+  writePrivate,
+  isDirectExecution,
+} from './lib/local-file-io.js';
 
 export function main(argv = process.argv.slice(2)) {
   try {
@@ -26,4 +30,4 @@ export function main(argv = process.argv.slice(2)) {
     process.exitCode = error instanceof ShieldError ? 1 : 2;
   }
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
+if (isDirectExecution(import.meta.url)) main();

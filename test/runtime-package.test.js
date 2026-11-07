@@ -32,6 +32,10 @@ test('every host package runs the complete offline protection pipeline without n
         encoding: 'utf8',
       });
       assert.equal(result.status, 0, `${target}/${command}: ${result.stderr}`);
+      assert.ok(
+        result.stdout.trim(),
+        `${target}/${command}: no JSON output; stderr=${result.stderr}`
+      );
       return JSON.parse(result.stdout);
     };
     invoke('mask-ast.js', ['--input', input, '--output', masked, '--lockfile', lock, '--json']);
@@ -90,4 +94,51 @@ test('release packaging ships runtime scripts and downloadable host packages', (
   assert.match(release, /distribution-staging\/portable\/skills\/authentext/);
   assert.match(release, /scripts\/mask-ast\.js/);
   assert.match(release, /authentext-distributions\.tar\.gz/);
+});
+
+test('installed CLIs run through directory aliases without executing on import', (t) => {
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'authentext-path-alias-'));
+  t.after(() => fs.rmSync(temp, { recursive: true, force: true }));
+  const { packageRoot } = buildDistributionPackage({
+    root: process.cwd(),
+    output: temp,
+    target: 'portable',
+    sourceCommit: 'f'.repeat(40),
+  });
+  const skill = fs.realpathSync(path.join(packageRoot, 'skills', 'authentext'));
+  const alias = path.join(temp, 'alias');
+  fs.symlinkSync(skill, alias, process.platform === 'win32' ? 'junction' : 'dir');
+  const source = path.join(temp, 'source.md');
+  fs.writeFileSync(source, 'The study may suggest a benefit [12].\n');
+  const masked = path.join(temp, 'masked.md');
+  const lock = path.join(temp, 'source.ast-lock.json');
+  const restored = path.join(temp, 'restored.md');
+  const profile = path.join(temp, 'voice-profile.json');
+  const commands = [
+    ['mask-ast.js', ['--input', source, '--output', masked, '--lockfile', lock, '--json']],
+    ['unmask-ast.js', ['--input', masked, '--lockfile', lock, '--output', restored, '--json']],
+    ['verify-rewrite.js', ['--original', source, '--rewrite', restored, '--json']],
+    ['calibrate-voice.js', ['--corpus', source, '--output', profile]],
+  ];
+  for (const [command, args] of commands) {
+    const script = path.join(alias, 'scripts', command);
+    const result = spawnSync(process.execPath, [script, ...args], { encoding: 'utf8' });
+    assert.equal(result.status, 0, `${command}: ${result.stderr}`);
+    assert.ok(result.stdout.trim(), `${command}: aliased invocation produced no JSON`);
+    assert.doesNotThrow(() => JSON.parse(result.stdout), command);
+    const imported = spawnSync(
+      process.execPath,
+      [
+        '--input-type=module',
+        '-e',
+        `import { pathToFileURL } from 'node:url'; await import(pathToFileURL(${JSON.stringify(script)}));`,
+      ],
+      { encoding: 'utf8' }
+    );
+    assert.equal(imported.status, 0, `${command} import: ${imported.stderr}`);
+    assert.equal(imported.stdout, '', `${command} must not execute on import`);
+    assert.equal(imported.stderr, '', `${command} must not report CLI errors on import`);
+  }
+  assert.equal(fs.readFileSync(restored, 'utf8'), fs.readFileSync(source, 'utf8'));
+  assert.equal(JSON.parse(fs.readFileSync(profile, 'utf8')).schemaVersion, '1.0.0');
 });

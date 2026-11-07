@@ -1,8 +1,8 @@
 #!/usr/bin/env node
+import { isDirectExecution } from './lib/local-file-io.js';
 import fs from 'node:fs';
 import { analyzeDiscourse } from './lib/epistemic-discourse.js';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { metrics, invariants, multisetDiff, parseArgs, readText } from './lib/frontier-text.js';
 
 const categories = {
@@ -138,4 +138,4 @@ function main() {
     process.exitCode = 2;
   }
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
+if (isDirectExecution(import.meta.url)) main();

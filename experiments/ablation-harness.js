@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { isDirectExecution } from '../scripts/lib/local-file-io.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -215,4 +216,4 @@ function main() {
     process.exitCode = 2;
   }
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
+if (isDirectExecution(import.meta.url)) main();

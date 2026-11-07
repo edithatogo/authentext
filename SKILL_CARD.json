@@ -115,17 +115,17 @@
     },
     {
       "path": "scripts/build-skill-card.js",
-      "sha256": "96d910355d288c8631388e1990653ce4c88dac1075bfdc95b6f8087a6a4a0d9c",
-      "bytes": 5956,
+      "sha256": "6b24c4d570d7c18c5104f4dc53ec085b6c906b11ea9e3531a786a1f67ee40775",
+      "bytes": 5967,
       "words": 696,
-      "estimatedTokens": 1489
+      "estimatedTokens": 1492
     },
     {
       "path": "scripts/calibrate-voice.js",
-      "sha256": "b45f27ecd66d06f7bdf10a68699967cec098192b240b95031fba23f5785303e1",
-      "bytes": 3542,
-      "words": 394,
-      "estimatedTokens": 886
+      "sha256": "73d0320d1d99727d7c881ebdc8c63f0150bf0417c3123fbb5198c17df14bcb4b",
+      "bytes": 3470,
+      "words": 382,
+      "estimatedTokens": 868
     },
     {
       "path": "scripts/check-renovate-hosted.js",
@@ -290,10 +290,10 @@
     },
     {
       "path": "scripts/lib/local-file-io.js",
-      "sha256": "91d2ee1ab7dc16fb9934c74d92bcb65c5f3a14b1a82d5233c1b0bbb5ac230f46",
-      "bytes": 1452,
-      "words": 180,
-      "estimatedTokens": 363
+      "sha256": "9e43d607728a0bf851a8075f548e01168c63dcca100a29d0427c960c23118637",
+      "bytes": 1875,
+      "words": 233,
+      "estimatedTokens": 469
     },
     {
       "path": "scripts/lib/registry-distribution.js",
@@ -381,10 +381,10 @@
     },
     {
       "path": "scripts/mask-ast.js",
-      "sha256": "e493d59f87d04ff9e71b5a61f34f0bb09cfc05eb244e8a07fd2a2fb7e136460b",
-      "bytes": 1380,
-      "words": 164,
-      "estimatedTokens": 345
+      "sha256": "1e577ded90d29c299e722e1ad11563ffb4f7cffdf3df2916f8145b24efadb805",
+      "bytes": 1317,
+      "words": 152,
+      "estimatedTokens": 330
     },
     {
       "path": "scripts/monitor-registry-distribution.js",
@@ -444,10 +444,10 @@
     },
     {
       "path": "scripts/unmask-ast.js",
-      "sha256": "6cfda63cc8070e698c681a90ccbb86f63f81b0f483b681c87a5733def579f5d2",
-      "bytes": 1407,
-      "words": 159,
-      "estimatedTokens": 352
+      "sha256": "58431907d06c921ae3725f7f844479ae1ea60a55474f8745f28ac90b17dd225b",
+      "bytes": 1314,
+      "words": 142,
+      "estimatedTokens": 329
     },
     {
       "path": "scripts/validate-conductor.js",
@@ -493,10 +493,10 @@
     },
     {
       "path": "scripts/verify-rewrite.js",
-      "sha256": "b3f21d0afbf8c9b3786aaf467ca849c705fd6f471308df4e4ac1e5090e91f516",
-      "bytes": 4741,
-      "words": 476,
-      "estimatedTokens": 1186
+      "sha256": "12dd4dc903482c6c1730e67ac3faf0f1a0cdab9b901b9c2c57bc98738c153fb8",
+      "bytes": 4710,
+      "words": 471,
+      "estimatedTokens": 1178
     }
   ]
 }

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { TextDecoder } from 'node:util';
+import { fileURLToPath } from 'node:url';
 
 export function readUtf8(file) {
   const stat = fs.lstatSync(file);
@@ -33,5 +34,16 @@ export function writePrivate(file, content) {
     fs.renameSync(staged, file);
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
+  }
+}
+
+// Canonicalise directory aliases such as /var -> /private/var on macOS.
+// Importing a CLI as a module must never invoke its main function.
+export function isDirectExecution(moduleUrl, entry = process.argv[1]) {
+  if (!entry) return false;
+  try {
+    return fs.realpathSync(path.resolve(entry)) === fs.realpathSync(fileURLToPath(moduleUrl));
+  } catch {
+    return false;
   }
 }

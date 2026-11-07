@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { inputFiles, readText, metrics, parseArgs } from './lib/frontier-text.js';
-import { assertDistinctPaths, writePrivate } from './lib/local-file-io.js';
+import { assertDistinctPaths, writePrivate, isDirectExecution } from './lib/local-file-io.js';
 
 function numericDelta(author, comparison) {
   if (typeof author === 'number' && typeof comparison === 'number') return author - comparison;
@@ -83,4 +82,4 @@ function main() {
     process.exitCode = 2;
   }
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
+if (isDirectExecution(import.meta.url)) main();
