@@ -16,7 +16,7 @@ test('canonical manifests share Authentext identity, version, and MIT license', 
   const distribution = fs.readFileSync('docs/skill-distribution.md', 'utf8');
 
   assert.equal(pkg.name, 'authentext');
-  assert.equal(pkg.version, '3.2.0');
+  assert.equal(pkg.version, '3.3.0');
   assert.equal(pkg.license, 'MIT');
   assert.equal(pkg.workspaces, undefined, 'legacy packages must not be active npm workspaces');
   assert.equal(
