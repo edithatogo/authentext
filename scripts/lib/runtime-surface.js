@@ -9,4 +9,5 @@ export const RUNTIME_FILES = Object.freeze([
   'scripts/lib/ast-shield.js',
   'scripts/lib/epistemic-discourse.js',
   'scripts/lib/runtime-io.js',
+  'scripts/lib/reader-contract.js',
 ]);

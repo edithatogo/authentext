@@ -37,6 +37,7 @@ const MODULES = {
   reasoning: 'src/modules/SKILL_REASONING.md',
   foio: 'src/modules/SKILL_FOIO.md',
   protection: 'src/modules/SKILL_PROTECTION.md',
+  reader: 'src/modules/SKILL_READER_FIT.md',
 };
 
 const OUTPUT = {
@@ -56,6 +57,7 @@ const REFERENCE_FILES = {
   reasoning: 'reasoning-failures.md',
   foio: 'foio-editorial.md',
   protection: 'technical-protection.md',
+  reader: 'reader-fit.md',
 };
 
 const STANDARD_DESCRIPTION = `Repair editorial defects in prose with verified diffs. Remove recurring AI-writing patterns while preserving meaning, voice, citations, and technical literals. Do not optimise against detector scores or claim undetectability. Based on Wikipedia's "Signs of AI writing" guide. Detects inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary, negative parallelisms, reasoning failures, and LLM artifacts.`;
@@ -338,11 +340,15 @@ function compileStandardSkill(modules) {
   const strippedCore = stripFrontmatter(modules.core);
 
   const intro = buildStandardIntro(strippedCore);
+  const readerIntake = modules.reader
+    ? extractSection(stripFrontmatter(modules.reader), 'Reader contract', '\n## Detailed workflow')
+    : '';
   const severity = renderedSeverityFromRegistry();
   const detection = extractSection(strippedCore, 'DETECTION GUIDANCE');
 
   const referenceLinks = [
     `- [Core patterns (${patternCount} patterns, before/after examples)](references/core-patterns.md)`,
+    modules.reader && '- [Reader context, terminology and length](references/reader-fit.md)',
     modules.technical && '- [Technical writing and literal preservation](references/technical.md)',
     modules.academic && '- [Academic and research prose](references/academic.md)',
     modules.clinical && '- [Clinical and patient-safety prose](references/clinical.md)',
@@ -357,6 +363,8 @@ function compileStandardSkill(modules) {
   ].filter(Boolean);
 
   const body = `${intro}
+
+${readerIntake}
 
 ## Routing by task and content type
 
@@ -445,6 +453,7 @@ function compileProfessionalSkill(modules) {
 
   const moduleLinks = [
     '- [Core patterns](references/core-patterns.md) — always apply',
+    modules.reader && '- [Reader context, terminology and length](references/reader-fit.md)',
     modules.technical && '- [Technical module](references/technical.md) — code and technical docs',
     modules.academic && '- [Academic module](references/academic.md) — papers and formal research',
     modules.clinical &&
@@ -569,6 +578,7 @@ function compile() {
       reasoning: readModule(MODULES.reasoning),
       foio: readModule(MODULES.foio),
       protection: readModule(MODULES.protection),
+      reader: readModule(MODULES.reader, true),
     };
 
     const skillVersion = extractFrontmatter(modules.core)?.version ?? '3.0.0';

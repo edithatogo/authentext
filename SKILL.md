@@ -213,6 +213,22 @@ Skip this section entirely for clinical, legal, regulatory, and submitted academ
 
 ---
 
+## Reader contract
+
+Before drafting or revising, establish who will read the output, what they
+already know, what they need to understand or decide, and the requested length.
+Read the reader-fit.md reference when context, accessibility,
+terminology, compression or output length matters. These are editorial needs,
+not clues about who wrote the source. Retain necessary specialist language.
+
+Use explicit word limits as constraints; keep approximate targets distinct from
+hard ceilings. Without a requested length, preserve the source's scale rather
+than expanding it automatically. A ceiling never authorises deletion of a
+material qualification or an invented explanation. Report an impossible budget.
+With shell access, pass an explicitly supplied local contract to
+`verify-rewrite.js --reader-contract <contract.json>`; its reader-fit findings
+remain advisory except for configured hard length constraints.
+
 ## Routing by task and content type
 
 Route in two stages. Do not load a content reference until both stages are
@@ -267,6 +283,7 @@ defensible edits.
 Read these files for the full pattern catalog, examples, and remediation guidance:
 
 - [Core patterns (40 patterns, before/after examples)](references/core-patterns.md)
+- [Reader context, terminology and length](references/reader-fit.md)
 - [Technical writing and literal preservation](references/technical.md)
 - [Academic and research prose](references/academic.md)
 - [Clinical and patient-safety prose](references/clinical.md)

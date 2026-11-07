@@ -17,6 +17,8 @@ than guessing paths.
 
 ## Roadmap and Tracks
 
+- [Reader Context and Length](./tracks/reader-context-length_20261107/plan.md)
+
 - [Roadmap](./roadmap.md)
 - [Tracks Registry](./tracks.md)
 - [Editorial Safety Invariants](./tracks/editorial-safety-invariants_20260811/index.md)
