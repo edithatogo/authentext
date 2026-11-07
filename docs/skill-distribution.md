@@ -80,5 +80,5 @@ an old manifest automatically upgrades.
 The portable package contains the optional offline verifier and voice calibration
 scripts, packaged with a minimal ES-module manifest. The scripts use Node.js
 built-ins, never install dependencies and never make outbound network requests.
-If a platform cannot grant shell access, the skill still operates without
+When a platform has no shell access, the skill still operates without
 these tools and requires contextual preservation review.
