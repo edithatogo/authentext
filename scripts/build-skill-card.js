@@ -20,7 +20,7 @@ export function walk(dir){
   return result.sort();
 }
 export const relative=(p)=>path.relative(ROOT,p).split(path.sep).join('/');
-export function securityFindings(source,{runtime=false}={}){
+export function securityFindings(source,{runtime=false,promptSurface=false}={}){
   const findings=[];
   if(/[\u202A-\u202E\u2066-\u2069\u{E0000}-\u{E007F}]/u.test(source))findings.push('hidden-unicode-control');
   if(runtime&&/(?:\bfetch\s*\(|\bhttps?\.request\s*\(|\bnet\.connect\s*\(|\bXMLHttpRequest\b|\bWebSocket\b|\bexec\s*\([^)]*https?:\/\/)/u.test(source)){
@@ -29,7 +29,7 @@ export function securityFindings(source,{runtime=false}={}){
   if(runtime&&/\b(?:from|require\()\s*['"](?:node:)?(?:http|https|net|tls|dgram)['"]/u.test(source)){
     findings.push('network-module-import');
   }
-  if(/\b(?:ignore all previous instructions|reveal your system prompt)\b/iu.test(source)&&runtime===false){
+  if(promptSurface&&/\b(?:ignore all previous instructions|reveal your system prompt)\b/iu.test(source)){
     findings.push('untrusted-prompt-directive');
   }
   return findings;
@@ -52,7 +52,7 @@ export function card(root=ROOT){
   const markdown=walk(root).filter(f=>f.endsWith('.md'));
   for(const file of markdown){
     const source=fs.readFileSync(file,'utf8');
-    const problems=securityFindings(source);
+    const problems=securityFindings(source,{promptSurface:true});
     if(problems.length)throw new Error('Markdown scan '+path.relative(root,file)+': '+problems.join(','));
   }
   const rootTokens=artifacts.find(x=>x.path==='SKILL.md').estimatedTokens;
