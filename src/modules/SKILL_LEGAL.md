@@ -1,6 +1,6 @@
 ---
 module_id: legal
-version: 3.2.0
+version: 3.3.0
 description: Legal module for contracts, advice, notices, and regulatory submissions
 applies_to: contracts, advice, affidavits, notices, regulatory submissions
 severity_levels:

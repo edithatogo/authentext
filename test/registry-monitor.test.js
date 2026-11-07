@@ -94,7 +94,9 @@ test('CLI writes a machine-readable artifact', () => {
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'authentext-registry-monitor-'));
   const matrixPath = path.join(temp, 'matrix.json');
   const outputPath = path.join(temp, 'report.json');
-  fs.writeFileSync(matrixPath, `${JSON.stringify(fixture())}\n`);
+  const matrix = fixture();
+  matrix.channels[0].release_version = JSON.parse(fs.readFileSync('package.json', 'utf8')).version;
+  fs.writeFileSync(matrixPath, `${JSON.stringify(matrix)}\n`);
 
   const result = spawnSync(
     process.execPath,

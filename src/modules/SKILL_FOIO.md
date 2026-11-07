@@ -1,6 +1,6 @@
 ---
 name: authentext-foio
-version: 3.2.0
+version: 3.3.0
 applies_to: FOI-O manuscripts after semantic and citation integrity review
 ---
 

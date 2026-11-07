@@ -53,7 +53,11 @@ function copyPortableSurface(root, packageRoot) {
   fs.cpSync(path.join(root, 'references'), path.join(skillRoot, 'references'), {
     recursive: true,
   });
-  const runtime = ['scripts/verify-rewrite.js', 'scripts/calibrate-voice.js', 'scripts/lib/frontier-text.js'];
+  const runtime = [
+    'scripts/verify-rewrite.js',
+    'scripts/calibrate-voice.js',
+    'scripts/lib/frontier-text.js',
+  ];
   for (const relative of runtime) {
     const target = path.join(skillRoot, relative);
     fs.mkdirSync(path.dirname(target), { recursive: true });
@@ -335,8 +339,14 @@ export function validatePortablePackage(packageRoot) {
       errors.push(`forbidden package path: ${relativePath}`);
     }
     if (/humanizer|blader/i.test(relativePath)) errors.push(`legacy identity: ${relativePath}`);
-    if (relativePath.startsWith('skills/authentext/scripts/') &&
-      !['skills/authentext/scripts/verify-rewrite.js', 'skills/authentext/scripts/calibrate-voice.js', 'skills/authentext/scripts/lib/frontier-text.js'].includes(relativePath)) {
+    if (
+      relativePath.startsWith('skills/authentext/scripts/') &&
+      ![
+        'skills/authentext/scripts/verify-rewrite.js',
+        'skills/authentext/scripts/calibrate-voice.js',
+        'skills/authentext/scripts/lib/frontier-text.js',
+      ].includes(relativePath)
+    ) {
       errors.push(`unapproved runtime script: ${relativePath}`);
     }
     if (relativePath !== 'authentext-package.json' && !declared.has(relativePath)) {

@@ -11,6 +11,7 @@ const TARGET_FILES = [
   'AGENTS.md',
   'README.md',
   'package.json',
+  'pyproject.toml',
   'package-lock.json',
   'references/core-patterns.md',
   'references/technical.md',

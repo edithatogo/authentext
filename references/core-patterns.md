@@ -6,6 +6,8 @@
 - [Your Task](#your-task)
 - [Document intake and safety](#document-intake-and-safety)
 - [Voice Calibration](#voice-calibration)
+- [Local rewrite verification](#local-rewrite-verification)
+- [Contrastive voice fingerprinting](#contrastive-voice-fingerprinting)
 - [Invocation Modes](#invocation-modes)
 - [Mechanical pre-return scan](#mechanical-pre-return-scan)
 - [PERSONALITY AND SOUL](#personality-and-soul)

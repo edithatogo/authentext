@@ -23,111 +23,189 @@ export function inputFiles(location) {
 }
 export function proseOnly(source) {
   const lines = normalize(source).split('\n');
-  let front = lines[0] === '---', fence = null, math = false;
+  let front = lines[0] === '---',
+    fence = null,
+    math = false;
   const out = [];
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    if (front) { if (i > 0 && line.trim() === '---') front = false; continue; }
-    const marker = /^\s{0,3}(\x60{3,}|~{3,})/u.exec(line);
-    if (fence) {
-      if (new RegExp('^\\s{0,3}' + fence[0] + '{' + fence.length + ',}\\s*$').test(line)) fence = null;
+    if (front) {
+      if (i > 0 && line.trim() === '---') front = false;
       continue;
     }
-    if (marker) { fence = marker[1]; continue; }
-    if (/^\s*\$\$\s*$/u.test(line)) { math = !math; continue; }
+    const marker = /^\s{0,3}(\x60{3,}|~{3,})/u.exec(line);
+    if (fence) {
+      if (new RegExp('^\\s{0,3}' + fence[0] + '{' + fence.length + ',}\\s*$').test(line))
+        fence = null;
+      continue;
+    }
+    if (marker) {
+      fence = marker[1];
+      continue;
+    }
+    if (/^\s*\$\$\s*$/u.test(line)) {
+      math = !math;
+      continue;
+    }
     if (math) continue;
     out.push(line);
   }
-  return out.join('\n')
+  return out
+    .join('\n')
     .replace(/\x60+[^\x60\n]*\x60+/gu, ' ')
     .replace(/!?\[[^\]]+\]\([^)]+\)/gu, ' ')
     .replace(/^\s*#{1,6}\s+/gmu, '')
     .replace(/^\s*[-*+]\s+/gmu, '');
 }
-export const words = (s) => [...s.matchAll(/[\p{L}\p{N}]+(?:['-][\p{L}\p{N}]+)*/gu)].map(x => x[0].toLowerCase());
-const mean = (a) => a.length ? a.reduce((x,y) => x+y,0)/a.length : 0;
+export const words = (s) =>
+  [...s.matchAll(/[\p{L}\p{N}]+(?:['-][\p{L}\p{N}]+)*/gu)].map((x) => x[0].toLowerCase());
+const mean = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0);
 export function quantile(values, q) {
   if (!values.length) return 0;
-  const v = [...values].sort((a,b) => a-b);
-  const x = (v.length-1)*q, lo = Math.floor(x), hi = Math.ceil(x);
-  return v[lo]+(v[hi]-v[lo])*(x-lo);
+  const v = [...values].sort((a, b) => a - b);
+  const x = (v.length - 1) * q,
+    lo = Math.floor(x),
+    hi = Math.ceil(x);
+  return v[lo] + (v[hi] - v[lo]) * (x - lo);
 }
 export function metrics(source) {
   const prose = proseOnly(source);
   const tokens = words(prose);
-  const sentences = prose.replace(/\n+/gu,' ').trim().split(/(?<=[.!?])\s+(?=[\p{Lu}\p{N}"'(])/u)
-    .map(s => words(s).length).filter(Boolean);
-  const mu = mean(sentences), sd = Math.sqrt(mean(sentences.map(n => (n-mu)**2)));
-  const paragraphs = prose.split(/\n\s*\n/gu).filter(p => words(p).length);
-  const scale = tokens.length ? 1000/tokens.length : 0;
+  const sentences = prose
+    .replace(/\n+/gu, ' ')
+    .trim()
+    .split(/(?<=[.!?])\s+(?=[\p{Lu}\p{N}"'(])/u)
+    .map((s) => words(s).length)
+    .filter(Boolean);
+  const mu = mean(sentences),
+    sd = Math.sqrt(mean(sentences.map((n) => (n - mu) ** 2)));
+  const paragraphs = prose.split(/\n\s*\n/gu).filter((p) => words(p).length);
+  const scale = tokens.length ? 1000 / tokens.length : 0;
   const punct = {
-    hyphen: /-/gu, enDash: /\u2013/gu, emDash: /\u2014/gu,
-    semicolon: /;/gu, colon: /:/gu, parentheses: /\([^)]*\)/gu, questionMark: /\?/gu,
+    hyphen: /-/gu,
+    enDash: /\u2013/gu,
+    emDash: /\u2014/gu,
+    semicolon: /;/gu,
+    colon: /:/gu,
+    parentheses: /\([^)]*\)/gu,
+    questionMark: /\?/gu,
   };
   const rhetorical = {
     initialConjunctions: /(?:^|[.!?]\s+)(?:and|but|so|yet|or)\b/gimu,
     hedges: /\b(?:may|might|could|perhaps|possibly|suggests?|appears?|likely|uncertain)\b/gimu,
     firstPerson: /\b(?:I|me|my|mine|we|us|our|ours)\b/gu,
   };
-  const rates = (types) => Object.fromEntries(Object.entries(types).map(([k,re]) => [k,[...prose.matchAll(re)].length*scale]));
-  const summarize = (a) => ({mean:mean(a),p25:quantile(a,.25),p50:quantile(a,.5),p75:quantile(a,.75)});
+  const rates = (types) =>
+    Object.fromEntries(
+      Object.entries(types).map(([k, re]) => [k, [...prose.matchAll(re)].length * scale])
+    );
+  const summarize = (a) => ({
+    mean: mean(a),
+    p25: quantile(a, 0.25),
+    p50: quantile(a, 0.5),
+    p75: quantile(a, 0.75),
+  });
   return {
-    wordCount: tokens.length, sentenceCount: sentences.length,
-    sentenceLength:{mean:mu,sd,cv:mu?sd/mu:0,p10:quantile(sentences,.1),p25:quantile(sentences,.25),p50:quantile(sentences,.5),p75:quantile(sentences,.75),p90:quantile(sentences,.9)},
-    typeTokenRatio:tokens.length?new Set(tokens).size/tokens.length:0,
-    paragraphs:{count:paragraphs.length,words:summarize(paragraphs.map(p=>words(p).length)),sentences:summarize(paragraphs.map(p=>p.split(/(?<=[.!?])\s+/u).length))},
-    punctuationPer1000:rates(punct), rhetoricalPer1000:rates(rhetorical),
+    wordCount: tokens.length,
+    sentenceCount: sentences.length,
+    sentenceLength: {
+      mean: mu,
+      sd,
+      cv: mu ? sd / mu : 0,
+      p10: quantile(sentences, 0.1),
+      p25: quantile(sentences, 0.25),
+      p50: quantile(sentences, 0.5),
+      p75: quantile(sentences, 0.75),
+      p90: quantile(sentences, 0.9),
+    },
+    typeTokenRatio: tokens.length ? new Set(tokens).size / tokens.length : 0,
+    paragraphs: {
+      count: paragraphs.length,
+      words: summarize(paragraphs.map((p) => words(p).length)),
+      sentences: summarize(paragraphs.map((p) => p.split(/(?<=[.!?])\s+/u).length)),
+    },
+    punctuationPer1000: rates(punct),
+    rhetoricalPer1000: rates(rhetorical),
   };
 }
 export function invariants(source) {
-  const lines = normalize(source).replace(/^---\n[\s\S]*?\n---(?:\n|$)/u, '').split('\n');
-  let fence = null, buf = [];
-  const codeBlocks = [], other = [];
+  const lines = normalize(source)
+    .replace(/^---\n[\s\S]*?\n---(?:\n|$)/u, '')
+    .split('\n');
+  let fence = null,
+    buf = [];
+  const codeBlocks = [],
+    other = [];
   for (const line of lines) {
     const marker = /^\s{0,3}(\x60{3,}|~{3,})/u.exec(line);
-    if (!fence && marker) { fence=marker[1]; buf=[line]; other.push(''); continue; }
+    if (!fence && marker) {
+      fence = marker[1];
+      buf = [line];
+      other.push('');
+      continue;
+    }
     if (fence) {
-      buf.push(line);other.push('');
-      if (new RegExp('^\\s{0,3}' + fence[0] + '{' + fence.length + ',}\\s*$').test(line)) {codeBlocks.push(buf.join('\n'));fence=null;buf=[];}
+      buf.push(line);
+      other.push('');
+      if (new RegExp('^\\s{0,3}' + fence[0] + '{' + fence.length + ',}\\s*$').test(line)) {
+        codeBlocks.push(buf.join('\n'));
+        fence = null;
+        buf = [];
+      }
       continue;
     }
     other.push(line);
   }
-  if(fence) codeBlocks.push(buf.join('\n'));
-  let s=other.join('\n');
-  const take=(re)=>[...s.matchAll(re)].map(m=>m[0]);
-  const inlineCode=take(/\x60+[^\x60\n]+\x60+/gu);
-  s=s.replace(/\x60+[^\x60\n]+\x60+/gu,' ');
-  const markdownLinks=take(/!?\[[^\]]+\]\([^)]+\)/gu);
-  const urls=take(/https?:\/\/[^\s<>")\]]+/gu);
-  const dois=take(/\b10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/gu);
-  const citations=[...take(/\[(?:\d+(?:\s*[-,\u2013]\s*\d+)*|@[A-Za-z0-9_:-]+)\]/gu),...take(/\([A-Z][A-Za-z'. -]+,\s*(?:19|20)\d{2}[a-z]?\)/gu)];
-  s=s.replace(/https?:\/\/[^\s<>")\]]+/gu,' ')
-    .replace(/\b10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/gu,' ')
-    .replace(/\[(?:\d+(?:\s*[-,\u2013]\s*\d+)*|@[A-Za-z0-9_:-]+)\]/gu,' ')
-    .replace(/\([A-Z][A-Za-z'. -]+,\s*(?:19|20)\d{2}[a-z]?\)/gu,' ')
-    .replace(/!?\[[^\]]+\]\([^)]+\)/gu,' ');
-  const numbers=[...s.matchAll(/(?<![\p{L}\p{N}])[-+\u2212]?\d+(?:[.,]\d+)*(?:%|\b)/gu)].map(m=>m[0]);
-  const pValues=[...s.matchAll(/\bp\s*(?:=|<|>|≤|≥)\s*[-+\u2212]?\d+(?:\.\d+)?/giu)].map(m=>m[0]);
-  return {codeBlocks,inlineCode,markdownLinks,urls,dois,citations,numbers,pValues};
+  if (fence) codeBlocks.push(buf.join('\n'));
+  let s = other.join('\n');
+  const take = (re) => [...s.matchAll(re)].map((m) => m[0]);
+  const inlineCode = take(/\x60+[^\x60\n]+\x60+/gu);
+  s = s.replace(/\x60+[^\x60\n]+\x60+/gu, ' ');
+  const markdownLinks = take(/!?\[[^\]]+\]\([^)]+\)/gu);
+  const urls = take(/https?:\/\/[^\s<>")\]]+/gu);
+  const dois = take(/\b10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/gu);
+  const citations = [
+    ...take(/\[(?:\d+(?:\s*[-,\u2013]\s*\d+)*|@[A-Za-z0-9_:-]+)\]/gu),
+    ...take(/\([A-Z][A-Za-z'. -]+,\s*(?:19|20)\d{2}[a-z]?\)/gu),
+  ];
+  s = s
+    .replace(/https?:\/\/[^\s<>")\]]+/gu, ' ')
+    .replace(/\b10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/gu, ' ')
+    .replace(/\[(?:\d+(?:\s*[-,\u2013]\s*\d+)*|@[A-Za-z0-9_:-]+)\]/gu, ' ')
+    .replace(/\([A-Z][A-Za-z'. -]+,\s*(?:19|20)\d{2}[a-z]?\)/gu, ' ')
+    .replace(/!?\[[^\]]+\]\([^)]+\)/gu, ' ');
+  const numbers = [...s.matchAll(/(?<![\p{L}\p{N}])[-+\u2212]?\d+(?:[.,]\d+)*(?:%|\b)/gu)].map(
+    (m) => m[0]
+  );
+  const pValues = [...s.matchAll(/\bp\s*(?:=|<|>|≤|≥)\s*[-+\u2212]?\d+(?:\.\d+)?/giu)].map(
+    (m) => m[0]
+  );
+  return { codeBlocks, inlineCode, markdownLinks, urls, dois, citations, numbers, pValues };
 }
-export function multisetDiff(want,got) {
-  const map=new Map();
-  for(const s of got)map.set(s,(map.get(s)||0)+1);
-  const missing=[];
-  for(const s of want){const n=map.get(s)||0;if(n)map.set(s,n-1);else missing.push(s);}
-  const added=[];
-  for(const [s,n] of map)for(let j=0;j<n;j++)added.push(s);
-  return {missing,added};
+export function multisetDiff(want, got) {
+  const map = new Map();
+  for (const s of got) map.set(s, (map.get(s) || 0) + 1);
+  const missing = [];
+  for (const s of want) {
+    const n = map.get(s) || 0;
+    if (n) map.set(s, n - 1);
+    else missing.push(s);
+  }
+  const added = [];
+  for (const [s, n] of map) for (let j = 0; j < n; j++) added.push(s);
+  return { missing, added };
 }
 export function parseArgs(args) {
-  const output={};
-  for(let i=0;i<args.length;i++){
-    const arg=args[i];
-    if(!arg.startsWith('--'))throw new Error('Unexpected positional argument');
-    const name=arg.slice(2);
-    if(['json','allow-code-edits','dry-run'].includes(name))output[name]=true;
-    else {if(!args[i+1]||args[i+1].startsWith('--'))throw new Error('Missing '+arg);output[name]=args[++i];}
+  const output = {};
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (!arg.startsWith('--')) throw new Error('Unexpected positional argument');
+    const name = arg.slice(2);
+    if (['json', 'allow-code-edits', 'dry-run'].includes(name)) output[name] = true;
+    else {
+      if (!args[i + 1] || args[i + 1].startsWith('--')) throw new Error('Missing ' + arg);
+      output[name] = args[++i];
+    }
   }
   return output;
 }

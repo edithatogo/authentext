@@ -162,6 +162,16 @@ function syncRepoVersion(version) {
     }
   }
 
+  const pythonPath = path.join(ROOT_DIR, 'pyproject.toml');
+  if (fs.existsSync(pythonPath)) {
+    const source = fs.readFileSync(pythonPath, 'utf8');
+    fs.writeFileSync(
+      pythonPath,
+      source.replace(/^version = "[^"]+"$/m, `version = "${version}"`),
+      'utf8'
+    );
+  }
+
   const syncedDate = new Date().toISOString().slice(0, 10);
   syncYamlFrontmatterField(path.join(ROOT_DIR, 'AGENTS.md'), 'skill_version', version);
   syncYamlFrontmatterField(path.join(ROOT_DIR, 'AGENTS.md'), 'last_synced', syncedDate);
@@ -529,7 +539,10 @@ For severity tiers and false-positive guidance, read [Core patterns](references/
 Available reference files: ${availableReferences.join(', ')}.
 `;
 
-  return introduction + "\n## Optional local verification\n\nFor medium- and high-stakes rewrites in a shell-capable host, invoke the local\nverify-rewrite.js CLI if installed. Preserve protected literals and explicitly\nreview claims, uncertainty, negation, and domain boundaries even when the\nstructural check passes. Calibrate voice from a consented corpus using\ncalibrate-voice.js, if available. Do not treat CV or punctuation as proof of\nauthorship. Host approvals and document privacy always take precedence.\n";
+  return (
+    introduction +
+    '\n## Optional local verification\n\nFor medium- and high-stakes rewrites in a shell-capable host, invoke the local\nverify-rewrite.js CLI if installed. Preserve protected literals and explicitly\nreview claims, uncertainty, negation, and domain boundaries even when the\nstructural check passes. Calibrate voice from a consented corpus using\ncalibrate-voice.js, if available. Do not treat CV or punctuation as proof of\nauthorship. Host approvals and document privacy always take precedence.\n'
+  );
 }
 
 /**

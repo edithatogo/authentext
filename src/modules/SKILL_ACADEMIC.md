@@ -1,6 +1,6 @@
 ---
 module_id: academic
-version: 3.2.0
+version: 3.3.0
 description: Academic module for papers, essays, and formal research prose
 applies_to: research papers, essays, dissertations, grant proposals
 severity_levels:

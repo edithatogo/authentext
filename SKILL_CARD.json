@@ -97,17 +97,17 @@
     },
     {
       "path": "scripts/build-skill-card.js",
-      "sha256": "99c9489e6c2c283cf329d229697432b6445386abab5a433e773926e8f89e65bf",
-      "bytes": 4447,
+      "sha256": "ffd3233cf33d572e5cb7e1ecb8a7331c4ec072e1b83e580aa7297c45088b5641",
+      "bytes": 4963,
       "words": 580,
-      "estimatedTokens": 1112
+      "estimatedTokens": 1241
     },
     {
       "path": "scripts/calibrate-voice.js",
-      "sha256": "7a501163d002fc6179004a57960dd11a8bdff53d6dec1ffedafdd0d234033356",
-      "bytes": 2934,
+      "sha256": "ebc29d283c5b95c5469d492e136d9ef84802f408e5299720f9fcd8aa82ee5fc7",
+      "bytes": 3351,
       "words": 377,
-      "estimatedTokens": 734
+      "estimatedTokens": 838
     },
     {
       "path": "scripts/check-renovate-hosted.js",
@@ -125,10 +125,10 @@
     },
     {
       "path": "scripts/check-sync-clean.js",
-      "sha256": "8604e27945fb2478feeef6d28e6187edb72d4d600d1e075df2d2f3f799e9ccc1",
-      "bytes": 2923,
-      "words": 328,
-      "estimatedTokens": 731
+      "sha256": "ab174bf774ec4e0fa9ff71e0d0234552c8b4ea11575174616c197aec1d24b9be",
+      "bytes": 2943,
+      "words": 330,
+      "estimatedTokens": 736
     },
     {
       "path": "scripts/check-upstream.js",
@@ -146,10 +146,10 @@
     },
     {
       "path": "scripts/compile-skill.js",
-      "sha256": "07faac7ffdb36e2dab47b8acc4ada5636207df53f31cff92ca46cc399c30147b",
-      "bytes": 21272,
-      "words": 2429,
-      "estimatedTokens": 5318
+      "sha256": "070bf51b553ac00897923799afeac329f4b6bec9650a61519e42fb119ad616d0",
+      "bytes": 21574,
+      "words": 2457,
+      "estimatedTokens": 5394
     },
     {
       "path": "scripts/complete_workflow.js",
@@ -195,10 +195,10 @@
     },
     {
       "path": "scripts/lib/distribution-builder.js",
-      "sha256": "7bf07fefbaa856927600e25190b5e2f2c3d400a3443ffc11acfb0ea5d615f231",
-      "bytes": 14135,
+      "sha256": "b992e392e19ea7fe7fbd3968b9adf66d62c2b7536a89edef79fc981447939b3f",
+      "bytes": 14197,
       "words": 1465,
-      "estimatedTokens": 3534
+      "estimatedTokens": 3550
     },
     {
       "path": "scripts/lib/document-intake-policy.js",
@@ -237,10 +237,10 @@
     },
     {
       "path": "scripts/lib/frontier-text.js",
-      "sha256": "65c3656d6230f1f5961d9442e656cfbc721850291e3386ffa9128fd3b7840cac",
-      "bytes": 6397,
-      "words": 933,
-      "estimatedTokens": 1600
+      "sha256": "39fd8a6ba9dfa4539b32a5fceaf3b80663364718f47a17d007b64d67639b36ae",
+      "bytes": 7046,
+      "words": 941,
+      "estimatedTokens": 1762
     },
     {
       "path": "scripts/lib/guidance-drift.js",
@@ -433,10 +433,10 @@
     },
     {
       "path": "scripts/verify-rewrite.js",
-      "sha256": "609611a6c16149f864eca565b79422e7a3f609321a66dd2b41bd3b94f6d4eae3",
-      "bytes": 2874,
+      "sha256": "b31f9b8eed7b0dbf0fad4a9b4c1af738a37361e86e2cd1a0d79b2249401a188c",
+      "bytes": 3319,
       "words": 352,
-      "estimatedTokens": 719
+      "estimatedTokens": 830
     }
   ]
 }
