@@ -4,7 +4,7 @@
   "sourceRepository": "edithatogo/authentext",
   "tokenEstimator": "UTF-8 byte length divided by four; conservative approximation, not model tokenisation",
   "rootSkillTokenCeiling": 8500,
-  "rootSkillEstimatedTokens": 6935,
+  "rootSkillEstimatedTokens": 7181,
   "security": {
     "hiddenUnicodeControls": "rejected",
     "runtimeNetworkPrimitives": "rejected",
@@ -13,17 +13,17 @@
   "artifacts": [
     {
       "path": "SKILL.md",
-      "sha256": "d846c9435e379a2b637c9c3069deaefd69d32a306fd03130053a431d0896dedd",
-      "bytes": 27740,
-      "words": 4122,
-      "estimatedTokens": 6935
+      "sha256": "52f2e407582e7fa90b707316c289f8dcc5e0bbf022862bdbfae9a826980b0bd6",
+      "bytes": 28721,
+      "words": 4261,
+      "estimatedTokens": 7181
     },
     {
       "path": "SKILL_PROFESSIONAL.md",
-      "sha256": "52549f778608f0d67d820c55f7109044ba90b615e93d6d3c1b6c79e643f80090",
-      "bytes": 4834,
-      "words": 674,
-      "estimatedTokens": 1209
+      "sha256": "4969026ef55de2b330af5472f4059a5c35a1bf45b1cba69fe475d4c43284c7cf",
+      "bytes": 4918,
+      "words": 686,
+      "estimatedTokens": 1230
     },
     {
       "path": "references/academic.md",
@@ -66,6 +66,13 @@
       "bytes": 4659,
       "words": 659,
       "estimatedTokens": 1165
+    },
+    {
+      "path": "references/reader-fit.md",
+      "sha256": "6a31f0a3cee34439b02f5deece85214b3da5b44686a5f4e566990373926a6841",
+      "bytes": 9151,
+      "words": 1254,
+      "estimatedTokens": 2288
     },
     {
       "path": "references/reasoning-failures.md",
@@ -132,10 +139,10 @@
     },
     {
       "path": "scripts/check-sync-clean.js",
-      "sha256": "11c9632a5a63dd37bd6befb752432b38d110e90a25bf6b72640120d74dca82f7",
-      "bytes": 2983,
-      "words": 334,
-      "estimatedTokens": 746
+      "sha256": "041de8a9f0a3b0881146c5d388515f26fee1fb63e8db7d8476441f1ad8e85d16",
+      "bytes": 3013,
+      "words": 338,
+      "estimatedTokens": 754
     },
     {
       "path": "scripts/check-upstream.js",
@@ -153,10 +160,10 @@
     },
     {
       "path": "scripts/compile-skill.js",
-      "sha256": "fa833fbee32be9dae9f9798c5ca94031c408319e8c240c431bfd2dc218cecaee",
-      "bytes": 21831,
-      "words": 2482,
-      "estimatedTokens": 5458
+      "sha256": "931bc93240b9169c53610e7037ccbec4f2631ce01722d27578c672c03ef1746e",
+      "bytes": 22304,
+      "words": 2534,
+      "estimatedTokens": 5576
     },
     {
       "path": "scripts/complete_workflow.js",
@@ -258,10 +265,10 @@
     },
     {
       "path": "scripts/lib/frontier-text.js",
-      "sha256": "3a4eec346849fb5585601f977f80d66593e66095e5e6905d0aa851fdffe77419",
-      "bytes": 7076,
-      "words": 944,
-      "estimatedTokens": 1769
+      "sha256": "eae8276d3e12f2478609be6f747c4ee8c82a3941134a17144eaa0640ca3f6890",
+      "bytes": 8046,
+      "words": 1102,
+      "estimatedTokens": 2012
     },
     {
       "path": "scripts/lib/guidance-drift.js",
@@ -276,6 +283,13 @@
       "bytes": 4744,
       "words": 576,
       "estimatedTokens": 1186
+    },
+    {
+      "path": "scripts/lib/reader-contract.js",
+      "sha256": "94b577ecdf1c8e171e38b012946309c744b06a8248624387c3f77e23a670ef51",
+      "bytes": 7744,
+      "words": 778,
+      "estimatedTokens": 1936
     },
     {
       "path": "scripts/lib/registry-distribution.js",
@@ -321,10 +335,10 @@
     },
     {
       "path": "scripts/lib/runtime-surface.js",
-      "sha256": "a5d93941e79da58fd3cf01d746be1f4010ab3f4da0af30059b411aac5ae5f0a1",
-      "bytes": 451,
-      "words": 61,
-      "estimatedTokens": 113
+      "sha256": "bf7131593669d599e59d2d1bb6d6e5cc0067a5232ab0471fbcea4e0aada6ebf1",
+      "bytes": 487,
+      "words": 66,
+      "estimatedTokens": 122
     },
     {
       "path": "scripts/lib/skill-contracts.js",
@@ -482,10 +496,10 @@
     },
     {
       "path": "scripts/verify-rewrite.js",
-      "sha256": "d348b06f9efbdfddf357dff94f528ab68dc1d36c5c3e3cd90222eec019ad79f0",
-      "bytes": 4227,
-      "words": 437,
-      "estimatedTokens": 1057
+      "sha256": "6e6238314b5b6883e82a90ac885b5124047718deacb5bb20dc8f2ffbb4c61d25",
+      "bytes": 5264,
+      "words": 532,
+      "estimatedTokens": 1316
     }
   ]
 }

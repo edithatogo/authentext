@@ -180,7 +180,35 @@ export function invariants(source) {
   const pValues = [...s.matchAll(/\bp\s*(?:=|<|>|≤|≥)\s*[-+\u2212]?\d+(?:\.\d+)?/giu)].map(
     (m) => m[0]
   );
-  return { codeBlocks, inlineCode, markdownLinks, urls, dois, citations, numbers, pValues };
+  // Bounded lexical quantities. Values alone do not preserve a unit or currency.
+  const quantities = [
+    ...s.matchAll(
+      /(?<![\p{L}\p{N}])[-+\u2212]?\d+(?:[.,]\d+)*\s*(?:micrograms?|milligrams?|kilograms?|grams?|mmol|[µμ]mol|mmHg|mcg|mg|kg|ng|[µμ]g|mL|ml|mSv|mGy|bpm|g|L)(?:\/(?:kg|mL|ml|L|day|h|min))*(?![\p{L}\p{N}])/gu
+    ),
+  ].map((m) => m[0]);
+  const currencies = [
+    ...s.matchAll(
+      /(?<![\p{L}\p{N}])(?:AUD|NZD|USD|EUR|GBP|CAD|CHF|JPY|CNY|INR|BRL|ZAR|A\$|NZ\$|US\$|\p{Sc})\s*[-+\u2212]?\d+(?:[.,]\d+)*|(?<![\p{L}\p{N}])[-+\u2212]?\d+(?:[.,]\d+)*\s*(?:AUD|NZD|USD|EUR|GBP|CAD|CHF|JPY|CNY|INR|BRL|ZAR)(?!\p{L})/gu
+    ),
+  ].map((m) => m[0]);
+  const dates = [
+    ...s.matchAll(
+      /\b(?:\d{4}[-/]\d{1,2}[-/]\d{1,2}|\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})\b/gu
+    ),
+  ].map((m) => m[0]);
+  return {
+    codeBlocks,
+    inlineCode,
+    markdownLinks,
+    urls,
+    dois,
+    citations,
+    numbers,
+    pValues,
+    quantities,
+    currencies,
+    dates,
+  };
 }
 export function multisetDiff(want, got) {
   const map = new Map();

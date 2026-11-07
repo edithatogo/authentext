@@ -2,6 +2,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { inspectReaderContract } from './lib/reader-contract.js';
+import { readUtf8 } from './lib/runtime-io.js';
 import { inspectDiscourse } from './lib/epistemic-discourse.js';
 import { metrics, invariants, multisetDiff, parseArgs, readText } from './lib/frontier-text.js';
 
@@ -14,6 +16,9 @@ const categories = {
   citations: 'missingCitations',
   numbers: 'missingNumbers',
   pValues: 'modifiedPValues',
+  quantities: 'modifiedQuantities',
+  currencies: 'modifiedCurrencies',
+  dates: 'modifiedDates',
 };
 export function inspectRewrite(
   original,
@@ -24,6 +29,7 @@ export function inspectRewrite(
     allowCodeEdits = false,
     allowModalityShift = false,
     format = 'md',
+    readerContract = null,
   } = {}
 ) {
   if (!['light', 'standard', 'deep'].includes(mode)) throw new Error('Invalid mode');
@@ -49,7 +55,25 @@ export function inspectRewrite(
     (item) => !allowModalityShift || item.reasons.some((reason) => !permitted.has(reason))
   );
   if (mode !== 'light' && (blockedDrift || discourse.polarityInversion.length > 0)) passed = false;
+  const readerFit =
+    readerContract === null
+      ? null
+      : inspectReaderContract(original, rewrite, readerContract, { format });
+  if (readerFit?.length.hardFailure) passed = false;
+  const mechanicallyPassed = passed;
+  const inconclusive = discourse.alignmentIssues.length > 0;
+  if (mode !== 'light' && inconclusive) passed = false;
+  const verificationStatus = !mechanicallyPassed
+    ? 'blocked'
+    : inconclusive
+      ? 'inconclusive'
+      : 'checks-passed';
   const warnings = [];
+  if (inconclusive)
+    warnings.push({
+      code: 'INCONCLUSIVE_ALIGNMENT',
+      message: 'Unaligned claims require contextual review; this is not proof of a changed claim',
+    });
   if (
     mode !== 'light' &&
     rewriteMetrics.sentenceCount >= 4 &&
@@ -79,6 +103,8 @@ export function inspectRewrite(
   return {
     schemaVersion: '1.0.0',
     ...discourse,
+    readerFit,
+    verificationStatus,
     overrides: { allowCodeEdits, allowModalityShift },
     passed,
     mode,
@@ -99,6 +125,7 @@ function main() {
     const result = inspectRewrite(readText(a.original), readText(a.rewrite), {
       mode: a.mode || 'standard',
       profile,
+      readerContract: a['reader-contract'] ? JSON.parse(readUtf8(a['reader-contract'])) : null,
       allowCodeEdits: a['allow-code-edits'] === true,
       allowModalityShift: a['allow-modality-shift'] === true,
       format:
