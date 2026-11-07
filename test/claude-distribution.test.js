@@ -10,7 +10,7 @@ import {
   validateHostPackage,
 } from '../scripts/lib/distribution-builder.js';
 
-test('Claude package is skill-only, canonical, and marketplace-addressable', (t) => {
+test('Claude package is canonical, offline-tooling-enabled, and marketplace-addressable', (t) => {
   const output = fs.mkdtempSync(path.join(os.tmpdir(), 'authentext-claude-'));
   t.after(() => fs.rmSync(output, { recursive: true, force: true }));
   const receipt = buildDistributionPackage({
@@ -28,7 +28,7 @@ test('Claude package is skill-only, canonical, and marketplace-addressable', (t)
     fs.readFileSync(path.join(receipt.packageRoot, '.claude-plugin', 'marketplace.json'), 'utf8')
   );
   assert.equal(plugin.name, 'authentext');
-  assert.equal(plugin.version, '3.2.0');
+  assert.equal(plugin.version, '3.3.0');
   assert.equal(marketplace.plugins[0].source, './');
   assert.deepEqual(receipt.capabilities, { apps: [], tools: [], hooks: [], network: [] });
 });
