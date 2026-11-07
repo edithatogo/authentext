@@ -40,10 +40,11 @@ jobs:
           if (digest !== 'aaacd8e68df169b809a6ad7feac46a99e4d585c1b5002a11312e08730c76b5db') throw new Error('Source patch digest mismatch');
           const filename = `${process.env.RUNNER_TEMP}/technical-safety.patch`;
           fs.writeFileSync(filename, patch);
-          execFileSync('git', ['apply', '--check', filename], { stdio: 'inherit' });
-          execFileSync('git', ['apply', '--index', filename], { stdio: 'inherit' });
+          // Release workflow was already applied through the authorised connector.
+          execFileSync('git', ['apply', '--check', '--exclude=.github/workflows/release.yml', filename], { stdio: 'inherit' });
+          execFileSync('git', ['apply', '--index', '--exclude=.github/workflows/release.yml', filename], { stdio: 'inherit' });
           for (const i of [0, 1, 2, 3]) fs.unlinkSync(`.maintainer/safety-patch-${i}.b64`);
-          fs.unlinkSync('.github/workflows/apply-technical-safety.yml');
+          // The connector removes this temporary workflow after verifying the push.
           NODE
       - name: Regenerate and run required gates
         run: |
@@ -56,7 +57,7 @@ jobs:
           npm run check:sync
           npm run build:distribution -- --output "${RUNNER_TEMP}/technical-safety-packages"
           git diff --check
-      - name: Commit validated candidate to the unchanged isolated review branch
+      - name: Commit validated source to the unchanged isolated review branch
         env:
           GH_TOKEN: ${{ github.token }}
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
@@ -71,3 +72,14 @@ jobs:
           authorization=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
           echo "::add-mask::$authorization"
           git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic ${authorization}" push origin "HEAD:refs/heads/${branch}"
+      - name: Export reviewed public source
+        run: |
+          mkdir -p "${RUNNER_TEMP}/safety-source"
+          git archive --format=tar HEAD > "${RUNNER_TEMP}/safety-source/source.tar"
+          git rev-parse HEAD > "${RUNNER_TEMP}/safety-source/source-commit.txt"
+          cp coverage/summary.json "${RUNNER_TEMP}/safety-source/coverage.json"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: verified-technical-safety-source
+          path: ${{ runner.temp }}/safety-source/
+          retention-days: 2
