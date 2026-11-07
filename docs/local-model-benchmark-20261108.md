@@ -1,4 +1,4 @@
-# Local-model comparisons for Authentext — 8 November 2026
+# Local-model comparisons for Authentext  -  8 November 2026
 
 **Status: evaluation plan only.** This is a consumer-specific extension of the existing reader-context/length and quality harness work; not a new rewrite engine. Model discovery and cross-platform results remain owned by [models_lang](https://github.com/edithatogo/models_lang).
 
