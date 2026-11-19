@@ -1,0 +1,47 @@
+name: Protected literal property campaign
+
+on:
+  schedule:
+    - cron: '23 4 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: protected-literal-properties-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  properties:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      AUTHENTEXT_FUZZ_RUNS: '2000'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # existing repository pin
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-maintainer-env
+        with:
+          install-vale: 'false'
+      - name: Run bounded Unicode properties
+        shell: bash
+        run: |
+          set -euo pipefail
+          export AUTHENTEXT_FUZZ_SEED=$((GITHUB_RUN_ID % 2147483647))
+          mkdir -p "$RUNNER_TEMP/property-fuzz"
+          {
+            git rev-parse HEAD
+            node --version
+            printf 'AUTHENTEXT_FUZZ_RUNS=%s AUTHENTEXT_FUZZ_SEED=%s\n' "$AUTHENTEXT_FUZZ_RUNS" "$AUTHENTEXT_FUZZ_SEED"
+            node --test test/ast-shield.property.test.js
+          } 2>&1 | tee "$RUNNER_TEMP/property-fuzz/results.txt"
+      - name: Retain seed and shrinking output
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # existing repository pin
+        with:
+          name: protected-literal-properties-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/property-fuzz
+          if-no-files-found: ignore
+          retention-days: 14
